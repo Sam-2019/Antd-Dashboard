@@ -24,3 +24,13 @@ a {
 .site-layout-sub-header-background {
   background: #fff;
 }
+
+.gridStyle {
+  display: grid;
+  grid-template-columns: repeat(4, 0.5fr);
+  gap: 1rem;
+ 
+  margin: 0 auto;
+  box-sizing: border-box;
+  
+}
