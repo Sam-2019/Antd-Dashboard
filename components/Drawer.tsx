@@ -29,7 +29,7 @@ const DrawerC = ({ onClose, visible, onActive }: PropType) => {
           icon={<DashboardOutlined />}
           onClick={() => onActive("dashboard")}
         >
-          DashBoard
+          Dashboard
         </Menu.Item>
         <Menu.Item
           key="2"
