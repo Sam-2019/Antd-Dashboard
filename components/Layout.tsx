@@ -4,7 +4,8 @@ import DrawerC from "./Drawer";
 import SiderDemo from "./Sider";
 import Navbar from "./Navbar";
 import TableContainer from "./Table";
-import GridC from "./Grid";
+import Dashboard from "./Dashboard";
+import Department from './Department'
 
 const { Content } = Layout;
 
@@ -48,8 +49,8 @@ const Demo = () => {
             minHeight: 280,
           }}
         >
-          {active === "dashboard" && <GridC />}
-          {active === "department" && "kngkhnk"}
+          {active === "dashboard" && <Dashboard />}
+          {active === "department" && <Department />}
           {active === "members" && <TableContainer />}
         </Content>
       </Layout>
