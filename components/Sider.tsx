@@ -31,7 +31,7 @@ const SiderDemo = ({ collapsed, onActive }: PropType) => {
           icon={<DashboardOutlined />}
           onClick={() => onActive("dashboard")}
         >
-          DashBoard
+          Dashboard
         </Menu.Item>
         <Menu.Item
           key="2"
