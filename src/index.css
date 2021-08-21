@@ -29,8 +29,18 @@ a {
   display: grid;
   grid-template-columns: repeat(4, 0.5fr);
   gap: 1rem;
- 
   margin: 0 auto;
   box-sizing: border-box;
-  
+}
+
+@media (max-width: 781px) {
+  .gridStyle {
+    grid-template-columns: repeat(3, 0.5fr);
+  }
+}
+
+@media (max-width: 660px) {
+  .gridStyle {
+    grid-template-columns: repeat(2, 0.5fr);
+  }
 }
