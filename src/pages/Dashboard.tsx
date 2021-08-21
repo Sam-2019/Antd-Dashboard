@@ -1,15 +1,64 @@
-import React from "react";
-import { Row, Col, Card } from "antd";
+import React, { ReactElement } from "react";
+import { Row, Col, Card, Menu } from "antd";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
+
+type ContentKey = "article" | "app" | "project";
+
+const tabListNoTitle = [
+  {
+    key: "article",
+    tab: "article",
+  },
+  {
+    key: "app",
+    tab: "app",
+  },
+  {
+    key: "project",
+    tab: "project",
+  },
+];
+
+interface StringArray {
+  [index: string]: ReactElement<any, any>;
+}
+
+const contentListNoTitle: StringArray = {
+  article: <p>article content</p>,
+  app: <p>app content</p>,
+  project: <p>project content</p>,
+};
 
 const Dashboard = () => {
   const [loading, setLoading] = React.useState(true);
+  const [noTitleKey, setnoTitleKey] = React.useState<any | null>("article");
 
   const responsive = useBreakpoint();
 
   const onChange = () => {
     setLoading(!loading);
   };
+
+  const onTabChange = (key: string, type: any): any => {
+    console.log(key, type);
+    // setnoTitleKey({ [type]: key });
+
+    switch (key) {
+      case "article":
+        setnoTitleKey("article");
+        break;
+      case "app":
+        setnoTitleKey("app");
+        break;
+      case "project":
+        setnoTitleKey("project");
+        break;
+      default:
+    }
+  };
+
+  //console.log(noTitleKey);
+  //  console.log(contentListNoTitle);
 
   return (
     <>
@@ -41,6 +90,19 @@ const Dashboard = () => {
             </Card>
           </Col>
         </Row>
+      </div>
+
+      <div className="site-card-wrapper" style={{ marginBottom: 16 }}>
+        <Card
+          style={{ width: "100%" }}
+          tabList={tabListNoTitle}
+          activeTabKey={noTitleKey}
+          onTabChange={(key) => {
+            onTabChange(key, "noTitleKey");
+          }}
+        >
+          {contentListNoTitle[noTitleKey]}
+        </Card>
       </div>
 
       <div className="site-card-wrapper">
