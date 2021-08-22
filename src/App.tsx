@@ -5,10 +5,14 @@ import "antd/dist/antd.css";
 
 import Layout from "./components/Layout";
 import Dashboard from "./pages/Dashboard";
-import Department from "./pages/Department";
-import Members from "./pages/Members";
-import Member from "./pages/Member";
-import Tithe from "./pages/Tithe";
+import Departments from "./pages/Department/Departments";
+import Members from "./pages/Member/Members";
+import Member from "./pages/Member/Member";
+import Tithe from "./pages/Tithe/Tithe";
+import Chapels from "./pages/Chapel/Chapels";
+import Chapel from "./pages/Chapel/Chapel";
+import TithePaid from "./pages/Tithe/TithePaid";
+import Department from "./pages/Department/Department";
 
 export default function App() {
   return (
@@ -16,6 +20,15 @@ export default function App() {
       <div>
         <Layout>
           <Switch>
+            <Route path="/chapels/:slug">
+              <Chapel />
+            </Route>
+            <Route path="/chapels">
+              <Chapels />
+            </Route>
+            <Route path="/tithe/:slug">
+              <TithePaid />
+            </Route>
             <Route path="/tithe">
               <Tithe />
             </Route>
@@ -25,8 +38,11 @@ export default function App() {
             <Route path="/members">
               <Members />
             </Route>
-            <Route path="/department">
+            <Route path="/departments/:slug">
               <Department />
+            </Route>
+            <Route path="/departments">
+              <Departments />
             </Route>
             <Route path="/">
               <Dashboard />
