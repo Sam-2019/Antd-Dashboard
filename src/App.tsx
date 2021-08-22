@@ -8,6 +8,7 @@ import Dashboard from "./pages/Dashboard";
 import Department from "./pages/Department";
 import Members from "./pages/Members";
 import Member from "./pages/Member";
+import Tithe from "./pages/Tithe";
 
 export default function App() {
   return (
@@ -15,6 +16,9 @@ export default function App() {
       <div>
         <Layout>
           <Switch>
+            <Route path="/tithe">
+              <Tithe />
+            </Route>
             <Route path="/members/:slug">
               <Member />
             </Route>
