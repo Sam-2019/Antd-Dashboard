@@ -1,23 +1,18 @@
 import React from "react";
-import { Layout, Menu } from "antd";
-import {
-  DashboardOutlined,
-  TeamOutlined,
-  GroupOutlined,
-} from "@ant-design/icons";
+import { Layout } from "antd";
+
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
-import { useHistory } from "react-router-dom";
+
+import MenuItems from "./MenuItems";
 
 const { Sider } = Layout;
 
 interface PropType {
   collapsed: any;
-
 }
 
 const SiderDemo = ({ collapsed }: PropType) => {
   const responsive = useBreakpoint();
-  const history = useHistory();
 
   return (
     <Sider
@@ -28,31 +23,7 @@ const SiderDemo = ({ collapsed }: PropType) => {
     >
       <div className="logo" />
 
-      <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
-        <Menu.Item
-          key="1"
-          icon={<DashboardOutlined />}
-          onClick={() => history.push("/")}
-        >
-          Dashboard
-        </Menu.Item>
-
-        <Menu.Item
-          key="2"
-          icon={<GroupOutlined />}
-          onClick={() => history.push("/department")}
-        >
-          Departments
-        </Menu.Item>
-
-        <Menu.Item
-          key="3"
-          icon={<TeamOutlined />}
-          onClick={() => history.push("/members")}
-        >
-          Members
-        </Menu.Item>
-      </Menu>
+      <MenuItems />
     </Sider>
   );
 };
