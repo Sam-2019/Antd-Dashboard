@@ -142,3 +142,13 @@ export const departments = [
     path: "/children-service",
   },
 ];
+
+export const breadcrumbNameMap = {
+  '/departments': 'Department',
+  '/departments/:slug': 'Department',
+  '/members': 'Members',
+  '/tithe': 'Tithe',
+  '/chapels': 'Chapels',
+
+
+};
