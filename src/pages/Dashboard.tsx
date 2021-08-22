@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import { Row, Col, Card, Menu } from "antd";
+import { Row, Col, Card } from "antd";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 
 type ContentKey = "article" | "app" | "project";
