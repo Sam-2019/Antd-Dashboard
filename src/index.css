@@ -25,6 +25,10 @@ a {
   background: #fff;
 }
 
+.goBack {
+  cursor: pointer;
+}
+
 .gridStyle {
   display: grid;
   grid-template-columns: repeat(4, 0.5fr);
