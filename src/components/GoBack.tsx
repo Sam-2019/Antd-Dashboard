@@ -1,12 +1,15 @@
 import { useHistory } from "react-router-dom";
+import { PageHeader } from "antd";
 
 const GoBack = () => {
   const history = useHistory();
 
   return (
-    <div className="goBack" onClick={() => history.goBack()}>
-      Back
-    </div>
+    <PageHeader
+      className="site-page-header goBack"
+      onBack={() => history.goBack()}
+      title="Back"
+    />
   );
 };
 
