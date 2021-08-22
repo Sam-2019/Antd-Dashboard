@@ -39,7 +39,7 @@ function TithePaid() {
           key="name"
           render={(text: string): any => (
             <Space size="middle">
-              <Link to={`/chapels/${text}`}>{text}</Link>
+               <Link to={`/members/${text}`}>{text}</Link>
             </Space>
           )}
         />

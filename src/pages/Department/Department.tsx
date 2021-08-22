@@ -27,7 +27,7 @@ const data = [
   },
 ];
 
-function Chapel() {
+function Department() {
   return (
     <div>
       <GoBack />
@@ -38,7 +38,7 @@ function Chapel() {
           key="name"
           render={(text: string): any => (
             <Space size="middle">
-              <Link to={`/chapels/${text}`}>{text}</Link>
+              <Link to={`/members/${text}`}>{text}</Link>
             </Space>
           )}
         />
@@ -80,4 +80,4 @@ function Chapel() {
   );
 }
 
-export default Chapel;
+export default Department;
