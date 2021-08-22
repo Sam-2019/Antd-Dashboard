@@ -1,9 +1,11 @@
 import React from "react";
-import { Layout } from "antd";
+import { Breadcrumb, Layout } from "antd";
 
 import DrawerC from "./Drawer";
 import SiderDemo from "./Sider";
 import Navbar from "./Navbar";
+
+import BreadCrumb from "./Breadcrumb";
 
 const { Content } = Layout;
 
@@ -11,7 +13,8 @@ interface PropType {
   children: any;
 }
 
-const Demo = ({ children }: PropType) => {
+const AppLayout = ({ children }: PropType) => {
+
   const [active, setActive] = React.useState("dashboard");
   const [visible, setVisible] = React.useState(false);
   const [collapsed, setCollapsed] = React.useState(false);
@@ -51,6 +54,7 @@ const Demo = ({ children }: PropType) => {
             minHeight: 280,
           }}
         >
+          {/* <BreadCrumb /> */}
           {children}
         </Content>
       </Layout>
@@ -58,4 +62,4 @@ const Demo = ({ children }: PropType) => {
   );
 };
 
-export default Demo;
+export default AppLayout;
