@@ -13,6 +13,9 @@ import Chapels from "./pages/Chapel/Chapels";
 import Chapel from "./pages/Chapel/Chapel";
 import TithePaid from "./pages/Tithe/TithePaid";
 import Department from "./pages/Department/Department";
+import Forms from "./components/Forms/Forms";
+import Sunday from "./components/Forms/Sunday";
+import Visitor from "./components/Forms/Visitor";
 
 export default function App() {
   return (
@@ -20,6 +23,15 @@ export default function App() {
       <div>
         <Layout>
           <Switch>
+            <Route path="/forms/visitor">
+              <Visitor />
+            </Route>
+            <Route path="/forms/sunday">
+              <Sunday />
+            </Route>
+            <Route path="/forms">
+              <Forms />
+            </Route>
             <Route path="/chapels/:slug">
               <Chapel />
             </Route>
