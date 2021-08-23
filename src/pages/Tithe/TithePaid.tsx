@@ -3,36 +3,13 @@ import { Table, Tag, Space } from "antd";
 import Column from "antd/lib/table/Column";
 import { Link } from "react-router-dom";
 import GoBack from '../../components/GoBack'
-
-const data = [
-  {
-    key: "1",
-    name: "John Brown",
-    age: 32,
-    address: "New York No. 1 Lake Park",
-    tags: ["nice", "developer"],
-  },
-  {
-    key: "2",
-    name: "Jim Green",
-    age: 42,
-    address: "London No. 1 Lake Park",
-    tags: ["loser"],
-  },
-  {
-    key: "3",
-    name: "Joe Black",
-    age: 32,
-    address: "Sidney No. 1 Lake Park",
-    tags: ["cool", "teacher"],
-  },
-];
+import { userData } from "../../others/data";
 
 function TithePaid() {
   return (
     <>
       <GoBack />
-      <Table dataSource={data}>
+      <Table dataSource={userData}>
         <Column
           title="Name"
           dataIndex="name"
