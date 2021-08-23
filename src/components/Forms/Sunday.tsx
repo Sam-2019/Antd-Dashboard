@@ -34,7 +34,7 @@ function Sunday() {
     const values = {
       ...fieldsValue,
       "date-picker": fieldsValue["date-picker"].format("YYYY-MM-DD"),
-     
+
       "time-picker": fieldsValue["time-picker"].format("HH:mm:ss"),
     };
     console.log("Received values of form: ", values);
@@ -47,23 +47,44 @@ function Sunday() {
         {...formItemLayout}
         onFinish={onFinish}
       >
-        <Form.Item name="date-picker" label="Date" {...config}>
+        <Form.Item
+          name="date-picker"
+          label="Date"
+          rules={[{ required: true, message: "Please select Date!" }]}
+        >
           <DatePicker />
         </Form.Item>
 
-        <Form.Item name="time-picker" label=" Start Time" {...config}>
+        <Form.Item
+          name="time-picker"
+          label=" Start Time"
+          rules={[{ required: true, message: "Please select start time!" }]}
+        >
           <TimePicker />
         </Form.Item>
 
-        <Form.Item name="time-picker" label="Preacher" {...config}>
+        <Form.Item
+          name="preacher"
+          label="Preacher"
+          rules={[{ required: true, message: "Preacher is required!" }]}
+        >
           <Input style={{ width: "30%" }} placeholder="Basic usage" />
         </Form.Item>
 
-        <Form.Item name="time-picker" label="Theme" {...config}>
+        <Form.Item
+          name="theme"
+          label="Theme"
+          rules={[{ required: true, message: "Theme is required!" }]}
+        >
           <Input style={{ width: "30%" }} placeholder="Basic usage" />
         </Form.Item>
 
-        <Form.Item name="time-picker" label="Bible Text" {...config}>
+        <Form.Item
+          name="bible-text"
+          label="Bible Text"
+          rules={[{ required: true, message: "Bible Text is required!" }]}
+          style={{ marginBottom: 10 }}
+        >
           <Input style={{ width: "30%" }} placeholder="Basic usage" />
         </Form.Item>
 
@@ -72,100 +93,75 @@ function Sunday() {
             xs: { span: 24, offset: 0 },
             sm: { span: 16, offset: 8 },
           }}
+          style={{ marginBottom:  10}}
         >
           <Row>
-            <Col span={3}>Male</Col>
+            <Col span={6}>Male</Col>
 
-            <Col span={3}>Female</Col>
+            <Col span={6}>Female</Col>
           </Row>
         </Form.Item>
 
-        <Form.Item label="Adults" name="layout">
-          <Row>
-            <Col span={3}>
-              <InputNumber
-                min={1}
-                max={10}
-                defaultValue={3}
-                style={{ width: "50%" }}
-              />
-            </Col>
+        <Form.Item label="Adults" style={{ marginBottom: 0 }}>
+          <Form.Item
+            name="adult-male"
+            style={{ display: "inline-block", width: "25%" }}
+            rules={[{ required: true, message: "Required!" }]}
+          >
+            <InputNumber keyboard={true} style={{ width: "50%" }} />
+          </Form.Item>
 
-            <Col span={3}>
-              <InputNumber
-                min={1}
-                max={10}
-                defaultValue={3}
-                style={{ width: "50%" }}
-              />
-            </Col>
-          </Row>
+          <Form.Item
+            name="adult-female"
+            style={{ display: "inline-block", width: "25%" }}
+            rules={[{ required: true, message: "Required!" }]}
+          >
+            <InputNumber keyboard={true} style={{ width: "50%" }} />
+          </Form.Item>
         </Form.Item>
 
-        <Form.Item label="Omega Generation" name="layout">
-          <Row>
-            <Col span={3}>
-              <InputNumber
-                min={1}
-                max={10}
-                defaultValue={3}
-                style={{ width: "50%" }}
-              />
-            </Col>
+        <Form.Item label="Omega Generation" style={{ marginBottom: 0 }}>
+          <Form.Item
+            name="omega-male"
+            style={{ display: "inline-block", width: "25%" }}
+            rules={[{ required: true, message: "Required!" }]}
+          >
+            <InputNumber keyboard={true} style={{ width: "50%" }} />
+          </Form.Item>
 
-            <Col span={3}>
-              <InputNumber
-                min={1}
-                max={10}
-                defaultValue={3}
-                style={{ width: "50%" }}
-              />
-            </Col>
-          </Row>
+          <Form.Item
+            name="omega-female"
+            style={{ display: "inline-block", width: "25%" }}
+            rules={[{ required: true, message: "Required!" }]}
+          >
+            <InputNumber keyboard={true} style={{ width: "50%" }} />
+          </Form.Item>
         </Form.Item>
 
-        <Form.Item label="Children" name="layout">
-          <Row>
-            <Col span={3}>
-              <InputNumber
-                min={1}
-                max={10}
-                defaultValue={3}
-                style={{ width: "50%" }}
-              />
-            </Col>
+        <Form.Item label="Children" style={{ marginBottom: 0 }}>
+          <Form.Item
+            name="children-male"
+            style={{ display: "inline-block", width: "25%" }}
+            rules={[{ required: true, message: "Required!" }]}
+          >
+            <InputNumber keyboard={true} style={{ width: "50%" }} />
+          </Form.Item>
 
-            <Col span={3}>
-              <InputNumber
-                min={1}
-                max={10}
-                defaultValue={3}
-                style={{ width: "50%" }}
-              />
-            </Col>
-          </Row>
+          <Form.Item
+            name="children-female"
+            style={{ display: "inline-block", width: "25%" }}
+            rules={[{ required: true, message: "Required!" }]}
+          >
+            <InputNumber keyboard={true} style={{ width: "50%" }} />
+          </Form.Item>
         </Form.Item>
 
-        <Form.Item label="Alter Call" name="layout">
-          <Row>
-            <Col span={3}>
-              <InputNumber
-                min={1}
-                max={10}
-                defaultValue={3}
-                style={{ width: "50%" }}
-              />
-            </Col>
-
-            <Col span={3}>
-              <InputNumber
-                min={1}
-                max={10}
-                defaultValue={3}
-                style={{ width: "50%" }}
-              />
-            </Col>
-          </Row>
+        <Form.Item
+          name="time-picker"
+          label="End Time"
+          rules={[{ required: true, message: "Please select End Time!" }]}
+        >
+          <TimePicker />
         </Form.Item>
 
         <Form.Item
@@ -174,61 +170,11 @@ function Sunday() {
             sm: { span: 16, offset: 8 },
           }}
         >
-          <Row>
-            <Col span={3}>Cars</Col>
-
-            <Col span={3}>Motors</Col>
-
-            <Col span={3}>Bicycles</Col>
-          </Row>
-        </Form.Item>
-
-        <Form.Item label="Vehicles" name="layout">
-          <Row>
-            <Col span={3}>
-              <InputNumber
-                min={1}
-                max={10}
-                defaultValue={3}
-                style={{ width: "50%" }}
-              />
-            </Col>
-
-            <Col span={3}>
-              <InputNumber
-                min={1}
-                max={10}
-                defaultValue={3}
-                style={{ width: "50%" }}
-              />
-            </Col>
-
-            <Col span={3}>
-              <InputNumber
-                min={1}
-                max={10}
-                defaultValue={3}
-                style={{ width: "50%" }}
-              />
-            </Col>
-          </Row>
-        </Form.Item>
-
-        <Form.Item name="time-picker" label="End Time" {...config}>
-          <TimePicker />
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
         </Form.Item>
       </Form>
-
-      <Form.Item
-        wrapperCol={{
-          xs: { span: 24, offset: 0 },
-          sm: { span: 16, offset: 8 },
-        }}
-      >
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form.Item>
     </div>
   );
 }
