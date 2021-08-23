@@ -4,6 +4,30 @@ import {
   GroupOutlined,
 } from "@ant-design/icons";
 
+export const userData = [
+  {
+    key: "1",
+    name: "John Brown",
+    age: 32,
+    address: "New York No. 1 Lake Park",
+    tags: ["nice", "developer"],
+  },
+  {
+    key: "2",
+    name: "Jim Green",
+    age: 42,
+    address: "London No. 1 Lake Park",
+    tags: ["loser"],
+  },
+  {
+    key: "3",
+    name: "Joe Black",
+    age: 32,
+    address: "Sidney No. 1 Lake Park",
+    tags: ["cool", "teacher"],
+  },
+];
+
 export const month = [
   {
     key: "1",
@@ -98,12 +122,18 @@ export const menuItems = [
     path: "/chapels",
     icon: <TeamOutlined />,
   },
+  {
+    key: "6",
+    name: "Forms",
+    path: "/forms",
+    icon: <TeamOutlined />,
+  },
 ];
 
 export const departments = [
   {
     key: "1",
-    name: "Admininstration",
+    name: "Adminstration",
     path: "/admin",
   },
   {
@@ -143,12 +173,23 @@ export const departments = [
   },
 ];
 
+export const forms = [
+  {
+    key: "1",
+    name: "Sunday",
+    path: "/sunday",
+  },
+  {
+    key: "2",
+    name: "Visitor",
+    path: "/visitor",
+  },
+];
+
 export const breadcrumbNameMap = {
-  '/departments': 'Department',
-  '/departments/:slug': 'Department',
-  '/members': 'Members',
-  '/tithe': 'Tithe',
-  '/chapels': 'Chapels',
-
-
+  "/departments": "Department",
+  "/departments/:slug": "Department",
+  "/members": "Members",
+  "/tithe": "Tithe",
+  "/chapels": "Chapels",
 };
