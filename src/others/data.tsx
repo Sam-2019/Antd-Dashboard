@@ -186,6 +186,21 @@ export const forms = [
   },
 ];
 
+export const radioOptions = [
+  { label: "Yes", value: "yes" },
+  { label: "No", value: "no" },
+];
+
+export const visitOptions = [
+  { label: "Yes", value: "yes" },
+  { label: "No", value: "no" },
+];
+
+export const knowOptions = [
+  { label: "Yes", value: "yes" },
+  { label: "No", value: "no" },
+];
+
 export const breadcrumbNameMap = {
   "/departments": "Department",
   "/departments/:slug": "Department",
