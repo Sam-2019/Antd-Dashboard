@@ -1,4 +1,5 @@
 import { Input, DatePicker, Form, Button, Radio, Col, Row } from "antd";
+import { radioOptions } from "../../others/data";
 import GoBack from "../GoBack";
 
 const formItemLayout = {
@@ -14,7 +15,11 @@ const formItemLayout = {
 
 const config = {
   rules: [
-    { type: "object" as const, required: true, message: "Please select time!" },
+    {
+      type: "object" as const,
+      required: true,
+      message: "Please pick an item!",
+    },
   ],
 };
 
@@ -26,7 +31,6 @@ function Sunday() {
       ...fieldsValue,
       "date-picker": fieldsValue["date-picker"].format("YYYY-MM-DD"),
       "month-picker": fieldsValue["month-picker"].format("YYYY-MM"),
-      "time-picker": fieldsValue["time-picker"].format("HH:mm:ss"),
     };
     console.log("Received values of form: ", values);
   };
@@ -38,24 +42,40 @@ function Sunday() {
         {...formItemLayout}
         onFinish={onFinish}
       >
-        <Form.Item name="time-picker" label="Name" {...config}>
+        <Form.Item
+          name="name"
+          label="Name"
+          rules={[{ required: true, message: "Name is required!" }]}
+        >
           <Input style={{ width: "30%" }} placeholder="Basic usage" />
         </Form.Item>
 
-        <Form.Item name="time-picker" label="Contact" {...config}>
+        <Form.Item
+          name="contact"
+          label="Contact"
+          rules={[{ required: true, message: "Contact is required!" }]}
+        >
           <Input style={{ width: "30%" }} placeholder="Basic usage" />
         </Form.Item>
 
-        <Form.Item name="time-picker" label="Location" {...config}>
+        <Form.Item
+          name="location"
+          label="Location"
+          rules={[{ required: true, message: "Location is required!" }]}
+        >
           <Input style={{ width: "30%" }} placeholder="Basic usage" />
         </Form.Item>
 
-        <Form.Item name="date-picker" label="Date" {...config}>
+        <Form.Item
+          name="date-picker"
+          label="Date"
+          rules={[{ required: true, message: "Please select date!" }]}
+        >
           <DatePicker />
         </Form.Item>
 
         <Form.Item
-          name="radio-button"
+          name="age-group"
           label="Age Group"
           rules={[{ required: true, message: "Please pick an item!" }]}
         >
@@ -68,12 +88,16 @@ function Sunday() {
           </Radio.Group>
         </Form.Item>
 
-        <Form.Item name="month-picker" label="Month of Birth" {...config}>
-          <DatePicker />
+        <Form.Item
+          name="month-picker"
+          label="Month of Birth"
+          rules={[{ required: true, message: "Please select month!" }]}
+        >
+          <DatePicker picker="month" />
         </Form.Item>
 
         <Form.Item
-          name="radio-button"
+          name="awareness-channel"
           label="How did you hear about the church programme?"
           rules={[{ required: true, message: "Please pick an item!" }]}
         >
@@ -90,19 +114,19 @@ function Sunday() {
             sm: { span: 16, offset: 8 },
           }}
         >
-          <Row>
-            <Col span={12}>
-              <Input style={{ width: "50%" }} placeholder="Basic usage" />
-            </Col>
-          </Row>
-        </Form.Item>
-
-        <Form.Item name="time-picker" label="Invited by" {...config}>
           <Input style={{ width: "30%" }} placeholder="Basic usage" />
         </Form.Item>
 
         <Form.Item
-          name="radio-button"
+          name="invited-by"
+          label="Invited by"
+          rules={[{ required: true, message: "Name is required!" }]}
+        >
+          <Input style={{ width: "30%" }} placeholder="Basic usage" />
+        </Form.Item>
+
+        <Form.Item
+          name="membership"
           label="Would like to become a member of Elim Temple? "
           rules={[{ required: true, message: "Please pick an item!" }]}
         >
@@ -112,43 +136,39 @@ function Sunday() {
           </Radio.Group>
         </Form.Item>
 
-        
         <Form.Item
-          name="radio-button"
-          label="Just visiting "
+          name="visitation"
+          label="Just visiting?"
           rules={[{ required: true, message: "Please pick an item!" }]}
         >
           <Radio.Group>
-            <Radio.Button value="true">Yes</Radio.Button>
-            <Radio.Button value="false">No</Radio.Button>
+            <Radio.Button value="yes">Yes</Radio.Button>
+            <Radio.Button value="no">No</Radio.Button>
           </Radio.Group>
         </Form.Item>
 
-        
         <Form.Item
-          name="radio-button"
+          name="knowing-Christ"
           label="Would like to know more about being a Christian? "
           rules={[{ required: true, message: "Please pick an item!" }]}
         >
           <Radio.Group>
-            <Radio.Button value="a">Yes</Radio.Button>
-            <Radio.Button value="b">No</Radio.Button>
+            <Radio.Button value="yes">Yes</Radio.Button>
+            <Radio.Button value="no">No</Radio.Button>
           </Radio.Group>
         </Form.Item>
 
-
+        <Form.Item
+          wrapperCol={{
+            xs: { span: 24, offset: 0 },
+            sm: { span: 16, offset: 8 },
+          }}
+        >
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Form.Item>
       </Form>
-
-      <Form.Item
-        wrapperCol={{
-          xs: { span: 24, offset: 0 },
-          sm: { span: 16, offset: 8 },
-        }}
-      >
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form.Item>
     </div>
   );
 }
