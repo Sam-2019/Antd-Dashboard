@@ -1,7 +1,6 @@
 import React from "react";
 import { Breadcrumb } from "antd";
-import { HomeOutlined, UserOutlined } from "@ant-design/icons";
-import { Link, useHistory, useLocation, useParams } from "react-router-dom";
+import {  useHistory, useLocation, useParams } from "react-router-dom";
 
 export const breadcrumbNameMap = {
   "/departments": "Department",
@@ -15,11 +14,10 @@ function BreadCrumb() {
   let { slug }: any = useParams();
   let location = useLocation();
 
-  console.log(slug);
+ // console.log(slug);
 
   const pathSnippets = location.pathname.split("/").filter((i) => i);
-  console.log(pathSnippets);
-  // console.log(pathSnippets[0]);
+  //console.log(pathSnippets);
 
   return (
     <div style={{ marginBottom: "10px" }}>
