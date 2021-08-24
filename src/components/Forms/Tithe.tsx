@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import GoBack from "../GoBack";
 
-import { Transfer, Button } from "antd";
+import { Transfer, Button, DatePicker, Space, Typography } from "antd";
+
 import { newData } from "../../others/data";
+
+const { Text } = Typography;
 
 interface MockData {
   key: string;
@@ -18,6 +21,11 @@ interface TargetData {
 function TitheForm() {
   const [mockData, setMockData] = useState<MockData[]>([]);
   const [targetKeys, setTargetKeys] = useState<string[]>([]);
+  const [month, setMonth] = useState<string>("");
+  const [alert, setAlert] = useState({
+    emptytext: false,
+    emptytransfer: false,
+  });
 
   //console.log(sourceData);
 
@@ -36,9 +44,9 @@ function TitheForm() {
       const chosen: Boolean = data.chosen;
       const key: string = data.key;
 
-      if (chosen) {
-        trgetKeys.push(key);
-      }
+      //   if (chosen) {
+      //     trgetKeys.push(key);
+      //   }
       mckData.push(data);
     }
 
@@ -70,36 +78,80 @@ function TitheForm() {
     console.log("search:", dir, value);
   };
 
+  function onChange(date: any, dateString: any) {
+    console.log(dateString);
+    setMonth(dateString);
+  }
+
+  const onFinish = () => {
+    // console.log(targetKeys);
+    // console.log(month);
+
+    if (!month) {
+      setAlert((prevState): any => ({
+        ...prevState,
+        emptytext: true,
+      }));
+    }
+
+    if (targetKeys.length === 0) {
+      setAlert((prevState): any => ({
+        ...prevState,
+        emptytransfer: true,
+      }));
+    }
+
+    console.log(month, targetKeys);
+  };
+
   return (
     <div>
       <GoBack />
-      <Transfer
-        dataSource={mockData}
-        showSearch
-        filterOption={filterOption}
-        targetKeys={targetKeys}
-        onChange={handleChange}
-        onSearch={handleSearch}
-        render={(item) => item.title}
-        footer={renderFooter}
-        listStyle={{
-          width: 250,
-          height: 500,
-        }}
-        operations={["to right", "to left"]}
-        titles={["Source", "Target"]}
-        oneWay
-      />
+      <Space direction="vertical">
+        <div>
+          <DatePicker onChange={onChange} picker="month" />
+          {alert.emptytext ? (
+            <Text type="danger" style={{ margin: 0, paddingLeft: "5px" }}>
+              Required!
+            </Text>
+          ) : null}
+        </div>
 
-      <Button
-        size="small"
-        type="primary"
-        htmlType="submit"
-        style={{ float: "right", margin: 5 }}
-        onClick={() => console.log(targetKeys)}
-      >
-        Submit
-      </Button>
+        <div>
+          <Transfer
+            dataSource={mockData}
+            showSearch
+            filterOption={filterOption}
+            targetKeys={targetKeys}
+            onChange={handleChange}
+            onSearch={handleSearch}
+            render={(item) => item.title}
+            footer={renderFooter}
+            listStyle={{
+              width: 250,
+              height: 500,
+            }}
+            operations={["to right", "to left"]}
+            titles={["Source", "Target"]}
+            oneWay
+          />
+          {alert.emptytransfer ? (
+            <Text type="danger" style={{ margin: 0, paddingLeft: "5px" }}>
+              Required!
+            </Text>
+          ) : null}
+        </div>
+
+        <Button
+          size="small"
+          type="primary"
+          htmlType="submit"
+          style={{ float: "right", margin: 5 }}
+          onClick={onFinish}
+        >
+          Submit
+        </Button>
+      </Space>
     </div>
   );
 }
