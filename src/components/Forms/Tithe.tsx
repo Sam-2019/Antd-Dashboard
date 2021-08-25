@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import GoBack from "../GoBack";
 
 import { Transfer, Button, DatePicker, Space, Typography } from "antd";
@@ -14,9 +14,9 @@ interface MockData {
   chosen: boolean;
 }
 
-interface TargetData {
-  key: string;
-}
+// interface TargetData {
+//   key: string;
+// }
 
 function TitheForm() {
   const [mockData, setMockData] = useState<MockData[]>([]);
@@ -41,8 +41,8 @@ function TitheForm() {
     let mckData = [];
 
     for (let data of newData) {
-      const chosen: Boolean = data.chosen;
-      const key: string = data.key;
+      // const chosen: Boolean = data.chosen;
+      // const key: string = data.key;
 
       //   if (chosen) {
       //     trgetKeys.push(key);

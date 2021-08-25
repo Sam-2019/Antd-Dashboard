@@ -1,8 +1,7 @@
-import React, { useRef, useState } from "react";
+import { useState } from "react";
 import { Table, Tag, Space, Button, Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
-import Column from "antd/lib/table/Column";
 import { Link } from "react-router-dom";
 import { userData } from "../../others/data";
 
