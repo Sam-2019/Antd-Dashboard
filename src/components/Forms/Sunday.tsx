@@ -21,12 +21,6 @@ const formItemLayout = {
   },
 };
 
-const config = {
-  rules: [
-    { type: "object" as const, required: true, message: "Please select time!" },
-  ],
-};
-
 function Sunday() {
   const onFinish = (fieldsValue: any) => {
     // Should format date value before submit.
@@ -52,7 +46,7 @@ function Sunday() {
           label="Date"
           rules={[{ required: true, message: "Please select Date!" }]}
         >
-          <DatePicker />
+          <DatePicker style={{ width: "36%" }} />
         </Form.Item>
 
         <Form.Item
@@ -60,7 +54,7 @@ function Sunday() {
           label=" Start Time"
           rules={[{ required: true, message: "Please select start time!" }]}
         >
-          <TimePicker />
+          <TimePicker style={{ width: "36%" }}  />
         </Form.Item>
 
         <Form.Item
@@ -68,7 +62,7 @@ function Sunday() {
           label="Preacher"
           rules={[{ required: true, message: "Preacher is required!" }]}
         >
-          <Input style={{ width: "30%" }} placeholder="Basic usage" />
+          <Input style={{ width: "36%" }} />
         </Form.Item>
 
         <Form.Item
@@ -76,7 +70,7 @@ function Sunday() {
           label="Theme"
           rules={[{ required: true, message: "Theme is required!" }]}
         >
-          <Input style={{ width: "30%" }} placeholder="Basic usage" />
+          <Input style={{ width: "36%" }} />
         </Form.Item>
 
         <Form.Item
@@ -85,15 +79,15 @@ function Sunday() {
           rules={[{ required: true, message: "Bible Text is required!" }]}
           style={{ marginBottom: 10 }}
         >
-          <Input style={{ width: "30%" }} placeholder="Basic usage" />
+          <Input style={{ width: "36%" }} />
         </Form.Item>
 
         <Form.Item
           wrapperCol={{
             xs: { span: 24, offset: 0 },
-            sm: { span: 16, offset: 8 },
+            sm: { span: 13, offset: 8 },
           }}
-          style={{ marginBottom:  10}}
+          style={{ marginBottom: 10 }}
         >
           <Row>
             <Col span={6}>Male</Col>
@@ -105,54 +99,66 @@ function Sunday() {
         <Form.Item label="Adults" style={{ marginBottom: 0 }}>
           <Form.Item
             name="adult-male"
-            style={{ display: "inline-block", width: "25%" }}
+            style={{ display: "inline-block", width: "calc(20% - 8px)" }}
             rules={[{ required: true, message: "Required!" }]}
           >
-            <InputNumber keyboard={true} style={{ width: "50%" }} />
+            <InputNumber keyboard={true} />
           </Form.Item>
 
           <Form.Item
             name="adult-female"
-            style={{ display: "inline-block", width: "25%" }}
+            style={{
+              display: "inline-block",
+              width: "calc(20% - 8px)",
+              margin: "0 8px",
+            }}
             rules={[{ required: true, message: "Required!" }]}
           >
-            <InputNumber keyboard={true} style={{ width: "50%" }} />
+            <InputNumber keyboard={true} />
           </Form.Item>
         </Form.Item>
 
         <Form.Item label="Omega Generation" style={{ marginBottom: 0 }}>
           <Form.Item
             name="omega-male"
-            style={{ display: "inline-block", width: "25%" }}
+            style={{ display: "inline-block", width: "calc(20% - 8px)" }}
             rules={[{ required: true, message: "Required!" }]}
           >
-            <InputNumber keyboard={true} style={{ width: "50%" }} />
+            <InputNumber keyboard={true} />
           </Form.Item>
 
           <Form.Item
             name="omega-female"
-            style={{ display: "inline-block", width: "25%" }}
+            style={{
+              display: "inline-block",
+              width: "calc(20% - 8px)",
+              margin: "0 8px",
+            }}
             rules={[{ required: true, message: "Required!" }]}
           >
-            <InputNumber keyboard={true} style={{ width: "50%" }} />
+            <InputNumber keyboard={true} />
           </Form.Item>
         </Form.Item>
 
         <Form.Item label="Children" style={{ marginBottom: 0 }}>
           <Form.Item
             name="children-male"
-            style={{ display: "inline-block", width: "25%" }}
+            style={{ display: "inline-block", width: "calc(20% - 8px)" }}
             rules={[{ required: true, message: "Required!" }]}
           >
-            <InputNumber keyboard={true} style={{ width: "50%" }} />
+            <InputNumber keyboard={true} />
           </Form.Item>
 
           <Form.Item
             name="children-female"
-            style={{ display: "inline-block", width: "25%" }}
+            style={{
+              display: "inline-block",
+              width: "calc(20% - 8px)",
+              margin: "0 8px",
+            }}
             rules={[{ required: true, message: "Required!" }]}
           >
-            <InputNumber keyboard={true} style={{ width: "50%" }} />
+            <InputNumber keyboard={true} />
           </Form.Item>
         </Form.Item>
 
@@ -161,7 +167,7 @@ function Sunday() {
           label="End Time"
           rules={[{ required: true, message: "Please select End Time!" }]}
         >
-          <TimePicker />
+          <TimePicker style={{ width: "36%" }}  />
         </Form.Item>
 
         <Form.Item

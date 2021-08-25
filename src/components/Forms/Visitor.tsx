@@ -1,5 +1,4 @@
-import { Input, DatePicker, Form, Button, Radio, Col, Row } from "antd";
-import { radioOptions } from "../../others/data";
+import { Input, DatePicker, Form, Button, Radio } from "antd";
 import GoBack from "../GoBack";
 
 const formItemLayout = {
@@ -11,16 +10,6 @@ const formItemLayout = {
     xs: { span: 24 },
     sm: { span: 16 },
   },
-};
-
-const config = {
-  rules: [
-    {
-      type: "object" as const,
-      required: true,
-      message: "Please pick an item!",
-    },
-  ],
 };
 
 function Sunday() {
@@ -47,7 +36,7 @@ function Sunday() {
           label="Name"
           rules={[{ required: true, message: "Name is required!" }]}
         >
-          <Input style={{ width: "30%" }} placeholder="Basic usage" />
+          <Input style={{ width: "30%" }} />
         </Form.Item>
 
         <Form.Item
@@ -55,7 +44,7 @@ function Sunday() {
           label="Contact"
           rules={[{ required: true, message: "Contact is required!" }]}
         >
-          <Input style={{ width: "30%" }} placeholder="Basic usage" />
+          <Input style={{ width: "30%" }} />
         </Form.Item>
 
         <Form.Item
@@ -63,7 +52,7 @@ function Sunday() {
           label="Location"
           rules={[{ required: true, message: "Location is required!" }]}
         >
-          <Input style={{ width: "30%" }} placeholder="Basic usage" />
+          <Input style={{ width: "30%" }} />
         </Form.Item>
 
         <Form.Item
@@ -114,7 +103,7 @@ function Sunday() {
             sm: { span: 16, offset: 8 },
           }}
         >
-          <Input style={{ width: "30%" }} placeholder="Basic usage" />
+          <Input style={{ width: "30%" }} />
         </Form.Item>
 
         <Form.Item
@@ -122,7 +111,7 @@ function Sunday() {
           label="Invited by"
           rules={[{ required: true, message: "Name is required!" }]}
         >
-          <Input style={{ width: "30%" }} placeholder="Basic usage" />
+          <Input style={{ width: "30%" }} />
         </Form.Item>
 
         <Form.Item
