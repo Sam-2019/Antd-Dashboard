@@ -17,6 +17,7 @@ import Forms from "./components/Forms/Forms";
 import Sunday from "./components/Forms/Sunday";
 import Visitor from "./components/Forms/Visitor";
 import TitheForm from "./components/Forms/Tithe";
+import MemberForm from "./components/Forms/Member";
 
 export default function App() {
   return (
@@ -24,6 +25,9 @@ export default function App() {
       <div>
         <Layout>
           <Switch>
+            <Route path="/forms/member">
+              <MemberForm />
+            </Route>
             <Route path="/forms/tithe">
               <TitheForm />
             </Route>
