@@ -3,20 +3,12 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "antd/dist/antd.css";
 
 import Layout from "./components/Layout";
-import Dashboard from "./pages/Dashboard";
-import Departments from "./pages/Department/Departments";
-import Members from "./pages/Member/Members";
-import Member from "./pages/Member/Member";
-import Tithe from "./pages/Tithe/Tithe";
-import Chapels from "./pages/Chapel/Chapels";
-import Chapel from "./pages/Chapel/Chapel";
-import TithePaid from "./pages/Tithe/TithePaid";
-import Department from "./pages/Department/Department";
-import Forms from "./pages/Forms/Forms";
-import Sunday from "./pages/Forms/Sunday";
-import Visitor from "./pages/Forms/Visitor";
-import TitheForm from "./pages/Forms/Tithe";
-import MemberForm from "./pages/Forms/Member";
+import { FormsRoute } from "./routes/Forms";
+import { ChapelsRoute } from "./routes/Chapels";
+import { TitheRoute } from "./routes/Tithe";
+import { MemberRoute } from "./routes/Members";
+import { DepartmentRoute } from "./routes/Departments";
+import { DashboardRoute } from "./routes/Dashboard";
 
 export default function App() {
   return (
@@ -24,47 +16,28 @@ export default function App() {
       <div>
         <Layout>
           <Switch>
-            <Route path="/forms/member">
-              <MemberForm />
-            </Route>
-            <Route path="/forms/tithe">
-              <TitheForm />
-            </Route>
-            <Route path="/forms/visitor">
-              <Visitor />
-            </Route>
-            <Route path="/forms/sunday">
-              <Sunday />
-            </Route>
             <Route path="/forms">
-              <Forms />
+              <FormsRoute />
             </Route>
-            <Route path="/chapels/:slug">
-              <Chapel />
-            </Route>
+
             <Route path="/chapels">
-              <Chapels />
+              <ChapelsRoute />
             </Route>
-            <Route path="/tithe/:slug">
-              <TithePaid />
-            </Route>
+
             <Route path="/tithe">
-              <Tithe />
+              <TitheRoute />
             </Route>
-            <Route path="/members/:slug">
-              <Member />
-            </Route>
+
             <Route path="/members">
-              <Members />
+              <MemberRoute />
             </Route>
-            <Route path="/departments/:slug">
-              <Department />
-            </Route>
+
             <Route path="/departments">
-              <Departments />
+              <DepartmentRoute />
             </Route>
+
             <Route path="/">
-              <Dashboard />
+              <DashboardRoute />
             </Route>
           </Switch>
         </Layout>
