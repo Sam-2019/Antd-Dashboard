@@ -1,5 +1,5 @@
 import { Input, InputNumber, DatePicker, Form, TimePicker, Button } from "antd";
-import GoBack from "../GoBack";
+import GoBack from "../../components/GoBack";
 
 function Sunday() {
   const onFinish = (fieldsValue: any) => {

@@ -1,5 +1,5 @@
 import { Input, DatePicker, Form, Button, Radio } from "antd";
-import GoBack from "../GoBack";
+import GoBack from "../../components/GoBack";
 
 
 function Visitor() {

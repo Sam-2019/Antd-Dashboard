@@ -12,11 +12,11 @@ import Chapels from "./pages/Chapel/Chapels";
 import Chapel from "./pages/Chapel/Chapel";
 import TithePaid from "./pages/Tithe/TithePaid";
 import Department from "./pages/Department/Department";
-import Forms from "./components/Forms/Forms";
-import Sunday from "./components/Forms/Sunday";
-import Visitor from "./components/Forms/Visitor";
-import TitheForm from "./components/Forms/Tithe";
-import MemberForm from "./components/Forms/Member";
+import Forms from "./pages/Forms/Forms";
+import Sunday from "./pages/Forms/Sunday";
+import Visitor from "./pages/Forms/Visitor";
+import TitheForm from "./pages/Forms/Tithe";
+import MemberForm from "./pages/Forms/Member";
 
 export default function App() {
   return (

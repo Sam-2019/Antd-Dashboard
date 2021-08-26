@@ -12,7 +12,7 @@ import {
   Space,
 } from "antd";
 import { departments } from "../../others/data";
-import GoBack from "../GoBack";
+import GoBack from "../../components/GoBack";
 
 function Member() {
   const onFinish = (fieldsValue: any) => {
