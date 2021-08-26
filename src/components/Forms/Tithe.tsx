@@ -1,4 +1,4 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import GoBack from "../GoBack";
 
 import { Transfer, Button, DatePicker, Space, Typography } from "antd";
@@ -105,54 +105,63 @@ function TitheForm() {
   };
 
   return (
-    <div>
+    <>
       <GoBack />
-      <Space direction="vertical">
+      <div style={{ display: "flex", justifyContent: "center" }}>
         <div>
-          <DatePicker onChange={onChange} picker="month" />
-          {alert.emptytext ? (
-            <Text type="danger" style={{ margin: 0, paddingLeft: "5px" }}>
-              Required!
-            </Text>
-          ) : null}
-        </div>
-
-        <div>
-          <Transfer
-            dataSource={mockData}
-            showSearch
-            filterOption={filterOption}
-            targetKeys={targetKeys}
-            onChange={handleChange}
-            onSearch={handleSearch}
-            render={(item) => item.title}
-            footer={renderFooter}
-            listStyle={{
-              width: 250,
-              height: 500,
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              marginBottom: 10,
             }}
-            operations={["to right", "to left"]}
-            titles={["Source", "Target"]}
-            oneWay
-          />
-          {alert.emptytransfer ? (
-            <Text type="danger" style={{ margin: 0, paddingLeft: "5px" }}>
-              Required!
-            </Text>
-          ) : null}
-        </div>
+          >
+            <DatePicker onChange={onChange} picker="month" />
+            {alert.emptytext ? (
+              <Text type="danger" style={{ margin: 0, paddingLeft: "5px" }}>
+                Required!
+              </Text>
+            ) : null}
+          </div>
 
-        <Button
-          size="small"
-          type="primary"
-          htmlType="submit"
-          style={{ float: "right", margin: 5 }}
-          onClick={onFinish}
-        >
-          Submit
-        </Button>
-      </Space>
-    </div>
+          <div>
+            <Transfer
+              dataSource={mockData}
+              showSearch
+              filterOption={filterOption}
+              targetKeys={targetKeys}
+              onChange={handleChange}
+              onSearch={handleSearch}
+              render={(item) => item.title}
+              footer={renderFooter}
+              listStyle={{
+                width: 250,
+                height: 500,
+              }}
+              operations={["to right", "to left"]}
+              titles={["Source", "Target"]}
+              oneWay
+            />
+            {alert.emptytransfer ? (
+              <Text type="danger" style={{ margin: 0, paddingLeft: "5px" }}>
+                Required!
+              </Text>
+            ) : null}
+          </div>
+
+          <Button
+            size="small"
+            type="primary"
+            htmlType="submit"
+            style={{ float: "right", margin: 5 }}
+            onClick={onFinish}
+          >
+            Submit
+          </Button>
+        </div>
+      </div>
+    </>
   );
 }
 
