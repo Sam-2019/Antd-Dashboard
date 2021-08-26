@@ -11,28 +11,10 @@ import {
   Checkbox,
   Space,
 } from "antd";
-import React from "react";
 import { departments } from "../../others/data";
 import GoBack from "../GoBack";
 
-const formItemLayout = {
-  labelCol: {
-    xs: { span: 24 },
-    sm: { span: 8 },
-  },
-  wrapperCol: {
-    xs: { span: 24 },
-    sm: { span: 16 },
-  },
-};
-
 function Member() {
-  const [state, setstate] = React.useState(false);
-
-  React.useEffect(() => {}, []);
-
-  // console.log( fieldsValue)
-
   const onFinish = (fieldsValue: any) => {
     // Should format date value before submit.
 
@@ -45,19 +27,20 @@ function Member() {
   };
 
   return (
-    <div>
+    <div style={{ border: "1px solid green" }}>
       <GoBack />
       <Form
-        name="time_related_controls"
-        {...formItemLayout}
+        name="member"
         onFinish={onFinish}
+        labelCol={{ span: 8 }}
+        wrapperCol={{ span: 16 }}
       >
         <Form.Item
           name="firstName"
           label="First Name"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <Input style={{ width: "30%" }} />
+          <Input style={{ width: 200 }} />
         </Form.Item>
 
         <Form.Item
@@ -65,11 +48,11 @@ function Member() {
           label="Last Name"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <Input style={{ width: "30%" }} />
+          <Input style={{ width: 200 }} />
         </Form.Item>
 
         <Form.Item name="othertName" label="Other Name">
-          <Input style={{ width: "30%" }} />
+          <Input style={{ width: 200 }} />
         </Form.Item>
 
         <Form.Item
@@ -81,7 +64,7 @@ function Member() {
         </Form.Item>
 
         <Form.Item name="age" label="Age">
-          <Input style={{ width: "30%" }} />
+          <InputNumber style={{ width: 200 }} />
         </Form.Item>
 
         <Form.Item
@@ -100,7 +83,7 @@ function Member() {
           label="Home Town"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <Input style={{ width: "30%" }} />
+          <Input style={{ width: 200 }} />
         </Form.Item>
 
         <Form.Item
@@ -108,7 +91,7 @@ function Member() {
           label="Region"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <Input style={{ width: "30%" }} />
+          <Input style={{ width: 200 }} />
         </Form.Item>
 
         <Form.Item
@@ -116,7 +99,7 @@ function Member() {
           label="Country"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <Input style={{ width: "30%" }} />
+          <Input style={{ width: 200 }} />
         </Form.Item>
 
         <Form.Item
@@ -124,7 +107,7 @@ function Member() {
           label="Residential Address"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <Input style={{ width: "30%" }} />
+          <Input style={{ width: 200 }} />
         </Form.Item>
 
         <Form.Item
@@ -132,7 +115,7 @@ function Member() {
           label="Contact"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <Input style={{ width: "30%" }} />
+          <Input style={{ width: 200 }} />
         </Form.Item>
 
         <Form.Item
@@ -140,7 +123,7 @@ function Member() {
           label="Emergency Contact"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <InputNumber keyboard={true} style={{ width: "30%" }} />
+          <InputNumber keyboard={true} style={{ width: 200 }} />
         </Form.Item>
 
         <Form.Item
@@ -148,7 +131,7 @@ function Member() {
           label="Email Address"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <Input style={{ width: "30%" }} />
+          <Input style={{ width: 200 }} />
         </Form.Item>
 
         <Form.Item
@@ -156,7 +139,7 @@ function Member() {
           label="Postal Address"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <Input style={{ width: "30%" }} />
+          <Input style={{ width: 200 }} />
         </Form.Item>
 
         <Form.Item
@@ -172,7 +155,7 @@ function Member() {
         </Form.Item>
 
         <Form.Item name="spouseName" label="Name of Spouse">
-          <Input style={{ width: "30%" }} />
+          <Input style={{ width: 200 }} />
         </Form.Item>
 
         <Form.Item
@@ -180,7 +163,7 @@ function Member() {
           label="Number of children"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <InputNumber keyboard={true} style={{ width: "30%" }} />
+          <InputNumber keyboard={true} style={{ width: 200 }} />
         </Form.Item>
 
         <Form.Item label="Name of children" style={{ marginBottom: 0 }} />
@@ -203,7 +186,7 @@ function Member() {
                     align="baseline"
                   >
                     <Form.Item
-                    { ...restField}
+                      {...restField}
                       style={{ marginBottom: 0 }}
                       name={[name, "first"]}
                       fieldKey={[fieldKey, "first"]}
@@ -212,7 +195,7 @@ function Member() {
                     </Form.Item>
 
                     <Form.Item
-                         { ...restField}
+                      {...restField}
                       style={{ marginBottom: 0 }}
                       name={[name, "last"]}
                       fieldKey={[fieldKey, "last"]}
@@ -268,7 +251,7 @@ function Member() {
         </Form.Item>
 
         <Form.Item name="previousChurch" label="Previous Church">
-          <Input style={{ width: "30%" }} />
+          <Input style={{ width: 200 }} />
         </Form.Item>
 
         <Form.Item

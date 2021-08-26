@@ -1,18 +1,8 @@
 import { Input, DatePicker, Form, Button, Radio } from "antd";
 import GoBack from "../GoBack";
 
-const formItemLayout = {
-  labelCol: {
-    xs: { span: 24 },
-    sm: { span: 8 },
-  },
-  wrapperCol: {
-    xs: { span: 24 },
-    sm: { span: 16 },
-  },
-};
 
-function Sunday() {
+function Visitor() {
   const onFinish = (fieldsValue: any) => {
     // Should format date value before submit.
 
@@ -27,46 +17,47 @@ function Sunday() {
     <div>
       <GoBack />
       <Form
-        name="time_related_controls"
-        {...formItemLayout}
+        name="visitor"
         onFinish={onFinish}
+        labelCol={{ span: 8 }}
+        wrapperCol={{ span: 16 }}
       >
         <Form.Item
           name="name"
           label="Name"
-          rules={[{ required: true, message: "Name is required!" }]}
+          rules={[{ required: true, message: "Required!" }]}
         >
-          <Input style={{ width: "30%" }} />
+          <Input style={{ width: 200 }} />
         </Form.Item>
 
         <Form.Item
           name="contact"
           label="Contact"
-          rules={[{ required: true, message: "Contact is required!" }]}
+          rules={[{ required: true, message: "Required!" }]}
         >
-          <Input style={{ width: "30%" }} />
+          <Input style={{ width: 200 }} />
         </Form.Item>
 
         <Form.Item
           name="location"
           label="Location"
-          rules={[{ required: true, message: "Location is required!" }]}
+          rules={[{ required: true, message: "Required!" }]}
         >
-          <Input style={{ width: "30%" }} />
+          <Input style={{ width: 200 }} />
         </Form.Item>
 
         <Form.Item
           name="date-picker"
           label="Date"
-          rules={[{ required: true, message: "Please select date!" }]}
+          rules={[{ required: true, message: "Required!" }]}
         >
-          <DatePicker />
+          <DatePicker  style={{ width: 200 }} />
         </Form.Item>
 
         <Form.Item
           name="age-group"
           label="Age Group"
-          rules={[{ required: true, message: "Please pick an item!" }]}
+          rules={[{ required: true, message: "Required!" }]}
         >
           <Radio.Group>
             <Radio.Button value="13 - 18">13 - 18</Radio.Button>
@@ -80,7 +71,7 @@ function Sunday() {
         <Form.Item
           name="month-picker"
           label="Month of Birth"
-          rules={[{ required: true, message: "Please select month!" }]}
+          rules={[{ required: true, message: "Required!" }]}
         >
           <DatePicker picker="month" />
         </Form.Item>
@@ -103,21 +94,21 @@ function Sunday() {
             sm: { span: 16, offset: 8 },
           }}
         >
-          <Input style={{ width: "30%" }} />
+          <Input style={{ width: 200 }} />
         </Form.Item>
 
         <Form.Item
           name="invited-by"
           label="Invited by"
-          rules={[{ required: true, message: "Name is required!" }]}
+          rules={[{ required: true, message: "Required!" }]}
         >
-          <Input style={{ width: "30%" }} />
+          <Input style={{ width: 200 }} />
         </Form.Item>
 
         <Form.Item
           name="membership"
           label="Would like to become a member of Elim Temple? "
-          rules={[{ required: true, message: "Please pick an item!" }]}
+          rules={[{ required: true, message: "Required!" }]}
         >
           <Radio.Group>
             <Radio.Button value="yes">Yes</Radio.Button>
@@ -128,7 +119,7 @@ function Sunday() {
         <Form.Item
           name="visitation"
           label="Just visiting?"
-          rules={[{ required: true, message: "Please pick an item!" }]}
+          rules={[{ required: true, message: "Required!" }]}
         >
           <Radio.Group>
             <Radio.Button value="yes">Yes</Radio.Button>
@@ -139,7 +130,7 @@ function Sunday() {
         <Form.Item
           name="knowing-Christ"
           label="Would like to know more about being a Christian? "
-          rules={[{ required: true, message: "Please pick an item!" }]}
+          rules={[{ required: true, message: "Required!" }]}
         >
           <Radio.Group>
             <Radio.Button value="yes">Yes</Radio.Button>
@@ -162,4 +153,4 @@ function Sunday() {
   );
 }
 
-export default Sunday;
+export default Visitor;
