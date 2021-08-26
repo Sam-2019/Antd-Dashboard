@@ -27,7 +27,7 @@ function Member() {
   };
 
   return (
-    <div style={{ border: "1px solid green" }}>
+    <div>
       <GoBack />
       <Form
         name="member"
