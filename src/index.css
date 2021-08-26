@@ -38,7 +38,7 @@ a {
   border-radius: 4px;
 }
 
-.breadcrumb{
+.breadcrumb {
   text-transform: capitalize;
 }
 
@@ -49,9 +49,10 @@ a {
 .gridStyle {
   display: grid;
   grid-template-columns: repeat(4, 0.5fr);
-  gap: 1rem;
+  gap: 0.5em;
   margin: 0 auto;
   box-sizing: border-box;
+
 }
 
 @media (max-width: 781px) {
@@ -62,6 +63,14 @@ a {
 
 @media (max-width: 660px) {
   .gridStyle {
+    gap: 0.5em;
     grid-template-columns: repeat(2, 0.5fr);
+  }
+}
+
+@media (max-width: 285px) {
+  .gridStyle {
+    gap: 0.5em;
+    grid-template-columns: repeat(1, 0.5fr);
   }
 }
