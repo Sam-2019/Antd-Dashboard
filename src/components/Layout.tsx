@@ -50,7 +50,7 @@ const AppLayout = ({ children }: PropType) => {
           style={{
             padding: "10px",
             minHeight: 280,
-            border: "1px solid red",
+            //  border: "1px solid red",
           }}
         >
           {/* <BreadCrumb /> */}
