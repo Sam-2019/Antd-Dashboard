@@ -24,50 +24,54 @@ export default function App() {
     <Router>
       <div>
         <Layout>
-          <Switch>
-            <Route path="/forms/member">
-              <MemberForm />
-            </Route>
-            <Route path="/forms/tithe">
-              <TitheForm />
-            </Route>
-            <Route path="/forms/visitor">
-              <Visitor />
-            </Route>
-            <Route path="/forms/sunday">
-              <Sunday />
-            </Route>
-            <Route path="/forms">
-              <Forms />
-            </Route>
-            <Route path="/chapels/:slug">
-              <Chapel />
-            </Route>
-            <Route path="/chapels">
-              <Chapels />
-            </Route>
-            <Route path="/tithe/:slug">
-              <TithePaid />
-            </Route>
-            <Route path="/tithe">
-              <Tithe />
-            </Route>
-            <Route path="/members/:slug">
-              <Member />
-            </Route>
-            <Route path="/members">
-              <Members />
-            </Route>
-            <Route path="/departments/:slug">
-              <Department />
-            </Route>
-            <Route path="/departments">
-              <Departments />
-            </Route>
-            <Route path="/">
-              <Dashboard />
-            </Route>
-          </Switch>
+          <div
+        
+          >
+            <Switch>
+              <Route path="/forms/member">
+                <MemberForm />
+              </Route>
+              <Route path="/forms/tithe">
+                <TitheForm />
+              </Route>
+              <Route path="/forms/visitor">
+                <Visitor />
+              </Route>
+              <Route path="/forms/sunday">
+                <Sunday />
+              </Route>
+              <Route path="/forms">
+                <Forms />
+              </Route>
+              <Route path="/chapels/:slug">
+                <Chapel />
+              </Route>
+              <Route path="/chapels">
+                <Chapels />
+              </Route>
+              <Route path="/tithe/:slug">
+                <TithePaid />
+              </Route>
+              <Route path="/tithe">
+                <Tithe />
+              </Route>
+              <Route path="/members/:slug">
+                <Member />
+              </Route>
+              <Route path="/members">
+                <Members />
+              </Route>
+              <Route path="/departments/:slug">
+                <Department />
+              </Route>
+              <Route path="/departments">
+                <Departments />
+              </Route>
+              <Route path="/">
+                <Dashboard />
+              </Route>
+            </Switch>
+          </div>
         </Layout>
       </div>
     </Router>
