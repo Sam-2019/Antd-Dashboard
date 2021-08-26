@@ -1,11 +1,11 @@
 import React from "react";
-import { Breadcrumb, Layout } from "antd";
+import { Layout } from "antd";
 
 import DrawerC from "./Drawer";
 import SiderDemo from "./Sider";
 import Navbar from "./Navbar";
 
-import BreadCrumb from "./Breadcrumb";
+//import BreadCrumb from "./Breadcrumb";
 
 const { Content } = Layout;
 
@@ -14,8 +14,7 @@ interface PropType {
 }
 
 const AppLayout = ({ children }: PropType) => {
-
-  const [active, setActive] = React.useState("dashboard");
+  //const [active, setActive] = React.useState("dashboard");
   const [visible, setVisible] = React.useState(false);
   const [collapsed, setCollapsed] = React.useState(false);
 
@@ -27,9 +26,9 @@ const AppLayout = ({ children }: PropType) => {
     setVisible(false);
   };
 
-  const onActive = (data: React.SetStateAction<string>) => {
-    setActive(data);
-  };
+  // const onActive = (data: React.SetStateAction<string>) => {
+  //   setActive(data);
+  // };
 
   const toggle = () => {
     setCollapsed(!collapsed);
@@ -49,9 +48,9 @@ const AppLayout = ({ children }: PropType) => {
         <Content
           className="site-layout-background"
           style={{
-            margin: "24px 16px",
-            padding: 24,
+            padding: "10px",
             minHeight: 280,
+            border: "1px solid red",
           }}
         >
           {/* <BreadCrumb /> */}
