@@ -1,6 +1,6 @@
 import { Switch, Route, useRouteMatch } from "react-router-dom";
-import Tithe from "../pages/Tithe/Tithe";
-import TitheList from "../pages/Tithe/TithePaid";
+import Tithe from "../pages/Tithe";
+import TitheList from "../pages/Tithe/list";
 
 export function TitheRoute() {
   let { path } = useRouteMatch();

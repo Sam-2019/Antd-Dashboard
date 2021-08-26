@@ -1,6 +1,6 @@
 import { Switch, Route, useRouteMatch } from "react-router-dom";
-import Chapel from "../pages/Chapel/Chapel";
-import Chapels from "../pages/Chapel/Chapels";
+import Chapel from "../pages/Chapel/list";
+import Chapels from "../pages/Chapel";
 
 export function ChapelsRoute() {
   let { path } = useRouteMatch();

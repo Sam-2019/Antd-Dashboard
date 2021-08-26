@@ -11,6 +11,7 @@ function Chapel() {
 
   console.log(slug)
   console.log(location)
+  
   return (
     <div>
       <GoBack />

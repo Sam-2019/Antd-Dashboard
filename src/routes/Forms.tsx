@@ -3,7 +3,7 @@ import Member from "../pages/Forms/Member";
 import Sunday from "../pages/Forms/Sunday";
 import TitheForm from "../pages/Forms/Tithe";
 import Visitor from "../pages/Forms/Visitor";
-import Forms from "../pages/Forms/Forms";
+import Forms from "../pages/Forms";
 
 export function FormsRoute() {
   let { path } = useRouteMatch();
