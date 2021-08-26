@@ -49,7 +49,7 @@ const AppLayout = ({ children }: PropType) => {
           className="site-layout-background"
           style={{
             padding: "10px",
-            minHeight: 280,
+            minHeight: 750,
             //  border: "1px solid red",
           }}
         >

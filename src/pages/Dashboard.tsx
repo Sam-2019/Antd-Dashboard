@@ -2,7 +2,7 @@ import React, { ReactElement } from "react";
 import { Row, Col, Card } from "antd";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 
-type ContentKey = "article" | "app" | "project";
+//type ContentKey = "article" | "app" | "project";
 
 const tabListNoTitle = [
   {
@@ -30,14 +30,14 @@ const contentListNoTitle: StringArray = {
 };
 
 const Dashboard = () => {
-  const [loading, setLoading] = React.useState(true);
+ // const [loading, setLoading] = React.useState(true);
   const [noTitleKey, setnoTitleKey] = React.useState<any | null>("article");
 
   const responsive = useBreakpoint();
 
-  const onChange = () => {
-    setLoading(!loading);
-  };
+  // const onChange = () => {
+  //   setLoading(!loading);
+  // };
 
   const onTabChange = (key: string, type: any): any => {
     console.log(key, type);
