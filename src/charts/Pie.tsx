@@ -1,4 +1,3 @@
-import React from "react";
 import { Pie } from "@ant-design/charts";
 
 const DemoPie = ({ data }: any) => {
