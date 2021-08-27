@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import GoBack from "../../components/GoBack";
 
-import { Transfer, Button, DatePicker, Space, Typography } from "antd";
+import { Transfer, Button, DatePicker, Typography } from "antd";
 
 import { newData } from "../../utils/data";
 
