@@ -1,17 +1,16 @@
-import React from "react";
 import { Table, Tag, Space } from "antd";
 import Column from "antd/lib/table/Column";
 import { Link, useLocation, useParams } from "react-router-dom";
-import GoBack from '../../components/GoBack'
+import GoBack from "../../components/GoBack";
 import { userData } from "../../utils/data";
 
 function Chapel() {
   let { slug }: any = useParams();
-  let location = useLocation()
+  let location = useLocation();
 
-  console.log(slug)
-  console.log(location)
-  
+  // console.log(slug)
+  // console.log(location)
+
   return (
     <div>
       <GoBack />
