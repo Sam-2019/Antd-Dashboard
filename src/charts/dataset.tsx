@@ -204,3 +204,47 @@ export const stack = [
     type: "Male",
   },
 ];
+
+export const pieTotalData = [
+  {
+    type: "Female",
+    value: 20,
+  },
+  {
+    type: "Male",
+    value: 15,
+  },
+];
+
+export const pieAdultData = [
+  {
+    type: "Female",
+    value: 25,
+  },
+  {
+    type: "Male",
+    value: 20,
+  },
+];
+
+export const pieOmegaData = [
+  {
+    type: "Female",
+    value: 30,
+  },
+  {
+    type: "Male",
+    value: 25,
+  },
+];
+
+export const pieChildrenData = [
+  {
+    type: "Female",
+    value: 35,
+  },
+  {
+    type: "Male",
+    value: 30,
+  },
+];
