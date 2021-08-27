@@ -9,6 +9,7 @@ import { TitheRoute } from "./routes/Tithe";
 import { MemberRoute } from "./routes/Members";
 import { DepartmentRoute } from "./routes/Departments";
 import { DashboardRoute } from "./routes/Dashboard";
+import { NoPageRoute } from "./routes/404";
 
 export default function App() {
   return (
@@ -16,6 +17,10 @@ export default function App() {
       <div>
         <Layout>
           <Switch>
+            <Route exact path="/">
+              <DashboardRoute />
+            </Route>
+
             <Route path="/forms">
               <FormsRoute />
             </Route>
@@ -36,8 +41,8 @@ export default function App() {
               <DepartmentRoute />
             </Route>
 
-            <Route path="/">
-              <DashboardRoute />
+            <Route>
+              <NoPageRoute />
             </Route>
           </Switch>
         </Layout>
