@@ -1,40 +1,15 @@
-import React, { ReactElement } from "react";
+import React from "react";
 import { Row, Col, Card } from "antd";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
+import { contentListNoTitle, tabListNoTitle } from "../../charts/chartRoutes";
 
 //type ContentKey = "article" | "app" | "project";
 
-const tabListNoTitle = [
-  {
-    key: "article",
-    tab: "article",
-  },
-  {
-    key: "app",
-    tab: "app",
-  },
-  {
-    key: "project",
-    tab: "project",
-  },
-];
-
-interface StringArray {
-  [index: string]: ReactElement<any, any>;
-}
-
-const contentListNoTitle: StringArray = {
-  article: <p>article content</p>,
-  app: <p>app content</p>,
-  project: <p>project content</p>,
-};
-
 const Dashboard = () => {
- // const [loading, setLoading] = React.useState(true);
-  const [noTitleKey, setnoTitleKey] = React.useState<any | null>("article");
+  // const [loading, setLoading] = React.useState(true);
+  const [noTitleKey, setnoTitleKey] = React.useState<any | null>("total");
 
   const responsive = useBreakpoint();
-
   // const onChange = () => {
   //   setLoading(!loading);
   // };
@@ -44,14 +19,17 @@ const Dashboard = () => {
     // setnoTitleKey({ [type]: key });
 
     switch (key) {
-      case "article":
-        setnoTitleKey("article");
+      case "total":
+        setnoTitleKey("total");
         break;
-      case "app":
-        setnoTitleKey("app");
+      case "adult":
+        setnoTitleKey("adult");
         break;
-      case "project":
-        setnoTitleKey("project");
+      case "omega":
+        setnoTitleKey("omega");
+        break;
+      case "children":
+        setnoTitleKey("children");
         break;
       default:
     }
@@ -63,7 +41,7 @@ const Dashboard = () => {
   return (
     <>
       {/* <Switch checked={!loading} onChange={onChange} /> */}
-   
+
       <div className="site-card-wrapper" style={{ marginBottom: 16 }}>
         <Row gutter={[16, responsive.xs ? 16 : 0]}>
           <Col xs={24} sm={24} md={6} lg={6} xl={6}>
@@ -118,7 +96,7 @@ const Dashboard = () => {
             </Card>
           </Col>
         </Row>
-      </div> 
+      </div>
     </>
   );
 };
