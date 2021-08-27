@@ -1,5 +1,5 @@
 import { Switch, Route, useRouteMatch } from "react-router-dom";
-import Department from "../pages/Department/List";
+import Department from "../pages/Department/DepartmentList";
 import Departments from "../pages/Department";
 
 export function DepartmentRoute() {
