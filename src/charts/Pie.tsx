@@ -2,6 +2,7 @@ import { Pie } from "@ant-design/charts";
 
 const DemoPie = ({ data }: any) => {
   var config = {
+    autoFit: true,
     appendPadding: 10,
     data,
     angleField: "value",
@@ -29,6 +30,8 @@ const DemoPie = ({ data }: any) => {
         content: "100%",
       },
     },
+    theme: 'default',   // or seriesField in some cases
+   // color: ['#d62728', '#2ca02c', '#000000']
   };
   return <Pie {...config} />;
 };
