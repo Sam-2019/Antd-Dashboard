@@ -1,5 +1,5 @@
-import Card from "../../components/Card";
-import { month } from "../../others/data";
+import Card from "../../components/Card/Card";
+import { month } from "../../utils/data";
 
 function Chapels() {
   return <Card data={month} />;

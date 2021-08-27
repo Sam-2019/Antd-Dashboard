@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "antd/dist/antd.css";
 
-import Layout from "./components/Layout";
+import Layout from "./components/Layout/Layout";
 import { FormsRoute } from "./routes/Forms";
 import { ChapelsRoute } from "./routes/Chapels";
 import { TitheRoute } from "./routes/Tithe";

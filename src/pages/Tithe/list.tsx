@@ -3,7 +3,7 @@ import { Table, Tag, Space } from "antd";
 import Column from "antd/lib/table/Column";
 import { Link } from "react-router-dom";
 import GoBack from '../../components/GoBack'
-import { userData } from "../../others/data";
+import { userData } from "../../utils/data";
 
 function TithePaid() {
   return (

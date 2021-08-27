@@ -3,7 +3,7 @@ import { Table, Tag, Space, Button, Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
 import { Link } from "react-router-dom";
-import { userData } from "../../others/data";
+import { userData } from "../../utils/data";
 
 function Members() {
   const [searchText, setSearchText] = useState("");

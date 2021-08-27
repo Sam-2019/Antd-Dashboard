@@ -3,7 +3,7 @@ import GoBack from "../../components/GoBack";
 
 import { Transfer, Button, DatePicker, Space, Typography } from "antd";
 
-import { newData } from "../../others/data";
+import { newData } from "../../utils/data";
 
 const { Text } = Typography;
 

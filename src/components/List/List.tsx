@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Table, Tag, Space } from "antd";
 import Column from "antd/lib/table/Column";
-import { Link } from "react-router-dom";
-import GoBack from "../components/GoBack";
-import { userData } from "../others/data";
+import GoBack from "../GoBack";
+
+import { userData } from "../../utils/data";
 
 function List({ slug }: any) {
   console.log(slug);

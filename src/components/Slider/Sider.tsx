@@ -3,7 +3,7 @@ import { Layout } from "antd";
 
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 
-import MenuItems from "./MenuItems";
+import MenuItems from "../Navigation/MenuItems";
 
 const { Sider } = Layout;
 

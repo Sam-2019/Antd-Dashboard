@@ -11,7 +11,7 @@ import {
   Checkbox,
   Space,
 } from "antd";
-import { departments } from "../../others/data";
+import { departments } from "../../utils/data";
 import GoBack from "../../components/GoBack";
 
 function Member() {

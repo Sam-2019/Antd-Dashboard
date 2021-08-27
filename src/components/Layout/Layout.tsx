@@ -1,9 +1,9 @@
 import React from "react";
 import { Layout } from "antd";
 
-import DrawerC from "./Drawer";
-import SiderDemo from "./Sider";
-import Navbar from "./Navbar";
+import DrawerC from "../Slider/Drawer";
+import SiderDemo from "../Slider/Sider";
+import Navbar from "../Navigation/Navbar";
 
 //import BreadCrumb from "./Breadcrumb";
 

@@ -1,6 +1,6 @@
 import { Drawer } from "antd";
 
-import MenuItems from "./MenuItems";
+import MenuItems from "../Navigation/MenuItems";
 
 interface PropType {
   onClose: any;

@@ -1,7 +1,7 @@
 import { Menu } from "antd";
 
 import { useHistory } from "react-router-dom";
-import { menuItems } from "../others/data";
+import { menuItems } from "../../utils/data";
 
 const MenuItems = () => {
   const history = useHistory();
