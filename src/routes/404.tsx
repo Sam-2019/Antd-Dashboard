@@ -1,10 +1,10 @@
 import { Switch, Route } from "react-router-dom";
-import NoPage from "../pages/404/404";
+import NoPage from "../pages/404";
 
 export function NoPageRoute() {
   return (
     <Switch>
-      <Route >
+      <Route>
         <NoPage />
       </Route>
     </Switch>
