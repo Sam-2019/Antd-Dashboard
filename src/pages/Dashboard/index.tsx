@@ -1,13 +1,19 @@
 import React from "react";
-import { Row, Col, Card } from "antd";
+import { Row, Col, Card, Radio } from "antd";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
-import { contentListNoTitle, tabListNoTitle } from "../../charts/chartRoutes";
+import {
+  TabList,
+  ColumnList,
+  PieList,
+  TabList2,
+} from "../../charts/chartRoutes";
 
 //type ContentKey = "article" | "app" | "project";
 
 const Dashboard = () => {
   // const [loading, setLoading] = React.useState(true);
   const [noTitleKey, setnoTitleKey] = React.useState<any | null>("total");
+  const [value3, setValue3] = React.useState<any | null>("total");
 
   const responsive = useBreakpoint();
   // const onChange = () => {
@@ -36,7 +42,11 @@ const Dashboard = () => {
   };
 
   //console.log(noTitleKey);
-  //  console.log(contentListNoTitle);
+  //  console.log(ColumnList);
+
+  const onChange = (e: any) => {
+    setValue3(e.target.value);
+  };
 
   return (
     <>
@@ -73,13 +83,13 @@ const Dashboard = () => {
       <div className="site-card-wrapper" style={{ marginBottom: 16 }}>
         <Card
           style={{ width: "100%" }}
-          tabList={tabListNoTitle}
+          tabList={TabList}
           activeTabKey={noTitleKey}
           onTabChange={(key) => {
             onTabChange(key, "noTitleKey");
           }}
         >
-          {contentListNoTitle[noTitleKey]}
+          {ColumnList[noTitleKey]}
         </Card>
       </div>
 
@@ -91,8 +101,21 @@ const Dashboard = () => {
             </Card>
           </Col>
           <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-            <Card title="Card title" bordered={false}>
-              Card content
+            <Card
+              title="Default size card"
+              style={{ width: "100%" }}
+              //   tabList={TabList}
+              activeTabKey={value3}
+              extra={
+                <Radio.Group
+                  options={TabList2}
+                  onChange={onChange}
+                  value={value3}
+                  optionType="button"
+                />
+              }
+            >
+              {PieList[value3]}
             </Card>
           </Col>
         </Row>
@@ -102,3 +125,14 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+{
+  /* <Radio.Group onChange={onChange} defaultValue="a">
+{TabList.map((data: any) => (
+  <Radio.Button key={data.key} value={data.key}>
+    {data.tab}
+  </Radio.Button>
+))}
+</Radio.Group>
+ */
+}
