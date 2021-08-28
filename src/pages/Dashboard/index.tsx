@@ -14,7 +14,7 @@ const Dashboard = () => {
   // const [loading, setLoading] = React.useState(true);
   const [noTitleKey, setnoTitleKey] = React.useState<any | null>("total");
   const [value3, setValue3] = React.useState<any | null>("total");
-
+  const [vehicles] = React.useState<any | null>("vehicles");
   const responsive = useBreakpoint();
   // const onChange = () => {
   //   setLoading(!loading);
@@ -96,15 +96,16 @@ const Dashboard = () => {
       <div className="site-card-wrapper">
         <Row gutter={[16, responsive.xs ? 16 : 0]}>
           <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-            <Card title="Card title" bordered={false}>
-              Card content
+            <Card 
+            title="Default size card"
+             style={{ width: "100%" }}>
+              {ColumnList[vehicles]}
             </Card>
           </Col>
           <Col xs={24} sm={24} md={12} lg={12} xl={12}>
             <Card
               title="Default size card"
               style={{ width: "100%" }}
-              //   tabList={TabList}
               activeTabKey={value3}
               extra={
                 <Radio.Group
