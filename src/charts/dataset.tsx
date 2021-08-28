@@ -1,4 +1,4 @@
-export const total = [
+export const ageGroupColumn = [
   {
     ageGroup: "Adult",
     date: "2021-07-11",
@@ -121,7 +121,7 @@ export const total = [
   },
 ];
 
-export const stack = [
+export const genderStackColumn = [
   {
     date: "2021-07-11",
     value: 3,
@@ -246,5 +246,128 @@ export const pieChildrenData = [
   {
     type: "Male",
     value: 30,
+  },
+];
+
+export const vehicleGroupColumn = [
+  {
+    ageGroup: "Cars",
+    date: "2021-07-11",
+    number: 18,
+  },
+  {
+    ageGroup: "Cars",
+    date: "2021-07-18",
+    number: 28,
+  },
+  {
+    ageGroup: "Cars",
+    date: "2021-07-25",
+    number: 39,
+  },
+  {
+    ageGroup: "Cars",
+    date: "2021-08-01",
+    number: 81,
+  },
+  {
+    ageGroup: "Cars",
+    date: "2021-08-08",
+    number: 47,
+  },
+  {
+    ageGroup: "Cars",
+    date: "2021-08-15",
+    number: 20,
+  },
+  {
+    ageGroup: "Cars",
+    date: "2021-08-22",
+    number: 24,
+  },
+  {
+    ageGroup: "Cars",
+    date: "2021-08-29",
+    number: 35,
+  },
+  {
+    ageGroup: "Motors",
+    date: "2021-07-11",
+    number: 12,
+  },
+  {
+    ageGroup: "Motors",
+    date: "2021-07-18",
+    number: 23,
+  },
+  {
+    ageGroup: "Motors",
+    date: "2021-07-25",
+    number: 34,
+  },
+  {
+    ageGroup: "Motors",
+    date: "2021-08-01",
+    number: 99,
+  },
+  {
+    ageGroup: "Motors",
+    date: "2021-08-08",
+    number: 52,
+  },
+  {
+    ageGroup: "Motors",
+    date: "2021-08-15",
+    number: 35,
+  },
+  {
+    ageGroup: "Motors",
+    date: "2021-08-22",
+    number: 37,
+  },
+  {
+    ageGroup: "Motors",
+    date: "2021-08-29",
+    number: 42,
+  },
+  {
+    ageGroup: "Bicycles",
+    date: "2021-07-11",
+    number: 12,
+  },
+  {
+    ageGroup: "Bicycles",
+    date: "2021-07-18",
+    number: 23,
+  },
+  {
+    ageGroup: "Bicycles",
+    date: "2021-07-25",
+    number: 34,
+  },
+  {
+    ageGroup: "Bicycles",
+    date: "2021-08-01",
+    number: 99,
+  },
+  {
+    ageGroup: "Bicycles",
+    date: "2021-08-08",
+    number: 52,
+  },
+  {
+    ageGroup: "Bicycles",
+    date: "2021-08-15",
+    number: 35,
+  },
+  {
+    ageGroup: "Bicycles",
+    date: "2021-08-22",
+    number: 37,
+  },
+  {
+    ageGroup: "Bicycles",
+    date: "2021-08-29",
+    number: 42,
   },
 ];
