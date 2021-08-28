@@ -1,10 +1,9 @@
 import React from "react";
 import { Column } from "@ant-design/charts";
-import { total } from "./dataset";
 
-const GroupColumn: React.FC = () => {
+const GroupColumn = ({ data }: any) => {
   var config = {
-    data: total,
+    data,
     isGroup: true,
     xField: "date",
     yField: "number",

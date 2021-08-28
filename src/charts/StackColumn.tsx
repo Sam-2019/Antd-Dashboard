@@ -1,10 +1,9 @@
 import React from "react";
 import { Column } from "@ant-design/charts";
-import { stack } from "./dataset";
 
-const StackColumn: React.FC = () => {
+const StackColumn = ({ data }: any) => {
   var config = {
-    data: stack,
+    data,
     isStack: true,
     xField: "date",
     yField: "value",
