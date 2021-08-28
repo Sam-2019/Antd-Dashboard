@@ -3,6 +3,9 @@ import StackColumn from "./StackColumn";
 import GroupColumn from "./GroupColumn";
 import Pie from "./Pie";
 import {
+  ageGroupColumn,
+  genderStackColumn,
+  vehicleGroupColumn,
   pieTotalData,
   pieAdultData,
   pieOmegaData,
@@ -52,10 +55,11 @@ export const TabList2 = [
 ];
 
 export const ColumnList: StringArray = {
-  total: <GroupColumn />,
-  adult: <StackColumn />,
-  omega: <StackColumn />,
-  children: <StackColumn />,
+  total: <GroupColumn data={ageGroupColumn} />,
+  adult: <StackColumn data={genderStackColumn} />,
+  omega: <StackColumn data={genderStackColumn} />,
+  children: <StackColumn data={genderStackColumn} />,
+  vehicles: <GroupColumn data={vehicleGroupColumn} />,
 };
 
 export const PieList: StringArray = {
