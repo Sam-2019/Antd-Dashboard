@@ -1,6 +1,7 @@
-import React from "react";
+import { Descriptions } from "antd";
 import { useParams } from "react-router-dom";
-import GoBack from '../../components/GoBack'
+
+import GoBack from "../../components/GoBack";
 
 function Member() {
   let { slug }: any = useParams();
@@ -8,7 +9,11 @@ function Member() {
   return (
     <div>
       <GoBack />
-      <div>{slug}</div>
+
+      <Descriptions title="User Info">
+        <Descriptions.Item label="UserName">{slug}</Descriptions.Item>
+        <Descriptions.Item label="Telephone">1810000000</Descriptions.Item>
+      </Descriptions>
     </div>
   );
 }
