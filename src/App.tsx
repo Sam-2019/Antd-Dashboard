@@ -10,6 +10,7 @@ import { MemberRoute } from "./routes/Members";
 import { DepartmentRoute } from "./routes/Departments";
 import { DashboardRoute } from "./routes/Dashboard";
 import { NoPageRoute } from "./routes/404";
+import { PledgeRoute } from "./routes/Pledges";
 
 export default function App() {
   return (
@@ -23,6 +24,10 @@ export default function App() {
 
             <Route path="/forms">
               <FormsRoute />
+            </Route>
+
+            <Route path="/pledges">
+              <PledgeRoute />
             </Route>
 
             <Route path="/chapels">
