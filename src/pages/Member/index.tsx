@@ -3,9 +3,17 @@ import { Table, Tag, Space, Button, Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
 import { Link } from "react-router-dom";
-import { userData } from "../../utils/data";
+import { useQuery } from "@apollo/client";
+import { v4 as uuidv4 } from "uuid";
+import { departments, userData } from "../../utils/data";
+import { GET_MEMBERS } from "../../utils/graphqlFunctions/queries";
+import Spinner from "../../components/Spinner/Spinner";
+import Error from "../../components/Error/Error";
+import { miniSwitch } from "../../utils/functions";
 
 function Members() {
+  const { loading, error, data } = useQuery(GET_MEMBERS);
+
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
 
@@ -111,34 +119,92 @@ function Members() {
   const columns = [
     {
       title: "Name",
-      dataIndex: "name",
-      key: "name",
-      ...getColumnSearchProps("name"),
+      dataIndex: "firstName",
+      key: "firstName",
+      ...getColumnSearchProps("firstName"),
+    },
+    {
+      title: "Last Name",
+      dataIndex: "lastName",
+      key: "lastName",
     },
     {
       title: "Age",
       dataIndex: "age",
       key: "age",
     },
+
     {
-      title: "Address",
-      dataIndex: "address",
-      key: "address",
-    },
-    {
-      title: "Tags",
-      dataIndex: "tags",
-      key: "tags",
-      render: (tags: string[]) => (
+      title: "Department",
+      dataIndex: "department",
+      key: "department",
+      render: (department: string[]) => (
         <>
-          {tags.map((tag: string): any => {
-            let color = tag.length > 5 ? "geekblue" : "green";
-            if (tag === "loser") {
-              color = "volcano";
+          {department.map((tag: string, index: any): any => {
+            console.log(department);
+
+            let color;
+
+            const wait = miniSwitch(tag);
+            console.log(wait);
+
+            switch (tag) {
+              case "Administration":
+                color = "volcano";
+                break;
+              case "Chapel Shepherd":
+                color = "pink";
+                break;
+              case "Facilitators":
+                color = "yellow";
+                break;
+              case "Housekeeping":
+                color = "magenta";
+                break;
+              case "Intercessory":
+                color = "lime";
+                break;
+              case "Media":
+                color = "default";
+                break;
+
+              case "MC":
+                color = "orange";
+                break;
+
+              case "Parking":
+                color = "cyan";
+                break;
+
+              case "Welfare":
+                color = "blue";
+                break;
+
+              case "Protocol":
+                color = "gold";
+                break;
+              case "Music":
+                color = "processing";
+                break;
+              case "Men’s Ministry":
+                color = "warning";
+                break;
+
+              case "Single's Ministry":
+                color = "geekblue";
+                break;
+
+              case "Women's Ministry":
+                color = "error";
+                break;
+
+              default:
+                color = "green";
             }
+
             return (
-              <Tag color={color} key={tag}>
-                {tag.toUpperCase()}
+              <Tag color={color} key={Math.random()}>
+                {tag}
               </Tag>
             );
           })}
@@ -147,7 +213,15 @@ function Members() {
     },
   ];
 
-  return <Table columns={columns} dataSource={userData} />;
+  if (loading) {
+    return <Spinner />;
+  }
+
+  if (error) {
+    return <Error />;
+  }
+
+  return <Table columns={columns} dataSource={data.members} />;
 }
 
 export default Members;

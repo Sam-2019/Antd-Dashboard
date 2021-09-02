@@ -11,25 +11,86 @@ import {
   Checkbox,
   Space,
 } from "antd";
+import { useMutation } from "@apollo/client";
 import { departments } from "../../utils/data";
 import GoBack from "../../components/GoBack";
+import { ADD_MEMBER } from "../../utils/graphqlFunctions/mutations";
+import { success } from "../../components/Modal/Modal";
 
 function Member() {
-  const onFinish = (fieldsValue: any) => {
-    // Should format date value before submit.
+  const [form] = Form.useForm();
+  const [addMember] = useMutation(ADD_MEMBER);
 
+  const onFinish = (fieldsValue: any) => {
     const values = {
       ...fieldsValue,
-      "date-picker": fieldsValue["date-picker"].format("YYYY-MM-DD"),
-      "date-picker2": fieldsValue["date-picker2"].format("YYYY-MM-DD"),
+      dateOfBirth: fieldsValue["dateOfBirth"].format("YYYY-MM-DD"),
+      dateJoinedChurch: fieldsValue["dateJoinedChurch"].format("YYYY-MM-DD"),
     };
-    console.log("Received values of form: ", values);
+    //  console.log("Received values of form: ", values);
+
+    const {
+      firstName,
+      lastName,
+      otherName,
+      dateOfBirth,
+      age,
+      gender,
+      hometown,
+      region,
+      country,
+      residentialAddress,
+      contact,
+      emergencyContact,
+      emailAddress,
+      postalAddress,
+      maritalStatus,
+      spouseName,
+      numberOfChlidren,
+      nameOfChildren,
+      dateJoinedChurch,
+      department,
+      previousChurch,
+    } = values;
+
+    addMember({
+      variables: {
+        addMember: {
+          firstName,
+          lastName,
+          otherName,
+          dateOfBirth,
+          age,
+          gender,
+          hometown,
+          region,
+          country,
+          residentialAddress,
+          contact,
+          emergencyContact,
+          emailAddress,
+          postalAddress,
+          maritalStatus,
+          spouseName,
+          numberOfChlidren,
+          dateJoinedChurch,
+          previousChurch,
+          department,
+          nameOfChildren,
+        },
+      },
+    });
+
+    form.resetFields();
+
+    success("Member added");
   };
 
   return (
     <div>
-      <GoBack />
+      <GoBack header="Add Member" />
       <Form
+        form={form}
         name="member"
         onFinish={onFinish}
         labelCol={{ span: 8 }}
@@ -51,12 +112,12 @@ function Member() {
           <Input style={{ width: 200 }} />
         </Form.Item>
 
-        <Form.Item name="othertName" label="Other Name">
+        <Form.Item name="otherName" label="Other Name">
           <Input style={{ width: 200 }} />
         </Form.Item>
 
         <Form.Item
-          name="date-picker"
+          name="dateOfBirth"
           label="Date of Birth"
           rules={[{ required: true, message: "Required!" }]}
         >
@@ -123,7 +184,7 @@ function Member() {
           label="Emergency Contact"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <InputNumber keyboard={true} style={{ width: 200 }} />
+          <Input style={{ width: 200 }} />
         </Form.Item>
 
         <Form.Item
@@ -159,7 +220,7 @@ function Member() {
         </Form.Item>
 
         <Form.Item
-          name="children"
+          name="numberOfChlidren"
           label="Number of children"
           rules={[{ required: true, message: "Required!" }]}
         >
@@ -168,7 +229,7 @@ function Member() {
 
         <Form.Item label="Name of children" style={{ marginBottom: 0 }} />
 
-        <Form.List name="users">
+        <Form.List name="nameOfChildren">
           {(fields, { add, remove }) => (
             <>
               {fields.map(({ key, name, fieldKey, ...restField }) => (
@@ -188,7 +249,7 @@ function Member() {
                     <Form.Item
                       {...restField}
                       style={{ marginBottom: 0 }}
-                      name={[name, "first"]}
+                      name={[name, "firstName"]}
                       fieldKey={[fieldKey, "first"]}
                     >
                       <Input placeholder="First Name" />
@@ -197,7 +258,7 @@ function Member() {
                     <Form.Item
                       {...restField}
                       style={{ marginBottom: 0 }}
-                      name={[name, "last"]}
+                      name={[name, "lastName"]}
                       fieldKey={[fieldKey, "last"]}
                     >
                       <Input placeholder="Last Name" />
@@ -229,14 +290,14 @@ function Member() {
         </Form.List>
 
         <Form.Item
-          name="date-picker2"
+          name="dateJoinedChurch"
           label="Date you joined the church"
           rules={[{ required: true, message: "Required!" }]}
         >
           <DatePicker />
         </Form.Item>
 
-        <Form.Item name="checkbox-group" label="Department">
+        <Form.Item name="department" label="Department">
           <Checkbox.Group>
             <Row>
               {departments.map((data) => (

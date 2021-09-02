@@ -1,28 +1,85 @@
 import { Input, InputNumber, DatePicker, Form, TimePicker, Button } from "antd";
+import { useMutation } from "@apollo/client";
 import GoBack from "../../components/GoBack";
+import { ADD_SUNDAY_SERVICE } from "../../utils/graphqlFunctions/mutations";
+import { success } from "../../components/Modal/Modal";
 
 function Sunday() {
+  const [form] = Form.useForm();
+  const [addSundayService] = useMutation(ADD_SUNDAY_SERVICE);
+
   const onFinish = (fieldsValue: any) => {
     const values = {
       ...fieldsValue,
-      "date-picker": fieldsValue["date-picker"].format("YYYY-MM-DD"),
-      "time-picker": fieldsValue["time-picker"].format("HH:mm:ss"),
-      "time-picker2": fieldsValue["time-picker2"].format("HH:mm:ss"),
+      date: fieldsValue["date"].format("YYYY-MM-DD"),
+      startTime: fieldsValue["startTime"].format("HH:mm:ss"),
+      endTime: fieldsValue["endTime"].format("HH:mm:ss"),
     };
     console.log("Received values of form: ", values);
+
+    const {
+      adultFemale,
+      adultMale,
+      altercallFemale,
+      altercallMen,
+      bibleText,
+      bicycles,
+      cars,
+      childrenBoy,
+      childrenGirl,
+      date,
+      endTime,
+      motors,
+      omegaFemale,
+      omegaMale,
+      preacher,
+      startTime,
+      theme,
+      visitorsFemale,
+    } = values;
+
+    addSundayService({
+      variables: {
+        addSundayService: {
+          adultFemale,
+          adultMale,
+          altercallFemale,
+          altercallMen,
+          bibleText,
+          bicycles,
+          cars,
+          childrenBoy,
+          childrenGirl,
+          date,
+          endTime,
+          motors,
+          omegaFemale,
+          omegaMale,
+          preacher,
+          startTime,
+          theme,
+          visitorsFemale,
+        },
+      },
+    });
+
+    form.resetFields();
+
+    success("Data added");
   };
   return (
     <>
       <GoBack />
       <div style={{}}>
         <Form
-          name="sinday-form"
+          form={form}
+          name="sunday-form"
           onFinish={onFinish}
           labelCol={{ span: 8 }}
           wrapperCol={{ span: 16 }}
         >
           <Form.Item
-            name="date-picker"
+            name="date"
             label="Date"
             rules={[{ required: true, message: "Required!" }]}
           >
@@ -30,7 +87,7 @@ function Sunday() {
           </Form.Item>
 
           <Form.Item
-            name="time-picker"
+            name="startTime"
             label=" Start Time"
             rules={[{ required: true, message: "Required!" }]}
           >
@@ -54,7 +111,7 @@ function Sunday() {
           </Form.Item>
 
           <Form.Item
-            name="bible-text"
+            name="bibleText"
             label="Bible Text"
             rules={[{ required: true, message: "Required!" }]}
           >
@@ -63,7 +120,7 @@ function Sunday() {
 
           <Form.Item label="Adult" style={{ marginBottom: 0 }}>
             <Form.Item
-              name="adult-male"
+              name="adultMale"
               rules={[{ required: true, message: "Required!" }]}
               style={{
                 display: "inline-block",
@@ -74,7 +131,7 @@ function Sunday() {
               <InputNumber placeholder="Male" />
             </Form.Item>
             <Form.Item
-              name="adult-female"
+              name="adultFemale"
               rules={[{ required: true, message: "Required!" }]}
               style={{ display: "inline-block", width: "auto" }}
             >
@@ -84,7 +141,7 @@ function Sunday() {
 
           <Form.Item label="Omega" style={{ marginBottom: 0 }}>
             <Form.Item
-              name="omega-male"
+              name="omegaMale"
               rules={[{ required: true, message: "Required!" }]}
               style={{
                 display: "inline-block",
@@ -95,7 +152,7 @@ function Sunday() {
               <InputNumber placeholder="Male" />
             </Form.Item>
             <Form.Item
-              name="omega-female"
+              name="omegaFemale"
               rules={[{ required: true, message: "Required!" }]}
               style={{ display: "inline-block", width: "auto" }}
             >
@@ -105,7 +162,7 @@ function Sunday() {
 
           <Form.Item label="Children" style={{ marginBottom: 0 }}>
             <Form.Item
-              name="children-boy"
+              name="childrenBoy"
               rules={[{ required: true, message: "Required!" }]}
               style={{
                 display: "inline-block",
@@ -116,7 +173,7 @@ function Sunday() {
               <InputNumber placeholder="Male" />
             </Form.Item>
             <Form.Item
-              name="children-girl"
+              name="childrenGirl"
               rules={[{ required: true, message: "Required!" }]}
               style={{ display: "inline-block", width: "auto" }}
             >
@@ -126,7 +183,7 @@ function Sunday() {
 
           <Form.Item label="Alter Call" style={{ marginBottom: 0 }}>
             <Form.Item
-              name="altercall-men"
+              name="altercallMen"
               style={{
                 display: "inline-block",
                 width: "auto",
@@ -136,7 +193,7 @@ function Sunday() {
               <InputNumber placeholder="Male" />
             </Form.Item>
             <Form.Item
-              name="altercall-female"
+              name="altercallFemale"
               style={{ display: "inline-block", width: "auto" }}
             >
               <InputNumber placeholder="Female" />
@@ -145,7 +202,7 @@ function Sunday() {
 
           <Form.Item label="Visitors" style={{ marginBottom: 0 }}>
             <Form.Item
-              name="visitors-men"
+              name="visitorsMen"
               style={{
                 display: "inline-block",
                 width: "auto",
@@ -155,7 +212,7 @@ function Sunday() {
               <InputNumber placeholder="Male" />
             </Form.Item>
             <Form.Item
-              name="visitors-female"
+              name="visitorsFemale"
               style={{ display: "inline-block", width: "auto" }}
             >
               <InputNumber placeholder="Female" />
@@ -196,7 +253,7 @@ function Sunday() {
           </Form.Item>
 
           <Form.Item
-            name="time-picker2"
+            name="endTime"
             label=" Close Time"
             rules={[{ required: true, message: "Required!" }]}
           >

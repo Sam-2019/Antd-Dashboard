@@ -1,30 +1,84 @@
 import { Input, DatePicker, Form, Button, Radio } from "antd";
+import { useMutation } from "@apollo/client";
 import GoBack from "../../components/GoBack";
-
+import { ADD_VISITOR } from "../../utils/graphqlFunctions/mutations";
+import { success } from "../../components/Modal/Modal";
 
 function Visitor() {
+  const [form] = Form.useForm();
+  const [addVisitor] = useMutation(ADD_VISITOR);
+
   const onFinish = (fieldsValue: any) => {
     // Should format date value before submit.
 
     const values = {
       ...fieldsValue,
-      "date-picker": fieldsValue["date-picker"].format("YYYY-MM-DD"),
-      "month-picker": fieldsValue["month-picker"].format("YYYY-MM"),
+      date: fieldsValue["date"].format("YYYY-MM-DD"),
+      monthOfBirth: fieldsValue["monthOfBirth"].format("YYYY-MM"),
     };
-    console.log("Received values of form: ", values);
+
+    // console.log("Received values of form: ", values);
+
+    const {
+      ageGroup,
+      awarenessChannel,
+      awarenessChannelOther,
+      contact,
+      date,
+      firstName,
+      invitedBy,
+      knowingChrist,
+      lastName,
+      location,
+      membership,
+      monthOfBirth,
+    } = values;
+
+    addVisitor({
+      variables: {
+        addVisitor: {
+          ageGroup,
+          awarenessChannel,
+          awarenessChannelOther,
+          contact,
+          date,
+          firstName,
+          invitedBy,
+          knowingChrist,
+          lastName,
+          location,
+          membership,
+          monthOfBirth,
+        },
+      },
+    });
+
+   form.resetFields();
+
+    success("Visitor added");
   };
+
   return (
     <div>
       <GoBack />
       <Form
+        form={form}
         name="visitor"
         onFinish={onFinish}
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 16 }}
       >
         <Form.Item
-          name="name"
-          label="Name"
+          name="firstName"
+          label="First Name"
+          rules={[{ required: true, message: "Required!" }]}
+        >
+          <Input style={{ width: 200 }} />
+        </Form.Item>
+
+        <Form.Item
+          name="lastName"
+          label="Last Name"
           rules={[{ required: true, message: "Required!" }]}
         >
           <Input style={{ width: 200 }} />
@@ -47,15 +101,15 @@ function Visitor() {
         </Form.Item>
 
         <Form.Item
-          name="date-picker"
+          name="date"
           label="Date"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <DatePicker  style={{ width: 200 }} />
+          <DatePicker style={{ width: 200 }} />
         </Form.Item>
 
         <Form.Item
-          name="age-group"
+          name="ageGroup"
           label="Age Group"
           rules={[{ required: true, message: "Required!" }]}
         >
@@ -69,7 +123,7 @@ function Visitor() {
         </Form.Item>
 
         <Form.Item
-          name="month-picker"
+          name="monthOfBirth"
           label="Month of Birth"
           rules={[{ required: true, message: "Required!" }]}
         >
@@ -77,9 +131,9 @@ function Visitor() {
         </Form.Item>
 
         <Form.Item
-          name="awareness-channel"
+          name="awarenessChannel"
           label="How did you hear about the church programme?"
-          rules={[{ required: true, message: "Please pick an item!" }]}
+          // rules={[{ required: true, message: "Please pick an item!" }]}
         >
           <Radio.Group>
             <Radio.Button value="flyer">Flyer</Radio.Button>
@@ -93,12 +147,13 @@ function Visitor() {
             xs: { span: 24, offset: 0 },
             sm: { span: 16, offset: 8 },
           }}
+          name="awarenessChannelOther"
         >
           <Input style={{ width: 200 }} />
         </Form.Item>
 
         <Form.Item
-          name="invited-by"
+          name="invitedBy"
           label="Invited by"
           rules={[{ required: true, message: "Required!" }]}
         >
@@ -128,7 +183,7 @@ function Visitor() {
         </Form.Item>
 
         <Form.Item
-          name="knowing-Christ"
+          name="knowingChrist"
           label="Would like to know more about being a Christian? "
           rules={[{ required: true, message: "Required!" }]}
         >

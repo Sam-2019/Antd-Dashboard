@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
+import { useMutation } from "@apollo/client";
 import GoBack from "../../components/GoBack";
+import { ADD_TITHE } from "../../utils/graphqlFunctions/mutations";
+import { success } from "../../components/Modal/Modal";
 
 import { Transfer, Button, DatePicker, Typography } from "antd";
 
@@ -26,6 +29,8 @@ function TitheForm() {
     emptytext: false,
     emptytransfer: false,
   });
+
+  const [addTithePayer] = useMutation(ADD_TITHE);
 
   //console.log(sourceData);
 
@@ -84,24 +89,44 @@ function TitheForm() {
   }
 
   const onFinish = () => {
-    // console.log(targetKeys);
-    // console.log(month);
+    if (!month && targetKeys.length === 0) {
+      return setAlert((prevState): any => ({
+        ...prevState,
+        emptytext: true,
+        emptytransfer: true,
+      }));
+    }
 
     if (!month) {
-      setAlert((prevState): any => ({
+      return setAlert((prevState): any => ({
         ...prevState,
         emptytext: true,
       }));
     }
 
     if (targetKeys.length === 0) {
-      setAlert((prevState): any => ({
+      return setAlert((prevState): any => ({
         ...prevState,
         emptytransfer: true,
       }));
     }
 
-    console.log(month, targetKeys);
+    addTithePayer({
+      variables: {
+        addTithePayer: {
+          month: month,
+          member: targetKeys,
+        },
+      },
+    });
+
+    success("");
+
+    setAlert((prevState): any => ({
+      ...prevState,
+      emptytext: false,
+      emptytransfer: false,
+    }));
   };
 
   return (
