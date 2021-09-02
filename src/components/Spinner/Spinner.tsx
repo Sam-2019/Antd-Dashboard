@@ -1,13 +1,12 @@
-import { Spin } from 'antd';
-
-import React from 'react'
+import { Spin } from "antd";
+import "./spinner.css";
 
 function Spinner() {
-    return (
-        <div className="example">
-        <Spin />
-      </div>
-    )
+  return (
+    <div className="spinner">
+      <Spin />
+    </div>
+  );
 }
 
-export default Spinner
+export default Spinner;
