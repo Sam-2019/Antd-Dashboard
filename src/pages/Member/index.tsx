@@ -4,12 +4,10 @@ import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
 import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import { v4 as uuidv4 } from "uuid";
-import { departments, userData } from "../../utils/data";
 import { GET_MEMBERS } from "../../utils/graphqlFunctions/queries";
 import Spinner from "../../components/Spinner/Spinner";
 import Error from "../../components/Error/Error";
-import { miniSwitch } from "../../utils/functions";
+import { colorSwitch } from "../../utils/functions";
 
 function Members() {
   const { loading, error, data } = useQuery(GET_MEMBERS);
@@ -97,21 +95,25 @@ function Members() {
         setTimeout(() => searchInput.select(), 100);
       }
     },
-    render: (text: any) =>
+    render: (text: any, record: any): any =>
       searchedColumn === dataIndex ? (
         <Space size="middle">
-          <Link to={`/members/${text}`}>
+          <Link to={`/members/${record.firstName} ${record.lastName}`}>
             <Highlighter
               highlightStyle={{ backgroundColor: "#ffc069", padding: 0 }}
               searchWords={[searchText]}
               autoEscape
-              textToHighlight={text ? text.toString() : ""}
+              textToHighlight={
+                text ? ` ${record.firstName} ${record.lastName}` : ""
+              }
             />
           </Link>
         </Space>
       ) : (
         <Space size="middle">
-          <Link to={`/members/${text}`}>{text}</Link>
+          <Link to={`/members/${record.firstName} ${record.lastName}`}>
+            {record.firstName} {record.lastName}
+          </Link>
         </Space>
       ),
   });
@@ -124,16 +126,15 @@ function Members() {
       ...getColumnSearchProps("firstName"),
     },
     {
-      title: "Last Name",
-      dataIndex: "lastName",
-      key: "lastName",
-    },
-    {
       title: "Age",
       dataIndex: "age",
       key: "age",
     },
-
+    {
+      title: "Email",
+      dataIndex: "emailAddress",
+      key: "emailAddress",
+    },
     {
       title: "Department",
       dataIndex: "department",
@@ -141,69 +142,10 @@ function Members() {
       render: (department: string[]) => (
         <>
           {department.map((tag: string, index: any): any => {
-            console.log(department);
-
-            let color;
-
-            const wait = miniSwitch(tag);
-            console.log(wait);
-
-            switch (tag) {
-              case "Administration":
-                color = "volcano";
-                break;
-              case "Chapel Shepherd":
-                color = "pink";
-                break;
-              case "Facilitators":
-                color = "yellow";
-                break;
-              case "Housekeeping":
-                color = "magenta";
-                break;
-              case "Intercessory":
-                color = "lime";
-                break;
-              case "Media":
-                color = "default";
-                break;
-
-              case "MC":
-                color = "orange";
-                break;
-
-              case "Parking":
-                color = "cyan";
-                break;
-
-              case "Welfare":
-                color = "blue";
-                break;
-
-              case "Protocol":
-                color = "gold";
-                break;
-              case "Music":
-                color = "processing";
-                break;
-              case "Men’s Ministry":
-                color = "warning";
-                break;
-
-              case "Single's Ministry":
-                color = "geekblue";
-                break;
-
-              case "Women's Ministry":
-                color = "error";
-                break;
-
-              default:
-                color = "green";
-            }
+            let color = colorSwitch(tag);
 
             return (
-              <Tag color={color} key={Math.random()}>
+              <Tag color={color} key={index}>
                 {tag}
               </Tag>
             );
