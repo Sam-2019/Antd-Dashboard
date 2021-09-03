@@ -1,63 +1,54 @@
-import { Link, useLocation, useParams } from "react-router-dom";
-import { Table, Tag, Space } from "antd";
+import { Link, useParams } from "react-router-dom";
+import { Table, Tag } from "antd";
 import Column from "antd/lib/table/Column";
+import { useQuery } from "@apollo/client";
 import GoBack from "../../components/GoBack";
-import { userData } from "../../utils/data";
+import { GET_CHAPEL_MEMBERS } from "../../utils/graphqlFunctions/queries";
+import { colorSwitch } from "../../utils/functions";
 
 function Chapel() {
   let { slug }: any = useParams();
-  let location = useLocation();
 
-  console.log(slug)
-   console.log(location)
+  const { loading, data } = useQuery(GET_CHAPEL_MEMBERS, {
+    variables: { chapel: slug },
+  });
+
+  if (loading) {
+    return <div>Hello</div>;
+  }
 
   return (
     <div>
       <GoBack />
-      <Table dataSource={userData}>
+      <Table dataSource={data.chapel}>
         <Column
           title="Name"
-          dataIndex="name"
-          key="name"
-          render={(text: string): any => (
-            <Space size="middle">
-              <Link to={`/members/${text}`}>{text}</Link>
-            </Space>
+          dataIndex="firstName"
+          key="firstName"
+          render={(text: any, record: any): any => (
+            <Link to={`/members/${record.firstName} ${record.lastName}`}>
+              {record.firstName} {record.lastName}
+            </Link>
           )}
         />
         <Column title="Age" dataIndex="age" key="age" />
-        <Column title="Address" dataIndex="address" key="address" />
         <Column
-          title="Tags"
-          dataIndex="tags"
-          key="tags"
-          render={(tags) => (
+          title="Department"
+          dataIndex="department"
+          key="department"
+          render={(department: string[]) => (
             <>
-              {tags.map((tag: string): any => {
-                let color = tag.length > 5 ? "geekblue" : "green";
-                if (tag === "loser") {
-                  color = "volcano";
-                }
+              {department.map((tag: string, index: any): any => {
+                let color = colorSwitch(tag);
                 return (
-                  <Tag color={color} key={tag}>
-                    {tag.toUpperCase()}
+                  <Tag color={color} key={index}>
+                    {tag}
                   </Tag>
                 );
               })}
             </>
           )}
         />
-        {/* <Column
-        title="Action"
-        dataIndex="action"
-        key="action"
-        render={(text, record) => (
-          <Space size="middle">
-            <a>Invite {record.lastName}</a>
-            <a>Delete</a>
-          </Space>
-        )}
-      /> */}
       </Table>
     </div>
   );
