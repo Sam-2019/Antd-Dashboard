@@ -7,7 +7,7 @@ import GoBack from "../GoBack";
 import { userData } from "../../utils/data";
 
 function List({ slug }: any) {
-  console.log(slug);
+
   return (
     <div>
       <GoBack />
