@@ -27,3 +27,43 @@ export const GET_CHAPEL_MEMBERS = gql`
     }
   }
 `;
+
+export const GET_PLEDGE = gql`
+  query Query {
+    pledge {
+      id
+      pledgeeID
+      amount
+      programme
+      status
+      pledgeDate
+      redeemedDate
+    }
+  }
+`;
+
+export const GET_DEPARTMENT = gql`
+  query Query($department: String) {
+    department(department: $department) {
+      id
+      firstName
+      lastName
+      chapel
+      contact
+    }
+  }
+`;
+
+export const GET_VISITORS = gql`
+  query Query {
+    visitors {
+      id
+      firstName
+      lastName
+      ageGroup
+      contact
+      date
+      monthOfBirth
+    }
+  }
+`;
