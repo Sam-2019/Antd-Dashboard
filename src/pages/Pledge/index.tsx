@@ -3,9 +3,15 @@ import { Table, Tag, Space, Button, Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
 import { Link } from "react-router-dom";
-import { userData } from "../../utils/data";
+import { useQuery } from "@apollo/client";
+import { GET_PLEDGE } from "../../utils/graphqlFunctions/queries";
+import Spinner from "../../components/Spinner/Spinner";
+import Error from "../../components/Error/Error";
+import moment from "moment";
 
 function Pledges() {
+  const { loading, error, data } = useQuery(GET_PLEDGE);
+
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
 
@@ -89,65 +95,66 @@ function Pledges() {
         setTimeout(() => searchInput.select(), 100);
       }
     },
-    render: (text: any) =>
+    render: (text: any, record: any) =>
       searchedColumn === dataIndex ? (
         <Space size="middle">
-          <Link to={`/Pledges/${text}`}>
+          <Link to={`/members/${record.id}`}>
             <Highlighter
               highlightStyle={{ backgroundColor: "#ffc069", padding: 0 }}
               searchWords={[searchText]}
               autoEscape
-              textToHighlight={text ? text.toString() : ""}
+              textToHighlight={text ? ` ${record.id}` : ""}
             />
           </Link>
         </Space>
       ) : (
         <Space size="middle">
-          <Link to={`/Pledges/${text}`}>{text}</Link>
+          <Link to={`/members/${record.id}`}>{record.id}</Link>
         </Space>
       ),
   });
 
   const columns = [
     {
-      title: "Name",
-      dataIndex: "name",
-      key: "name",
-      ...getColumnSearchProps("name"),
+      title: "ID",
+      dataIndex: "id",
+      key: "id",
+      ...getColumnSearchProps("id"),
     },
     {
-      title: "Age",
-      dataIndex: "age",
-      key: "age",
+      title: "Programme",
+      dataIndex: "programme",
+      key: "programme",
     },
     {
-      title: "Address",
-      dataIndex: "address",
-      key: "address",
+      title: "Date",
+      dataIndex: "pledgeDate",
+      key: "pledgeDate",
+      render: (text: any, record: any) => {
+        const year = moment(record.pledgeDate).format("YYYY-MM-DD");
+        return <span>{year}</span>;
+      },
     },
     {
-      title: "Tags",
-      dataIndex: "tags",
-      key: "tags",
-      render: (tags: string[]) => (
-        <>
-          {tags.map((tag: string): any => {
-            let color = tag.length > 5 ? "geekblue" : "green";
-            if (tag === "loser") {
-              color = "volcano";
-            }
-            return (
-              <Tag color={color} key={tag}>
-                {tag.toUpperCase()}
-              </Tag>
-            );
-          })}
-        </>
-      ),
+      title: "Status",
+      dataIndex: "status",
+      key: "status",
+      render: (text: any, record: any) => {
+        let pitch = record.status === "PENDING" ? "red" : "green";
+        return <Tag color={pitch}>{record.status}</Tag>;
+      },
     },
   ];
 
-  return <Table columns={columns} dataSource={userData} />;
+  if (loading) {
+    return <Spinner />;
+  }
+
+  if (error) {
+    return <Error />;
+  }
+
+  return <Table columns={columns} dataSource={data.pledge} />;
 }
 
 export default Pledges;
