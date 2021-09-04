@@ -116,24 +116,30 @@ export const menuItems = [
   },
   {
     key: "4",
+    name: "Visitors",
+    path: "/visitors",
+    icon: <UserOutlined />,
+  },
+  {
+    key: "5",
     name: "Tithe",
     path: "/tithe",
     icon: <MoneyCollectOutlined />,
   },
   {
-    key: "5",
+    key: "6",
     name: "Chapels",
     path: "/chapels",
     icon: <TeamOutlined />,
   },
   {
-    key: "6",
+    key: "7",
     name: "Pledge",
     path: "/pledges",
     icon: <RedEnvelopeOutlined />,
   },
   {
-    key: "7",
+    key: "8",
     name: "Forms",
     path: "/forms",
     icon: <FormOutlined />,
@@ -178,6 +184,11 @@ export const forms = [
     key: "4",
     name: "Member",
     path: "/member",
+  },
+  {
+    key: "5",
+    name: "Pledge",
+    path: "/pledge",
   },
 ];
 
