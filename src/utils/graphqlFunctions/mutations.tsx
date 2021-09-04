@@ -84,3 +84,17 @@ export const ADD_TITHE = gql`
     }
   }
 `;
+
+export const ADD_PLEDGE = gql`
+mutation AddPledge($addPledge: AddPledge) {
+  addPledge(input: $addPledge) {
+    id
+    pledgeeID
+    pledgeDate
+    amount
+    programme
+    redeemedDate
+    status
+  }
+}
+`;

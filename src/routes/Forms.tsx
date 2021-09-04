@@ -4,11 +4,16 @@ import Sunday from "../pages/Forms/Sunday";
 import TitheForm from "../pages/Forms/Tithe";
 import Visitor from "../pages/Forms/Visitor";
 import Forms from "../pages/Forms";
+import Pledge from "../pages/Forms/Pledge";
 
 export function FormsRoute() {
   let { path } = useRouteMatch();
   return (
     <Switch>
+      <Route path={`${path}/pledge`}>
+        <Pledge />
+      </Route>
+
       <Route path={`${path}/member`}>
         <Member />
       </Route>
