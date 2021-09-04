@@ -17,6 +17,8 @@ import GoBack from "../../components/GoBack";
 import { ADD_MEMBER } from "../../utils/graphqlFunctions/mutations";
 import { success } from "../../components/Modal/Modal";
 
+
+
 function Member() {
   const [form] = Form.useForm();
   const [addMember] = useMutation(ADD_MEMBER);
@@ -27,7 +29,7 @@ function Member() {
       dateOfBirth: fieldsValue["dateOfBirth"].format("YYYY-MM-DD"),
       dateJoinedChurch: fieldsValue["dateJoinedChurch"].format("YYYY-MM-DD"),
     };
-    //  console.log("Received values of form: ", values);
+ ///   console.log("Received values of form: ", values);
 
     const {
       firstName,
@@ -105,7 +107,7 @@ function Member() {
         </Form.Item>
 
         <Form.Item
-          name="lasttName"
+          name="lastName"
           label="Last Name"
           rules={[{ required: true, message: "Required!" }]}
         >
@@ -121,7 +123,7 @@ function Member() {
           label="Date of Birth"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <DatePicker />
+          <DatePicker style={{ width: 200 }}  />
         </Form.Item>
 
         <Form.Item name="age" label="Age">
@@ -294,7 +296,7 @@ function Member() {
           label="Date you joined the church"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <DatePicker />
+          <DatePicker style={{ width: 200 }} />
         </Form.Item>
 
         <Form.Item name="department" label="Department">
@@ -326,6 +328,7 @@ function Member() {
           </Button>
         </Form.Item>
       </Form>
+  
     </div>
   );
 }
