@@ -1,12 +1,18 @@
 import { Result, Button } from "antd";
+import { useHistory } from "react-router-dom";
 
 function Error() {
+  let history = useHistory();
   return (
     <Result
       status="500"
       title="500"
       subTitle="Sorry, something went wrong."
-      extra={<Button type="primary">Back Home</Button>}
+      extra={
+        <Button type="primary" onClick={() => history.push("/")}>
+          Back Home
+        </Button>
+      }
     />
   );
 }
