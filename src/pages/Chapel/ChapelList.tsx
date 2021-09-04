@@ -5,16 +5,22 @@ import { useQuery } from "@apollo/client";
 import GoBack from "../../components/GoBack";
 import { GET_CHAPEL_MEMBERS } from "../../utils/graphqlFunctions/queries";
 import { colorSwitch } from "../../utils/functions";
+import Spinner from "../../components/Spinner/Spinner";
+import Error from "../../components/Error/Error";
 
 function Chapel() {
   let { slug }: any = useParams();
 
-  const { loading, data } = useQuery(GET_CHAPEL_MEMBERS, {
+  const { loading, error, data } = useQuery(GET_CHAPEL_MEMBERS, {
     variables: { chapel: slug },
   });
 
   if (loading) {
-    return <div>Hello</div>;
+    return <Spinner />;
+  }
+
+  if (error) {
+    return <Error />;
   }
 
   return (
