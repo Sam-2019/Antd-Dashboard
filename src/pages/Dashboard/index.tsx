@@ -15,7 +15,7 @@ const Dashboard = () => {
   const responsive = useBreakpoint();
 
   const onTabChange = (key: string, type: any): any => {
-    console.log(key, type);
+    //console.log(key, type);
 
     switch (key) {
       case "total":
