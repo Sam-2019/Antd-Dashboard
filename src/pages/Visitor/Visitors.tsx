@@ -3,14 +3,9 @@ import { Table, Space, Button, Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
 import { Link } from "react-router-dom";
-import { useQuery } from "@apollo/client";
-import { GET_VISITORS } from "../../utils/graphqlFunctions/queries";
-import Spinner from "../../components/Spinner/Spinner";
-import Error from "../../components/Error/Error";
+import { userData } from "../../utils/data";
 
 function Visitors() {
-  const { loading, error, data } = useQuery(GET_VISITORS);
-
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
 
@@ -141,15 +136,7 @@ function Visitors() {
     },
   ];
 
-  if (loading) {
-    return <Spinner />;
-  }
-
-  if (error) {
-    return <Error />;
-  }
-
-  return <Table columns={columns} dataSource={data.visitors} />;
+  return <Table columns={columns} dataSource={userData} />;
 }
 
 export default Visitors;

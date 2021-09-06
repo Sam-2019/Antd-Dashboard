@@ -9,9 +9,10 @@ import Spinner from "../../components/Spinner/Spinner";
 import Error from "../../components/Error/Error";
 import { colorSwitch } from "../../utils/functions";
 import GoBack from "../../components/GoBack";
+import { userData } from "../../utils/data";
 
 function PaymentType() {
-  const { loading, error, data } = useQuery(GET_MEMBERS);
+
 
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
@@ -160,18 +161,11 @@ function PaymentType() {
     },
   ];
 
-  if (loading) {
-    return <Spinner />;
-  }
-
-  if (error) {
-    return <Error />;
-  }
 
   return (
     <>
       <GoBack />
-      <Table columns={columns} dataSource={data.members} />;
+      <Table columns={columns} dataSource={userData} />;
     </>
   );
 }

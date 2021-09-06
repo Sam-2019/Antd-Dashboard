@@ -3,15 +3,10 @@ import { Table, Tag, Space, Button, Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
 import { Link } from "react-router-dom";
-import { useQuery } from "@apollo/client";
-import { GET_MEMBERS } from "../../utils/graphqlFunctions/queries";
-import Spinner from "../../components/Spinner/Spinner";
-import Error from "../../components/Error/Error";
 import { colorSwitch } from "../../utils/functions";
+import { userData } from "../../utils/data";
 
 function Members() {
-  const { loading, error, data } = useQuery(GET_MEMBERS);
-
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
 
@@ -159,15 +154,7 @@ function Members() {
     },
   ];
 
-  if (loading) {
-    return <Spinner />;
-  }
-
-  if (error) {
-    return <Error />;
-  }
-
-  return <Table columns={columns} dataSource={data.members} />;
+  return <Table columns={columns} dataSource={userData} />;
 }
 
 export default Members;

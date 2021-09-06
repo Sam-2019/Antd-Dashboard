@@ -3,14 +3,11 @@ import { Table, Tag, Space, Button, Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
 import { Link } from "react-router-dom";
-import { useQuery } from "@apollo/client";
-import { GET_PLEDGE } from "../../utils/graphqlFunctions/queries";
-import Spinner from "../../components/Spinner/Spinner";
-import Error from "../../components/Error/Error";
 import moment from "moment";
+import { pledges } from "../../utils/data";
 
 function Pledges() {
-  const { loading, error, data } = useQuery(GET_PLEDGE);
+
 
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
@@ -157,15 +154,9 @@ function Pledges() {
     },
   ];
 
-  if (loading) {
-    return <Spinner />;
-  }
 
-  if (error) {
-    return <Error />;
-  }
 
-  return <Table columns={columns} dataSource={data.pledge} />;
+  return <Table columns={columns} dataSource={pledges} />;
 }
 
 export default Pledges;
