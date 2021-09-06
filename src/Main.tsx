@@ -1,8 +1,4 @@
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Layout from "./components/Layout/Layout";
 import { FormsRoute } from "./routes/Forms";
@@ -14,10 +10,12 @@ import { NoPageRoute } from "./routes/404";
 import { PledgeRoute } from "./routes/Pledges";
 import { VisitorRoute } from "./routes/Visitors";
 import { PaymentRoute } from "./routes/Payments";
+import ScrollToTop from "./components/ScrollToTop";
 
 export default function Main() {
   return (
     <Router>
+      <ScrollToTop />
       <div>
         <Layout>
           <Switch>
