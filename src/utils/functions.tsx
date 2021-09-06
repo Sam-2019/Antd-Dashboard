@@ -56,3 +56,11 @@ export const colorSwitch = (tag: any) => {
 
   return color;
 };
+
+export const pathSnippets = (info: any) => {
+  return info.pathname.split("/");
+};
+
+export const pathSnippetsWithFilter = (info: any) => {
+  return info.pathname.split("/").filter((i: any) => i);
+};
