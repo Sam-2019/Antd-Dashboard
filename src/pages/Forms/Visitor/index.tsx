@@ -1,8 +1,8 @@
 import { Input, DatePicker, Form, Button, Radio } from "antd";
 import { useMutation } from "@apollo/client";
-import GoBack from "../../components/GoBack";
-import { ADD_VISITOR } from "../../utils/graphqlFunctions/mutations";
-import { success } from "../../components/Modal/Modal";
+import GoBack from "../../../components/GoBack";
+import { ADD_VISITOR } from "../../../utils/graphqlFunctions/mutations";
+import { success } from "../../../components/Modal/Modal";
 
 function Visitor() {
   const [form] = Form.useForm();
@@ -60,7 +60,7 @@ function Visitor() {
 
   return (
     <div>
-      <GoBack />
+      <GoBack header="Add Visitor" />
       <Form
         form={form}
         name="visitor"

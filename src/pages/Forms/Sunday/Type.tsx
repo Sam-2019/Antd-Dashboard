@@ -5,7 +5,7 @@ import GoBack from "../../../components/GoBack";
 import { ADD_SUNDAY_SERVICE } from "../../../utils/graphqlFunctions/mutations";
 import { success } from "../../../components/Modal/Modal";
 
-function Session() {
+function SundayType() {
   let { slug }: any = useParams();
   const [form] = Form.useForm();
   const [addSessionService] = useMutation(ADD_SUNDAY_SERVICE);
@@ -274,4 +274,4 @@ function Session() {
   );
 }
 
-export default Session;
+export default SundayType;

@@ -12,10 +12,10 @@ import {
   Space,
 } from "antd";
 import { useMutation } from "@apollo/client";
-import { departments } from "../../utils/data";
-import GoBack from "../../components/GoBack";
-import { ADD_MEMBER } from "../../utils/graphqlFunctions/mutations";
-import { success } from "../../components/Modal/Modal";
+import { departments } from "../../../utils/data";
+import GoBack from "../../../components/GoBack";
+import { ADD_MEMBER } from "../../../utils/graphqlFunctions/mutations";
+import { success } from "../../../components/Modal/Modal";
 
 
 

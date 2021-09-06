@@ -1,13 +1,12 @@
 import CardView from "../../../components/Card/Card";
 import GoBack from "../../../components/GoBack";
-import { paymentForms } from "../../../utils/data";
+import { payment } from "../../../utils/data";
 
 function Payment() {
   return (
     <>
-      <GoBack header="Back" />
-
-      <CardView data={paymentForms} />
+      <GoBack header="Payment" />
+      <CardView data={payment} />
     </>
   );
 }

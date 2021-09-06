@@ -1,8 +1,8 @@
 import { Input, DatePicker, Form, Button, InputNumber } from "antd";
 import { useMutation } from "@apollo/client";
-import GoBack from "../../components/GoBack";
-import { ADD_PLEDGE } from "../../utils/graphqlFunctions/mutations";
-import { success } from "../../components/Modal/Modal";
+import GoBack from "../../../components/GoBack";
+import { ADD_PLEDGE } from "../../../utils/graphqlFunctions/mutations";
+import { success } from "../../../components/Modal/Modal";
 
 function Pledge() {
   const [form] = Form.useForm();

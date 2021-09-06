@@ -5,11 +5,11 @@ import { sundayForms } from "../../../utils/data";
 function Sunday() {
   return (
     <>
-      <GoBack header="Back" />
+      <GoBack header="Sunday" />
 
       <CardView data={sundayForms} />
     </>
   );
 }
 
-export default Sunday;
+export default Sunday; 
