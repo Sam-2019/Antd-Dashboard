@@ -1,15 +1,14 @@
 import CardView from "../../../components/Card/Card";
 import GoBack from "../../../components/GoBack";
-import { sundayForms } from "../../../utils/data";
+import { sundayRoute } from "../../../utils/data";
 
 function Sunday() {
   return (
     <>
       <GoBack header="Sunday" />
-
-      <CardView data={sundayForms} />
+      <CardView data={sundayRoute} />
     </>
   );
 }
 
-export default Sunday; 
+export default Sunday;
