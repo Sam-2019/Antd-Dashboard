@@ -4,8 +4,8 @@ import {
   GroupOutlined,
   MoneyCollectOutlined,
   FormOutlined,
-  UserOutlined,
   RedEnvelopeOutlined,
+  UsergroupAddOutlined,
 } from "@ant-design/icons";
 
 export const userData = [
@@ -112,13 +112,13 @@ export const menuItems = [
     key: "3",
     name: "Members",
     path: "/members",
-    icon: <UserOutlined />,
+    icon: <TeamOutlined />,
   },
   {
     key: "4",
     name: "Visitors",
     path: "/visitors",
-    icon: <UserOutlined />,
+    icon: <UsergroupAddOutlined /> ,
   },
   {
     key: "5",
