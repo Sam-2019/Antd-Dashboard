@@ -46,10 +46,13 @@ function Chapel() {
             <>
               {department.map((tag: string, index: any): any => {
                 let color = colorSwitch(tag);
+                let params = tag.toLocaleLowerCase();
                 return (
+                  <Link to={`/departments/${params}`}>
                   <Tag color={color} key={index}>
                     {tag}
                   </Tag>
+                  </Link>
                 );
               })}
             </>
