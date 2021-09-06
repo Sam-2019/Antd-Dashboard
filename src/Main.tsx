@@ -1,15 +1,19 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
 import Layout from "./components/Layout/Layout";
 import { FormsRoute } from "./routes/Forms";
 import { ChapelsRoute } from "./routes/Chapels";
-import { TitheRoute } from "./routes/Tithe";
 import { MemberRoute } from "./routes/Members";
 import { DepartmentRoute } from "./routes/Departments";
 import { DashboardRoute } from "./routes/Dashboard";
 import { NoPageRoute } from "./routes/404";
 import { PledgeRoute } from "./routes/Pledges";
 import { VisitorRoute } from "./routes/Visitors";
+import { PaymentRoute } from "./routes/Payments";
 
 export default function Main() {
   return (
@@ -33,8 +37,8 @@ export default function Main() {
               <ChapelsRoute />
             </Route>
 
-            <Route path="/tithe">
-              <TitheRoute />
+            <Route path="/payments">
+              <PaymentRoute />
             </Route>
 
             <Route path="/visitors">
