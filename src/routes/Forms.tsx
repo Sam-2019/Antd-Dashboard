@@ -1,13 +1,17 @@
 import { Switch, Route, useRouteMatch } from "react-router-dom";
-import Member from "../pages/Forms/Member";
-import Sunday from "../pages/Forms/Sunday";
-import TitheForm from "../pages/Forms/Tithe";
-import Visitor from "../pages/Forms/Visitor";
+
 import Forms from "../pages/Forms";
-import Pledge from "../pages/Forms/Pledge";
+import Member from "../pages/Forms/Member/index";
+import Visitor from "../pages/Forms/Visitor/index";
+import Pledge from "../pages/Forms/Pledge/index";
+import Sunday from "../pages/Forms/Sunday/index";
+import TypeOfService from "../pages/Forms/Sunday/Type";
+import Payment from "../pages/Forms/Payments/index";
+import PaymentType from "../pages/Forms/Payments/Type";
 
 export function FormsRoute() {
   let { path } = useRouteMatch();
+
   return (
     <Switch>
       <Route path={`${path}/pledge`}>
@@ -18,12 +22,20 @@ export function FormsRoute() {
         <Member />
       </Route>
 
-      <Route path={`${path}/tithe`}>
-        <TitheForm />
+      <Route path={`${path}/payments/:slug`}>
+        <PaymentType />
+      </Route>
+
+      <Route path={`${path}/payments`}>
+        <Payment />
       </Route>
 
       <Route path={`${path}/visitor`}>
         <Visitor />
+      </Route>
+
+      <Route path={`${path}/sunday/:slug`}>
+        <TypeOfService />
       </Route>
 
       <Route path={`${path}/sunday`}>
