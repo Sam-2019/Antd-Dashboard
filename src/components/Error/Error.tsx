@@ -9,8 +9,8 @@ function Error() {
       title="500"
       subTitle="Sorry, something went wrong."
       extra={
-        <Button type="primary" onClick={() => history.push("/")}>
-          Back Home
+        <Button type="primary" onClick={() => history.goBack()}>
+          Go Back
         </Button>
       }
     />
