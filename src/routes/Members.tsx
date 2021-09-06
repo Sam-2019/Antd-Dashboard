@@ -1,6 +1,6 @@
 import { Switch, Route, useRouteMatch } from "react-router-dom";
-import Member from "../pages/Member/MemberItem";
-import Members from "../pages/Member";
+import Member from "../pages/Members/MemberItem";
+import Members from "../pages/Members";
 
 export function MemberRoute() {
   let { path } = useRouteMatch();
