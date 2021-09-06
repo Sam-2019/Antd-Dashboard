@@ -3,18 +3,16 @@ import { Table, Space, Button, Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
 import { Link } from "react-router-dom";
-import { useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
-import { GET_DEPARTMENT } from "../../utils/graphqlFunctions/queries";
-import Spinner from "../../components/Spinner/Spinner";
-import Error from "../../components/Error/Error";
 import GoBack from "../../components/GoBack";
+import { userData } from "../../utils/data";
 
 function Department() {
   let { slug }: any = useParams();
-  const { loading, error, data } = useQuery(GET_DEPARTMENT, {
-    variables: { department: slug },
-  });
+  console.log(slug);
+
+  const filterData = userData.filter((data) => data.department !== slug);
+  console.log(filterData);
 
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
@@ -141,18 +139,10 @@ function Department() {
     },
   ];
 
-  if (loading) {
-    return <Spinner />;
-  }
-
-  if (error) {
-    return <Error />;
-  }
-
   return (
     <div>
       <GoBack />
-      <Table columns={columns} dataSource={data.department} />
+      <Table columns={columns} dataSource={userData} />
     </div>
   );
 }

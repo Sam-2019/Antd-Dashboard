@@ -1,63 +1,59 @@
-import { Link, useParams } from "react-router-dom";
-import { Table, Tag } from "antd";
+import { Link } from "react-router-dom";
+import { Table, Tag, Space } from "antd";
 import Column from "antd/lib/table/Column";
-import { useQuery } from "@apollo/client";
 import GoBack from "../../components/GoBack";
-import { GET_CHAPEL_MEMBERS } from "../../utils/graphqlFunctions/queries";
-import { colorSwitch } from "../../utils/functions";
-import Spinner from "../../components/Spinner/Spinner";
-import Error from "../../components/Error/Error";
+import { userData } from "../../utils/data";
 
 function Chapel() {
-  let { slug }: any = useParams();
-
-  const { loading, error, data } = useQuery(GET_CHAPEL_MEMBERS, {
-    variables: { chapel: slug },
-  });
-
-  if (loading) {
-    return <Spinner />;
-  }
-
-  if (error) {
-    return <Error />;
-  }
-
   return (
     <div>
       <GoBack />
-      <Table dataSource={data.chapel}>
+      <Table dataSource={userData}>
         <Column
           title="Name"
           dataIndex="firstName"
           key="firstName"
           render={(text: any, record: any): any => (
-            <Link to={`/members/${record.firstName} ${record.lastName}`}>
-              {record.firstName} {record.lastName}
-            </Link>
+            <Space size="middle">
+              <Link to={`/members/${record.firstName} ${record.lastName}`}>
+                {record.firstName} {record.lastName}
+              </Link>
+            </Space>
           )}
         />
         <Column title="Age" dataIndex="age" key="age" />
+        <Column title="Address" dataIndex="address" key="address" />
         <Column
           title="Department"
           dataIndex="department"
-          key="department"
-          render={(department: string[]) => (
+          key="tags"
+          render={(tags) => (
             <>
-              {department.map((tag: string, index: any): any => {
-                let color = colorSwitch(tag);
-                let params = tag.toLocaleLowerCase();
+              {tags.map((tag: string): any => {
+                let color = tag.length > 5 ? "geekblue" : "green";
+                if (tag === "loser") {
+                  color = "volcano";
+                }
                 return (
-                  <Link to={`/departments/${params}`}>
-                  <Tag color={color} key={index}>
-                    {tag}
+                  <Tag color={color} key={tag}>
+                    {tag.toUpperCase()}
                   </Tag>
-                  </Link>
                 );
               })}
             </>
           )}
         />
+        {/* <Column
+        title="Action"
+        dataIndex="action"
+        key="action"
+        render={(text, record) => (
+          <Space size="middle">
+            <a>Invite {record.lastName}</a>
+            <a>Delete</a>
+          </Space>
+        )}
+      /> */}
       </Table>
     </div>
   );
