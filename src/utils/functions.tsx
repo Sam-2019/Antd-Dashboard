@@ -64,3 +64,15 @@ export const pathSnippets = (info: any) => {
 export const pathSnippetsWithFilter = (info: any) => {
   return info.pathname.split("/").filter((i: any) => i);
 };
+
+export function checkSlug(data: any) {
+  if (data === "mmv") {
+    return data.toUpperCase();
+  }
+
+  if (data === "pvv") {
+    return data.toUpperCase();
+  }
+
+  return null;
+}
