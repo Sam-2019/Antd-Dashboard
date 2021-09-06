@@ -7,15 +7,20 @@ function CardView({ data }: any) {
   const history = useHistory();
   let location = useLocation();
 
-  let pathSnippets = location.pathname.split("/").filter((i) => i);
+  function routeAction(data: any) {
+    let pathSnippets = data.path.split("/");
+
+    if (pathSnippets.length > 2) {
+      return history.push(`${location.pathname}/${pathSnippets[2]}`);
+    }
+
+    return history.push(`${location.pathname}${data.path}`);
+  }
 
   return (
     <div className="gridStyle">
       {data.map((data: any) => (
-        <div
-          key={data.key}
-          onClick={() => history.push(`/${pathSnippets[0]}${data.path}`)}
-        >
+        <div key={data.key} onClick={() => routeAction(data)}>
           <Card
             hoverable
             cover={
