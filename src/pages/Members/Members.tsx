@@ -139,15 +139,19 @@ function Members() {
       title: "Department",
       dataIndex: "department",
       key: "department",
+      width: "60%",
       render: (department: string[]) => (
         <>
           {department.map((tag: string, index: any): any => {
             let color = colorSwitch(tag);
+            let params = tag.toLocaleLowerCase();
 
             return (
-              <Tag color={color} key={index}>
-                {tag}
-              </Tag>
+              <Link to={`/departments/${params}`}>
+                <Tag color={color} key={index}>
+                  {tag}
+                </Tag>
+              </Link>
             );
           })}
         </>
