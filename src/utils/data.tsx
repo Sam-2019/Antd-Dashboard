@@ -122,8 +122,8 @@ export const menuItems = [
   },
   {
     key: "5",
-    name: "Tithe",
-    path: "/tithe",
+    name: "Payments",
+    path: "/payments",
     icon: <MoneyCollectOutlined />,
   },
   {
@@ -172,13 +172,13 @@ export const forms = [
   },
   {
     key: "2",
-    name: "Visitor",
-    path: "/visitor",
+    name: "Payments",
+    path: "/payments",
   },
   {
     key: "3",
-    name: "Tithe",
-    path: "/tithe",
+    name: "Visitor",
+    path: "/visitor",
   },
   {
     key: "4",
@@ -189,6 +189,52 @@ export const forms = [
     key: "5",
     name: "Pledge",
     path: "/pledge",
+  },
+];
+
+export const sundayRoute = [
+  {
+    key: "1",
+    name: "First Service",
+    path: "/sunday/first service",
+  },
+  {
+    key: "2",
+    name: "Second Service",
+    path: "/sunday/second service",
+  },
+  {
+    key: "3",
+    name: "Joint Service",
+    path: "/sunday/joint service",
+  },
+];
+
+export const paymentRoute = [
+  {
+    key: "1",
+    name: "Tithe",
+    path: "/payments/tithe",
+  },
+  {
+    key: "2",
+    name: "Project Offering",
+    path: "/payments/project offering",
+  },
+  {
+    key: "3",
+    name: "MMV",
+    path: "/payments/mmv",
+  },
+  {
+    key: "4",
+    name: "PVV",
+    path: "/payments/pvv",
+  },
+  {
+    key: "5",
+    name: "Welfare",
+    path: "/payments/welfare",
   },
 ];
 
