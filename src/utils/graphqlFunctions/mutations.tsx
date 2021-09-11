@@ -53,6 +53,7 @@ export const ADD_SUNDAY_SERVICE = gql`
       endTime
       visitorsFemale
       visitorsMale
+      type
     }
   }
 `;
@@ -76,25 +77,33 @@ export const ADD_VISITOR = gql`
   }
 `;
 
-export const ADD_TITHE = gql`
-  mutation AddTithePayer($addTithePayer: AddTithePayer) {
-    addTithePayer(input: $addTithePayer) {
-      member
-      month
+export const ADD_PAYMENT = gql`
+  mutation Mutation($addPaymentPayerInput: AddPayer) {
+    addPaymentPayer(input: $addPaymentPayerInput) {
+      members
     }
   }
 `;
 
-export const ADD_PLEDGE = gql`
-mutation AddPledge($addPledge: AddPledge) {
-  addPledge(input: $addPledge) {
-    id
-    pledgeeID
-    pledgeDate
-    amount
-    programme
-    redeemedDate
-    status
+
+export const ADD_PROJECTOFFERING = gql`
+mutation Mutation($addProjectOfferingInput: AddPayer) {
+  addProjectOffering(input: $addProjectOfferingInput) {
+    members
   }
 }
+`;
+
+export const ADD_PLEDGE = gql`
+  mutation AddPledge($addPledge: AddPledge) {
+    addPledge(input: $addPledge) {
+      id
+      pledgeeID
+      pledgeDate
+      amount
+      programme
+      redeemedDate
+      status
+    }
+  }
 `;
