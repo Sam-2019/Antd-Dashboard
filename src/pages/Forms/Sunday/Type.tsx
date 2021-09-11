@@ -18,7 +18,7 @@ function SundayType() {
       endTime: fieldsValue["endTime"].format("HH:mm:ss"),
       type: slug,
     };
-    console.log("Received values of form: ", values);
+ //   console.log("Received values of form: ", values);
 
     const {
       adultFemale,
