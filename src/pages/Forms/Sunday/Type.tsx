@@ -10,13 +10,13 @@ function SundayType() {
   const [form] = Form.useForm();
   const [addSessionService] = useMutation(ADD_SUNDAY_SERVICE);
 
-  console.log(slug);
   const onFinish = (fieldsValue: any) => {
     const values = {
       ...fieldsValue,
       date: fieldsValue["date"].format("YYYY-MM-DD"),
       startTime: fieldsValue["startTime"].format("HH:mm:ss"),
       endTime: fieldsValue["endTime"].format("HH:mm:ss"),
+      type: slug,
     };
     console.log("Received values of form: ", values);
 
@@ -39,6 +39,7 @@ function SundayType() {
       startTime,
       theme,
       visitorsFemale,
+      type,
     } = values;
 
     addSessionService({
@@ -62,6 +63,7 @@ function SundayType() {
           startTime,
           theme,
           visitorsFemale,
+          type,
         },
       },
     });
