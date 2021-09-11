@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
 import { useMutation } from "@apollo/client";
 import GoBack from "../../../components/GoBack";
-import { ADD_TITHE } from "../../../utils/graphqlFunctions/mutations";
+import {
+  ADD_PAYMENT,
+
+} from "../../../utils/graphqlFunctions/mutations";
 import { success } from "../../../components/Modal/Modal";
 
 import { Transfer, Button, DatePicker, Typography } from "antd";
 
 import { newData } from "../../../utils/data";
+import { useParams } from "react-router-dom";
 
 const { Text } = Typography;
 
@@ -22,6 +26,7 @@ interface MockData {
 // }
 
 function PaymentType() {
+  let { slug }: any = useParams();
   const [mockData, setMockData] = useState<MockData[]>([]);
   const [targetKeys, setTargetKeys] = useState<string[]>([]);
   const [month, setMonth] = useState<string>("");
@@ -30,9 +35,9 @@ function PaymentType() {
     emptytransfer: false,
   });
 
-  const [addTithePayer] = useMutation(ADD_TITHE);
+  
+  const [addPaymentPayer] = useMutation(ADD_PAYMENT);
 
-  //console.log(sourceData);
 
   useEffect(() => {
     // const getData = newData;
@@ -80,15 +85,14 @@ function PaymentType() {
   };
 
   const handleSearch = (dir: any, value: any) => {
-    console.log("search:", dir, value);
+   // console.log("search:", dir, value);
   };
 
   function onChange(date: any, dateString: any) {
-    console.log(dateString);
     setMonth(dateString);
   }
 
-  const onFinish = () => {
+  const onFinish = async () => {
     if (!month && targetKeys.length === 0) {
       return setAlert((prevState): any => ({
         ...prevState,
@@ -111,23 +115,33 @@ function PaymentType() {
       }));
     }
 
-    addTithePayer({
+
+    // console.log(targetKeys);
+
+    // await addProjectOffering({
+    //   variables: {
+    //     addProjectOfferingInput: {
+    //       "members": targetKeys,
+    //       "month": "10-2021",
+    //       "type": "Welfare"
+    //     },
+    //   },
+    // });
+
+    addPaymentPayer({
       variables: {
-        addTithePayer: {
-          month: month,
-          member: targetKeys,
+        addPaymentPayerInput: {
+          members: targetKeys,
+          month,
+          type: slug,
         },
       },
-    });
-
-    success("");
-
+    });    success("");
     setAlert((prevState): any => ({
       ...prevState,
       emptytext: false,
       emptytransfer: false,
-    }));
-  };
+    }));  };
 
   return (
     <>
