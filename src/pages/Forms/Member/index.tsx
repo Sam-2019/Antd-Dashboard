@@ -39,6 +39,7 @@ function Member() {
       age,
       gender,
       hometown,
+      location,
       region,
       country,
       residentialAddress,
@@ -64,6 +65,7 @@ function Member() {
           dateOfBirth,
           age,
           gender,
+          location,
           hometown,
           region,
           country,
@@ -139,6 +141,14 @@ function Member() {
             <Radio.Button value="Male">Male</Radio.Button>
             <Radio.Button value="Female">Female</Radio.Button>
           </Radio.Group>
+        </Form.Item>
+
+        <Form.Item
+          name="location"
+          label="Location"
+          rules={[{ required: true, message: "Required!" }]}
+        >
+          <Input style={{ width: 200 }}  />
         </Form.Item>
 
         <Form.Item
