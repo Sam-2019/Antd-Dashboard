@@ -13,6 +13,40 @@ export const GET_MEMBERS = gql`
   }
 `;
 
+export const GET_MEMBER = gql`
+  query Query($memberId: ID) {
+    member(id: $memberId) {
+      id
+      firstName
+      lastName
+      chapel
+      gender
+      emailAddress
+      department
+      residentialAddress
+      contact
+      location
+      nameOfChildren
+    }
+  }
+`;
+
+export const GET_MEMBER_NAME = gql`
+  query Query($memberId: ID) {
+    member(id: $memberId) {
+      id
+      firstName
+      lastName
+      chapel
+      gender
+      emailAddress
+      department
+      residentialAddress
+      contact
+      location
+    }
+  }
+`; 
 export const GET_CHAPEL_MEMBERS = gql`
   query Query($chapel: String) {
     chapel(chapel: $chapel) {
