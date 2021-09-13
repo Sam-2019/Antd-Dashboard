@@ -15,8 +15,6 @@ function Member() {
     variables: { memberId: slug },
   });
 
-  console.log(data);
-
   if (loading) {
     return <Spinner />;
   }
@@ -36,7 +34,7 @@ function Member() {
           </>
         }
       />
-      
+
       <MemberItem dataSource={data.member} />
     </>
   );
