@@ -26,7 +26,10 @@ export const GET_MEMBER = gql`
       residentialAddress
       contact
       location
-      nameOfChildren
+      nameOfChildren {
+        firstName
+        lastName
+      }
     }
   }
 `;
@@ -46,7 +49,7 @@ export const GET_MEMBER_NAME = gql`
       location
     }
   }
-`; 
+`;
 export const GET_CHAPEL_MEMBERS = gql`
   query Query($chapel: String) {
     chapel(chapel: $chapel) {
