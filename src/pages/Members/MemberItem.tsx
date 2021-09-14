@@ -14,7 +14,7 @@ function MemberItem({ dataSource }: any) {
         <Col span="4">
           <Image
             width={200}
-            src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+            src="https://firebasestorage.googleapis.com/v0/b/storage-unit-cd9b8.appspot.com/o/images%2Fhblvidvqydi2r53oe1qw%20-%20Copy.jpg?alt=media&token=9dd9eb9b-f067-46f7-abee-cfb5707a2dd1"
           />
         </Col>
         <Col span={20}>
@@ -45,20 +45,32 @@ function MemberItem({ dataSource }: any) {
             <Title level={5}>Family</Title>
             <Descriptions>
               <Descriptions.Item label="Spouse">
-                {dataSource.contact}
+                {!dataSource.spouseName ? (
+                  "N/A"
+                ) : (
+                  <> {dataSource.spouseName} </>
+                )}
               </Descriptions.Item>
             </Descriptions>
 
             <div>
               <span>
                 Children :
-                {/* {dataSource.nameOfChildren.length === 1 ? "Child" : "Children"} */}
+         
               </span>
 
               <Space direction="vertical">
-                {dataSource.department.map((tag: string, index: any) => {
-                  return <Text key={index}>{tag}</Text>;
-                })}
+                {dataSource.nameOfChildren.length === 0 ? (
+                  "N/A"
+                ) : (
+                  <>
+                    {dataSource.nameOfChildren.map(
+                      (tag: string, index: any) => {
+                        return <Text key={index}>{tag}</Text>;
+                      }
+                    )}
+                  </>
+                )}
               </Space>
             </div>
           </div>
@@ -69,7 +81,7 @@ function MemberItem({ dataSource }: any) {
               let color = colorSwitch(tag);
               let params = tag.toLocaleLowerCase();
               return (
-                <Link to={`/departments/${params}`}>
+                <Link key={index}  to={`/departments/${params}`}>
                   <Tag color={color} key={index}>
                     {tag}
                   </Tag>
