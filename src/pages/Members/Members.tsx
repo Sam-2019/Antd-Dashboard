@@ -147,7 +147,7 @@ function Members() {
             let params = tag.toLocaleLowerCase();
 
             return (
-              <Link to={`/departments/${params}`}>
+              <Link key={index} to={`/departments/${params}`}>
                 <Tag color={color} key={index}>
                   {tag}
                 </Tag>
@@ -167,7 +167,7 @@ function Members() {
     return <Error />;
   }
 
-  return <Table columns={columns} dataSource={data.members} />;
+  return <Table rowKey="id" columns={columns} dataSource={data.members} />;
 }
 
 export default Members;

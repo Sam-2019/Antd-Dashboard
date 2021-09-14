@@ -152,7 +152,7 @@ function Department() {
   return (
     <div>
       <GoBack />
-      <Table columns={columns} dataSource={data.department} />
+      <Table rowKey="id" columns={columns} dataSource={data.department} />
     </div>
   );
 }

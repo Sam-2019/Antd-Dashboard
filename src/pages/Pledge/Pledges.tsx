@@ -165,7 +165,7 @@ function Pledges() {
     return <Error />;
   }
 
-  return <Table columns={columns} dataSource={data.pledge} />;
+  return <Table  rowKey="id"  columns={columns} dataSource={data.pledge} />;
 }
 
 export default Pledges;

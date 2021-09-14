@@ -149,7 +149,7 @@ function Visitors() {
     return <Error />;
   }
 
-  return <Table columns={columns} dataSource={data.visitors} />;
+  return <Table rowKey="id"  columns={columns} dataSource={data.visitors} />;
 }
 
 export default Visitors;
