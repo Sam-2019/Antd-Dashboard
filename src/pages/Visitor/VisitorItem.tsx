@@ -1,12 +1,7 @@
 import { Col, Descriptions, Image, Row, Space, Tag, Typography } from "antd";
 import Title from "antd/lib/typography/Title";
-import { Link } from "react-router-dom";
-
-const { Text } = Typography;
 
 function VisitorItem({ dataSource }: any) {
-  // console.log(dataSource);
-
   return (
     <div>
       <Row>
@@ -43,7 +38,6 @@ function VisitorItem({ dataSource }: any) {
               {dataSource.invitedBy}
             </Descriptions.Item>
           </Descriptions>
-
         </Col>
       </Row>
     </div>
