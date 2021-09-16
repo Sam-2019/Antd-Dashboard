@@ -1,21 +1,53 @@
-import { Descriptions } from "antd";
-import { useParams } from "react-router-dom";
+import { Col, Descriptions, Image, Row, Space, Tag, Typography } from "antd";
+import Title from "antd/lib/typography/Title";
+import { Link } from "react-router-dom";
 
-import GoBack from "../../components/GoBack";
+const { Text } = Typography;
 
-function Visitor() {
-  let { slug }: any = useParams();
+function VisitorItem({ dataSource }: any) {
+  // console.log(dataSource);
 
   return (
     <div>
-      <GoBack />
+      <Row>
+        <Col span="4">
+          <Image
+            width={200}
+            src="https://firebasestorage.googleapis.com/v0/b/storage-unit-cd9b8.appspot.com/o/images%2Fhblvidvqydi2r53oe1qw%20-%20Copy.jpg?alt=media&token=9dd9eb9b-f067-46f7-abee-cfb5707a2dd1"
+          />
+        </Col>
+        <Col span={20}>
+          {/* <Title level={4}>Member Info</Title> */}
 
-      <Descriptions title="User Info">
-        <Descriptions.Item label="UserName">{slug}</Descriptions.Item>
-        <Descriptions.Item label="Telephone">1810000000</Descriptions.Item>
-      </Descriptions>
+          <Title level={2}>
+            {dataSource.firstName} {dataSource.lastName}
+          </Title>
+
+          <Descriptions>
+            <Descriptions.Item label="Contact">
+              {dataSource.contact}
+            </Descriptions.Item>
+            <Descriptions.Item label="Location">
+              {dataSource.location}
+            </Descriptions.Item>
+
+            <Descriptions.Item label="Chapel">
+              {dataSource.chapel}
+            </Descriptions.Item>
+
+            <Descriptions.Item label="Date Visited">
+              {dataSource.date}
+            </Descriptions.Item>
+
+            <Descriptions.Item label="Invited By">
+              {dataSource.invitedBy}
+            </Descriptions.Item>
+          </Descriptions>
+
+        </Col>
+      </Row>
     </div>
   );
 }
 
-export default Visitor;
+export default VisitorItem;

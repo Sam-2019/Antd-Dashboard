@@ -110,7 +110,7 @@ function Visitors() {
         </Space>
       ) : (
         <Space size="middle">
-          <Link to={`/visitors/${record.firstName} ${record.lastName}`}>
+          <Link to={`/visitors/${record.id}`}>
             {record.firstName} {record.lastName}
           </Link>
         </Space>
@@ -149,7 +149,7 @@ function Visitors() {
     return <Error />;
   }
 
-  return <Table rowKey="id"  columns={columns} dataSource={data.visitors} />;
+  return <Table rowKey="id" columns={columns} dataSource={data.visitors} />;
 }
 
 export default Visitors;
