@@ -13,6 +13,16 @@ export const GET_MEMBERS = gql`
   }
 `;
 
+export const GET_MEMBERS_PAYMENT = gql`
+  query Query {
+    members {
+      id
+      firstName
+      lastName
+    }
+  }
+`;
+
 export const GET_MEMBER = gql`
   query Query($memberId: ID) {
     member(id: $memberId) {
@@ -26,10 +36,8 @@ export const GET_MEMBER = gql`
       residentialAddress
       contact
       location
-      nameOfChildren {
-        firstName
-        lastName
-      }
+      spouseName
+      nameOfChildren
     }
   }
 `;
@@ -101,6 +109,23 @@ export const GET_VISITORS = gql`
       contact
       date
       monthOfBirth
+    }
+  }
+`;
+
+export const GET_VISITOR = gql`
+  query Query($visitorId: ID) {
+    visitor(id: $visitorId) {
+      id
+      firstName
+      lastName
+      contact
+      location
+      invitedBy
+      awarenessChannel
+      monthOfBirth
+      knowingChrist
+      chapel
     }
   }
 `;
