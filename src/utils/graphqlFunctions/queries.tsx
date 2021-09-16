@@ -78,6 +78,8 @@ export const GET_PLEDGE = gql`
     pledge {
       id
       pledgeeID
+      firstName,
+      lastName,
       amount
       programme
       status

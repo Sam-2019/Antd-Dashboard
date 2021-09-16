@@ -86,7 +86,7 @@ function Pledge() {
         <Form.Item
           name="otherName"
           label="Other Name"
-          rules={[{ required: true, message: "Required!" }]}
+ 
         >
           <Input style={{ width: 200 }} />
         </Form.Item>
