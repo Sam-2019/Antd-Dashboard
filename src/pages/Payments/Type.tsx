@@ -171,7 +171,7 @@ function PaymentType() {
   return (
     <>
       <GoBack />
-      <Table rowKey="id"  columns={columns} dataSource={data.members} />;
+      <Table rowKey="id" columns={columns} dataSource={data.members} />;
     </>
   );
 }
