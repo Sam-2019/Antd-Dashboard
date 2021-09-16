@@ -7,7 +7,6 @@ import { colorSwitch } from "../../utils/functions";
 const { Text } = Typography;
 
 function MemberItem({ dataSource }: any) {
-
   return (
     <div>
       <Row>
@@ -29,7 +28,7 @@ function MemberItem({ dataSource }: any) {
               {dataSource.contact}
             </Descriptions.Item>
             <Descriptions.Item label="Location">
-              {dataSource.location}
+              {!dataSource.location ? "N/A" : <> {dataSource.location} </>}
             </Descriptions.Item>
 
             <Descriptions.Item label="Chapel">
@@ -41,7 +40,7 @@ function MemberItem({ dataSource }: any) {
             </Descriptions.Item>
           </Descriptions>
 
-          <div>
+          <div >
             <Title level={5}>Family</Title>
             <Descriptions>
               <Descriptions.Item label="Spouse">
@@ -54,10 +53,7 @@ function MemberItem({ dataSource }: any) {
             </Descriptions>
 
             <div>
-              <span>
-                Children :
-         
-              </span>
+              <span>Children: </span>
 
               <Space direction="vertical">
                 {dataSource.nameOfChildren.length === 0 ? (
@@ -75,13 +71,13 @@ function MemberItem({ dataSource }: any) {
             </div>
           </div>
 
-          <div>
+          <div style={{marginTop: "10px"}}>
             <Title level={5}>Departments</Title>
             {dataSource.department.map((tag: string, index: any) => {
               let color = colorSwitch(tag);
               let params = tag.toLocaleLowerCase();
               return (
-                <Link key={index}  to={`/departments/${params}`}>
+                <Link key={index} to={`/departments/${params}`}>
                   <Tag color={color} key={index}>
                     {tag}
                   </Tag>

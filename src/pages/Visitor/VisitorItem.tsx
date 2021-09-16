@@ -27,15 +27,15 @@ function VisitorItem({ dataSource }: any) {
             </Descriptions.Item>
 
             <Descriptions.Item label="Chapel">
-              {dataSource.chapel}
+              {!dataSource.chapel ? "N/A" : <> {dataSource.chapel} </>}
             </Descriptions.Item>
 
             <Descriptions.Item label="Date Visited">
-              {dataSource.date}
+              {!dataSource.date ? "N/A" : <> {dataSource.date} </>}
             </Descriptions.Item>
 
             <Descriptions.Item label="Invited By">
-              {dataSource.invitedBy}
+              {!dataSource.invitedBy ? "N/A" : <> {dataSource.invitedBy} </>}
             </Descriptions.Item>
           </Descriptions>
         </Col>
