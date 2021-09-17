@@ -1,15 +1,11 @@
 import { useState, useEffect } from "react";
 import { useMutation } from "@apollo/client";
 import GoBack from "../../../components/GoBack";
-import {
-  ADD_PAYMENT,
-
-} from "../../../utils/graphqlFunctions/mutations";
+import { ADD_PAYMENT } from "../../../utils/graphqlFunctions/mutations";
 import { success } from "../../../components/Modal/Modal";
 
 import { Transfer, Button, DatePicker, Typography } from "antd";
 
-import { newData } from "../../../utils/data";
 import { useParams } from "react-router-dom";
 
 const { Text } = Typography;
@@ -21,13 +17,20 @@ interface MockData {
   chosen: boolean;
 }
 
+interface MemberData {
+  id: string;
+  firstName: string;
+  lastName: string;
+}
+
 // interface TargetData {
 //   key: string;
 // }
 
-function PaymentType() {
+function PaymentType({ dataSource }: any) {
   let { slug }: any = useParams();
-  const [mockData, setMockData] = useState<MockData[]>([]);
+
+  const [mockData, setMockData] = useState<MemberData[]>([]);
   const [targetKeys, setTargetKeys] = useState<string[]>([]);
   const [month, setMonth] = useState<string>("");
   const [alert, setAlert] = useState({
@@ -35,14 +38,11 @@ function PaymentType() {
     emptytransfer: false,
   });
 
-  
   const [addPaymentPayer] = useMutation(ADD_PAYMENT);
 
-
   useEffect(() => {
-    // const getData = newData;
-    // setMockData(getData);
-
+    // const getData = data.members;
+    //setMockData(getData);
     getMock();
   }, []);
 
@@ -50,7 +50,8 @@ function PaymentType() {
     let trgetKeys: string[] = [];
     let mckData = [];
 
-    for (let data of newData) {
+    for (let data of dataSource) {
+      console.log(data);
       // const chosen: Boolean = data.chosen;
       // const key: string = data.key;
 
@@ -64,28 +65,28 @@ function PaymentType() {
     setTargetKeys(trgetKeys);
   };
 
-  // console.log(mockData);
-  // console.log(targetKeys);
+  console.log(mockData);
+  console.log(targetKeys);
 
   const renderFooter = () => (
     <Button
       size="small"
       style={{ float: "right", margin: 5 }}
-      onClick={getMock}
+      onClick={dataSource}
     >
       Reset
     </Button>
   );
 
   const filterOption = (inputValue: any, option: any) =>
-    option.description.indexOf(inputValue) > -1;
+    option.id.indexOf(inputValue) > -1;
 
   const handleChange = (targetKeys: any) => {
     setTargetKeys(targetKeys);
   };
 
   const handleSearch = (dir: any, value: any) => {
-   // console.log("search:", dir, value);
+    // console.log("search:", dir, value);
   };
 
   function onChange(date: any, dateString: any) {
@@ -115,7 +116,6 @@ function PaymentType() {
       }));
     }
 
-
     // console.log(targetKeys);
 
     // await addProjectOffering({
@@ -136,12 +136,14 @@ function PaymentType() {
           type: slug,
         },
       },
-    });    success("");
+    });
+    success("");
     setAlert((prevState): any => ({
       ...prevState,
       emptytext: false,
       emptytransfer: false,
-    }));  };
+    }));
+  };
 
   return (
     <>
@@ -172,7 +174,7 @@ function PaymentType() {
               targetKeys={targetKeys}
               onChange={handleChange}
               onSearch={handleSearch}
-              render={(item) => item.title}
+              render={(item) => `${item.firstName} ${item.lastName}`}
               footer={renderFooter}
               listStyle={{
                 width: 250,

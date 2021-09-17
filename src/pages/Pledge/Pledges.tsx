@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Table, Tag, Space, Button, Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
-import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_PLEDGE } from "../../utils/graphqlFunctions/queries";
 import Spinner from "../../components/Spinner/Spinner";
@@ -98,25 +97,21 @@ function Pledges() {
     render: (text: any, record: any) =>
       searchedColumn === dataIndex ? (
         <Space size="middle">
-          <Link to={`/members/${record.id}`}>
-            <Highlighter
-              highlightStyle={{ backgroundColor: "#ffc069", padding: 0 }}
-              searchWords={[searchText]}
-              autoEscape
-              textToHighlight={text ? ` ${record.id}` : ""}
-            />
-          </Link>
+          <Highlighter
+            highlightStyle={{ backgroundColor: "#ffc069", padding: 0 }}
+            searchWords={[searchText]}
+            autoEscape
+            textToHighlight={text ? ` ${record.id}` : ""}
+          />
         </Space>
       ) : (
-        <Space size="middle">
-          <Link to={`/members/${record.id}`}>{record.id}</Link>
-        </Space>
+        <Space size="middle">{`${record.firstName} ${record.lastName}`}</Space>
       ),
   });
 
   const columns = [
     {
-      title: "ID",
+      title: "Name",
       dataIndex: "id",
       key: "id",
       ...getColumnSearchProps("id"),
@@ -165,7 +160,7 @@ function Pledges() {
     return <Error />;
   }
 
-  return <Table  rowKey="id"  columns={columns} dataSource={data.pledge} />;
+  return <Table rowKey="id" columns={columns} dataSource={data.pledge} />;
 }
 
 export default Pledges;
