@@ -32,8 +32,8 @@ function Chapel() {
           dataIndex="firstName"
           key="firstName"
           render={(text: any, record: any): any => (
-            <Link to={`/members/${record.firstName} ${record.lastName}`}>
-              {record.firstName} {record.lastName}
+            <Link to={`/members/${record.id}`}>
+              {`${record.firstName} ${record.lastName}`}
             </Link>
           )}
         />
@@ -49,9 +49,9 @@ function Chapel() {
                 let params = tag.toLocaleLowerCase();
                 return (
                   <Link to={`/departments/${params}`}>
-                  <Tag color={color} key={index}>
-                    {tag}
-                  </Tag>
+                    <Tag color={color} key={index}>
+                      {tag}
+                    </Tag>
                   </Link>
                 );
               })}
