@@ -102,7 +102,7 @@ function Department() {
     render: (text: any, record: any): any =>
       searchedColumn === dataIndex ? (
         <Space size="middle">
-          <Link to={`/members/${record.firstName} ${record.lastName}`}>
+          <Link to={`/members/${record.id}`}>
             <Highlighter
               highlightStyle={{ backgroundColor: "#ffc069", padding: 0 }}
               searchWords={[searchText]}
@@ -115,7 +115,7 @@ function Department() {
         </Space>
       ) : (
         <Space size="middle">
-          <Link to={`/members/${record.firstName} ${record.lastName}`}>
+          <Link to={`/members/${record.id}`}>
             {record.firstName} {record.lastName}
           </Link>
         </Space>
