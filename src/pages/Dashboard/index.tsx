@@ -7,7 +7,6 @@ import {
   PieList,
   TabList2,
 } from "../../charts/chartRoutes";
-// import FirebaseUpload from "./upload";
 
 const Dashboard = () => {
   const [noTitleKey, setnoTitleKey] = React.useState<any | null>("total");
@@ -41,10 +40,6 @@ const Dashboard = () => {
 
   return (
     <>
-      {/* <div>
-        <FirebaseUpload />
-      </div> */}
-
       <div className="site-card-wrapper" style={{ marginBottom: 16 }}>
         <Row gutter={[16, responsive.xs ? 16 : 0]}>
           <Col xs={24} sm={24} md={6} lg={6} xl={6}>
