@@ -1,4 +1,4 @@
-import { Col, Descriptions, Image, Row, Space, Tag, Typography } from "antd";
+import { Col, Descriptions, Row } from "antd";
 import Title from "antd/lib/typography/Title";
 
 function VisitorItem({ dataSource }: any) {
@@ -6,10 +6,10 @@ function VisitorItem({ dataSource }: any) {
     <div>
       <Row>
         <Col span="4">
-          <Image
+          {/* <Image
             width={200}
             src="https://firebasestorage.googleapis.com/v0/b/storage-unit-cd9b8.appspot.com/o/images%2Fhblvidvqydi2r53oe1qw%20-%20Copy.jpg?alt=media&token=9dd9eb9b-f067-46f7-abee-cfb5707a2dd1"
-          />
+          /> */}
         </Col>
         <Col span={20}>
           {/* <Title level={4}>Member Info</Title> */}
