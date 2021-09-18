@@ -202,7 +202,7 @@ function Member() {
         <Form.Item
           name="emailAddress"
           label="Email Address"
-          rules={[{ required: true, message: "Required!" }]}
+       
         >
           <Input style={{ width: 200 }} />
         </Form.Item>
@@ -210,7 +210,7 @@ function Member() {
         <Form.Item
           name="postalAddress"
           label="Postal Address"
-          rules={[{ required: true, message: "Required!" }]}
+    
         >
           <Input style={{ width: 200 }} />
         </Form.Item>
@@ -234,7 +234,7 @@ function Member() {
         <Form.Item
           name="numberOfChlidren"
           label="Number of children"
-          rules={[{ required: true, message: "Required!" }]}
+    
         >
           <InputNumber keyboard={true} style={{ width: 200 }} />
         </Form.Item>
@@ -261,20 +261,13 @@ function Member() {
                     <Form.Item
                       {...restField}
                       style={{ marginBottom: 0 }}
-                      name={[name, "firstName"]}
-                      fieldKey={[fieldKey, "first"]}
+                      name={[name]}
+                      fieldKey={[fieldKey, "name"]}
                     >
-                      <Input placeholder="First Name" />
+                      <Input placeholder="Full Name" />
                     </Form.Item>
 
-                    <Form.Item
-                      {...restField}
-                      style={{ marginBottom: 0 }}
-                      name={[name, "lastName"]}
-                      fieldKey={[fieldKey, "last"]}
-                    >
-                      <Input placeholder="Last Name" />
-                    </Form.Item>
+               
                     <MinusCircleOutlined onClick={() => remove(name)} />
                   </Space>
                 </Form.Item>
@@ -304,7 +297,7 @@ function Member() {
         <Form.Item
           name="dateJoinedChurch"
           label="Date you joined the church"
-          rules={[{ required: true, message: "Required!" }]}
+     
         >
           <DatePicker style={{ width: 200 }} />
         </Form.Item>
