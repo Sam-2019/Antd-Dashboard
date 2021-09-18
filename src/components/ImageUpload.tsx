@@ -14,7 +14,7 @@ import { v4 as uuidv4 } from "uuid";
 import { UPLOAD_IMAGE } from "../utils/graphqlFunctions/mutations";
 import { useMutation } from "@apollo/client";
 import { GET_MEMBER } from "../utils/graphqlFunctions/queries";
-import { firebaseConfig } from "../utils/firebaseConfig";
+import { firebaseConfig, storageURL } from "../utils/firebaseConfig";
 
 const ImageUpload = () => {
   const firebaseApp = initializeApp(firebaseConfig);
@@ -22,10 +22,7 @@ const ImageUpload = () => {
     refetchQueries: [{ query: GET_MEMBER }],
   });
   // Get a reference to the storage service, which is used to create references in your storage bucket
-  const storage = getStorage(
-    firebaseApp,
-    "gs://storage-unit-cd9b8.appspot.com"
-  );
+  const storage = getStorage(firebaseApp, storageURL);
 
   const [status, setStatus] = useState("");
   const [error, setError] = useState("");
@@ -64,7 +61,7 @@ const ImageUpload = () => {
       firebaseStorageDownloadTokens: uuidv4(),
     };
 
-    const imagesRef = ref(storage, 'images');
+    const imagesRef = ref(storage, "images");
 
     const membersImagesRef = ref(imagesRef, `${image.name}`);
 
