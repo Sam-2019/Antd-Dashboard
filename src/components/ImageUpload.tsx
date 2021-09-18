@@ -16,7 +16,7 @@ import { useMutation } from "@apollo/client";
 import { GET_MEMBER } from "../utils/graphqlFunctions/queries";
 import { firebaseConfig } from "../utils/firebaseConfig";
 
-const ImageUpload = (folder: any) => {
+const ImageUpload = () => {
   const firebaseApp = initializeApp(firebaseConfig);
   const [uploadImage] = useMutation(UPLOAD_IMAGE, {
     refetchQueries: [{ query: GET_MEMBER }],
@@ -64,13 +64,13 @@ const ImageUpload = (folder: any) => {
       firebaseStorageDownloadTokens: uuidv4(),
     };
 
-    const imagesRef = ref(storage, folder);
+    const imagesRef = ref(storage, 'images');
 
     const membersImagesRef = ref(imagesRef, `${image.name}`);
 
     try {
       await uploadBytes(membersImagesRef, image, metadata).then((snapshot) => {
-        // console.log(snapshot, "Uploaded a blob or file!");
+        console.log(snapshot, "Uploaded a blob or file!");
       });
 
       //  Upload the file and metadata

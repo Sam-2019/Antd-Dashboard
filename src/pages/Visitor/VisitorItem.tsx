@@ -16,7 +16,7 @@ function VisitorItem({ dataSource }: any) {
                 preview={false}
               />
 
-              <ImageUpload folder="visitors" />
+              <ImageUpload />
             </div>
           )} */}
         </Col>

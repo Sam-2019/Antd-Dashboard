@@ -32,7 +32,7 @@ function MemberItem({ dataSource }: any) {
                 preview={false}
               />
 
-              <ImageUpload folder="images" />
+              <ImageUpload />
             </div>
           )}
         </Col>
