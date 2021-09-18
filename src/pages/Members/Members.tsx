@@ -126,14 +126,14 @@ function Members() {
       ...getColumnSearchProps("firstName"),
     },
     {
-      title: "Age",
-      dataIndex: "age",
-      key: "age",
+      title: "Contact",
+      dataIndex: "contact",
+      key: "contact",
     },
     {
-      title: "Email",
-      dataIndex: "emailAddress",
-      key: "emailAddress",
+      title: "Chapel",
+      dataIndex: "chapel",
+      key: "chapel",
     },
     {
       title: "Department",
