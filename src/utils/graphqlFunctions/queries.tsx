@@ -6,9 +6,9 @@ export const GET_MEMBERS = gql`
       id
       firstName
       lastName
-      age
       department
-      emailAddress
+      contact
+      chapel
     }
   }
 `;
@@ -38,6 +38,7 @@ export const GET_MEMBER = gql`
       location
       spouseName
       nameOfChildren
+      imageURL
     }
   }
 `;
