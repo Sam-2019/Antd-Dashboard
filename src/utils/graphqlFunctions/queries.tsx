@@ -13,12 +13,14 @@ export const GET_MEMBERS = gql`
   }
 `;
 
-export const GET_MEMBERS_PAYMENT = gql`
-  query Query {
-    members {
+export const GET_PAYMENT = gql`
+  query Query($paymentType: String, $paymentMonth: String) {
+    payment(type: $paymentType, month: $paymentMonth) {
       id
       firstName
       lastName
+      chapel
+      contact
     }
   }
 `;
@@ -79,8 +81,8 @@ export const GET_PLEDGE = gql`
     pledge {
       id
       pledgeeID
-      firstName,
-      lastName,
+      firstName
+      lastName
       amount
       programme
       status
@@ -129,6 +131,43 @@ export const GET_VISITOR = gql`
       monthOfBirth
       knowingChrist
       chapel
+    }
+  }
+`;
+
+export const GET_GENDER_COUNT = gql`
+  query Query {
+    countGender {
+      type
+      value
+    }
+  }
+`;
+
+export const GET_OMEGA_COUNT = gql`
+  query Query {
+    countGender {
+      type
+      value
+    }
+  }
+`;
+
+export const GET_CHILDREN_COUNT = gql`
+  query Query {
+    countGender {
+      type
+      value
+    }
+  }
+`;
+
+export const GET_VEHICLES_COUNT = gql`
+  query Query {
+    countVehicles {
+      ageGroup
+      date
+      number
     }
   }
 `;
