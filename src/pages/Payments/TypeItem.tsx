@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Table, Tag, Space, Button, Input } from "antd";
+import { Table, Space, Button, Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
 import { Link } from "react-router-dom";
@@ -7,13 +7,10 @@ import { useQuery } from "@apollo/client";
 import { GET_MEMBERS } from "../../utils/graphqlFunctions/queries";
 import Spinner from "../../components/Spinner/Spinner";
 import Error from "../../components/Error/Error";
-import { colorSwitch } from "../../utils/functions";
-import GoBack from "../../components/GoBack";
 
-function PaymentType({ dataSource }: any) {
-  console.log(dataSource);
+function TypeItem({ dataSource }: any) {
 
-  const { loading, error, data } = useQuery(GET_MEMBERS);
+  const { loading, error} = useQuery(GET_MEMBERS);
 
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
@@ -101,7 +98,7 @@ function PaymentType({ dataSource }: any) {
     render: (text: any, record: any): any =>
       searchedColumn === dataIndex ? (
         <Space size="middle">
-          <Link to={`/members/${record.firstName} ${record.lastName}`}>
+          <Link to={`/members/${record.id}`}>
             <Highlighter
               highlightStyle={{ backgroundColor: "#ffc069", padding: 0 }}
               searchWords={[searchText]}
@@ -114,7 +111,7 @@ function PaymentType({ dataSource }: any) {
         </Space>
       ) : (
         <Space size="middle">
-          <Link to={`/members/${record.firstName} ${record.lastName}`}>
+          <Link to={`/members/${record.id}`}>
             {record.firstName} {record.lastName}
           </Link>
         </Space>
@@ -138,28 +135,6 @@ function PaymentType({ dataSource }: any) {
       dataIndex: "chapel",
       key: "chapel",
     },
-    {
-      title: "Department",
-      dataIndex: "department",
-      key: "department",
-      width: "60%",
-      render: (department: string[]) => (
-        <>
-          {department.map((tag: string, index: any): any => {
-            let color = colorSwitch(tag);
-            let params = tag.toLocaleLowerCase();
-
-            return (
-              <Link key={index} to={`/departments/${params}`}>
-                <Tag color={color} key={index}>
-                  {tag}
-                </Tag>
-              </Link>
-            );
-          })}
-        </>
-      ),
-    },
   ];
 
   if (loading) {
@@ -172,10 +147,9 @@ function PaymentType({ dataSource }: any) {
 
   return (
     <>
-      <GoBack />
-      <Table rowKey="id" columns={columns} dataSource={data.members} />;
+      <Table rowKey="id" columns={columns} dataSource={dataSource} />;
     </>
   );
 }
 
-export default PaymentType;
+export default TypeItem;
