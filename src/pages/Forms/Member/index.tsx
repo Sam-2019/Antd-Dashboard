@@ -17,8 +17,6 @@ import GoBack from "../../../components/GoBack";
 import { ADD_MEMBER } from "../../../utils/graphqlFunctions/mutations";
 import { success } from "../../../components/Modal/Modal";
 
-
-
 function Member() {
   const [form] = Form.useForm();
   const [addMember] = useMutation(ADD_MEMBER);
@@ -27,9 +25,9 @@ function Member() {
     const values = {
       ...fieldsValue,
       dateOfBirth: fieldsValue["dateOfBirth"].format("YYYY-MM-DD"),
-      dateJoinedChurch: fieldsValue["dateJoinedChurch"].format("YYYY-MM-DD"),
+      // dateJoinedChurch: fieldsValue["dateJoinedChurch"].format("YYYY-MM-DD"),
     };
- ///   console.log("Received values of form: ", values);
+    ///   console.log("Received values of form: ", values);
 
     const {
       firstName,
@@ -51,7 +49,7 @@ function Member() {
       spouseName,
       numberOfChlidren,
       nameOfChildren,
-      dateJoinedChurch,
+      // dateJoinedChurch,
       department,
       previousChurch,
     } = values;
@@ -77,7 +75,7 @@ function Member() {
           maritalStatus,
           spouseName,
           numberOfChlidren,
-          dateJoinedChurch,
+          // dateJoinedChurch,
           previousChurch,
           department,
           nameOfChildren,
@@ -125,7 +123,7 @@ function Member() {
           label="Date of Birth"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <DatePicker style={{ width: 200 }}  />
+          <DatePicker style={{ width: 200 }} />
         </Form.Item>
 
         <Form.Item name="age" label="Age">
@@ -148,7 +146,15 @@ function Member() {
           label="Location"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <Input style={{ width: 200 }}  />
+          <Input style={{ width: 200 }} />
+        </Form.Item>
+
+        <Form.Item
+          name="residentialAddress"
+          label="Residential Address"
+          rules={[{ required: true, message: "Required!" }]}
+        >
+          <Input style={{ width: 200 }} />
         </Form.Item>
 
         <Form.Item
@@ -176,14 +182,6 @@ function Member() {
         </Form.Item>
 
         <Form.Item
-          name="residentialAddress"
-          label="Residential Address"
-          rules={[{ required: true, message: "Required!" }]}
-        >
-          <Input style={{ width: 200 }} />
-        </Form.Item>
-
-        <Form.Item
           name="contact"
           label="Contact"
           rules={[{ required: true, message: "Required!" }]}
@@ -199,19 +197,11 @@ function Member() {
           <Input style={{ width: 200 }} />
         </Form.Item>
 
-        <Form.Item
-          name="emailAddress"
-          label="Email Address"
-       
-        >
+        <Form.Item name="emailAddress" label="Email Address">
           <Input style={{ width: 200 }} />
         </Form.Item>
 
-        <Form.Item
-          name="postalAddress"
-          label="Postal Address"
-    
-        >
+        <Form.Item name="postalAddress" label="Postal Address">
           <Input style={{ width: 200 }} />
         </Form.Item>
 
@@ -231,11 +221,7 @@ function Member() {
           <Input style={{ width: 200 }} />
         </Form.Item>
 
-        <Form.Item
-          name="numberOfChlidren"
-          label="Number of children"
-    
-        >
+        <Form.Item name="numberOfChlidren" label="Number of children">
           <InputNumber keyboard={true} style={{ width: 200 }} />
         </Form.Item>
 
@@ -267,7 +253,6 @@ function Member() {
                       <Input placeholder="Full Name" />
                     </Form.Item>
 
-               
                     <MinusCircleOutlined onClick={() => remove(name)} />
                   </Space>
                 </Form.Item>
@@ -293,14 +278,14 @@ function Member() {
             </>
           )}
         </Form.List>
-
+        {/* 
         <Form.Item
           name="dateJoinedChurch"
           label="Date you joined the church"
      
         >
           <DatePicker style={{ width: 200 }} />
-        </Form.Item>
+        </Form.Item> */}
 
         <Form.Item name="department" label="Department">
           <Checkbox.Group>
@@ -331,7 +316,6 @@ function Member() {
           </Button>
         </Form.Item>
       </Form>
-  
     </div>
   );
 }
