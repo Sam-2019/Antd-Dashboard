@@ -20,10 +20,7 @@ export const ADD_MEMBER = gql`
       maritalStatus
       spouseName
       numberOfChlidren
-      nameOfChildren {
-        firstName
-        lastName
-      }
+      nameOfChildren
       dateJoinedChurch
       department
       previousChurch
@@ -85,13 +82,12 @@ export const ADD_PAYMENT = gql`
   }
 `;
 
-
 export const ADD_PROJECTOFFERING = gql`
-mutation Mutation($addProjectOfferingInput: AddPayer) {
-  addProjectOffering(input: $addProjectOfferingInput) {
-    members
+  mutation Mutation($addProjectOfferingInput: AddPayer) {
+    addProjectOffering(input: $addProjectOfferingInput) {
+      members
+    }
   }
-}
 `;
 
 export const ADD_PLEDGE = gql`
@@ -106,4 +102,13 @@ export const ADD_PLEDGE = gql`
       status
     }
   }
+`;
+
+export const UPLOAD_IMAGE = gql`
+mutation Mutation($uploadImageInput: AddImage) {
+  uploadImage(input: $uploadImageInput) {
+    id
+    imageURL
+  }
+}
 `;
