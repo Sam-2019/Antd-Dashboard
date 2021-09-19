@@ -118,7 +118,7 @@ export const menuItems = [
     key: "4",
     name: "Visitors",
     path: "/visitors",
-    icon: <UsergroupAddOutlined /> ,
+    icon: <UsergroupAddOutlined />,
   },
   {
     key: "5",
@@ -208,6 +208,11 @@ export const sundayRoute = [
     name: "Joint Service",
     path: "/sunday/joint service",
   },
+  // {
+  //   key: "4",
+  //   name: "All Night",
+  //   path: "/sunday/all night",
+  // },
 ];
 
 export const paymentRoute = [
