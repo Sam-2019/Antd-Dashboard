@@ -59,7 +59,7 @@ export const ColumnList: StringArray = {
   adult: <StackColumn data={genderStackColumn} />,
   omega: <StackColumn data={genderStackColumn} />,
   children: <StackColumn data={genderStackColumn} />,
-  vehicles: <GroupColumn data={vehicleGroupColumn} />,
+  // vehicles: <GroupColumn data={vehicleGroupColumn} />,
 };
 
 export const PieList: StringArray = {
