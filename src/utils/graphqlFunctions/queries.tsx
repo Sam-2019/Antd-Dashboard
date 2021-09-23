@@ -164,8 +164,18 @@ export const GET_CHILDREN_COUNT = gql`
 
 export const GET_VEHICLES_COUNT = gql`
   query Query {
-    countVehicles {
-      ageGroup
+    countVehicle {
+      type
+      date
+      number
+    }
+  }
+`;
+
+export const GET_ADULT_STATS = gql`
+  query Query {
+    adultStat {
+      type
       date
       number
     }
