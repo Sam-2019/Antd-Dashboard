@@ -7,11 +7,15 @@ import {
   PieList,
   TabList2,
 } from "../../charts/chartRoutes";
+import Spinner from "../../components/Spinner/Spinner";
+import { GET_VEHICLES_COUNT } from "../../utils/graphqlFunctions/queries";
+import Error from "../../components/Error/Error";
+import { useQuery } from "@apollo/client";
+import { Column } from "@ant-design/charts";
+
 const Dashboard = () => {
-  
   const [noTitleKey, setnoTitleKey] = React.useState<any | null>("total");
   const [value3, setValue3] = React.useState<any | null>("total");
-  const [vehicles] = React.useState<any | null>("vehicles");
   const responsive = useBreakpoint();
 
   const onTabChange = (key: string, type: any): any => {
@@ -84,8 +88,8 @@ const Dashboard = () => {
       <div className="site-card-wrapper">
         <Row gutter={[16, responsive.xs ? 16 : 0]}>
           <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-            <Card title="Default size card" style={{ width: "100%" }}>
-              {ColumnList[vehicles]}
+            <Card title="Vehicles" style={{ width: "100%" }}>
+              <VehicleChart />
             </Card>
           </Col>
           <Col xs={24} sm={24} md={12} lg={12} xl={12}>
@@ -112,3 +116,37 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+const VehicleChart = () => {
+  const { loading, error, data } = useQuery(GET_VEHICLES_COUNT);
+
+  if (loading) {
+    return <Spinner />;
+  }
+
+  if (error) {
+    return <Error />;
+  }
+
+  return <Chart data={data.countVehicle} />;
+};
+
+const Chart = ({ data }: any) => {
+
+  var config = {
+    data,
+    isGroup: true,
+    xField: "date",
+    yField: "number",
+    seriesField: "type",
+    dodgePadding: 2,
+    label: {
+      layout: [
+        { type: "interval-adjust-position" },
+        { type: "interval-hide-overlap" },
+        { type: "adjust-color" },
+      ],
+    },
+  };
+  return <Column {...config} />;
+};
