@@ -5,7 +5,7 @@ const DemoPie = ({ data }: any) => {
   var config = {
     autoFit: true,
     appendPadding: 10,
-    data: pieTotalData,
+    data,
     angleField: "value",
     colorField: "type",
     radius: 1,
