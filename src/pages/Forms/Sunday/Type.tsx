@@ -8,7 +8,7 @@ import { success } from "../../../components/Modal/Modal";
 function SundayType() {
   let { slug }: any = useParams();
   const [form] = Form.useForm();
-  const [addSessionService] = useMutation(ADD_SUNDAY_SERVICE);
+  const [addSundayServiceInput] = useMutation(ADD_SUNDAY_SERVICE);
 
   const onFinish = (fieldsValue: any) => {
     const values = {
@@ -18,7 +18,7 @@ function SundayType() {
       endTime: fieldsValue["endTime"].format("HH:mm:ss"),
       type: slug,
     };
- //   console.log("Received values of form: ", values);
+    //console.log("Received values of form: ", values);
 
     const {
       adultFemale,
@@ -42,9 +42,9 @@ function SundayType() {
       type,
     } = values;
 
-    addSessionService({
+    addSundayServiceInput({
       variables: {
-        addSessionService: {
+        addSundayServiceInput: {
           adultFemale,
           adultMale,
           altercallFemale,
@@ -156,6 +156,7 @@ function SundayType() {
             >
               <InputNumber placeholder="Male" />
             </Form.Item>
+
             <Form.Item
               name="omegaFemale"
               rules={[{ required: true, message: "Required!" }]}
@@ -177,6 +178,7 @@ function SundayType() {
             >
               <InputNumber placeholder="Male" />
             </Form.Item>
+
             <Form.Item
               name="childrenGirl"
               rules={[{ required: true, message: "Required!" }]}
@@ -207,7 +209,7 @@ function SundayType() {
 
           <Form.Item label="Visitors" style={{ marginBottom: 0 }}>
             <Form.Item
-              name="visitorsMen"
+              name="visitorsMale"
               style={{
                 display: "inline-block",
                 width: "auto",

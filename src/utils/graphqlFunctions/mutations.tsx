@@ -30,28 +30,29 @@ export const ADD_MEMBER = gql`
 `;
 
 export const ADD_SUNDAY_SERVICE = gql`
-  mutation AddSundayService($addSundayService: AddSundayService) {
-    addSundayService(input: $addSundayService) {
+  mutation AddSundayServiceMutation($addSundayServiceInput: AddSundayService) {
+    addSundayService(input: $addSundayServiceInput) {
+      id
       adultFemale
       adultMale
+      type
+      visitorsMale
+      visitorsFemale
+      endTime
+      theme
+      preacher
+      startTime
+      omegaMale
+      omegaFemale
+      motors
+      childrenGirl
+      bicycles
+      bibleText
+      childrenBoy
+      date
+      cars
       altercallFemale
       altercallMen
-      bibleText
-      bicycles
-      cars
-      childrenBoy
-      childrenGirl
-      date
-      motors
-      omegaFemale
-      omegaMale
-      preacher
-      theme
-      startTime
-      endTime
-      visitorsFemale
-      visitorsMale
-      type
     }
   }
 `;
@@ -107,10 +108,10 @@ export const ADD_PLEDGE = gql`
 `;
 
 export const UPLOAD_IMAGE = gql`
-mutation Mutation($uploadImageInput: AddImage) {
-  uploadImage(input: $uploadImageInput) {
-    id
-    imageURL
+  mutation Mutation($uploadImageInput: AddImage) {
+    uploadImage(input: $uploadImageInput) {
+      id
+      imageURL
+    }
   }
-}
 `;
