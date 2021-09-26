@@ -90,7 +90,7 @@ const Dashboard = () => {
 
           <Col xs={24} sm={24} md={12} lg={12} xl={12}>
             <Card
-              title="Default size card"
+              title="Gender Ratio"
               style={{ width: "100%" }}
               activeTabKey={value3}
               extra={
