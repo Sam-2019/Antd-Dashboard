@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 
 import {
+  GET_GENDER_COUNT,
   GET_GROUP_STATS,
   GET_SUNDAY_STATS,
 } from "../utils/graphqlFunctions/queries";
@@ -59,8 +60,8 @@ export const ColumnList: StringArray = {
 };
 
 export const PieList: StringArray = {
-  total: <Pie />,
-  adult: <Pie />,
-  omega: <Pie />,
-  children: <Pie />,
+  total: <Pie info={GET_GENDER_COUNT} />,
+  adult: <Pie info={GET_GENDER_COUNT} />,
+  omega: <Pie info={GET_GENDER_COUNT} />,
+  children: <Pie info={GET_GENDER_COUNT} />,
 };
