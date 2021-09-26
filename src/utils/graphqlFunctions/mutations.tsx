@@ -21,7 +21,7 @@ export const ADD_MEMBER = gql`
       spouseName
       numberOfChlidren
       nameOfChildren
-      dateJoinedChurch
+      yearJoinedChurch
       department
       previousChurch
       group

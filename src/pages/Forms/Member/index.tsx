@@ -10,24 +10,32 @@ import {
   Radio,
   Checkbox,
   Space,
+  Select,
 } from "antd";
+
 import { useMutation } from "@apollo/client";
 import { departments } from "../../../utils/data";
 import GoBack from "../../../components/GoBack";
 import { ADD_MEMBER } from "../../../utils/graphqlFunctions/mutations";
 import { success } from "../../../components/Modal/Modal";
 
+const { Option } = Select;
+
 function Member() {
   const [form] = Form.useForm();
   const [addMember] = useMutation(ADD_MEMBER);
+
+  const onRegionChange = (value: string) => {
+    // console.log(value)
+  };
 
   const onFinish = (fieldsValue: any) => {
     const values = {
       ...fieldsValue,
       dateOfBirth: fieldsValue["dateOfBirth"].format("YYYY-MM-DD"),
-      // dateJoinedChurch: fieldsValue["dateJoinedChurch"].format("YYYY-MM-DD"),
+      yearJoinedChurch: fieldsValue["yearJoinedChurch"].format("YYYY"),
     };
-    ///   console.log("Received values of form: ", values);
+    console.log("Received values of form: ", values);
 
     const {
       firstName,
@@ -49,10 +57,10 @@ function Member() {
       spouseName,
       numberOfChlidren,
       nameOfChildren,
-      // dateJoinedChurch,
+      yearJoinedChurch,
       department,
       previousChurch,
-      group
+      group,
     } = values;
 
     addMember({
@@ -76,11 +84,11 @@ function Member() {
           maritalStatus,
           spouseName,
           numberOfChlidren,
-          // dateJoinedChurch,
+          yearJoinedChurch,
           previousChurch,
           department,
           nameOfChildren,
-          group
+          group,
         },
       },
     });
@@ -144,19 +152,6 @@ function Member() {
         </Form.Item>
 
         <Form.Item
-          name="group"
-          label="Group"
-          rules={[{ required: true, message: "Required!" }]}
-        >
-          <Radio.Group>
-            <Radio.Button value="Adult">Adult</Radio.Button>
-            <Radio.Button value="Omega">Omega</Radio.Button>
-            <Radio.Button value="Children">Children</Radio.Button>
-          </Radio.Group>
-        </Form.Item>
-
-
-        <Form.Item
           name="location"
           label="Location"
           rules={[{ required: true, message: "Required!" }]}
@@ -185,7 +180,30 @@ function Member() {
           label="Region"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <Input style={{ width: 200 }} />
+          <Select
+            placeholder="Select region"
+            onChange={onRegionChange}
+            allowClear
+            style={{ width: 200 }}
+          >
+            <Option value="Ahafo">Ahafo</Option>
+            <Option value="Ashanti">Ashanti</Option>
+            <Option value="Bono East">Bono East</Option>
+            <Option value="Brong Ahafo">Brong Ahafo</Option>
+            <Option value="Central">Central</Option>
+            <Option value="Eastern">Eastern</Option>
+            <Option value="Greater Accra">Greater Accra</Option>
+            <Option value="North East">North East</Option>
+            <Option value="Northern">Northern</Option>
+            <Option value="Oti">Oti</Option>
+            <Option value="Savannah">Savannah</Option>
+            <Option value="Upper East">Upper East</Option>
+            <Option value="Upper West">Upper West</Option>
+            <Option value="Western">Western</Option>
+            <Option value="Western North">Western North</Option>
+            <Option value="Volta">Volta</Option>
+            <Option value="Other">Other</Option>
+          </Select>
         </Form.Item>
 
         <Form.Item
@@ -293,14 +311,10 @@ function Member() {
             </>
           )}
         </Form.List>
-        {/* 
-        <Form.Item
-          name="dateJoinedChurch"
-          label="Date you joined the church"
-     
-        >
-          <DatePicker style={{ width: 200 }} />
-        </Form.Item> */}
+
+        <Form.Item name="yearJoinedChurch" label="Year you joined the church">
+          <DatePicker style={{ width: 200 }} picker="year" />
+        </Form.Item>
 
         <Form.Item name="department" label="Department">
           <Checkbox.Group>
@@ -314,6 +328,18 @@ function Member() {
               ))}
             </Row>
           </Checkbox.Group>
+        </Form.Item>
+
+        <Form.Item
+          name="group"
+          label="Church Group"
+          rules={[{ required: true, message: "Required!" }]}
+        >
+          <Radio.Group>
+            <Radio.Button value="Adult">Adult</Radio.Button>
+            <Radio.Button value="Omega">Omega</Radio.Button>
+            <Radio.Button value="Children">Children</Radio.Button>
+          </Radio.Group>
         </Form.Item>
 
         <Form.Item name="previousChurch" label="Previous Church">
