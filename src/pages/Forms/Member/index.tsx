@@ -52,6 +52,7 @@ function Member() {
       // dateJoinedChurch,
       department,
       previousChurch,
+      group
     } = values;
 
     addMember({
@@ -79,6 +80,7 @@ function Member() {
           previousChurch,
           department,
           nameOfChildren,
+          group
         },
       },
     });
@@ -140,6 +142,19 @@ function Member() {
             <Radio.Button value="Female">Female</Radio.Button>
           </Radio.Group>
         </Form.Item>
+
+        <Form.Item
+          name="group"
+          label="Group"
+          rules={[{ required: true, message: "Required!" }]}
+        >
+          <Radio.Group>
+            <Radio.Button value="Adult">Adult</Radio.Button>
+            <Radio.Button value="Omega">Omega</Radio.Button>
+            <Radio.Button value="Children">Children</Radio.Button>
+          </Radio.Group>
+        </Form.Item>
+
 
         <Form.Item
           name="location"

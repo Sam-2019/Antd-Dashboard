@@ -24,6 +24,7 @@ export const ADD_MEMBER = gql`
       dateJoinedChurch
       department
       previousChurch
+      group
     }
   }
 `;
@@ -70,6 +71,7 @@ export const ADD_VISITOR = gql`
       location
       membership
       monthOfBirth
+      group
     }
   }
 `;

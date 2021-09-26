@@ -41,6 +41,7 @@ export const GET_MEMBER = gql`
       spouseName
       nameOfChildren
       imageURL
+      group
     }
   }
 `;
@@ -58,6 +59,7 @@ export const GET_MEMBER_NAME = gql`
       residentialAddress
       contact
       location
+      group
     }
   }
 `;
@@ -131,6 +133,7 @@ export const GET_VISITOR = gql`
       monthOfBirth
       knowingChrist
       chapel
+      group
     }
   }
 `;

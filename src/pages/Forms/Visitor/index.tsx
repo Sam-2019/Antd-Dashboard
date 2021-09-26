@@ -32,6 +32,7 @@ function Visitor() {
       location,
       membership,
       monthOfBirth,
+      group
     } = values;
 
     addVisitor({
@@ -49,6 +50,7 @@ function Visitor() {
           location,
           membership,
           monthOfBirth,
+          group
         },
       },
     });
@@ -119,6 +121,18 @@ function Visitor() {
             <Radio.Button value="26 - 35">26 - 35</Radio.Button>
             <Radio.Button value="36 - 55">36 - 55</Radio.Button>
             <Radio.Button value="56+">56+ </Radio.Button>
+          </Radio.Group>
+        </Form.Item>
+
+        <Form.Item
+          name="group"
+          label="Group"
+          rules={[{ required: true, message: "Required!" }]}
+        >
+          <Radio.Group>
+            <Radio.Button value="Adult">Adult</Radio.Button>
+            <Radio.Button value="Omega">Omega</Radio.Button>
+            <Radio.Button value="Children">Children</Radio.Button>
           </Radio.Group>
         </Form.Item>
 
