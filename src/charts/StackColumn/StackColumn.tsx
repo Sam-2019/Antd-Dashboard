@@ -6,7 +6,7 @@ const StackColumn = ({ data }: any) => {
     isStack: true,
     xField: "date",
     yField: "value",
-    seriesField: "type",
+    seriesField: "group",
     label: {
       layout: [
         { type: "interval-adjust-position" },
