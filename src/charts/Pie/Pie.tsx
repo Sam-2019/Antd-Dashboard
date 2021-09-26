@@ -1,10 +1,11 @@
 import { Pie } from "@ant-design/charts";
+import { pieTotalData } from "../dataset";
 
 const DemoPie = ({ data }: any) => {
   var config = {
     autoFit: true,
     appendPadding: 10,
-    data,
+    data: pieTotalData,
     angleField: "value",
     colorField: "type",
     radius: 1,
