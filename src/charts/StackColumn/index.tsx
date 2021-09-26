@@ -9,8 +9,6 @@ const StackChart = ({ info, type }: any) => {
     variables: { groupStatType: type },
   });
 
-  console.log(data);
-
   if (loading) {
     return <Spinner />;
   }
