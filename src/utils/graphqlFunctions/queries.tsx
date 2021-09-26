@@ -144,40 +144,23 @@ export const GET_GENDER_COUNT = gql`
   }
 `;
 
-export const GET_OMEGA_COUNT = gql`
-  query Query {
-    countGender {
-      type
+export const GET_GROUP_STATS = gql`
+  query Query($groupStatType: String) {
+    groupStat(type: $groupStatType) {
+      group
+      date
       value
     }
   }
 `;
 
-export const GET_CHILDREN_COUNT = gql`
-  query Query {
-    countGender {
-      type
+export const GET_SUNDAY_STATS = gql`
+  query Query($sundayStatType: String) {
+    sundayStat(type: $sundayStatType) {
+      group
+      date
       value
-    }
-  }
-`;
-
-export const GET_VEHICLES_COUNT = gql`
-  query Query {
-    countVehicle {
-      type
-      date
-      number
-    }
-  }
-`;
-
-export const GET_ADULT_STATS = gql`
-  query Query {
-    adultStat {
-      type
-      date
-      number
+      sundayService
     }
   }
 `;
