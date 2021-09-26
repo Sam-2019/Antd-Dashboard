@@ -58,18 +58,19 @@ export const ADD_SUNDAY_SERVICE = gql`
 `;
 
 export const ADD_VISITOR = gql`
-  mutation AddVisitor($addVisitor: AddVisitor) {
-    addVisitor(input: $addVisitor) {
+  mutation Mutation($addVisitorInput: AddVisitor) {
+    addVisitor(input: $addVisitorInput) {
+      id
       firstName
       lastName
       ageGroup
       awarenessChannel
-      awarenessChannelOther
       contact
+      awarenessChannelOther
       date
       invitedBy
-      knowingChrist
       location
+      knowingChrist
       membership
       monthOfBirth
       group

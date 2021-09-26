@@ -17,45 +17,45 @@ function Visitor() {
       monthOfBirth: fieldsValue["monthOfBirth"].format("YYYY-MM"),
     };
 
-    // console.log("Received values of form: ", values);
+    console.log("Received values of form: ", values);
 
     const {
+      firstName,
+      lastName,
       ageGroup,
       awarenessChannel,
-      awarenessChannelOther,
       contact,
+      awarenessChannelOther,
       date,
-      firstName,
       invitedBy,
-      knowingChrist,
-      lastName,
       location,
+      knowingChrist,
       membership,
       monthOfBirth,
-      group
+      group,
     } = values;
 
     addVisitor({
       variables: {
-        addVisitor: {
+        addVisitorInput: {
+          firstName,
+          lastName,
           ageGroup,
           awarenessChannel,
-          awarenessChannelOther,
           contact,
+          awarenessChannelOther,
           date,
-          firstName,
           invitedBy,
-          knowingChrist,
-          lastName,
           location,
+          knowingChrist,
           membership,
           monthOfBirth,
-          group
+          group,
         },
       },
     });
 
-   form.resetFields();
+    form.resetFields();
 
     success("Visitor added");
   };
