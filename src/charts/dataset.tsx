@@ -162,7 +162,6 @@ export const genderStackColumn = [
     value: 9,
     type: "Female",
   },
-
   {
     date: "2021-07-11",
     value: 3,
