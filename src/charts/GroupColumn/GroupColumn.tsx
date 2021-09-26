@@ -1,4 +1,3 @@
-import React from "react";
 import { Column } from "@ant-design/charts";
 
 const GroupColumn = ({ data }: any) => {
@@ -6,8 +5,8 @@ const GroupColumn = ({ data }: any) => {
     data,
     isGroup: true,
     xField: "date",
-    yField: "number",
-    seriesField: "ageGroup",
+    yField: "value",
+    seriesField: "group",
     dodgePadding: 2,
     label: {
       layout: [
