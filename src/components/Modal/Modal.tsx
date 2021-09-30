@@ -19,3 +19,24 @@ export function success(content: any) {
     content,
   });
 }
+
+export function Edit({
+  isModalVisible,
+  handleOk,
+  handleCancel,
+  children,
+}: any) {
+  return (
+    <>
+      <Modal
+        title="Vertically centered modal dialog"
+        centered
+        visible={isModalVisible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        {children}
+      </Modal>
+    </>
+  );
+}
