@@ -4,9 +4,9 @@ import Error from "../../components/Error/Error";
 
 import GroupColumn from "./GroupColumn";
 
-const GroupChart = ({ info, type }: any) => {
+const GroupChart = ({ info, type, vehicles }: any) => {
   const { loading, error, data } = useQuery(info, {
-    variables: { sundayStatType: type },
+    variables: { sundayStatType: type, sundayStatVehicles: vehicles },
   });
 
   if (loading) {
