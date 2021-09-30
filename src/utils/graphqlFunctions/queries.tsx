@@ -139,12 +139,12 @@ export const GET_VISITOR = gql`
 `;
 
 export const GET_GENDER_COUNT = gql`
-  query Query {
-    countGender {
-      type
-      value
-    }
+query Query($countGenderGroup: String) {
+  countGender(group: $countGenderGroup) {
+    type
+    value
   }
+}
 `;
 
 export const GET_GROUP_STATS = gql`
@@ -158,12 +158,14 @@ export const GET_GROUP_STATS = gql`
 `;
 
 export const GET_SUNDAY_STATS = gql`
-  query Query($sundayStatType: String) {
-    sundayStat(type: $sundayStatType) {
-      group
+  query Query($sundayStatType: String, $sundayStatVehicles: Boolean) {
+    sundayStat(type: $sundayStatType, vehicles: $sundayStatVehicles) {
+      sundayService
+      type
       date
       value
-      sundayService
+      group
     }
   }
 `;
+
