@@ -2,8 +2,8 @@ import { ReactElement } from "react";
 
 import {
   GET_GENDER_COUNT,
-  GET_GROUP_STATS,
   GET_SUNDAY_STATS,
+  GET_GROUP_STATS,
 } from "../utils/graphqlFunctions/queries";
 import GroupChart from "./GroupColumn";
 import Pie from "./Pie";
@@ -32,7 +32,7 @@ export const TabList = [
   },
 ];
 
-export const TabList2 = [
+export const GenderTabList = [
   {
     label: "Total",
     value: "total",
@@ -51,17 +51,58 @@ export const TabList2 = [
   },
 ];
 
+export const ServiceTabList = [
+  {
+    key: "first",
+    tab: "First Service",
+  },
+  {
+    key: "second",
+    tab: "Second Service",
+  },
+  {
+    key: "joint",
+    tab: "Joint Service",
+  },
+];
+
 export const ColumnList: StringArray = {
-  total: <GroupChart info={GET_SUNDAY_STATS} type="sundayTotal" />,
   adult: <StackColumn info={GET_GROUP_STATS} type="adult" />,
   omega: <StackColumn info={GET_GROUP_STATS} type="omega" />,
   children: <StackColumn info={GET_GROUP_STATS} type="children" />,
-  vehicles: <GroupChart info={GET_SUNDAY_STATS} type="vehicles" />,
 };
 
-export const PieList: StringArray = {
-  total: <Pie info={GET_GENDER_COUNT} />,
-  adult: <Pie info={GET_GENDER_COUNT} />,
-  omega: <Pie info={GET_GENDER_COUNT} />,
-  children: <Pie info={GET_GENDER_COUNT} />,
+export const GenderPieList: StringArray = {
+  total: <Pie info={GET_GENDER_COUNT} group="" />,
+  adult: <Pie info={GET_GENDER_COUNT} group="Adult" />,
+  omega: <Pie info={GET_GENDER_COUNT} group="Omega" />,
+  children: <Pie info={GET_GENDER_COUNT} group="Children" />,
+};
+
+export const ServiceColumnList: StringArray = {
+  first: (
+    <GroupChart info={GET_SUNDAY_STATS} type="first service" vehicles={false} />
+  ),
+  second: (
+    <GroupChart
+      info={GET_SUNDAY_STATS}
+      type="second service"
+      vehicles={false}
+    />
+  ),
+  joint: (
+    <GroupChart info={GET_SUNDAY_STATS} type="joint service" vehicles={false} />
+  ),
+};
+
+export const Vehicle: StringArray = {
+  first: (
+    <GroupChart info={GET_SUNDAY_STATS} type="first service" vehicles={true} />
+  ),
+  second: (
+    <GroupChart info={GET_SUNDAY_STATS} type="second service" vehicles={true} />
+  ),
+  joint: (
+    <GroupChart info={GET_SUNDAY_STATS} type="joint service" vehicles={true} />
+  ),
 };
