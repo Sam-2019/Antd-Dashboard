@@ -62,7 +62,7 @@ function Visitor() {
         isModalVisible={isModalVisible}
         handleOk={handleOk}
         handleCancel={handleCancel}
-        children={<VisitorEdit />}
+        children={<VisitorEdit handleCancel={handleCancel} />}
       />
     </>
   );
