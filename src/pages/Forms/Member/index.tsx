@@ -37,58 +37,10 @@ function Member() {
     };
     console.log("Received values of form: ", values);
 
-    const {
-      firstName,
-      lastName,
-      otherName,
-      dateOfBirth,
-      age,
-      gender,
-      hometown,
-      location,
-      region,
-      country,
-      residentialAddress,
-      contact,
-      emergencyContact,
-      emailAddress,
-      postalAddress,
-      maritalStatus,
-      spouseName,
-      numberOfChlidren,
-      nameOfChildren,
-      yearJoinedChurch,
-      department,
-      previousChurch,
-      group,
-    } = values;
-
     addMember({
       variables: {
         addMember: {
-          firstName,
-          lastName,
-          otherName,
-          dateOfBirth,
-          age,
-          gender,
-          location,
-          hometown,
-          region,
-          country,
-          residentialAddress,
-          contact,
-          emergencyContact,
-          emailAddress,
-          postalAddress,
-          maritalStatus,
-          spouseName,
-          numberOfChlidren,
-          yearJoinedChurch,
-          previousChurch,
-          department,
-          nameOfChildren,
-          group,
+          ...values,
         },
       },
     });
@@ -312,7 +264,11 @@ function Member() {
           )}
         </Form.List>
 
-        <Form.Item name="yearJoinedChurch" label="Year you joined the church">
+        <Form.Item
+          name="yearJoinedChurch"
+          label="Year you joined the church"
+          rules={[{ required: true, message: "Required!" }]}
+        >
           <DatePicker style={{ width: 200 }} picker="year" />
         </Form.Item>
 
