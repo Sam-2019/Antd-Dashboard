@@ -3,15 +3,10 @@ import { Table, Space, Button, Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
 import { Link } from "react-router-dom";
-import { useQuery } from "@apollo/client";
-import { GET_MEMBERS } from "../../utils/graphqlFunctions/queries";
 import Spinner from "../../components/Spinner/Spinner";
 import Error from "../../components/Error/Error";
 
-function TypeItem({ dataSource }: any) {
-
-  const { loading, error} = useQuery(GET_MEMBERS);
-
+function TypeItem({ dataSource, loading, error }: any) {
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
 
