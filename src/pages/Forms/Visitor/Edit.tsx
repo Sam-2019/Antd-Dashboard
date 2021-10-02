@@ -24,6 +24,8 @@ function Visitor({ handleCancel }: any) {
     form.resetFields();
 
     success("Visitor updated");
+
+    handleCancel();
   };
 
   return (

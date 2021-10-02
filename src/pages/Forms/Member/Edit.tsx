@@ -27,7 +27,6 @@ function Member({ handleCancel }: any) {
   const [addMember] = useMutation(UPDATE_MEMBER);
 
   const onFinish = (fieldsValue: any) => {
-
     addMember({
       variables: {
         updateMemberId: slug,
@@ -40,6 +39,8 @@ function Member({ handleCancel }: any) {
     form.resetFields();
 
     success("Member updated");
+
+    handleCancel();
   };
 
   return (

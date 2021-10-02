@@ -2,14 +2,16 @@ import { Input, Form, Button, InputNumber, Space } from "antd";
 import { useMutation } from "@apollo/client";
 import { UPDATE_PLEDGE } from "../../../utils/graphqlFunctions/mutations";
 import { success } from "../../../components/Modal/Modal";
+import { GET_MEMBER } from "../../../utils/graphqlFunctions/queries";
 
 function Pledge({ handleCancel, slug }: any) {
   const [form] = Form.useForm();
 
-  const [updatePledge] = useMutation(UPDATE_PLEDGE);
+  const [updatePledge] = useMutation(UPDATE_PLEDGE, {
+    refetchQueries: [GET_MEMBER],
+  });
 
   const onFinish = (fieldsValue: any) => {
-
     updatePledge({
       variables: {
         updatePledgeId: slug,
@@ -22,6 +24,8 @@ function Pledge({ handleCancel, slug }: any) {
     form.resetFields();
 
     success("Pledge updated");
+
+    handleCancel();
   };
 
   return (
