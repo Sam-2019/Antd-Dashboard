@@ -60,7 +60,7 @@ function Type() {
         Select year : <DatePicker onChange={onChange} picker="year" />
       </div>
 
-      <TypeItem dataSource={data.payment} />
+      <TypeItem dataSource={data.payment} loading={loading} error={error} />
     </>
   );
 }
