@@ -1,4 +1,4 @@
-import { Modal } from "antd";
+import {  Modal } from "antd";
 import { CheckCircleOutlined } from "@ant-design/icons";
 
 const { confirm } = Modal;
@@ -29,11 +29,14 @@ export function Edit({
   return (
     <>
       <Modal
-        title="Vertically centered modal dialog"
+        width={1000}
+        title="Edit"
         centered
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
+        footer={null}
+        bodyStyle={{"height": "auto"}}
       >
         {children}
       </Modal>
