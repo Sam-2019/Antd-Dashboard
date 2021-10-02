@@ -29,6 +29,35 @@ export const ADD_MEMBER = gql`
   }
 `;
 
+export const UPDATE_MEMBER = gql`
+mutation UpdateMemberMutation($updateMemberId: ID, $updateMemberInput: AddMember) {
+  updateMember(id: $updateMemberId, input: $updateMemberInput) {
+      firstName
+      lastName
+      otherName
+      dateOfBirth
+      age
+      gender
+      hometown
+      region
+      country
+      residentialAddress
+      contact
+      emergencyContact
+      emailAddress
+      postalAddress
+      maritalStatus
+      spouseName
+      numberOfChlidren
+      nameOfChildren
+      yearJoinedChurch
+      department
+      previousChurch
+      group
+    }
+  }
+`;
+
 export const ADD_SUNDAY_SERVICE = gql`
   mutation AddSundayServiceMutation($addSundayServiceInput: AddSundayService) {
     addSundayService(input: $addSundayServiceInput) {
@@ -60,6 +89,27 @@ export const ADD_SUNDAY_SERVICE = gql`
 export const ADD_VISITOR = gql`
   mutation Mutation($addVisitorInput: AddVisitor) {
     addVisitor(input: $addVisitorInput) {
+      id
+      firstName
+      lastName
+      ageGroup
+      awarenessChannel
+      contact
+      awarenessChannelOther
+      date
+      invitedBy
+      location
+      knowingChrist
+      membership
+      monthOfBirth
+      group
+    }
+  }
+`;
+
+export const UPDATE_VISITOR = gql`
+mutation UpdateVisitorMutation($updateVisitorId: ID, $updateVisitorInput: AddVisitor) {
+  updateVisitor(id: $updateVisitorId, input: $updateVisitorInput) {
       id
       firstName
       lastName
