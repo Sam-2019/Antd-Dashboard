@@ -4,7 +4,6 @@ import {
   Col,
   Row,
   InputNumber,
-  DatePicker,
   Form,
   Button,
   Radio,
@@ -15,92 +14,37 @@ import {
 
 import { useMutation } from "@apollo/client";
 import { departments } from "../../../utils/data";
-import GoBack from "../../../components/GoBack";
-import { ADD_MEMBER } from "../../../utils/graphqlFunctions/mutations";
+import { UPDATE_MEMBER } from "../../../utils/graphqlFunctions/mutations";
 import { success } from "../../../components/Modal/Modal";
+import { useParams } from "react-router-dom";
 
 const { Option } = Select;
 
-function Member() {
+function Member({ handleCancel }: any) {
   const [form] = Form.useForm();
-  const [addMember] = useMutation(ADD_MEMBER);
+  let { slug }: any = useParams();
 
-  const onRegionChange = (value: string) => {
-    // console.log(value)
-  };
+  const [addMember] = useMutation(UPDATE_MEMBER);
 
   const onFinish = (fieldsValue: any) => {
-    const values = {
-      ...fieldsValue,
-      dateOfBirth: fieldsValue["dateOfBirth"].format("YYYY-MM-DD"),
-      yearJoinedChurch: fieldsValue["yearJoinedChurch"].format("YYYY"),
-    };
-    console.log("Received values of form: ", values);
-
-    const {
-      firstName,
-      lastName,
-      otherName,
-      dateOfBirth,
-      age,
-      gender,
-      hometown,
-      location,
-      region,
-      country,
-      residentialAddress,
-      contact,
-      emergencyContact,
-      emailAddress,
-      postalAddress,
-      maritalStatus,
-      spouseName,
-      numberOfChlidren,
-      nameOfChildren,
-      yearJoinedChurch,
-      department,
-      previousChurch,
-      group,
-    } = values;
+    console.log("Received values of form: ", fieldsValue);
 
     addMember({
       variables: {
-        addMember: {
-          firstName,
-          lastName,
-          otherName,
-          dateOfBirth,
-          age,
-          gender,
-          location,
-          hometown,
-          region,
-          country,
-          residentialAddress,
-          contact,
-          emergencyContact,
-          emailAddress,
-          postalAddress,
-          maritalStatus,
-          spouseName,
-          numberOfChlidren,
-          yearJoinedChurch,
-          previousChurch,
-          department,
-          nameOfChildren,
-          group,
+        updateMemberId: slug,
+        updateMemberInput: {
+          ...fieldsValue,
         },
       },
     });
 
     form.resetFields();
 
-    success("Member added");
+    success("Member updated");
   };
 
   return (
     <div>
-      <GoBack header="Add Member" />
       <Form
         form={form}
         name="member"
@@ -108,19 +52,11 @@ function Member() {
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 16 }}
       >
-        <Form.Item
-          name="firstName"
-          label="First Name"
-          rules={[{ required: true, message: "Required!" }]}
-        >
+        <Form.Item name="firstName" label="First Name">
           <Input style={{ width: 200 }} />
         </Form.Item>
 
-        <Form.Item
-          name="lastName"
-          label="Last Name"
-          rules={[{ required: true, message: "Required!" }]}
-        >
+        <Form.Item name="lastName" label="Last Name">
           <Input style={{ width: 200 }} />
         </Form.Item>
 
@@ -128,64 +64,31 @@ function Member() {
           <Input style={{ width: 200 }} />
         </Form.Item>
 
-        <Form.Item
-          name="dateOfBirth"
-          label="Date of Birth"
-          rules={[{ required: true, message: "Required!" }]}
-        >
-          <DatePicker style={{ width: 200 }} />
-        </Form.Item>
-
         <Form.Item name="age" label="Age">
           <InputNumber style={{ width: 200 }} />
         </Form.Item>
 
-        <Form.Item
-          name="gender"
-          label="Gender"
-          rules={[{ required: true, message: "Required!" }]}
-        >
+        <Form.Item name="gender" label="Gender">
           <Radio.Group>
             <Radio.Button value="Male">Male</Radio.Button>
             <Radio.Button value="Female">Female</Radio.Button>
           </Radio.Group>
         </Form.Item>
 
-        <Form.Item
-          name="location"
-          label="Location"
-          rules={[{ required: true, message: "Required!" }]}
-        >
+        <Form.Item name="location" label="Location">
           <Input style={{ width: 200 }} />
         </Form.Item>
 
-        <Form.Item
-          name="residentialAddress"
-          label="Residential Address"
-          rules={[{ required: true, message: "Required!" }]}
-        >
+        <Form.Item name="residentialAddress" label="Residential Address">
           <Input style={{ width: 200 }} />
         </Form.Item>
 
-        <Form.Item
-          name="hometown"
-          label="Home Town"
-          rules={[{ required: true, message: "Required!" }]}
-        >
+        <Form.Item name="hometown" label="Home Town">
           <Input style={{ width: 200 }} />
         </Form.Item>
 
-        <Form.Item
-          name="region"
-          label="Region"
-          rules={[{ required: true, message: "Required!" }]}
-        >
-          <Select
-            placeholder="Select region"
-            onChange={onRegionChange}
-            allowClear
-            style={{ width: 200 }}
-          >
+        <Form.Item name="region" label="Region">
+          <Select placeholder="Select region" allowClear style={{ width: 200 }}>
             <Option value="Ahafo">Ahafo</Option>
             <Option value="Ashanti">Ashanti</Option>
             <Option value="Bono East">Bono East</Option>
@@ -206,27 +109,15 @@ function Member() {
           </Select>
         </Form.Item>
 
-        <Form.Item
-          name="country"
-          label="Country"
-          rules={[{ required: true, message: "Required!" }]}
-        >
+        <Form.Item name="country" label="Country">
           <Input style={{ width: 200 }} />
         </Form.Item>
 
-        <Form.Item
-          name="contact"
-          label="Contact"
-          rules={[{ required: true, message: "Required!" }]}
-        >
+        <Form.Item name="contact" label="Contact">
           <Input style={{ width: 200 }} />
         </Form.Item>
 
-        <Form.Item
-          name="emergencyContact"
-          label="Emergency Contact"
-          rules={[{ required: true, message: "Required!" }]}
-        >
+        <Form.Item name="emergencyContact" label="Emergency Contact">
           <Input style={{ width: 200 }} />
         </Form.Item>
 
@@ -238,11 +129,7 @@ function Member() {
           <Input style={{ width: 200 }} />
         </Form.Item>
 
-        <Form.Item
-          name="maritalStatus"
-          label="Marital Status"
-          rules={[{ required: true, message: "Required!" }]}
-        >
+        <Form.Item name="maritalStatus" label="Marital Status">
           <Radio.Group>
             <Radio.Button value="Single">Single</Radio.Button>
             <Radio.Button value="Married">Married</Radio.Button>
@@ -312,14 +199,6 @@ function Member() {
           )}
         </Form.List>
 
-        <Form.Item
-          name="yearJoinedChurch"
-          label="Year you joined the church"
-          rules={[{ required: true, message: "Required!" }]}
-        >
-          <DatePicker style={{ width: 200 }} picker="year" />
-        </Form.Item>
-
         <Form.Item name="department" label="Department">
           <Checkbox.Group>
             <Row>
@@ -334,11 +213,7 @@ function Member() {
           </Checkbox.Group>
         </Form.Item>
 
-        <Form.Item
-          name="group"
-          label="Church Group"
-          rules={[{ required: true, message: "Required!" }]}
-        >
+        <Form.Item name="group" label="Church Group">
           <Radio.Group>
             <Radio.Button value="Adult">Adult</Radio.Button>
             <Radio.Button value="Omega">Omega</Radio.Button>
@@ -356,9 +231,14 @@ function Member() {
             sm: { span: 16, offset: 8 },
           }}
         >
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
+          <Space>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+            <Button htmlType="button" onClick={handleCancel}>
+              Cancel
+            </Button>
+          </Space>
         </Form.Item>
       </Form>
     </div>
