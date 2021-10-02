@@ -7,12 +7,31 @@ import { GET_PLEDGE } from "../../utils/graphqlFunctions/queries";
 import Spinner from "../../components/Spinner/Spinner";
 import Error from "../../components/Error/Error";
 import moment from "moment";
+import { Edit } from "../../components/Modal/Modal";
+import PledgeEdit from "../Forms/Pledge/Edit";
 
 function Pledges() {
   const { loading, error, data } = useQuery(GET_PLEDGE);
 
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [state, setstate] = useState("");
+
+  const showModal = (any: any) => {
+    setstate(any);
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setstate("");
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setstate("");
+    setIsModalVisible(false);
+  };
 
   let searchInput: any;
 
@@ -150,6 +169,20 @@ function Pledges() {
         return <Tag color={pitch}>{record.status}</Tag>;
       },
     },
+    {
+      title: "Action",
+      dataIndex: "id",
+      key: "action",
+      render: (text: any, record: any) => {
+        return (
+          <>
+            <Button type="link" onClick={() => showModal(text)}>
+              Edit
+            </Button>
+          </>
+        );
+      },
+    },
   ];
 
   if (loading) {
@@ -160,7 +193,18 @@ function Pledges() {
     return <Error />;
   }
 
-  return <Table rowKey="id" columns={columns} dataSource={data.pledge} />;
+  return (
+    <>
+      <Table rowKey="id" columns={columns} dataSource={data.pledge} />
+
+      <Edit
+        isModalVisible={isModalVisible}
+        handleOk={handleOk}
+        handleCancel={handleCancel}
+        children={<PledgeEdit handleCancel={handleCancel} slug={state} />}
+      />
+    </>
+  );
 }
 
 export default Pledges;
