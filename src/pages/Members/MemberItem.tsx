@@ -8,7 +8,6 @@ import { colorSwitch } from "../../utils/functions";
 const { Text } = Typography;
 
 function MemberItem({ dataSource }: any) {
-  // handleChange = ({ fileList }) => this.setState({ fileList });
 
   return (
     <div>
