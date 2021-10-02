@@ -1,7 +1,6 @@
 import { Pie } from "@ant-design/charts";
-import { pieTotalData } from "../dataset";
 
-const DemoPie = ({ data }: any) => {
+const PieChart = ({ data }: any) => {
   var config = {
     autoFit: true,
     appendPadding: 10,
@@ -9,7 +8,7 @@ const DemoPie = ({ data }: any) => {
     angleField: "value",
     colorField: "type",
     radius: 1,
-    innerRadius: 0.6,
+    innerRadius: 0.5,
     label: {
       type: "inner",
       offset: "-50%",
@@ -36,4 +35,4 @@ const DemoPie = ({ data }: any) => {
   return <Pie {...config} />;
 };
 
-export default DemoPie;
+export default PieChart;
