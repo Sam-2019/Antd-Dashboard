@@ -19,50 +19,10 @@ function SundayType() {
       type: slug,
     };
 
-    const {
-      adultFemale,
-      adultMale,
-      altercallFemale,
-      altercallMen,
-      bibleText,
-      bicycles,
-      cars,
-      childrenBoy,
-      childrenGirl,
-      date,
-      endTime,
-      motors,
-      omegaFemale,
-      omegaMale,
-      preacher,
-      startTime,
-      theme,
-      visitorsFemale,
-      type,
-    } = values;
-
     addSundayServiceInput({
       variables: {
         addSundayServiceInput: {
-          adultFemale,
-          adultMale,
-          altercallFemale,
-          altercallMen,
-          bibleText,
-          bicycles,
-          cars,
-          childrenBoy,
-          childrenGirl,
-          date,
-          endTime,
-          motors,
-          omegaFemale,
-          omegaMale,
-          preacher,
-          startTime,
-          theme,
-          visitorsFemale,
-          type,
+          ...values,
         },
       },
     });
