@@ -19,38 +19,10 @@ function Visitor() {
 
     console.log("Received values of form: ", values);
 
-    const {
-      firstName,
-      lastName,
-      ageGroup,
-      awarenessChannel,
-      contact,
-      awarenessChannelOther,
-      date,
-      invitedBy,
-      location,
-      knowingChrist,
-      membership,
-      monthOfBirth,
-      group,
-    } = values;
-
     addVisitor({
       variables: {
         addVisitorInput: {
-          firstName,
-          lastName,
-          ageGroup,
-          awarenessChannel,
-          contact,
-          awarenessChannelOther,
-          date,
-          invitedBy,
-          location,
-          knowingChrist,
-          membership,
-          monthOfBirth,
-          group,
+          ...values,
         },
       },
     });
@@ -146,17 +118,18 @@ function Visitor() {
 
         <Form.Item
           name="awarenessChannel"
-          label="How did you hear about the church programme?"
+          label="How did you hear about the church?"
           // rules={[{ required: true, message: "Please pick an item!" }]}
         >
           <Radio.Group>
             <Radio.Button value="flyer">Flyer</Radio.Button>
             <Radio.Button value="banner">Banner</Radio.Button>
-            <Radio.Button value="other">Other</Radio.Button>
+            <Radio.Button value="billboard">Billboard</Radio.Button>
+            <Radio.Button value="member">Member</Radio.Button>
           </Radio.Group>
         </Form.Item>
 
-        <Form.Item
+        {/* <Form.Item
           wrapperCol={{
             xs: { span: 24, offset: 0 },
             sm: { span: 16, offset: 8 },
@@ -164,7 +137,7 @@ function Visitor() {
           name="awarenessChannelOther"
         >
           <Input style={{ width: 200 }} />
-        </Form.Item>
+        </Form.Item> */}
 
         <Form.Item
           name="invitedBy"
