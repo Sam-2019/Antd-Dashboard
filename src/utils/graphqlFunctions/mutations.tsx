@@ -30,8 +30,11 @@ export const ADD_MEMBER = gql`
 `;
 
 export const UPDATE_MEMBER = gql`
-mutation UpdateMemberMutation($updateMemberId: ID, $updateMemberInput: AddMember) {
-  updateMember(id: $updateMemberId, input: $updateMemberInput) {
+  mutation UpdateMemberMutation(
+    $updateMemberId: ID
+    $updateMemberInput: AddMember
+  ) {
+    updateMember(id: $updateMemberId, input: $updateMemberInput) {
       firstName
       lastName
       otherName
@@ -108,8 +111,11 @@ export const ADD_VISITOR = gql`
 `;
 
 export const UPDATE_VISITOR = gql`
-mutation UpdateVisitorMutation($updateVisitorId: ID, $updateVisitorInput: AddVisitor) {
-  updateVisitor(id: $updateVisitorId, input: $updateVisitorInput) {
+  mutation UpdateVisitorMutation(
+    $updateVisitorId: ID
+    $updateVisitorInput: AddVisitor
+  ) {
+    updateVisitor(id: $updateVisitorId, input: $updateVisitorInput) {
       id
       firstName
       lastName
@@ -157,7 +163,22 @@ export const ADD_PLEDGE = gql`
     }
   }
 `;
-
+export const UPDATE_PLEDGE = gql`
+  mutation UpdatePledgeMutation(
+    $updatePledgeId: ID
+    $updatePledgeInput: AddPledge
+  ) {
+    updatePledge(id: $updatePledgeId, input: $updatePledgeInput) {
+      id
+      pledgeeID
+      pledgeDate
+      amount
+      programme
+      redeemedDate
+      status
+    }
+  }
+`;
 export const UPLOAD_IMAGE = gql`
   mutation Mutation($uploadImageInput: AddImage) {
     uploadImage(input: $uploadImageInput) {
