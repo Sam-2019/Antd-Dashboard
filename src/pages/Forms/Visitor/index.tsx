@@ -17,8 +17,6 @@ function Visitor() {
       monthOfBirth: fieldsValue["monthOfBirth"].format("YYYY-MM"),
     };
 
-    console.log("Received values of form: ", values);
-
     addVisitor({
       variables: {
         addVisitorInput: {

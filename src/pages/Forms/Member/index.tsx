@@ -26,7 +26,7 @@ function Member() {
   const [addMember] = useMutation(ADD_MEMBER);
 
   const onRegionChange = (value: string) => {
-    // console.log(value)
+
   };
 
   const onFinish = (fieldsValue: any) => {
@@ -35,7 +35,6 @@ function Member() {
       dateOfBirth: fieldsValue["dateOfBirth"].format("YYYY-MM-DD"),
       yearJoinedChurch: fieldsValue["yearJoinedChurch"].format("YYYY"),
     };
-    console.log("Received values of form: ", values);
 
     addMember({
       variables: {
@@ -185,10 +184,10 @@ function Member() {
         <Form.Item name="emailAddress" label="Email Address">
           <Input style={{ width: 200 }} />
         </Form.Item>
-
+        {/* 
         <Form.Item name="postalAddress" label="Postal Address">
           <Input style={{ width: 200 }} />
-        </Form.Item>
+        </Form.Item> */}
 
         <Form.Item
           name="maritalStatus"
@@ -209,7 +208,7 @@ function Member() {
         <Form.Item name="numberOfChlidren" label="Number of children">
           <InputNumber keyboard={true} style={{ width: 200 }} />
         </Form.Item>
-
+        {/* 
         <Form.Item label="Name of children" style={{ marginBottom: 0 }} />
 
         <Form.List name="nameOfChildren">
@@ -262,7 +261,7 @@ function Member() {
               </Form.Item>
             </>
           )}
-        </Form.List>
+        </Form.List> */}
 
         <Form.Item
           name="yearJoinedChurch"

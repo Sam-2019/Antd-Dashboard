@@ -65,7 +65,7 @@ function Type({ dataSource }: any) {
   };
 
   const handleSearch = (dir: any, value: any) => {
-    // console.log("search:", dir, value);
+
   };
 
   function onChange(date: any, dateString: any) {
@@ -94,18 +94,6 @@ function Type({ dataSource }: any) {
         emptytransfer: true,
       }));
     }
-
-    // console.log(targetKeys);
-
-    // await addProjectOffering({
-    //   variables: {
-    //     addProjectOfferingInput: {
-    //       "members": targetKeys,
-    //       "month": "10-2021",
-    //       "type": "Welfare"
-    //     },
-    //   },
-    // });
 
     await addPaymentPayer({
       variables: {

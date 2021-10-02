@@ -67,13 +67,13 @@ const ImageUpload = () => {
 
     try {
       await uploadBytes(membersImagesRef, image, metadata).then((snapshot) => {
-        console.log(snapshot, "Uploaded a blob or file!");
+ 
       });
 
       //  Upload the file and metadata
       const uploadTask = uploadBytesResumable(membersImagesRef, image);
       await getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-        console.log(typeof downloadURL);
+
         if (downloadURL) {
           setStatus("Image uploaded");
 

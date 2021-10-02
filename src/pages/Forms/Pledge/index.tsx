@@ -14,7 +14,6 @@ function Pledge() {
       pledgeDate: fieldsValue["pledgeDate"].format("YYYY-MM-DD"),
       redeemedDate: fieldsValue["redeemedDate"].format("YYYY-MM-DD"),
     };
-    //  console.log("Received values of form: ", values);
 
     const {
       pledgeDate,

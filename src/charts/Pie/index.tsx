@@ -10,8 +10,6 @@ function PieChart({ info, group }: any) {
     },
   });
 
-  console.log(data);
-
   if (loading) {
     return <Spinner />;
   }

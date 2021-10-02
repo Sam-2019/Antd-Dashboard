@@ -11,9 +11,6 @@ function Visitor({ handleCancel }: any) {
   const [updateVisitor] = useMutation(UPDATE_VISITOR);
 
   const onFinish = (fieldsValue: any) => {
-    // Should format date value before submit.
-
-    console.log("Received values of form: ", fieldsValue);
 
     updateVisitor({
       variables: {

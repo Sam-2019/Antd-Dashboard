@@ -27,7 +27,6 @@ function Member({ handleCancel }: any) {
   const [addMember] = useMutation(UPDATE_MEMBER);
 
   const onFinish = (fieldsValue: any) => {
-    console.log("Received values of form: ", fieldsValue);
 
     addMember({
       variables: {

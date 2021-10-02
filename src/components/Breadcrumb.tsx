@@ -1,6 +1,6 @@
 import React from "react";
 import { Breadcrumb } from "antd";
-import {  useHistory, useLocation, useParams } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 export const breadcrumbNameMap = {
   "/departments": "Department",
@@ -11,13 +11,10 @@ export const breadcrumbNameMap = {
 
 function BreadCrumb() {
   const history = useHistory();
-  let { slug }: any = useParams();
+
   let location = useLocation();
 
- // console.log(slug);
-
   const pathSnippets = location.pathname.split("/").filter((i) => i);
-  //console.log(pathSnippets);
 
   return (
     <div style={{ marginBottom: "10px" }}>

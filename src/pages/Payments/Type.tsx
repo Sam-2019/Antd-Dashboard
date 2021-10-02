@@ -5,7 +5,7 @@ import { GET_PAYMENT } from "../../utils/graphqlFunctions/queries";
 import Spinner from "../../components/Spinner/Spinner";
 import Error from "../../components/Error/Error";
 import { pathSnippetsWithFilter, paymentMonth } from "../../utils/functions";
-import { DatePicker} from "antd";
+import { DatePicker } from "antd";
 import TypeItem from "./TypeItem";
 import GoBack from "../../components/GoBack";
 
@@ -37,8 +37,6 @@ function Type() {
     };
   }, [month, year]);
 
-  console.log(state);
-
   const { loading, error, data } = useQuery(GET_PAYMENT, {
     variables: {
       paymentMonth: state,
@@ -57,11 +55,10 @@ function Type() {
   return (
     <>
       <GoBack />
-   
-        <div style={{ marginBottom: 10 }}>
-          Select year : <DatePicker onChange={onChange} picker="year" />{" "}
-        </div>
-  
+
+      <div style={{ marginBottom: 10 }}>
+        Select year : <DatePicker onChange={onChange} picker="year" />{" "}
+      </div>
 
       <TypeItem dataSource={data.payment} />
     </>
