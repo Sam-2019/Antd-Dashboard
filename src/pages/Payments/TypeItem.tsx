@@ -147,7 +147,7 @@ function TypeItem({ dataSource }: any) {
 
   return (
     <>
-      <Table rowKey="id" columns={columns} dataSource={dataSource} />;
+      <Table rowKey="id" columns={columns} dataSource={dataSource} />
     </>
   );
 }

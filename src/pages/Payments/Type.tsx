@@ -57,7 +57,7 @@ function Type() {
       <GoBack />
 
       <div style={{ marginBottom: 10 }}>
-        Select year : <DatePicker onChange={onChange} picker="year" />{" "}
+        Select year : <DatePicker onChange={onChange} picker="year" />
       </div>
 
       <TypeItem dataSource={data.payment} />
