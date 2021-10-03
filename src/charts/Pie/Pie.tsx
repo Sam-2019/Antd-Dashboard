@@ -2,35 +2,32 @@ import { Pie } from "@ant-design/charts";
 
 const PieChart = ({ data }: any) => {
   var config = {
-    autoFit: true,
     appendPadding: 10,
+    theme: "default",
     data,
     angleField: "value",
     colorField: "type",
-    radius: 1,
-    innerRadius: 0.5,
+    radius: 0.8,
+    innerRadius: 0.6,
     label: {
-      type: "inner",
-      offset: "-50%",
-      content: "{percentage}",
-      style: {
-        textAlign: "center",
-        fontSize: 14,
-      },
+      type: 'inner',
+      offset: '-30%',
+      style: { textAlign: 'center' },
+      autoRotate: false,
+      content: '{percentage}',
     },
     interactions: [{ type: "element-selected" }, { type: "element-active" }],
     statistic: {
       title: false,
       content: {
         style: {
-          whiteSpace: "pre-wrap",
-          overflow: "hidden",
-          textOverflow: "ellipsis",
+          whiteSpace: 'pre-wrap',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
         },
-        content: "100%",
+        content: '100%',
       },
     },
-    theme: "default",
   };
   return <Pie {...config} />;
 };
