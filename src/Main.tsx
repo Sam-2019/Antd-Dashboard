@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import dotenv from "dotenv";
 
 import Layout from "./components/Layout/Layout";
 import { FormsRoute } from "./routes/Forms";
@@ -11,6 +12,8 @@ import { PledgeRoute } from "./routes/Pledges";
 import { VisitorRoute } from "./routes/Visitors";
 import { PaymentRoute } from "./routes/Payments";
 import ScrollToTop from "./components/ScrollToTop";
+
+dotenv.config();
 
 export default function Main() {
   return (

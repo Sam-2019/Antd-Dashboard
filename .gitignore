@@ -36,6 +36,8 @@ src/pages/Visitor/working-Member
 src/pages/Members/Data.tsx
 src/pages/Forms/Payments/Untitled-1
 src/pages/Members/upload.tsx
-src/utils/firebaseConfig.tsx
 src/pages/Dashboard/NewDash.tsx
 src/pages/Dashboard/index copy.tsx
+package.json
+.env
+src/utils/firebaseConfig copy.tsx
