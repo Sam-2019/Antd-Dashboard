@@ -4,18 +4,23 @@ export const colorSwitch = (tag: any) => {
     case "Administration":
       color = "volcano";
       break;
+      
     case "Chapel Shepherd":
       color = "pink";
       break;
+
     case "Facilitators":
       color = "yellow";
       break;
+
     case "Housekeeping":
       color = "magenta";
       break;
+
     case "Intercessory":
       color = "lime";
       break;
+
     case "Media":
       color = "default";
       break;
