@@ -8,5 +8,4 @@ export const firebaseConfig = {
   measurementId: process.env.MEASUREMENT_ID,
 };
 
-
 export const storageURL = process.env.STORAGE_URL;
