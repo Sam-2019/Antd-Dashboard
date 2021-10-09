@@ -53,5 +53,18 @@
   },
   "devDependencies": {
     "@types/react-router-dom": "^5.1.8"
+  },
+  "react-dotenv": {
+    "whitelist": [
+      "API_URL",
+      "API_KEY",
+      "AUTH_DOMAIN",
+      "PROJECT_ID",
+      "STORAGE_BUCKET",
+      "MESSAGING_SENDER_ID",
+      "APP_ID",
+      "MEASUREMENT_ID",
+      "STORAGE_URL"
+    ]
   }
 }

@@ -1,11 +1,9 @@
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-import dotenv from "dotenv";
 import Main from "./Main";
 import "antd/dist/antd.css";
+import env from "react-dotenv";
 
-dotenv.config();
-
-const uri = process.env.API_URI;
+const uri = env.API_URI;
 const cache = new InMemoryCache();
 
 const client = new ApolloClient({
