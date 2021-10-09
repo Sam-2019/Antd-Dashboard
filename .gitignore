@@ -40,5 +40,4 @@ src/pages/Dashboard/NewDash.tsx
 src/pages/Dashboard/index copy.tsx
 package.json
 .env
-src/utils/firebaseConfig copy.tsx
-public/env.js
+src/utils/firebaseConfig.tsx
