@@ -3,9 +3,9 @@ import Main from "./Main";
 import "antd/dist/antd.css";
 import env from "react-dotenv";
 
-const uri = env.API_URI;
-const cache = new InMemoryCache();
+const uri = env.API_URL;
 
+const cache = new InMemoryCache();
 const client = new ApolloClient({
   uri,
   cache,
