@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import Main from "./Main";
 import "antd/dist/antd.css";
-import {host } from './utils/firebaseConfig'
+import {host } from '../firebaseConfig'
 
 const cache = new InMemoryCache();
 const client = new ApolloClient({

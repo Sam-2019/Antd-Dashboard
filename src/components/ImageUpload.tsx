@@ -14,7 +14,7 @@ import { v4 as uuidv4 } from "uuid";
 import { UPLOAD_IMAGE } from "../utils/graphqlFunctions/mutations";
 import { useMutation } from "@apollo/client";
 import { GET_MEMBER } from "../utils/graphqlFunctions/queries";
-import { firebaseConfig, storageURL } from "../utils/firebaseConfig";
+import { firebaseConfig, storageURL } from "../../firebaseConfig";
 
 const ImageUpload = () => {
   const firebaseApp = initializeApp(firebaseConfig);
