@@ -1,23 +1,16 @@
-import env from "react-dotenv";
+import dotenv from "dotenv";
+dotenv.config();
 
-interface FirebaseType {
-  apiKey: string;
-  authDomain: string;
-  projectId: string;
-  storageBucket: string;
-  messagingSenderId: string;
-  appId: string;
-  measurementId: string;
-}
+export const host = process.env.REACT_APP_API_URL;
 
-export const firebaseConfig: FirebaseType = {
-  apiKey: env.API_KEY,
-  authDomain: env.AUTH_DOMAIN,
-  projectId: env.PROJECT_ID,
-  storageBucket: env.STORAGE_BUCKET,
-  messagingSenderId: env.MESSAGING_SENDER_ID,
-  appId: env.APP_ID,
-  measurementId: env.MEASUREMENT_ID,
+export const firebaseConfig = {
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID,
+  measurementId: process.env.MEASUREMENT_ID,
 };
 
-export const storageURL: string = env.STORAGE_URL;
+export const storageURL = process.env.STORAGE_URL;
