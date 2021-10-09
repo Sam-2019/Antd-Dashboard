@@ -1,6 +1,16 @@
 import env from "react-dotenv";
 
-export const firebaseConfig = {
+interface FirebaseType {
+  apiKey: string;
+  authDomain: string;
+  projectId: string;
+  storageBucket: string;
+  messagingSenderId: string;
+  appId: string;
+  measurementId: string;
+}
+
+export const firebaseConfig: FirebaseType = {
   apiKey: env.API_KEY,
   authDomain: env.AUTH_DOMAIN,
   projectId: env.PROJECT_ID,
@@ -10,4 +20,4 @@ export const firebaseConfig = {
   measurementId: env.MEASUREMENT_ID,
 };
 
-export const storageURL = env.STORAGE_URL;
+export const storageURL: string = env.STORAGE_URL;
