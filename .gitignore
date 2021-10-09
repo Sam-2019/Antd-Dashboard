@@ -38,9 +38,5 @@ src/pages/Forms/Payments/Untitled-1
 src/pages/Members/upload.tsx
 src/pages/Dashboard/NewDash.tsx
 src/pages/Dashboard/index copy.tsx
-
-
 .env
 /src/utils/firebaseConfig copy.tsx
-/src/utils/firebaseConfig.tsx
-firebaseConfig.tsx
