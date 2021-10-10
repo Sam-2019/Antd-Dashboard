@@ -24,7 +24,11 @@ function Member({ handleCancel }: any) {
   const [form] = Form.useForm();
   let { slug }: any = useParams();
 
-  const [addMember] = useMutation(UPDATE_MEMBER);
+  const [addMember] = useMutation(UPDATE_MEMBER, {
+    update(cache, { data }) {
+
+    },
+  });
 
   const onFinish = (fieldsValue: any) => {
     addMember({
