@@ -1,4 +1,3 @@
-import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import {
   Input,
   Col,
@@ -9,7 +8,6 @@ import {
   Button,
   Radio,
   Checkbox,
-  Space,
   Select,
 } from "antd";
 
@@ -18,16 +16,17 @@ import { departments } from "../../../utils/data";
 import GoBack from "../../../components/GoBack";
 import { ADD_MEMBER } from "../../../utils/graphqlFunctions/mutations";
 import { success } from "../../../components/Modal/Modal";
+import { GET_MEMBERS } from "../../../utils/graphqlFunctions/queries";
 
 const { Option } = Select;
 
 function Member() {
   const [form] = Form.useForm();
-  const [addMember] = useMutation(ADD_MEMBER);
+  const [addMember] = useMutation(ADD_MEMBER, {
+    refetchQueries: [{ query: GET_MEMBERS }],
+  });
 
-  const onRegionChange = (value: string) => {
-
-  };
+  const onRegionChange = (value: string) => {};
 
   const onFinish = (fieldsValue: any) => {
     const values = {

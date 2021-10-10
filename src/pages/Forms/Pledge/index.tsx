@@ -3,10 +3,13 @@ import { useMutation } from "@apollo/client";
 import GoBack from "../../../components/GoBack";
 import { ADD_PLEDGE } from "../../../utils/graphqlFunctions/mutations";
 import { success } from "../../../components/Modal/Modal";
+import { GET_PLEDGE } from "../../../utils/graphqlFunctions/queries";
 
 function Pledge() {
   const [form] = Form.useForm();
-  const [addPledge] = useMutation(ADD_PLEDGE);
+  const [addPledge] = useMutation(ADD_PLEDGE, {
+    refetchQueries: [{ query: GET_PLEDGE }],
+  });
 
   const onFinish = (fieldsValue: any) => {
     const values = {
