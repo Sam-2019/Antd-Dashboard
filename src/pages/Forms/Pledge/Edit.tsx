@@ -2,13 +2,13 @@ import { Input, Form, Button, InputNumber, Space } from "antd";
 import { useMutation } from "@apollo/client";
 import { UPDATE_PLEDGE } from "../../../utils/graphqlFunctions/mutations";
 import { success } from "../../../components/Modal/Modal";
-import { GET_MEMBER } from "../../../utils/graphqlFunctions/queries";
+import { GET_PLEDGE } from "../../../utils/graphqlFunctions/queries";
 
 function Pledge({ handleCancel, slug }: any) {
   const [form] = Form.useForm();
 
   const [updatePledge] = useMutation(UPDATE_PLEDGE, {
-    refetchQueries: [GET_MEMBER],
+    refetchQueries: [{ query: GET_PLEDGE }],
   });
 
   const onFinish = (fieldsValue: any) => {
