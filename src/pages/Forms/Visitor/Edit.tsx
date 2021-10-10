@@ -3,15 +3,24 @@ import { useMutation } from "@apollo/client";
 import { UPDATE_VISITOR } from "../../../utils/graphqlFunctions/mutations";
 import { success } from "../../../components/Modal/Modal";
 import { useParams } from "react-router-dom";
+import { GET_VISITOR } from "../../../utils/graphqlFunctions/queries";
 
 function Visitor({ handleCancel }: any) {
   const [form] = Form.useForm();
   let { slug }: any = useParams();
 
-  const [updateVisitor] = useMutation(UPDATE_VISITOR);
+  const [updateVisitor] = useMutation(UPDATE_VISITOR, {
+    refetchQueries: [
+      {
+        query: GET_VISITOR,
+        variables: {
+          visitorId: slug,
+        },
+      },
+    ],
+  });
 
   const onFinish = (fieldsValue: any) => {
-
     updateVisitor({
       variables: {
         updateVisitorId: slug,

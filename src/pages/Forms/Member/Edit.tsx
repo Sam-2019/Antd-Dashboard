@@ -17,6 +17,7 @@ import { departments } from "../../../utils/data";
 import { UPDATE_MEMBER } from "../../../utils/graphqlFunctions/mutations";
 import { success } from "../../../components/Modal/Modal";
 import { useParams } from "react-router-dom";
+import { GET_MEMBER } from "../../../utils/graphqlFunctions/queries";
 
 const { Option } = Select;
 
@@ -25,9 +26,14 @@ function Member({ handleCancel }: any) {
   let { slug }: any = useParams();
 
   const [addMember] = useMutation(UPDATE_MEMBER, {
-    update(cache, { data }) {
-
-    },
+    refetchQueries: [
+      {
+        query: GET_MEMBER,
+        variables: {
+          memberId: slug,
+        },
+      },
+    ],
   });
 
   const onFinish = (fieldsValue: any) => {
