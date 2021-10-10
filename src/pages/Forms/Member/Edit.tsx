@@ -17,14 +17,17 @@ import { departments } from "../../../utils/data";
 import { UPDATE_MEMBER } from "../../../utils/graphqlFunctions/mutations";
 import { success } from "../../../components/Modal/Modal";
 import { useParams } from "react-router-dom";
+import { GET_MEMBER } from "../../../utils/graphqlFunctions/queries";
 
 const { Option } = Select;
 
-function Member({ handleCancel }: any) {
+function Member({ handleCancel }: any): JSX.Element {
   const [form] = Form.useForm();
   let { slug }: any = useParams();
 
-  const [addMember] = useMutation(UPDATE_MEMBER);
+  const [addMember] = useMutation(UPDATE_MEMBER, {
+    refetchQueries: [{ query: GET_MEMBER }],
+  });
 
   const onFinish = (fieldsValue: any) => {
     addMember({
@@ -34,6 +37,10 @@ function Member({ handleCancel }: any) {
           ...fieldsValue,
         },
       },
+      update(cache, result) {
+        console.log( result);
+      },
+      
     });
 
     form.resetFields();
