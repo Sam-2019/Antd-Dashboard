@@ -3,10 +3,13 @@ import { useMutation } from "@apollo/client";
 import GoBack from "../../../components/GoBack";
 import { ADD_VISITOR } from "../../../utils/graphqlFunctions/mutations";
 import { success } from "../../../components/Modal/Modal";
+import { GET_VISITORS } from "../../../utils/graphqlFunctions/queries";
 
 function Visitor() {
   const [form] = Form.useForm();
-  const [addVisitor] = useMutation(ADD_VISITOR);
+  const [addVisitor] = useMutation(ADD_VISITOR, {
+    refetchQueries: [{ query: GET_VISITORS }],
+  });
 
   const onFinish = (fieldsValue: any) => {
     // Should format date value before submit.

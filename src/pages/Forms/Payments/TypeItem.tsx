@@ -5,6 +5,7 @@ import { ADD_PAYMENT } from "../../../utils/graphqlFunctions/mutations";
 import { success } from "../../../components/Modal/Modal";
 import { Transfer, Button, DatePicker, Typography } from "antd";
 import { useParams } from "react-router-dom";
+import { GET_PAYMENT } from "../../../utils/graphqlFunctions/queries";
 
 const { Text } = Typography;
 
@@ -25,7 +26,9 @@ function Type({ dataSource }: any) {
     emptytransfer: false,
   });
 
-  const [addPaymentPayer] = useMutation(ADD_PAYMENT);
+  const [addPaymentPayer] = useMutation(ADD_PAYMENT, {
+    refetchQueries: [{ query: GET_PAYMENT }],
+  });
 
   useEffect(() => {
     getMock();
@@ -64,9 +67,7 @@ function Type({ dataSource }: any) {
     setTargetKeys(targetKeys);
   };
 
-  const handleSearch = (dir: any, value: any) => {
-
-  };
+  const handleSearch = (dir: any, value: any) => {};
 
   function onChange(date: any, dateString: any) {
     setMonth(dateString);
