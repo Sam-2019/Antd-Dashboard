@@ -10,11 +10,10 @@ function Visitor({ handleCancel }: any) {
   let { slug }: any = useParams();
 
   const [updateVisitor] = useMutation(UPDATE_VISITOR, {
-    refetchQueries: [{ query: GET_VISITOR }],
+    refetchQueries: [{ query: GET_VISITOR, variables: { visitorId: slug } }],
   });
 
   const onFinish = (fieldsValue: any) => {
-
     updateVisitor({
       variables: {
         updateVisitorId: slug,

@@ -26,7 +26,14 @@ function Member({ handleCancel }: any): JSX.Element {
   let { slug }: any = useParams();
 
   const [addMember] = useMutation(UPDATE_MEMBER, {
-    refetchQueries: [{ query: GET_MEMBER }],
+    refetchQueries: [
+      {
+        query: GET_MEMBER,
+        variables: {
+          memberId: slug,
+        },
+      },
+    ],
   });
 
   const onFinish = (fieldsValue: any) => {
@@ -37,10 +44,6 @@ function Member({ handleCancel }: any): JSX.Element {
           ...fieldsValue,
         },
       },
-      update(cache, result) {
-        console.log( result);
-      },
-      
     });
 
     form.resetFields();
