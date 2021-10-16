@@ -141,8 +141,8 @@ export const GET_VISITOR = gql`
 export const GET_GENDER_COUNT = gql`
 query Query($countGenderGroup: String) {
   countGender(group: $countGenderGroup) {
-    type
-    value
+    _id
+    count
   }
 }
 `;
