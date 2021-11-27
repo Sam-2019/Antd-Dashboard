@@ -16,3 +16,5 @@ export function VisitorRoute() {
     </Switch>
   );
 }
+
+export { VisitorRoute as default } from "./Visitors";

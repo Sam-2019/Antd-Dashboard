@@ -16,3 +16,5 @@ export function MemberRoute() {
     </Switch>
   );
 }
+
+export { MemberRoute as default } from "./Members";
