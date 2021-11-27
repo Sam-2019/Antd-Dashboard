@@ -19,7 +19,6 @@ export default function Main() {
   return (
     <Router>
       <ScrollToTop />
-
       <div>
         <Layout>
           <Suspense fallback={<Spinner />}>
