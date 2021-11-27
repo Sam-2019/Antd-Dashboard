@@ -26,3 +26,5 @@ export function PaymentRoute() {
     </Switch>
   );
 }
+
+export { PaymentRoute as default } from "./Payments";

@@ -10,3 +10,5 @@ export function NoPageRoute() {
     </Switch>
   );
 }
+
+export { NoPageRoute as default } from "./404";
