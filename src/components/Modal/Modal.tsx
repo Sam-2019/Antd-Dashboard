@@ -1,4 +1,4 @@
-import {  Modal } from "antd";
+import { Modal } from "antd";
 import { CheckCircleOutlined } from "@ant-design/icons";
 
 const { confirm } = Modal;
@@ -16,6 +16,13 @@ export function showPromiseConfirm() {
 export function success(content: any) {
   Modal.success({
     title: "Success",
+    content
+  });
+}
+
+export function error(content: any) {
+  Modal.error({
+    title: "Error",
     content,
   });
 }
@@ -36,7 +43,7 @@ export function Edit({
         onOk={handleOk}
         onCancel={handleCancel}
         footer={null}
-        bodyStyle={{"height": "auto"}}
+        bodyStyle={{ height: "auto" }}
       >
         {children}
       </Modal>
