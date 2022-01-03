@@ -1,6 +1,7 @@
 import { Pie } from "@ant-design/charts";
 
 const PieChart = ({ data }: any) => {
+
   var config = {
     appendPadding: 10,
     theme: "default",
@@ -10,22 +11,22 @@ const PieChart = ({ data }: any) => {
     radius: 0.8,
     innerRadius: 0.6,
     label: {
-      type: 'inner',
-      offset: '-30%',
-      style: { textAlign: 'center' },
+      type: "inner",
+      offset: "-30%",
+      style: { textAlign: "center" },
       autoRotate: false,
-      content: '{percentage}',
+      content: "{percentage}",
     },
     interactions: [{ type: "element-selected" }, { type: "element-active" }],
     statistic: {
       title: false,
       content: {
         style: {
-          whiteSpace: 'pre-wrap',
-          overflow: 'hidden',
-          textOverflow: 'ellipsis',
+          whiteSpace: "pre-wrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
         },
-        content: '100%',
+        content: "100%",
       },
     },
   };
