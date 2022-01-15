@@ -104,7 +104,7 @@ function Member() {
       >
         <div style={{ marginBottom: 30 }}>
           <Steps
-            type="default"
+            type="navigation"
             current={current}
             onChange={onChange}
             className="site-navigation-steps"
@@ -114,6 +114,7 @@ function Member() {
             ))}
           </Steps>
         </div>
+        
         {current === 0 && (
           <div className="steps-content">
             <Form.Item
