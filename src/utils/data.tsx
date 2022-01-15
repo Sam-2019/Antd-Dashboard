@@ -391,22 +391,16 @@ export const newData = [
 
 export const steps = [
   {
-    title: "Step 1",
+    title: "Basic",
     content: "First-content",
-    subTitle: "00:00:05",
-    description: "This is a description.",
   },
   {
-    title: "Step 2",
+    title: "Personal",
     content: "Second-content",
-    subTitle: "00:01:02",
-    description: "This is a description.",
   },
   {
-    title: "Step 3",
+    title: "Church",
     content: "Last-content",
-    subTitle: "waiting for longlong time",
-    description: "This is a description.",
   },
 ];
 
