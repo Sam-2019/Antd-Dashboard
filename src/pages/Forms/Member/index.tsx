@@ -102,7 +102,6 @@ function Member() {
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 16 }}
       >
-        ,
         <div style={{ marginBottom: 30 }}>
           <Steps
             type="default"
