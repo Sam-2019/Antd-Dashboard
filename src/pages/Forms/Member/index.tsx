@@ -36,14 +36,14 @@ function Member() {
   const onCountryChange = (value: string) => {};
 
   const onChange = (current: any) => {
-    setCurrent(current);
+    // setCurrent(current);
   };
 
   const prev = () => {
     setCurrent(current - 1);
   };
 
-  const onFinish = async(fieldsValue: any) => {
+  const onFinish = async (fieldsValue: any) => {
     if (current === 0) {
       const pageOne = {
         ...fieldsValue,
@@ -87,6 +87,7 @@ function Member() {
       form.resetFields();
       success("Member added");
       setCurrent(0);
+      localStorage.clear();
     }
   };
 
@@ -101,22 +102,19 @@ function Member() {
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 16 }}
       >
-        <Steps
-          type="default"
-          current={current}
-          onChange={onChange}
-          className="site-navigation-steps"
-        >
-          {steps.map((item: any) => (
-            <Step
-              key={item.title}
-              title={item.title}
-              // subTitle={item.subTitle}
-              description={item.description}
-            />
-          ))}
-        </Steps>
-
+        ,
+        <div style={{ marginBottom: 30 }}>
+          <Steps
+            type="default"
+            current={current}
+            onChange={onChange}
+            className="site-navigation-steps"
+          >
+            {steps.map((item: any) => (
+              <Step key={item.title} title={item.title} />
+            ))}
+          </Steps>
+        </div>
         {current === 0 && (
           <div className="steps-content">
             <Form.Item
@@ -163,7 +161,6 @@ function Member() {
             </Form.Item>
           </div>
         )}
-
         {current === 1 && (
           <div className="steps-content">
             <Form.Item
@@ -269,7 +266,6 @@ function Member() {
             </Form.Item>
           </div>
         )}
-
         {current === 2 && (
           <div className="steps-content">
             <Form.Item
@@ -314,7 +310,6 @@ function Member() {
             </Form.Item>
           </div>
         )}
-
         <Form.Item
           wrapperCol={{
             xs: { span: 24, offset: 0 },
