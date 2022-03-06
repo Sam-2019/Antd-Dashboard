@@ -12,7 +12,7 @@ function MemberItem({ dataSource }: any) {
   return (
     <div>
       <Row>
-        <Col span={4}>
+      <Col span={4}>
           {dataSource.imageURL ? (
             <>
               <Image

@@ -15,7 +15,7 @@ function PieChart({ info, group }: any) {
   }
 
   if (error) {
-    return <Error />;
+    return <Error hideButton={true} />;
   }
   return <Pie data={data.countGender} group={group} />;
 }

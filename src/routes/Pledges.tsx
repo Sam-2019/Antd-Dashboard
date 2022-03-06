@@ -11,3 +11,5 @@ export function PledgeRoute() {
     </Switch>
   );
 }
+
+export { PledgeRoute as default } from "./Pledges";

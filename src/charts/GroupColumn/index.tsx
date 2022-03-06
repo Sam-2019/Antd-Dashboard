@@ -14,7 +14,7 @@ const GroupChart = ({ info, type, vehicles }: any) => {
   }
 
   if (error) {
-    return <Error />;
+    return <Error  hideButton={true} />;
   }
 
   return <GroupColumn data={data.sundayStat} />;

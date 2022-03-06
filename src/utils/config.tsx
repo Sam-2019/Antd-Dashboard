@@ -1,7 +1,9 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-export const host = process.env.REACT_APP_API_URL;
+export const onlinehost = process.env.REACT_APP_API_URL;
+export const localhost = process.env.REACT_APP_API_URL_LOCAL;
+export const env = process.env.REACT_APP_ENVIRONMENT;
 
 export const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,

@@ -60,14 +60,17 @@ function Type({ dataSource }: any) {
     </Button>
   );
 
-  const filterOption = (inputValue: any, option: any) =>
-    option.id.indexOf(inputValue) > -1;
-
   const handleChange = (targetKeys: any) => {
     setTargetKeys(targetKeys);
   };
 
+<<<<<<< HEAD
   const handleSearch = (dir: any, value: any) => {};
+=======
+  const handleSearch = (dir: any, value: any) => {
+    // console.log("search:", dir, value);
+  };
+>>>>>>> 6391e24b0b53e55ffcc6385cadb38615b425c2e7
 
   function onChange(date: any, dateString: any) {
     setMonth(dateString);
@@ -142,7 +145,6 @@ function Type({ dataSource }: any) {
             <Transfer
               dataSource={members}
               showSearch
-              filterOption={filterOption}
               targetKeys={targetKeys}
               onChange={handleChange}
               onSearch={handleSearch}
@@ -164,7 +166,6 @@ function Type({ dataSource }: any) {
           </div>
 
           <Button
-            size="small"
             type="primary"
             htmlType="submit"
             style={{ float: "right", margin: 5 }}

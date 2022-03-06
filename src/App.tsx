@@ -1,11 +1,11 @@
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import Main from "./Main";
-import { host } from "./utils/firebaseConfig";
 import "antd/dist/antd.css";
+import { onlinehost, localhost, env } from "./utils/config";
 
 const cache = new InMemoryCache();
 const client = new ApolloClient({
-  uri: host,
+  uri: env === "production" ? onlinehost : localhost,
   cache,
 });
 

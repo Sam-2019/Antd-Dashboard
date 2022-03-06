@@ -17,3 +17,5 @@ export function DepartmentRoute() {
     </Switch>
   );
 }
+
+export { DepartmentRoute as default } from "./Departments";

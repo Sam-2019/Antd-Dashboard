@@ -21,7 +21,7 @@ import { GET_MEMBER } from "../../../utils/graphqlFunctions/queries";
 
 const { Option } = Select;
 
-function Member({ handleCancel }: any) {
+function Member({ handleCancel }: any): JSX.Element {
   const [form] = Form.useForm();
   let { slug }: any = useParams();
 

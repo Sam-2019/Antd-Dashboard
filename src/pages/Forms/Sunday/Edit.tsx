@@ -4,11 +4,14 @@ import { useMutation } from "@apollo/client";
 import GoBack from "../../../components/GoBack";
 import { ADD_SUNDAY_SERVICE } from "../../../utils/graphqlFunctions/mutations";
 import { success } from "../../../components/Modal/Modal";
+import { GET_SUNDAY_STATS } from "../../../utils/graphqlFunctions/queries";
 
 function SundayType() {
   let { slug }: any = useParams();
   const [form] = Form.useForm();
-  const [addSundayServiceInput] = useMutation(ADD_SUNDAY_SERVICE);
+  const [addSundayServiceInput] = useMutation(ADD_SUNDAY_SERVICE, {
+    refetchQueries: [{ query: GET_SUNDAY_STATS }],
+  });
 
   const onFinish = (fieldsValue: any) => {
     const values = {
