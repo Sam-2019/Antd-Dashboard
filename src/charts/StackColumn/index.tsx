@@ -14,7 +14,7 @@ const StackChart = ({ info, type }: any) => {
   }
 
   if (error) {
-    return <Error />;
+    return <Error  hideButton={true} />;
   }
 
   return <StackColumn data={data.groupStat} />;

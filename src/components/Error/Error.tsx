@@ -1,7 +1,7 @@
 import { Result, Button } from "antd";
 import { useHistory } from "react-router-dom";
 
-function Error() {
+function Error({ hideButton }: any) {
   let history = useHistory();
   return (
     <Result
@@ -9,9 +9,11 @@ function Error() {
       title="500"
       subTitle="Sorry, something went wrong."
       extra={
-        <Button type="primary" onClick={() => history.goBack()}>
-          Go Back
-        </Button>
+        hideButton ? null : (
+          <Button type="primary" onClick={() => history.goBack()}>
+            Go Back
+          </Button>
+        )
       }
     />
   );
