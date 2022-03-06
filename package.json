@@ -47,22 +47,6 @@
     ]
   },
   "devDependencies": {
-<<<<<<< HEAD
-    "@types/react-router-dom": "^5.1.8"
-  },
-  "react-dotenv": {
-    "whitelist": [
-      "API_URL",
-      "API_KEY",
-      "AUTH_DOMAIN",
-      "PROJECT_ID",
-      "STORAGE_BUCKET",
-      "MESSAGING_SENDER_ID",
-      "APP_ID",
-      "MEASUREMENT_ID",
-      "STORAGE_URL"
-    ]
-=======
     "@types/jest": "^27.0.2",
     "@types/node": "^16.11.0",
     "@types/react": "^17.0.30",
@@ -71,6 +55,5 @@
     "@types/react-native-dotenv": "^0.2.0",
     "@types/react-router-dom": "^5.3.1",
     "@types/uuid": "^8.3.1"
->>>>>>> 6391e24b0b53e55ffcc6385cadb38615b425c2e7
   }
 }

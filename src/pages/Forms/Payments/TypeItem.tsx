@@ -64,13 +64,9 @@ function Type({ dataSource }: any) {
     setTargetKeys(targetKeys);
   };
 
-<<<<<<< HEAD
-  const handleSearch = (dir: any, value: any) => {};
-=======
   const handleSearch = (dir: any, value: any) => {
     // console.log("search:", dir, value);
   };
->>>>>>> 6391e24b0b53e55ffcc6385cadb38615b425c2e7
 
   function onChange(date: any, dateString: any) {
     setMonth(dateString);
