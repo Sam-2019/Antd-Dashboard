@@ -48,3 +48,5 @@ export function FormsRoute() {
     </Switch>
   );
 }
+
+export { FormsRoute as default } from "./Forms";

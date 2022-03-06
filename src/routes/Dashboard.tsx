@@ -12,3 +12,5 @@ export function DashboardRoute() {
     </Switch>
   );
 }
+
+export { DashboardRoute as default } from "./Dashboard";

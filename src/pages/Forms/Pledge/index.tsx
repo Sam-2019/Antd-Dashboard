@@ -7,7 +7,7 @@ import { GET_PLEDGE } from "../../../utils/graphqlFunctions/queries";
 
 function Pledge() {
   const [form] = Form.useForm();
-  const [addPledge] = useMutation(ADD_PLEDGE, {
+  const [addPledge] = useMutation(ADD_PLEDGE,  {
     refetchQueries: [{ query: GET_PLEDGE }],
   });
 

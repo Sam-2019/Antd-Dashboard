@@ -1,6 +1,11 @@
 import { Column } from "@ant-design/charts";
+import { Empty } from "antd";
 
 const GroupColumn = ({ data }: any) => {
+  if (data.length === 0) {
+    return <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />;
+  }
+
   var config = {
     data,
     isGroup: true,
@@ -16,6 +21,7 @@ const GroupColumn = ({ data }: any) => {
       ],
     },
   };
+
   return <Column {...config} />;
 };
 

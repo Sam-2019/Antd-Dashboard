@@ -16,3 +16,5 @@ export function ChapelsRoute() {
     </Switch>
   );
 }
+
+export { ChapelsRoute as default } from "./Chapels";
