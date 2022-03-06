@@ -1,6 +1,6 @@
 import { Row, Col, Card, Typography } from "antd";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
-import { GenderPieList, GenderTabList } from "../../charts/chartRoute";
+import { GenderPieList } from "../../charts/chartRoute";
 
 import GroupChart from "./GroupChart";
 const { Text } = Typography;
