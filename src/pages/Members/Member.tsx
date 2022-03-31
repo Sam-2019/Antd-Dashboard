@@ -62,7 +62,7 @@ function Member() {
         isModalVisible={isModalVisible}
         handleOk={handleOk}
         handleCancel={handleCancel}
-        children={<MemberEdit handleCancel={handleCancel} />}
+        children={<MemberEdit handleCancel={handleCancel} data={data.member} />}
       />
     </>
   );
