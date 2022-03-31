@@ -72,7 +72,6 @@ function Member({ handleCancel, data }: any): JSX.Element {
           spouseName: data.spouseName,
           gender: data.gender,
           group: data.group,
-    
         }}
       >
         <Form.Item name="firstName" label="First Name">
