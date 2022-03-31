@@ -21,7 +21,8 @@ import { GET_MEMBER } from "../../../utils/graphqlFunctions/queries";
 
 const { Option } = Select;
 
-function Member({ handleCancel }: any): JSX.Element {
+function Member({ handleCancel, data }: any): JSX.Element {
+  console.log(data);
   const [form] = Form.useForm();
   let { slug }: any = useParams();
 
@@ -61,6 +62,18 @@ function Member({ handleCancel }: any): JSX.Element {
         onFinish={onFinish}
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 16 }}
+        initialValues={{
+          firstName: data.firstName,
+          lastName: data.lastName,
+          contact: data.contact,
+          emailAddress: data.emailAddress,
+          residentialAddress: data.residentialAddress,
+          department: data.department,
+          spouseName: data.spouseName,
+          gender: data.gender,
+          group: data.group,
+    
+        }}
       >
         <Form.Item name="firstName" label="First Name">
           <Input style={{ width: 200 }} />
