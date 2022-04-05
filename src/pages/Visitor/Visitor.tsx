@@ -46,7 +46,7 @@ function Visitor() {
         onBack={() => history.goBack()}
         title={
           <>
-            <span className="breadcrumb">Visitor Information</span>
+            <span className="breadcrumb">Visitor</span>
           </>
         }
         extra={[

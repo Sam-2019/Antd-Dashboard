@@ -46,7 +46,7 @@ function Member() {
         onBack={() => history.goBack()}
         title={
           <>
-            <span className="breadcrumb">Member Information</span>
+            <span className="breadcrumb">Member</span>
           </>
         }
         extra={[
