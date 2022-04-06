@@ -16,7 +16,7 @@ export function showPromiseConfirm() {
 export function success(content: any) {
   Modal.success({
     title: "Success",
-    content
+    content,
   });
 }
 
@@ -34,19 +34,17 @@ export function Edit({
   children,
 }: any) {
   return (
-    <>
-      <Modal
-        width={1000}
-        title="Edit"
-        centered
-        visible={isModalVisible}
-        onOk={handleOk}
-        onCancel={handleCancel}
-        footer={null}
-        bodyStyle={{ height: "auto" }}
-      >
-        {children}
-      </Modal>
-    </>
+    <Modal
+      width={1000}
+      title="Edit"
+      centered
+      visible={isModalVisible}
+      onOk={handleOk}
+      onCancel={handleCancel}
+      footer={null}
+      bodyStyle={{ height: "auto" }}
+    >
+      {children}
+    </Modal>
   );
 }

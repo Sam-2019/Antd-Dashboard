@@ -5,7 +5,7 @@ import { success } from "../../../components/Modal/Modal";
 import { useParams } from "react-router-dom";
 import { GET_VISITOR } from "../../../utils/graphqlFunctions/queries";
 
-function Visitor({ handleCancel }: any) {
+function Visitor({ handleCancel, data }: any) {
   const [form] = Form.useForm();
   let { slug }: any = useParams();
 
@@ -38,6 +38,19 @@ function Visitor({ handleCancel }: any) {
         onFinish={onFinish}
         labelCol={{ span: 10 }}
         wrapperCol={{ span: 16 }}
+        initialValues={{
+          firstName: data.firstName,
+          lastName: data.lastName,
+          contact: data.contact,
+          location: data.location,
+          ageGroup: data.ageGroup,
+          group: data.group,
+          awarenessChannel: data.awarenessChannel,
+          invitedBy: data.invitedBy,
+          membership: data.membership,
+          visitation: data.visitation,
+          knowingChrist: data.knowingChrist,
+        }}
       >
         <Form.Item name="firstName" label="First Name">
           <Input style={{ width: 200 }} />

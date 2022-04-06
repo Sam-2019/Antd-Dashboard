@@ -46,7 +46,7 @@ function Visitor() {
         onBack={() => history.goBack()}
         title={
           <>
-            <span className="breadcrumb">Visitor Information</span>
+            <span className="breadcrumb">Visitor</span>
           </>
         }
         extra={[
@@ -62,7 +62,7 @@ function Visitor() {
         isModalVisible={isModalVisible}
         handleOk={handleOk}
         handleCancel={handleCancel}
-        children={<VisitorEdit handleCancel={handleCancel} />}
+        children={<VisitorEdit handleCancel={handleCancel} data={data.visitor} />}
       />
     </>
   );

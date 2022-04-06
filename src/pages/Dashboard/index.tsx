@@ -43,7 +43,7 @@ const Dashboard = () => {
       </div>
 
       <div className="site-card-wrapper">
-        <Card bordered={false} title="Gender Ratio" style={{ width: "100%" }}>
+        <Card bordered={false} title="Gender" style={{ width: "100%" }}>
           <Row gutter={[16, responsive.xs ? 16 : 0]}>
             <Col xs={24} sm={24} md={6} lg={6} xl={6}>
               <Text strong>Members</Text>
