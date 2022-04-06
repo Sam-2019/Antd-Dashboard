@@ -56,7 +56,7 @@ function Pledge() {
       <GoBack header="Add Pledge" />
       <Form
         form={form}
-        name="member"
+        name="pledge"
         onFinish={onFinish}
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 16 }}
