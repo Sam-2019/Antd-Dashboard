@@ -33,6 +33,11 @@ function Pledges() {
     setIsModalVisible(false);
   };
 
+  const filterData = (data: any) => {
+    let filteredData = data.filter((item: any) => state === item.id);
+    return filteredData[0];
+  };
+
   let searchInput: any;
 
   const handleSearch = (selectedKeys: any, confirm: any, dataIndex: any) => {
@@ -201,7 +206,13 @@ function Pledges() {
         isModalVisible={isModalVisible}
         handleOk={handleOk}
         handleCancel={handleCancel}
-        children={<PledgeEdit handleCancel={handleCancel} slug={state} data={data.pledge} />}
+        children={
+          <PledgeEdit
+            handleCancel={handleCancel}
+            slug={state}
+            data={filterData(data.pledge)}
+          />
+        }
       />
     </>
   );
