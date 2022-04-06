@@ -201,7 +201,7 @@ function Pledges() {
         isModalVisible={isModalVisible}
         handleOk={handleOk}
         handleCancel={handleCancel}
-        children={<PledgeEdit handleCancel={handleCancel} slug={state} />}
+        children={<PledgeEdit handleCancel={handleCancel} slug={state} data={data.pledge} />}
       />
     </>
   );
