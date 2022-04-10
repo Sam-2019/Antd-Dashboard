@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Table, Tag, Space, Button, Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
@@ -33,13 +33,11 @@ function Pledges() {
     setIsModalVisible(false);
   };
 
-  const filterData = (data: any) => {
-    let filteredData = data.filter((item: any) => state === item.id);
-    return filteredData[0];
-  };
-
+  // const filterData = (data: any) => {
+  //   let filteredData = data.filter((item: any) => state === item.id);
+  //   return filteredData[0];
+  // };
   let searchInput: any;
-
   const handleSearch = (selectedKeys: any, confirm: any, dataIndex: any) => {
     confirm();
 
@@ -210,7 +208,7 @@ function Pledges() {
           <PledgeEdit
             handleCancel={handleCancel}
             slug={state}
-            data={filterData(data.pledge)}
+            data={data.pledge}
           />
         }
       />
