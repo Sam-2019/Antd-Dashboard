@@ -1,11 +1,10 @@
-import React from "react";
 import { Input, Form, Button, InputNumber, Space } from "antd";
 import { useMutation } from "@apollo/client";
 import { UPDATE_PLEDGE } from "../../../utils/graphqlFunctions/mutations";
 import { success } from "../../../components/Modal/Modal";
 import { GET_MEMBER } from "../../../utils/graphqlFunctions/queries";
 
-function Pledge({ handleCancel, slug, data }: any) {
+function Pledge({ handleCancel, slug }: any) {
   const [form] = Form.useForm();
 
   const [updatePledge] = useMutation(UPDATE_PLEDGE, {
@@ -37,15 +36,17 @@ function Pledge({ handleCancel, slug, data }: any) {
         onFinish={onFinish}
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 16 }}
-        initialValues={{
-          firstName: data.firstName,
-          lastName: data.lastName,
-          otherName: data.otherName,
-          contact: data.contact,
-          emailAddress: data.emailAddress,
-          programme: data.programme,
-          amount: data.amount,
-        }}
+        initialValues={
+          {
+            // firstName: firstName,
+            // lastName: lastName,
+            // otherName: otherName,
+            // contact: contact,
+            // emailAddress: emailAddress,
+            // programme: programme,
+            // amount: amount,
+          }
+        }
       >
         <Form.Item name="firstName" label="First Name">
           <Input style={{ width: 200 }} />
