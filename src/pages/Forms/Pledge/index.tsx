@@ -2,16 +2,16 @@ import { Input, DatePicker, Form, Button, InputNumber } from "antd";
 import { useMutation } from "@apollo/client";
 import GoBack from "../../../components/GoBack";
 import { ADD_PLEDGE } from "../../../utils/graphqlFunctions/mutations";
-import { success } from "../../../components/Modal/Modal";
-import { GET_PLEDGE } from "../../../utils/graphqlFunctions/queries";
+import { Success, Error } from "../../../components/Modal/Modal";
+import { GET_PLEDGES } from "../../../utils/graphqlFunctions/queries";
 
 function Pledge() {
   const [form] = Form.useForm();
-  const [addPledge] = useMutation(ADD_PLEDGE,  {
-    refetchQueries: [{ query: GET_PLEDGE }],
+  const [addPledge] = useMutation(ADD_PLEDGE, {
+    refetchQueries: [{ query: GET_PLEDGES }],
   });
 
-  const onFinish = (fieldsValue: any) => {
+  const onFinish = async (fieldsValue: any) => {
     const values = {
       ...fieldsValue,
       pledgeDate: fieldsValue["pledgeDate"].format("YYYY-MM-DD"),
@@ -30,7 +30,7 @@ function Pledge() {
       amount,
     } = values;
 
-    addPledge({
+    const data = await addPledge({
       variables: {
         addPledge: {
           pledgeDate,
@@ -46,9 +46,13 @@ function Pledge() {
       },
     });
 
+    if (!data) {
+      return Error("Update failed");
+    }
+
     form.resetFields();
 
-    success("Pledge added");
+    Success("Pledge added");
   };
 
   return (
@@ -88,7 +92,6 @@ function Pledge() {
         <Form.Item
           name="otherName"
           label="Other Name"
- 
         >
           <Input style={{ width: 200 }} />
         </Form.Item>
