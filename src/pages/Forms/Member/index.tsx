@@ -17,7 +17,7 @@ import { useMutation } from "@apollo/client";
 import { departments } from "../../../utils/data";
 import GoBack from "../../../components/GoBack";
 import { ADD_MEMBER } from "../../../utils/graphqlFunctions/mutations";
-import { success, error } from "../../../components/Modal/Modal";
+import { Success, Error } from "../../../components/Modal/Modal";
 import { GET_MEMBERS } from "../../../utils/graphqlFunctions/queries";
 import { steps, regions, countries } from "../../../utils/data";
 
@@ -81,11 +81,11 @@ function Member() {
       });
 
       if (!data) {
-        return error("Registration failed");
+        return Error("Registration failed");
       }
 
       form.resetFields();
-      success("Member added");
+      Success("Member added");
       setCurrent(0);
       localStorage.clear();
     }

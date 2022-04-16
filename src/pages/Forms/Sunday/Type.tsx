@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import GoBack from "../../../components/GoBack";
 import { ADD_SUNDAY_SERVICE } from "../../../utils/graphqlFunctions/mutations";
-import { success } from "../../../components/Modal/Modal";
+import { Success, Error } from "../../../components/Modal/Modal";
 import { GET_SUNDAY_STATS } from "../../../utils/graphqlFunctions/queries";
 
 function SundayType() {
@@ -13,7 +13,7 @@ function SundayType() {
     refetchQueries: [{ query: GET_SUNDAY_STATS }],
   });
 
-  const onFinish = (fieldsValue: any) => {
+  const onFinish = async (fieldsValue: any) => {
     const values = {
       ...fieldsValue,
       date: fieldsValue["date"].format("YYYY-MM-DD"),
@@ -22,7 +22,7 @@ function SundayType() {
       type: slug,
     };
 
-    addSundayServiceInput({
+    const data = await addSundayServiceInput({
       variables: {
         addSundayServiceInput: {
           ...values,
@@ -30,9 +30,13 @@ function SundayType() {
       },
     });
 
+    if (!data) {
+      return Error("Failed");
+    }
+
     form.resetFields();
 
-    success("Data added");
+    Success("Success");
   };
   return (
     <>

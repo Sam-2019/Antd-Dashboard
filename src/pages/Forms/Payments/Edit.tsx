@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useMutation } from "@apollo/client";
 import GoBack from "../../../components/GoBack";
 import { ADD_PAYMENT } from "../../../utils/graphqlFunctions/mutations";
-import { success } from "../../../components/Modal/Modal";
+import { Success } from "../../../components/Modal/Modal";
 import { Transfer, Button, DatePicker, Typography } from "antd";
 import { useParams } from "react-router-dom";
 
@@ -93,7 +93,7 @@ function Type({ dataSource }: any) {
       }));
     }
 
-    await addPaymentPayer({
+    const data = await addPaymentPayer({
       variables: {
         addPaymentPayerInput: {
           members: targetKeys,
@@ -103,7 +103,11 @@ function Type({ dataSource }: any) {
       },
     });
 
-    success("");
+    if (!data) {
+      return Error("Registration failed");
+    }
+
+    Success("Payment Added");
 
     setTargetKeys([]);
 

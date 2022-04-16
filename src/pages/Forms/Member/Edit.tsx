@@ -15,7 +15,7 @@ import {
 import { useMutation } from "@apollo/client";
 import { departments } from "../../../utils/data";
 import { UPDATE_MEMBER } from "../../../utils/graphqlFunctions/mutations";
-import { success } from "../../../components/Modal/Modal";
+import { Success, Error } from "../../../components/Modal/Modal";
 import { useParams } from "react-router-dom";
 import { GET_MEMBER } from "../../../utils/graphqlFunctions/queries";
 
@@ -36,8 +36,8 @@ function Member({ handleCancel, data }: any): JSX.Element {
     ],
   });
 
-  const onFinish = (fieldsValue: any) => {
-    addMember({
+  const onFinish = async (fieldsValue: any) => {
+    const data = await addMember({
       variables: {
         updateMemberId: slug,
         updateMemberInput: {
@@ -46,10 +46,12 @@ function Member({ handleCancel, data }: any): JSX.Element {
       },
     });
 
+    if (!data) {
+      return Error("Update failed");
+    }
+
     form.resetFields();
-
-    success("Member updated");
-
+    Success("Member updated");
     handleCancel();
   };
 
