@@ -264,6 +264,7 @@ export const breadcrumbNameMap = {
   "/members": "Members",
   "/tithe": "Tithe",
   "/chapels": "Chapels",
+  "/pledges": "Pledges",
 };
 
 export const steps = [
