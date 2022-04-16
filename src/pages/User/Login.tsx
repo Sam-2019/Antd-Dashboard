@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Layout, Form, Input, Button, Space } from "antd";
-import { useHistory } from "react-router-dom";
+import { Layout, Form, Input, Button, Space, Checkbox } from "antd";
+import { Link, useHistory } from "react-router-dom";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
+import { UserOutlined, LockOutlined } from "@ant-design/icons";
 
 const { Header, Content } = Layout;
 
@@ -57,26 +58,38 @@ export default function Login() {
               label="Email / Username"
               rules={[{ required: true, message: "Required!" }]}
             >
-              <Input />
+              <Input
+                prefix={<UserOutlined className="site-form-item-icon" />}
+              />
             </Form.Item>
             <Form.Item
               name="password"
               label="Password"
               rules={[{ required: true, message: "Required!" }]}
             >
-              <Input />
+              <Input.Password
+                prefix={<LockOutlined className="site-form-item-icon" />}
+              />
             </Form.Item>
 
-            <Space style={{ width: "100%" }}>
-              <Form.Item>
-                <Button type="primary" loading={loading} htmlType="submit">
-                  Login
-                </Button>
-              </Form.Item>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "right",
+                padding: "0 0 15px 0",
+              }}
+            >
+              <Link to="/signup">Forgot password?</Link>
+            </div>
 
-              <Form.Item>
-                <Button onClick={singup_route}>Signup</Button>
-              </Form.Item>
+            <Space style={{ width: "100%" }} size="small" direction="vertical">
+              <Button type="primary" loading={loading} htmlType="submit" block>
+                Login
+              </Button>
+
+              <Button onClick={singup_route} block>
+                Signup
+              </Button>
             </Space>
           </Form>
         </Content>
