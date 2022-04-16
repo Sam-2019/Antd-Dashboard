@@ -1,42 +1,25 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Table, Tag, Space, Button, Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
+import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import { GET_PLEDGE } from "../../utils/graphqlFunctions/queries";
+import { GET_PLEDGES } from "../../utils/graphqlFunctions/queries";
 import Spinner from "../../components/Spinner/Spinner";
 import Error from "../../components/Error/Error";
 import moment from "moment";
-import { Edit } from "../../components/Modal/Modal";
-import PledgeEdit from "../Forms/Pledge/Edit";
 
 function Pledges() {
-  const { loading, error, data } = useQuery(GET_PLEDGE);
+  const { loading, error, data } = useQuery(GET_PLEDGES);
 
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [state, setstate] = useState("");
-
-  const showModal = (any: any) => {
-    setstate(any);
-    setIsModalVisible(true);
-  };
-
-  const handleOk = () => {
-    setstate("");
-    setIsModalVisible(false);
-  };
-
-  const handleCancel = () => {
-    setstate("");
-    setIsModalVisible(false);
-  };
 
   // const filterData = (data: any) => {
   //   let filteredData = data.filter((item: any) => state === item.id);
   //   return filteredData[0];
   // };
+  
   let searchInput: any;
   const handleSearch = (selectedKeys: any, confirm: any, dataIndex: any) => {
     confirm();
@@ -127,7 +110,11 @@ function Pledges() {
           />
         </Space>
       ) : (
-        <Space size="middle">{`${record.firstName} ${record.lastName}`}</Space>
+        <Space size="middle">
+          <Link to={`/pledges/${record.id}`}>
+            {`${record.firstName} ${record.lastName}`}
+          </Link>
+        </Space>
       ),
   });
 
@@ -172,20 +159,6 @@ function Pledges() {
         return <Tag color={pitch}>{record.status}</Tag>;
       },
     },
-    {
-      title: "Action",
-      dataIndex: "id",
-      key: "action",
-      render: (text: any, record: any) => {
-        return (
-          <>
-            <Button type="link" onClick={() => showModal(text)}>
-              Edit
-            </Button>
-          </>
-        );
-      },
-    },
   ];
 
   if (loading) {
@@ -196,24 +169,7 @@ function Pledges() {
     return <Error />;
   }
 
-  return (
-    <>
-      <Table rowKey="id" columns={columns} dataSource={data.pledge} />
-
-      <Edit
-        isModalVisible={isModalVisible}
-        handleOk={handleOk}
-        handleCancel={handleCancel}
-        children={
-          <PledgeEdit
-            handleCancel={handleCancel}
-            slug={state}
-            data={data.pledge}
-          />
-        }
-      />
-    </>
-  );
+  return <Table rowKey="id" columns={columns} dataSource={data.pledges} />;
 }
 
 export default Pledges;
