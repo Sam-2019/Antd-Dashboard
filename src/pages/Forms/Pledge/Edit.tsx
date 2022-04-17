@@ -3,6 +3,7 @@ import { useMutation } from "@apollo/client";
 import { UPDATE_PLEDGE } from "../../../utils/graphqlFunctions/mutations";
 import { Success, Error } from "../../../components/Modal/Modal";
 import { GET_PLEDGEE } from "../../../utils/graphqlFunctions/queries";
+import { inputStyles } from "../../../utils/styles";
 
 function Pledge({ handleCancel, data, slug }: any) {
   const [form] = Form.useForm();
@@ -58,31 +59,31 @@ function Pledge({ handleCancel, data, slug }: any) {
         }}
       >
         <Form.Item name="firstName" label="First Name">
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item name="lastName" label="Last Name">
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item name="otherName" label="Other Name">
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item name="contact" label="Contact">
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item name="emailAddress" label="Email Address">
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item name="programme" label="Programme">
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item name="amount" label="Amount">
-          <InputNumber style={{ width: 200 }} />
+          <InputNumber style={inputStyles} />
         </Form.Item>
 
         <Form.Item

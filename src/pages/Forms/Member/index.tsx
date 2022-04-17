@@ -20,6 +20,7 @@ import { ADD_MEMBER } from "../../../utils/graphqlFunctions/mutations";
 import { Success, Error } from "../../../components/Modal/Modal";
 import { GET_MEMBERS } from "../../../utils/graphqlFunctions/queries";
 import { steps, regions, countries } from "../../../utils/data";
+import { inputStyles } from "../../../utils/styles";
 
 const { Step } = Steps;
 const { Option } = Select;
@@ -114,7 +115,7 @@ function Member() {
             ))}
           </Steps>
         </div>
-        
+
         {current === 0 && (
           <div className="steps-content">
             <Form.Item
@@ -122,7 +123,7 @@ function Member() {
               label="First Name"
               rules={[{ required: true, message: "Required!" }]}
             >
-              <Input style={{ width: 200 }} />
+              <Input style={inputStyles} />
             </Form.Item>
 
             <Form.Item
@@ -130,11 +131,11 @@ function Member() {
               label="Last Name"
               rules={[{ required: true, message: "Required!" }]}
             >
-              <Input style={{ width: 200 }} />
+              <Input style={inputStyles} />
             </Form.Item>
 
             <Form.Item name="otherName" label="Other Name">
-              <Input style={{ width: 200 }} />
+              <Input style={inputStyles} />
             </Form.Item>
 
             <Form.Item
@@ -142,11 +143,11 @@ function Member() {
               label="Date of Birth"
               rules={[{ required: true, message: "Required!" }]}
             >
-              <DatePicker style={{ width: 200 }} />
+              <DatePicker style={inputStyles} />
             </Form.Item>
 
             <Form.Item name="age" label="Age">
-              <InputNumber style={{ width: 200 }} />
+              <InputNumber style={inputStyles} />
             </Form.Item>
 
             <Form.Item
@@ -168,7 +169,7 @@ function Member() {
               label="Location"
               rules={[{ required: true, message: "Required!" }]}
             >
-              <Input style={{ width: 200 }} />
+              <Input style={inputStyles} />
             </Form.Item>
 
             <Form.Item
@@ -176,7 +177,7 @@ function Member() {
               label="Residential Address"
               rules={[{ required: true, message: "Required!" }]}
             >
-              <Input style={{ width: 200 }} />
+              <Input style={inputStyles} />
             </Form.Item>
 
             <Form.Item
@@ -184,7 +185,7 @@ function Member() {
               label="Home Town"
               rules={[{ required: true, message: "Required!" }]}
             >
-              <Input style={{ width: 200 }} />
+              <Input style={inputStyles} />
             </Form.Item>
 
             <Form.Item
@@ -196,7 +197,7 @@ function Member() {
                 placeholder="Select region"
                 onChange={onRegionChange}
                 allowClear
-                style={{ width: 200 }}
+                style={inputStyles}
               >
                 {regions.map((item: any) => (
                   <Option key={item.key} value={item.value}>
@@ -215,7 +216,7 @@ function Member() {
                 placeholder="Select country"
                 onChange={onCountryChange}
                 allowClear
-                style={{ width: 200 }}
+                style={inputStyles}
               >
                 {countries.map((country: any) => (
                   <Option key={country.code} value={country.name}>
@@ -230,7 +231,7 @@ function Member() {
               label="Contact"
               rules={[{ required: true, message: "Required!" }]}
             >
-              <Input style={{ width: 200 }} />
+              <Input style={inputStyles} />
             </Form.Item>
 
             <Form.Item
@@ -238,11 +239,11 @@ function Member() {
               label="Emergency Contact"
               rules={[{ required: true, message: "Required!" }]}
             >
-              <Input style={{ width: 200 }} />
+              <Input style={inputStyles} />
             </Form.Item>
 
             <Form.Item name="emailAddress" label="Email Address">
-              <Input style={{ width: 200 }} />
+              <Input style={inputStyles} />
             </Form.Item>
 
             <Form.Item
@@ -258,11 +259,11 @@ function Member() {
             </Form.Item>
 
             <Form.Item name="spouseName" label="Name of Spouse">
-              <Input style={{ width: 200 }} />
+              <Input style={inputStyles} />
             </Form.Item>
 
             <Form.Item name="numberOfChlidren" label="Number of children">
-              <InputNumber keyboard={true} style={{ width: 200 }} />
+              <InputNumber keyboard={true} style={inputStyles} />
             </Form.Item>
           </div>
         )}
@@ -273,7 +274,7 @@ function Member() {
               label="Year you joined the church"
               rules={[{ required: true, message: "Required!" }]}
             >
-              <DatePicker style={{ width: 200 }} picker="year" />
+              <DatePicker style={inputStyles} picker="year" />
             </Form.Item>
 
             <Form.Item name="department" label="Department">
@@ -306,7 +307,7 @@ function Member() {
             </Form.Item>
 
             <Form.Item name="previousChurch" label="Previous Church">
-              <Input style={{ width: 200 }} />
+              <Input style={inputStyles} />
             </Form.Item>
           </div>
         )}

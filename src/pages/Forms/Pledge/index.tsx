@@ -4,6 +4,7 @@ import GoBack from "../../../components/GoBack";
 import { ADD_PLEDGE } from "../../../utils/graphqlFunctions/mutations";
 import { Success, Error } from "../../../components/Modal/Modal";
 import { GET_PLEDGES } from "../../../utils/graphqlFunctions/queries";
+import { inputStyles } from "../../../utils/styles";
 
 function Pledge() {
   const [form] = Form.useForm();
@@ -70,7 +71,7 @@ function Pledge() {
           label="Date"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <DatePicker style={{ width: 200 }} />
+          <DatePicker style={inputStyles} />
         </Form.Item>
 
         <Form.Item
@@ -78,7 +79,7 @@ function Pledge() {
           label="First Name"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item
@@ -86,14 +87,11 @@ function Pledge() {
           label="Last Name"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
-        <Form.Item
-          name="otherName"
-          label="Other Name"
-        >
-          <Input style={{ width: 200 }} />
+        <Form.Item name="otherName" label="Other Name">
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item
@@ -101,7 +99,7 @@ function Pledge() {
           label="Contact"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item
@@ -109,7 +107,7 @@ function Pledge() {
           label="Email Address"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item
@@ -117,7 +115,7 @@ function Pledge() {
           label="Programme"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item
@@ -125,7 +123,7 @@ function Pledge() {
           label="Amount"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <InputNumber style={{ width: 200 }} />
+          <InputNumber style={inputStyles} />
         </Form.Item>
 
         <Form.Item
@@ -133,7 +131,7 @@ function Pledge() {
           label="Redeem Date"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <DatePicker style={{ width: 200 }} />
+          <DatePicker style={inputStyles} />
         </Form.Item>
 
         <Form.Item

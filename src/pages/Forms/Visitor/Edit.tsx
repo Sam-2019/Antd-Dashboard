@@ -4,6 +4,7 @@ import { UPDATE_VISITOR } from "../../../utils/graphqlFunctions/mutations";
 import { Success, Error } from "../../../components/Modal/Modal";
 import { useParams } from "react-router-dom";
 import { GET_VISITOR } from "../../../utils/graphqlFunctions/queries";
+import { inputStyles } from "../../../utils/styles";
 
 function Visitor({ handleCancel, data }: any) {
   const [form] = Form.useForm();
@@ -57,19 +58,19 @@ function Visitor({ handleCancel, data }: any) {
         }}
       >
         <Form.Item name="firstName" label="First Name">
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item name="lastName" label="Last Name">
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item name="contact" label="Contact">
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item name="location" label="Location">
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item name="ageGroup" label="Age Group">
@@ -110,11 +111,11 @@ function Visitor({ handleCancel, data }: any) {
           }}
           name="awarenessChannelOther"
         >
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item> */}
 
         <Form.Item name="invitedBy" label="Invited by">
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item

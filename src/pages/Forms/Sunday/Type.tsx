@@ -5,6 +5,7 @@ import GoBack from "../../../components/GoBack";
 import { ADD_SUNDAY_SERVICE } from "../../../utils/graphqlFunctions/mutations";
 import { Success, Error } from "../../../components/Modal/Modal";
 import { GET_SUNDAY_STATS } from "../../../utils/graphqlFunctions/queries";
+import { inputStyles } from "../../../utils/styles";
 
 function SundayType() {
   let { slug }: any = useParams();
@@ -54,7 +55,7 @@ function SundayType() {
             label="Date"
             rules={[{ required: true, message: "Required!" }]}
           >
-            <DatePicker style={{ width: 200 }} />
+            <DatePicker style={inputStyles} />
           </Form.Item>
 
           <Form.Item
@@ -62,7 +63,7 @@ function SundayType() {
             label=" Start Time"
             rules={[{ required: true, message: "Required!" }]}
           >
-            <TimePicker style={{ width: 200 }} />
+            <TimePicker style={inputStyles} />
           </Form.Item>
 
           <Form.Item
@@ -70,7 +71,7 @@ function SundayType() {
             label="Preacher"
             rules={[{ required: true, message: "Required!" }]}
           >
-            <Input style={{ width: 200 }} />
+            <Input style={inputStyles} />
           </Form.Item>
 
           <Form.Item
@@ -78,7 +79,7 @@ function SundayType() {
             label="Theme"
             rules={[{ required: true, message: "Required!" }]}
           >
-            <Input style={{ width: 200 }} />
+            <Input style={inputStyles} />
           </Form.Item>
 
           <Form.Item
@@ -86,7 +87,7 @@ function SundayType() {
             label="Bible Text"
             rules={[{ required: true, message: "Required!" }]}
           >
-            <Input style={{ width: 200 }} />
+            <Input style={inputStyles} />
           </Form.Item>
 
           <Form.Item label="Adult" style={{ marginBottom: 0 }}>
@@ -230,7 +231,7 @@ function SundayType() {
             label=" Close Time"
             rules={[{ required: true, message: "Required!" }]}
           >
-            <TimePicker style={{ width: 200 }} />
+            <TimePicker style={inputStyles} />
           </Form.Item>
 
           <Form.Item label=" " colon={false}>

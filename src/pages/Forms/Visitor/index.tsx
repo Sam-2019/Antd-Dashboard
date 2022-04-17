@@ -4,6 +4,7 @@ import GoBack from "../../../components/GoBack";
 import { ADD_VISITOR } from "../../../utils/graphqlFunctions/mutations";
 import { Success, Error } from "../../../components/Modal/Modal";
 import { GET_VISITORS } from "../../../utils/graphqlFunctions/queries";
+import { inputStyles } from "../../../utils/styles";
 
 function Visitor() {
   const [form] = Form.useForm();
@@ -52,7 +53,7 @@ function Visitor() {
           label="First Name"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item
@@ -60,7 +61,7 @@ function Visitor() {
           label="Last Name"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item
@@ -68,7 +69,7 @@ function Visitor() {
           label="Contact"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item
@@ -76,7 +77,7 @@ function Visitor() {
           label="Location"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item
@@ -84,7 +85,7 @@ function Visitor() {
           label="Date"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <DatePicker style={{ width: 200 }} />
+          <DatePicker style={inputStyles} />
         </Form.Item>
 
         <Form.Item
@@ -141,7 +142,7 @@ function Visitor() {
           }}
           name="awarenessChannelOther"
         >
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item> */}
 
         <Form.Item
@@ -149,7 +150,7 @@ function Visitor() {
           label="Invited by"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item
