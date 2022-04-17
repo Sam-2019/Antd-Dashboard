@@ -19,3 +19,7 @@ export const forgotPasswordStyles = {
 export const spaceStyles = {
   width: "100%",
 };
+
+export const inputStyles = {
+  width: 200,
+};
