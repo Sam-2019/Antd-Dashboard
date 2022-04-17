@@ -1,7 +1,11 @@
 import { Suspense } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { LoginRoute } from "./routes/User";
-import { SignupRoute } from "./routes/User";
+import {
+  LoginRoute,
+  SignupRoute,
+  VerifyEmail,
+  ResetPassword,
+} from "./routes/User";
 import { NoPageRoute } from "./routes/404";
 import { MainRoutes } from "./routes/MainRoutes";
 
@@ -20,6 +24,14 @@ export default function Main() {
 
         <Route path="/signup">
           <SignupRoute />
+        </Route>
+
+        <Route path="/verify-email">
+          <VerifyEmail />
+        </Route>
+
+        <Route path="/reset-password">
+          <ResetPassword />
         </Route>
 
         <Layout>
