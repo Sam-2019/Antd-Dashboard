@@ -1,12 +1,19 @@
-import React, { useState } from "react";
-import { Layout, Form, Input, Button, Space, Checkbox } from "antd";
+import { useState } from "react";
+import { Layout, Form, Input, Button, Space } from "antd";
 import { Link, useHistory } from "react-router-dom";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import {
+  contentStyles,
+  forgotPasswordStyles,
+  formStyles,
+  spaceStyles,
+} from "../../utils/styles";
 
 const { Header, Content } = Layout;
 
 export default function Login() {
+  const { mobile, nonMobile } = formStyles;
   const responsive = useBreakpoint();
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
@@ -37,20 +44,13 @@ export default function Login() {
           </Title> */}
         </Header>
 
-        <Content
-          style={{
-            padding: "50px 0px 0px 0px",
-            height: "100vh",
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
+        <Content style={contentStyles}>
           <Form
             layout="vertical"
             form={form}
             onFinish={onFinish}
             style={{
-              width: responsive.md ? "300px" : "80%",
+              width: responsive.md ? mobile : nonMobile,
             }}
           >
             <Form.Item
@@ -72,17 +72,11 @@ export default function Login() {
               />
             </Form.Item>
 
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "right",
-                padding: "0 0 15px 0",
-              }}
-            >
-              <Link to="/signup">Forgot password?</Link>
+            <div style={forgotPasswordStyles}>
+              <Link to="/verify-email">Forgot password?</Link>
             </div>
 
-            <Space style={{ width: "100%" }} size="small" direction="vertical">
+            <Space style={spaceStyles} size="small" direction="vertical">
               <Button type="primary" loading={loading} htmlType="submit" block>
                 Login
               </Button>
