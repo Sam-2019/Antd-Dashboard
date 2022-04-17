@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, Fragment } from "react";
 import { UploadOutlined } from "@ant-design/icons";
 import { Alert, Button, Upload } from "antd";
 import { initializeApp } from "firebase/app";
@@ -66,28 +66,27 @@ const ImageUpload = () => {
     const membersImagesRef = ref(imagesRef, `${image.name}`);
 
     try {
-      await uploadBytes(membersImagesRef, image, metadata).then((snapshot) => {
- 
-      });
+      await uploadBytes(membersImagesRef, image, metadata).then(
+        (snapshot) => {}
+      );
 
       //  Upload the file and metadata
       const uploadTask = uploadBytesResumable(membersImagesRef, image);
       await getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-
-        if (downloadURL) {
-          setStatus("Image uploaded");
-
-          uploadImage({
-            variables: {
-              uploadImageInput: {
-                id: slug,
-                imageURL: downloadURL,
-              },
-            },
-          });
-        } else {
-          setStatus("Uplaod failed");
+        if (!downloadURL) {
+          return setStatus("Uplaod failed");
         }
+
+        uploadImage({
+          variables: {
+            uploadImageInput: {
+              id: slug,
+              imageURL: downloadURL,
+            },
+          },
+        });
+
+        setStatus("Image uploaded");
       });
     } catch (error) {
       setError("Upload failed");
@@ -95,7 +94,7 @@ const ImageUpload = () => {
   }
 
   return (
-    <>
+    <Fragment>
       <div
         style={{
           display: "flex",
@@ -118,7 +117,7 @@ const ImageUpload = () => {
       {status ? <Alert message={status} type="success" showIcon /> : null}
       {error ? <Alert message={error} type="error" /> : null}
       {/* <button onClick={onSubmit}>Submit</button> */}
-    </>
+    </Fragment>
   );
 };
 
