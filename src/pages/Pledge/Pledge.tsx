@@ -52,7 +52,6 @@ function Pledge() {
       status: "REDEEMED",
     };
 
-    // console.log(slug, values);
     const data = await updatePledgeStatus({
       variables: {
         pledgeId: slug,
