@@ -79,6 +79,29 @@ export const GenderPieList: StringArray = {
   children: <Pie info={GET_GENDER_COUNT} group="Children" />,
 };
 
+export const PieChartGroup = [
+  {
+    key: 0,
+    label: "Members",
+    content: GenderPieList["total"],
+  },
+  {
+    key: 1,
+    label: "Adult",
+    content: GenderPieList["adult"],
+  },
+  {
+    key: 2,
+    label: "Omega",
+    content: GenderPieList["omega"],
+  },
+  {
+    key: 3,
+    label: "Children",
+    content: GenderPieList["children"],
+  },
+];
+
 export const ServiceColumnList: StringArray = {
   first: (
     <GroupChart info={GET_SUNDAY_STATS} type="first service" vehicles={false} />
