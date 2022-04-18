@@ -3,10 +3,15 @@ import { Layout, Form, Input, Button, Space } from "antd";
 import { useHistory } from "react-router-dom";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { contentStyles, formStyles, spaceStyles } from "../../utils/styles";
+import { SUBMIT } from "../../utils/constants";
+import { USER_SIGNUP } from "../../utils/graphqlFunctions/mutations";
+import { useMutation } from "@apollo/client";
 
 const { Header, Content } = Layout;
 
 export default function Signup() {
+  const [signup] = useMutation(USER_SIGNUP);
+
   const { mobile, nonMobile } = formStyles;
   const responsive = useBreakpoint();
   const [form] = Form.useForm();
@@ -18,11 +23,36 @@ export default function Signup() {
   }
 
   const onFinish = async (fieldsValue: any) => {
-    console.log(fieldsValue);
+    setLoading(true);
+    const values = {
+      firstName: fieldsValue.firstName,
+      lastName: fieldsValue.lastName,
+      password: fieldsValue.password,
+      emailAddress: fieldsValue.email,
+    };
 
-    setTimeout(() => {
-      setLoading(true);
-    }, 600);
+    try {
+      const data = await signup({
+        variables: {
+          signup: {
+            ...values,
+          },
+        },
+      });
+
+      if (!data) {
+        setLoading(false);
+        return new Error("Error");
+      }
+
+      setTimeout(() => {
+        setLoading(false);
+
+        // history.push("/");
+      }, 2000);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -120,9 +150,9 @@ export default function Signup() {
               <Input.Password />
             </Form.Item>
 
-            <Space style={spaceStyles}  size="small" direction="vertical">
+            <Space style={spaceStyles} size="small" direction="vertical">
               <Button type="primary" loading={loading} htmlType="submit" block>
-                Signup
+                {loading ? null : SUBMIT}
               </Button>
 
               <Button onClick={login_route} block>
