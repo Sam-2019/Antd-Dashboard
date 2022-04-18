@@ -95,7 +95,7 @@ export const GET_PLEDGES = gql`
 
 export const GET_PLEDGEE = gql`
   query Query($pledgeId: ID) {
-    pledge (id: $pledgeId) {
+    pledge(id: $pledgeId) {
       firstName
       lastName
       amount
@@ -183,3 +183,18 @@ export const GET_SUNDAY_STATS = gql`
     }
   }
 `;
+
+export const USER_LOGIN = gql`
+  query Query($emailAddress: String, $password: String) {
+    login(emailAddress: $emailAddress, password: $password) {
+      id
+      firstName
+      lastName
+      userName
+      emailAddress
+      password
+      verified
+    }
+  }
+`;
+
