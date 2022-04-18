@@ -165,7 +165,7 @@ export const userMenuItems = [
   {
     key: 2,
     name: "Logout",
-    path: null,
+    path: '/login',
     icon: <LogoutOutlined />,
   },
 ];
