@@ -163,7 +163,7 @@ export const userMenuItems = [
   {
     key: 2,
     name: "Logout",
-    path: "/login",
+    path: "/logout",
     icon: <TeamOutlined />,
   },
 ];
