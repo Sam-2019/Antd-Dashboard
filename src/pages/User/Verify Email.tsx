@@ -3,11 +3,12 @@ import { Layout, Form, Input, Button, Space } from "antd";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { UserOutlined } from "@ant-design/icons";
 import { contentStyles, formStyles, spaceStyles } from "../../utils/styles";
+import { SUBMIT } from "../../utils/constants";
 
 const { Header, Content } = Layout;
 
 export default function VerifyEmail() {
-  const {mobile, nonMobile} = formStyles
+  const { mobile, nonMobile } = formStyles;
   const responsive = useBreakpoint();
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
@@ -15,9 +16,11 @@ export default function VerifyEmail() {
   const onFinish = async (fieldsValue: any) => {
     console.log(fieldsValue);
 
+    setLoading(true);
+
     setTimeout(() => {
-      setLoading(true);
-    }, 600);
+      setLoading(false);
+    }, 7000);
   };
 
   return (
@@ -52,9 +55,9 @@ export default function VerifyEmail() {
               />
             </Form.Item>
 
-            <Space style={spaceStyles}  size="small" direction="vertical">
+            <Space style={spaceStyles} size="small" direction="vertical">
               <Button type="primary" loading={loading} htmlType="submit" block>
-                Submit
+                {loading ? null : SUBMIT}
               </Button>
             </Space>
           </Form>
