@@ -5,6 +5,8 @@ import {
   SignupRoute,
   VerifyEmail,
   ResetPassword,
+  ProfileRoute,
+  SettingsRoute,
 } from "./routes/User";
 import { NoPageRoute } from "./routes/404";
 import { MainRoutes } from "./routes/MainRoutes";
@@ -32,6 +34,14 @@ export default function Main() {
 
         <Route path="/reset-password">
           <ResetPassword />
+        </Route>
+
+        <Route path="/profile">
+          <ProfileRoute />
+        </Route>
+
+        <Route path="/settings">
+          <SettingsRoute />
         </Route>
 
         <Layout>
