@@ -7,6 +7,7 @@ import {
   RedEnvelopeOutlined,
   UsergroupAddOutlined,
   SettingOutlined,
+  LogoutOutlined,
 } from "@ant-design/icons";
 
 export const userData = [
@@ -163,8 +164,8 @@ export const userMenuItems = [
   {
     key: 2,
     name: "Logout",
-    path: "/logout",
-    icon: <TeamOutlined />,
+    path: null,
+    icon: <LogoutOutlined />,
   },
 ];
 
