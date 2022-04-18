@@ -6,6 +6,7 @@ import {
   FormOutlined,
   RedEnvelopeOutlined,
   UsergroupAddOutlined,
+  SettingOutlined,
 } from "@ant-design/icons";
 
 export const userData = [
@@ -143,6 +144,27 @@ export const menuItems = [
     name: "Forms",
     path: "/forms",
     icon: <FormOutlined />,
+  },
+];
+
+export const userMenuItems = [
+  {
+    key: 0,
+    name: "Profile",
+    path: "/profile",
+    icon: <DashboardOutlined />,
+  },
+  {
+    key: 1,
+    name: "Settings",
+    path: "/settings",
+    icon: <SettingOutlined />,
+  },
+  {
+    key: 2,
+    name: "Logout",
+    path: "/login",
+    icon: <TeamOutlined />,
   },
 ];
 
