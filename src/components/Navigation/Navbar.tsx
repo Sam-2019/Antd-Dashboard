@@ -1,9 +1,7 @@
-import React from "react";
 import { Layout, Menu, Avatar, Dropdown } from "antd";
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
-  DownOutlined,
 } from "@ant-design/icons";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { useHistory } from "react-router-dom";
