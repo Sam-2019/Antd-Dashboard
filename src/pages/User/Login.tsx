@@ -9,26 +9,44 @@ import {
   formStyles,
   spaceStyles,
 } from "../../utils/styles";
+import { LOGIN } from "../../utils/constants";
+import { useLazyQuery } from "@apollo/client";
+import { USER_LOGIN } from "../../utils/graphqlFunctions/queries";
 
 const { Header, Content } = Layout;
 
 export default function Login() {
+  const [login] = useLazyQuery(USER_LOGIN, {
+    onCompleted: (data) => {
+      // console.log({ data: data.login });
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000);
+    },
+  });
+
   const { mobile, nonMobile } = formStyles;
   const responsive = useBreakpoint();
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   let history = useHistory();
 
-  function singup_route() {
+  function signup_route() {
     history.push("/signup");
   }
 
   const onFinish = async (fieldsValue: any) => {
-    console.log(fieldsValue);
-
-    setTimeout(() => {
-      setLoading(true);
-    }, 600);
+    setLoading(true);
+    try {
+      login({
+        variables: {
+          emailAddress: fieldsValue.email,
+          password: fieldsValue.password,
+        },
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -78,10 +96,10 @@ export default function Login() {
 
             <Space style={spaceStyles} size="small" direction="vertical">
               <Button type="primary" loading={loading} htmlType="submit" block>
-                Login
+                {loading ? null : LOGIN}
               </Button>
 
-              <Button onClick={singup_route} block>
+              <Button onClick={signup_route} block>
                 Signup
               </Button>
             </Space>
