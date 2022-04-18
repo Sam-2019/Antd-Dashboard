@@ -4,6 +4,7 @@ import Visitors from "../pages/Visitor";
 
 export function VisitorRoute() {
   let { path } = useRouteMatch();
+  
   return (
     <Switch>
       <Route path={`${path}/:slug`}>

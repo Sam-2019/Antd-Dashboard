@@ -4,6 +4,7 @@ import Pledge from "../pages/Pledge/Pledge";
 
 export function PledgeRoute() {
   let { path } = useRouteMatch();
+  
   return (
     <Switch>
       <Route path={`${path}/:slug`}>

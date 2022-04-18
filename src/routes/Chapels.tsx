@@ -4,6 +4,7 @@ import Chapel from "../pages/Chapel/ChapelList";
 
 export function ChapelsRoute() {
   let { path } = useRouteMatch();
+  
   return (
     <Switch>
       <Route path={`${path}/:slug`}>
