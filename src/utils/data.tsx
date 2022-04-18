@@ -8,6 +8,7 @@ import {
   UsergroupAddOutlined,
   SettingOutlined,
   LogoutOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
 
 export const userData = [
@@ -153,7 +154,7 @@ export const userMenuItems = [
     key: 0,
     name: "Profile",
     path: "/profile",
-    icon: <DashboardOutlined />,
+    icon: <UserOutlined />,
   },
   {
     key: 1,
