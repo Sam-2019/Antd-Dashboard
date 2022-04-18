@@ -187,10 +187,7 @@ export const UPDATE_PLEDGE = gql`
 `;
 
 export const UPDATE_PLEDGE_STATUS = gql`
-  mutation UpdatePledgeStatusMutation(
-    $pledgeId: ID
-    $pledgeInput: AddPledge
-  ) {
+  mutation UpdatePledgeStatusMutation($pledgeId: ID, $pledgeInput: AddPledge) {
     updatePledgeStatus(id: $pledgeId, input: $pledgeInput) {
       status
     }
@@ -202,6 +199,17 @@ export const UPLOAD_IMAGE = gql`
     uploadImage(input: $uploadImageInput) {
       id
       imageURL
+    }
+  }
+`;
+
+export const USER_SIGNUP = gql`
+  mutation Signup($signup: AddUser) {
+    signup(input: $signup) {
+      id
+      firstName
+      lastName
+      emailAddress
     }
   }
 `;
