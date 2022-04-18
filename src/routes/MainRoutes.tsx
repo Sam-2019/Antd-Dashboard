@@ -9,6 +9,8 @@ const DashboardRoute = lazy(() => import("../routes/Dashboard"));
 const PledgeRoute = lazy(() => import("../routes/Pledges"));
 const VisitorRoute = lazy(() => import("../routes/Visitors"));
 const PaymentRoute = lazy(() => import("../routes/Payments"));
+const ProfileRoute = lazy(() => import("../routes/Profile"));
+const SettingsRoute = lazy(() => import("../routes/Settings"));
 
 export const MainRoutes = () => {
   return (
@@ -43,6 +45,14 @@ export const MainRoutes = () => {
 
       <Route path="/departments">
         <DepartmentRoute />
+      </Route>
+
+      <Route path="/profile">
+        <ProfileRoute />
+      </Route>
+
+      <Route path="/settings">
+        <SettingsRoute />
       </Route>
     </Fragment>
   );
