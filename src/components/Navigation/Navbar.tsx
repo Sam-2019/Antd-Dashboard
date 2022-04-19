@@ -1,8 +1,5 @@
-import { Layout, Menu, Avatar, Dropdown } from "antd";
-import {
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
-} from "@ant-design/icons";
+import { Layout, Menu, Avatar, Dropdown, Badge } from "antd";
+import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { useHistory } from "react-router-dom";
 
@@ -56,7 +53,9 @@ const Navbar = ({ toggle, collapsed, showDrawer, visible }: PropType) => {
 
         <div>
           <Dropdown overlay={menu}>
-            <Avatar size={35} icon={<UserOutlined />} />
+            <Badge count={1}>
+              <Avatar size={35} icon={<UserOutlined />} />
+            </Badge>
           </Dropdown>
         </div>
       </div>
