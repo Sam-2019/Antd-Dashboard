@@ -1,7 +1,10 @@
-import React from 'react'
+import { Fragment } from "react";
+import PageHeader from "../../components/PageHeader";
 
 export default function Settings() {
   return (
-    <div>Settings</div>
-  )
+    <Fragment>
+      <PageHeader header="Settings" />
+    </Fragment>
+  );
 }
