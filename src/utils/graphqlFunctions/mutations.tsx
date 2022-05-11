@@ -213,3 +213,5 @@ export const USER_SIGNUP = gql`
     }
   }
 `;
+
+export const UPDATE_USER_DETAILS = gql``;
