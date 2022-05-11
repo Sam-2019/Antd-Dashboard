@@ -1,5 +1,5 @@
 import { Switch, Route, useRouteMatch } from "react-router-dom";
-import Profile from "../pages/User/Profile";
+import Profile from "../pages/User/Profile/index";
 
 export function ProfileRoute() {
   let { path } = useRouteMatch();
