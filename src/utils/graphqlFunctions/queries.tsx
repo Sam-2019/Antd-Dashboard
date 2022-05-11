@@ -198,3 +198,18 @@ export const USER_LOGIN = gql`
   }
 `;
 
+export const USER_DEATILS = gql`
+  query Query($userID: ID) {
+    login(id: $userID) {
+      id
+      firstName
+      lastName
+      gender
+      contact
+      emailAddress
+      address
+      dob
+    }
+  }
+`;
+
