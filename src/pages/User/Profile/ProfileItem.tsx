@@ -1,7 +1,8 @@
 import { Card, Col, Row, Descriptions } from "antd";
-const { Meta } = Card;
+import ImageUpload from "../../../components/ImageUpload";
 
 export default function ProfileItem({ dataSource }: any) {
+  const userImage = false;
   return (
     <div className="site-card-wrapper">
       <Row gutter={16}>
@@ -11,14 +12,28 @@ export default function ProfileItem({ dataSource }: any) {
             hoverable
             bordered={false}
             cover={
-              <img
-                alt="example"
-                src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-              />
+              <>
+                {userImage ? (
+                  <div>
+                    <img
+                      alt="example"
+                      src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+                    />
+                  </div>
+                ) : (
+                  <div>
+                    <img
+                      alt="example"
+                      src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+                    />
+                    <ImageUpload />
+                  </div>
+                )}
+              </>
             }
             style={{ padding: 15 }}
           >
-            <Meta title="Europe Street beat" />
+       
           </Card>
         </Col>
 
