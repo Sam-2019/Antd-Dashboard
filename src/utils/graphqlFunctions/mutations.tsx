@@ -214,4 +214,13 @@ export const USER_SIGNUP = gql`
   }
 `;
 
-export const UPDATE_USER_DETAILS = gql``;
+export const UPDATE_USER_DETAILS = gql`
+  mutation Signup($signup: AddUser) {
+    signup(input: $signup) {
+      id
+      firstName
+      lastName
+      emailAddress
+    }
+  }
+`;
