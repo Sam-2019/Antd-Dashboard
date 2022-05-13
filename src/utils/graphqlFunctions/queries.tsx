@@ -199,15 +199,15 @@ export const USER_LOGIN = gql`
 `;
 
 export const USER_DEATILS = gql`
-  query Query($userID: ID) {
-    login(id: $userID) {
+  query Query($userId: ID) {
+    user(id: $userId) {
       id
       firstName
       lastName
       gender
       contact
       emailAddress
-      address
+      homeAddress
       dob
     }
   }
