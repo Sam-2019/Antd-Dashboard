@@ -192,13 +192,12 @@ export const USER_LOGIN = gql`
       lastName
       userName
       emailAddress
-      password
       verified
     }
   }
 `;
 
-export const USER_DEATILS = gql`
+export const USER_DETAILS = gql`
   query Query($userId: ID) {
     user(id: $userId) {
       id
