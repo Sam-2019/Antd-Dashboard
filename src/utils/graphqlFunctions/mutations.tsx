@@ -216,11 +216,11 @@ export const USER_SIGNUP = gql`
 `;
 
 export const UPDATE_USER_DETAILS = gql`
-  mutation UpdateUserDetailsMutation(
+  mutation UpdateUserMutation(
     $updateUserId: ID
     $updateUserInput: AddUser
   ) {
-    updateUserDetails(id: $updateUserId, input: $updateUserInput) {
+    updateUser(id: $updateUserId, input: $updateUserInput) {
       id
       firstName
       lastName
