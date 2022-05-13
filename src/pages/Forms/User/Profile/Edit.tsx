@@ -10,15 +10,15 @@ function Profile({ handleCancel, data }: any) {
   const [form] = Form.useForm();
   let { slug }: any = useParams();
 
-  const [updateVisitor] = useMutation(UPDATE_USER_DETAILS, {
+  const [updateUser] = useMutation(UPDATE_USER_DETAILS, {
     refetchQueries: [{ query: USER_DEATILS, variables: { visitorId: slug } }],
   });
 
   const onFinish = async (fieldsValue: any) => {
-    const data = await updateVisitor({
+    const data = await updateUser({
       variables: {
-        updateVisitorId: slug,
-        updateVisitorInput: {
+        updateUserId: slug,
+        updateUserInput: {
           ...fieldsValue,
         },
       },
@@ -49,7 +49,7 @@ function Profile({ handleCancel, data }: any) {
           gender: data.gender,
           contact: data.contact,
           email: data.email,
-          address: data.address,
+          homeAddress: data.homeAddress,
           dob: data.dob,
         }}
       >
@@ -76,7 +76,7 @@ function Profile({ handleCancel, data }: any) {
           <Input style={inputStyles} />
         </Form.Item>
 
-        <Form.Item name="address" label="Address">
+        <Form.Item name="homeAddress" label="Address">
           <Input style={inputStyles} />
         </Form.Item>
 
