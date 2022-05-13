@@ -166,6 +166,7 @@ export const ADD_PLEDGE = gql`
     }
   }
 `;
+
 export const UPDATE_PLEDGE = gql`
   mutation UpdatePledgeMutation(
     $updatePledgeId: ID
@@ -215,12 +216,19 @@ export const USER_SIGNUP = gql`
 `;
 
 export const UPDATE_USER_DETAILS = gql`
-  mutation Signup($signup: AddUser) {
-    signup(input: $signup) {
+  mutation UpdateUserDetailsMutation(
+    $updateUserId: ID
+    $updateUserInput: AddUser
+  ) {
+    updateUserDetails(id: $updateUserId, input: $updateUserInput) {
       id
       firstName
       lastName
+      gender
+      contact
       emailAddress
+      homeAddress
+      dob
     }
   }
 `;
