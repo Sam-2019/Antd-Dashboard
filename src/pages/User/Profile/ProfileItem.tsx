@@ -3,6 +3,7 @@ import ImageUpload from "../../../components/ImageUpload";
 
 export default function ProfileItem({ dataSource }: any) {
   const userImage = false;
+  const imageWidth = '100%'
   return (
     <div className="site-card-wrapper">
       <Row gutter={16}>
@@ -18,6 +19,7 @@ export default function ProfileItem({ dataSource }: any) {
                     <img
                       alt="example"
                       src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+                      width={imageWidth}
                     />
                   </div>
                 ) : (
@@ -25,6 +27,8 @@ export default function ProfileItem({ dataSource }: any) {
                     <img
                       alt="example"
                       src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+                      width={imageWidth}
+                      style={{marginBottom: '10px'}}
                     />
                     <ImageUpload />
                   </div>
