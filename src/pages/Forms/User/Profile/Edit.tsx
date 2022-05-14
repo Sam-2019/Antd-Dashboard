@@ -2,37 +2,34 @@ import { Input, Form, Button, Radio, Space, DatePicker } from "antd";
 import { useMutation } from "@apollo/client";
 import { UPDATE_USER_DETAILS } from "../../../../utils/graphqlFunctions/mutations";
 import { Success, Error } from "../../../../components/Modal/Modal";
-import { useParams } from "react-router-dom";
-import { USER_DEATILS } from "../../../../utils/graphqlFunctions/queries";
+import { USER_DETAILS } from "../../../../utils/graphqlFunctions/queries";
 import { inputStyles } from "../../../../utils/styles";
+import { SUBMIT } from "../../../../utils/constants";
 
 function Profile({ handleCancel, data }: any) {
   const [form] = Form.useForm();
-  let { slug }: any = useParams();
 
-  const [updateUser] = useMutation(UPDATE_USER_DETAILS, {
-    refetchQueries: [{ query: USER_DEATILS, variables: { visitorId: slug } }],
+  const [updateUser, { loading }] = useMutation(UPDATE_USER_DETAILS, {
+    refetchQueries: [{ query: USER_DETAILS, variables: { userId: data.id } }],
   });
 
   const onFinish = async (fieldsValue: any) => {
-    const data = await updateUser({
+    const result = await updateUser({
       variables: {
-        updateUserId: slug,
+        updateUserId: data.id,
         updateUserInput: {
           ...fieldsValue,
         },
       },
     });
 
-    if (!data) {
+    if (!result) {
       return Error("Update failed");
     }
 
     form.resetFields();
-
-    Success("Visitor updated");
-
     handleCancel();
+    Success("Visitor updated");
   };
 
   return (
@@ -91,8 +88,8 @@ function Profile({ handleCancel, data }: any) {
           }}
         >
           <Space>
-            <Button type="primary" htmlType="submit">
-              Submit
+            <Button type="primary" loading={loading} htmlType="submit">
+              {loading ? null : SUBMIT}
             </Button>
             <Button htmlType="button" onClick={handleCancel}>
               Cancel
