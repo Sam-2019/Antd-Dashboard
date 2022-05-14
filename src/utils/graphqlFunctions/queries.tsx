@@ -193,6 +193,7 @@ export const USER_LOGIN = gql`
       userName
       emailAddress
       verified
+      imageURL
     }
   }
 `;
@@ -208,6 +209,7 @@ export const USER_DETAILS = gql`
       emailAddress
       homeAddress
       dob
+      imageURL
     }
   }
 `;
