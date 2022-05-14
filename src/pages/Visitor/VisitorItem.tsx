@@ -12,7 +12,7 @@ function VisitorItem({ dataSource }: any) {
               <Image
                 width={235}
                 height={250}
-                src="https://vectorified.com/images/image-placeholder-icon-7.png"
+                src=dummyImage
                 preview={false}
               />
 
