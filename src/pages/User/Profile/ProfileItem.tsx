@@ -1,9 +1,9 @@
-import { Card, Col, Row, Descriptions } from "antd";
+import { Card, Col, Row, Descriptions, Image } from "antd";
 import ImageUpload from "../../../components/ImageUpload";
+import { fallback, imageWidth, marginBottom, dummyImage } from "../../../utils/constants";
+import { USER_DETAILS } from "../../../utils/graphqlFunctions/queries";
 
 export default function ProfileItem({ dataSource }: any) {
-  const userImage = false;
-  const imageWidth = "100%";
   return (
     <div className="site-card-wrapper">
       <Row gutter={16}>
@@ -14,23 +14,29 @@ export default function ProfileItem({ dataSource }: any) {
             bordered={false}
             cover={
               <>
-                {userImage ? (
+                {dataSource.imageURL ? (
                   <div>
-                    <img
+                    <Image
                       alt="example"
-                      src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+                      src={dataSource.imageURL}
                       width={imageWidth}
+                      style={{ marginBottom }}
+                      fallback={fallback}
                     />
                   </div>
                 ) : (
                   <div>
                     <img
                       alt="example"
-                      src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+                      src={dummyImage}
                       width={imageWidth}
-                      style={{ marginBottom: "10px" }}
+                      style={{ marginBottom }}
                     />
-                    <ImageUpload />
+                    <ImageUpload
+                      id={dataSource.id}
+                      type="user"
+                      query={USER_DETAILS}
+                    />
                   </div>
                 )}
               </>
