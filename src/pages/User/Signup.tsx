@@ -48,7 +48,7 @@ export default function Signup() {
       setTimeout(() => {
         setLoading(false);
 
-        // history.push("/");
+        history.push("/login");
       }, 2000);
     } catch (err) {
       console.log(err);
