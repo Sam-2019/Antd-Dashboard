@@ -196,8 +196,8 @@ export const UPDATE_PLEDGE_STATUS = gql`
 `;
 
 export const UPLOAD_IMAGE = gql`
-  mutation Mutation($uploadImageInput: AddImage) {
-    uploadImage(input: $uploadImageInput) {
+  mutation Mutation($uploadImageId: ID, $uploadImageInput: AddImage) {
+    uploadImage(id: $uploadImageId, input: $uploadImageInput) {
       id
       imageURL
     }
@@ -216,10 +216,7 @@ export const USER_SIGNUP = gql`
 `;
 
 export const UPDATE_USER_DETAILS = gql`
-  mutation UpdateUserMutation(
-    $updateUserId: ID
-    $updateUserInput: AddUser
-  ) {
+  mutation UpdateUserMutation($updateUserId: ID, $updateUserInput: AddUser) {
     updateUser(id: $updateUserId, input: $updateUserInput) {
       id
       firstName
