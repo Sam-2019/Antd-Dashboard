@@ -2,7 +2,6 @@ import { useState, Fragment } from "react";
 import { UploadOutlined } from "@ant-design/icons";
 import { Alert, Button, Upload } from "antd";
 import { initializeApp } from "firebase/app";
-import { useParams } from "react-router-dom";
 import {
   getDownloadURL,
   getStorage,
@@ -13,20 +12,19 @@ import {
 import { v4 as uuidv4 } from "uuid";
 import { UPLOAD_IMAGE } from "../utils/graphqlFunctions/mutations";
 import { useMutation } from "@apollo/client";
-import { GET_MEMBER } from "../utils/graphqlFunctions/queries";
 import { firebaseConfig, storageURL } from "../utils/config";
 
-const ImageUpload = () => {
+const ImageUpload = ({ id, type, query }: any) => {
+  const [loading, setLoading] = useState(false);
   const firebaseApp = initializeApp(firebaseConfig);
   const [uploadImage] = useMutation(UPLOAD_IMAGE, {
-    refetchQueries: [{ query: GET_MEMBER }],
+    refetchQueries: [{ query: query }],
   });
   // Get a reference to the storage service, which is used to create references in your storage bucket
   const storage = getStorage(firebaseApp, storageURL);
 
   const [status, setStatus] = useState("");
   const [error, setError] = useState("");
-  let { slug }: any = useParams();
 
   // function beforeUpload(file: any) {
   //   const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
@@ -41,6 +39,7 @@ const ImageUpload = () => {
   // }
 
   async function handleChange(info: any) {
+    setLoading(true);
     setError("");
     setStatus("");
 
@@ -79,14 +78,15 @@ const ImageUpload = () => {
 
         uploadImage({
           variables: {
+            uploadImageId: id,
             uploadImageInput: {
-              id: slug,
               imageURL: downloadURL,
+              type: type,
             },
           },
         });
-
-        setStatus("Image uploaded");
+        setLoading(false);
+        setStatus("Image uploaded.\nKindly refresh the page.");
       });
     } catch (error) {
       setError("Upload failed");
@@ -111,7 +111,9 @@ const ImageUpload = () => {
           // beforeUpload={beforeUpload}
           onChange={handleChange}
         >
-          <Button icon={<UploadOutlined />}>Add Image</Button>
+          <Button loading={loading} icon={<UploadOutlined />}>
+            Add Image
+          </Button>
         </Upload>
       </div>
       {status ? <Alert message={status} type="success" showIcon /> : null}
