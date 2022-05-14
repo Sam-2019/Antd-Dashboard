@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Layout, Form, Input, Button, Space } from "antd";
 import { Link, useHistory } from "react-router-dom";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
@@ -16,19 +15,21 @@ import { USER_LOGIN } from "../../utils/graphqlFunctions/queries";
 const { Header, Content } = Layout;
 
 export default function Login() {
-  const [login] = useLazyQuery(USER_LOGIN, {
+  const [login, { loading }] = useLazyQuery(USER_LOGIN, {
     onCompleted: (data) => {
-      // console.log({ data: data.login });
-      setTimeout(() => {
-        setLoading(false);
-      }, 2000);
+      localStorage.setItem("userID", data.login.id);
+      // console.log(data.login.id);
+      history.push("/");
+    },
+    onError: (error) => {
+      console.log(error);
     },
   });
 
   const { mobile, nonMobile } = formStyles;
   const responsive = useBreakpoint();
   const [form] = Form.useForm();
-  const [loading, setLoading] = useState(false);
+
   let history = useHistory();
 
   function signup_route() {
@@ -36,7 +37,6 @@ export default function Login() {
   }
 
   const onFinish = async (fieldsValue: any) => {
-    setLoading(true);
     try {
       login({
         variables: {
