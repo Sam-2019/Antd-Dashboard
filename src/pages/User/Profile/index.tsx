@@ -1,14 +1,22 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useQuery } from "@apollo/client";
 import { Button, PageHeader } from "antd";
 import ProfileItem from "./ProfileItem";
-import { userData } from "../../../utils/data";
 import { Edit } from "../../../components/Modal/Modal";
 import ProfileEdit from "../../Forms/User/Profile/Edit";
+import { USER_DETAILS } from "../../../utils/graphqlFunctions/queries";
+import Spinner from "../../../components/Spinner/Spinner";
+import Error from "../../../components/Error/Error";
 
 export default function Profile() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const history = useHistory();
+  let userID = localStorage.getItem("userID");
+
+  const { loading, error, data } = useQuery(USER_DETAILS, {
+    variables: { userId: userID },
+  });
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -21,6 +29,9 @@ export default function Profile() {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
+
+  if (loading) return <Spinner />;
+  if (error) return <Error />;
 
   return (
     <>
@@ -39,13 +50,13 @@ export default function Profile() {
         ]}
       />
 
-      <ProfileItem dataSource={userData} />
+      <ProfileItem dataSource={data.user} />
 
       <Edit
         isModalVisible={isModalVisible}
         handleOk={handleOk}
         handleCancel={handleCancel}
-        children={<ProfileEdit handleCancel={handleCancel} data={userData} />}
+        children={<ProfileEdit handleCancel={handleCancel} data={data.user} />}
       />
     </>
   );
