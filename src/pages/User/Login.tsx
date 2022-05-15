@@ -18,7 +18,6 @@ export default function Login() {
   const [login, { loading }] = useLazyQuery(USER_LOGIN, {
     onCompleted: (data) => {
       localStorage.setItem("userID", data.login.id);
-      // console.log(data.login.id);
       history.push("/");
     },
     onError: (error) => {
