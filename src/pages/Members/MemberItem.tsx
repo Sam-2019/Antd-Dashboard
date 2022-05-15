@@ -1,13 +1,4 @@
-import {
-  Card,
-  Col,
-  Descriptions,
-  Image,
-  Row,
-  Tag,
-  Typography,
-} from "antd";
-
+import { Card, Col, Descriptions, Image, Row, Tag, Typography } from "antd";
 import Title from "antd/lib/typography/Title";
 import { Link } from "react-router-dom";
 import ImageUpload from "../../components/ImageUpload";
