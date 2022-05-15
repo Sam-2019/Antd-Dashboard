@@ -15,8 +15,6 @@ export default function ResetPassword() {
   const [loading, setLoading] = useState(false);
 
   const onFinish = async (fieldsValue: any) => {
-    console.log(fieldsValue);
-
     setLoading(true);
 
     setTimeout(() => {

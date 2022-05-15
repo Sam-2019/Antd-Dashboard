@@ -14,8 +14,6 @@ export default function VerifyEmail() {
   const [loading, setLoading] = useState(false);
 
   const onFinish = async (fieldsValue: any) => {
-    console.log(fieldsValue);
-
     setLoading(true);
 
     setTimeout(() => {
