@@ -1,6 +1,11 @@
 import { Card, Col, Row, Descriptions, Image } from "antd";
 import ImageUpload from "../../../components/ImageUpload";
-import { fallback, imageWidth, marginBottom, dummyImage } from "../../../utils/constants";
+import {
+  fallback,
+  imageWidth,
+  marginBottom,
+  dummyImage,
+} from "../../../utils/constants";
 import { USER_DETAILS } from "../../../utils/graphqlFunctions/queries";
 
 export default function ProfileItem({ dataSource }: any) {
