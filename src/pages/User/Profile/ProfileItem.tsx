@@ -1,4 +1,5 @@
 import { Card, Col, Row, Descriptions, Image } from "antd";
+import Title from "antd/lib/typography/Title";
 import ImageUpload from "../../../components/ImageUpload";
 import {
   fallback,
@@ -54,16 +55,17 @@ export default function ProfileItem({ dataSource }: any) {
           <Row gutter={[16, 16]}>
             <Col span={24}>
               <Card bordered={false}>
-                <Descriptions title="About" size="default">
-                  <Descriptions.Item label="Name">
-                    {!dataSource.firstName ? (
-                      "N/A"
-                    ) : (
-                      <>
-                        {dataSource.firstName} {dataSource.lastName}
-                      </>
-                    )}
-                  </Descriptions.Item>
+                <Title level={2}>
+                  {!dataSource.firstName ? (
+                    "N/A"
+                  ) : (
+                    <>
+                      {dataSource.firstName} {dataSource.lastName}
+                    </>
+                  )}
+                </Title>
+
+                <Descriptions size="default">
                   <Descriptions.Item label="Gender">
                     {!dataSource.gender ? "N/A" : <> {dataSource.gender} </>}
                   </Descriptions.Item>
