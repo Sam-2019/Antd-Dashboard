@@ -44,6 +44,7 @@ const ImageUpload = ({ id, type, query }: any) => {
     setStatus("");
 
     const image = info.file.originFileObj;
+    let imageName = uuidv4();
 
     const isJpgOrPng =
       image.type === "image/jpeg" || image.type === "image/png";
@@ -62,7 +63,7 @@ const ImageUpload = ({ id, type, query }: any) => {
 
     const imagesRef = ref(storage, "images");
 
-    const membersImagesRef = ref(imagesRef, `${image.name}`);
+    const membersImagesRef = ref(imagesRef, `${imageName}-${image.name}`);
 
     try {
       await uploadBytes(membersImagesRef, image, metadata).then(
