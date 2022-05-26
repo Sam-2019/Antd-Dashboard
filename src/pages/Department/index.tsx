@@ -7,7 +7,7 @@ const Department = () => {
   return (
     <Fragment>
       <PageHeader header="Departments" />
-      <Card data={departments} />
+      <Card data={departments} avatar={true} />
     </Fragment>
   );
 };
