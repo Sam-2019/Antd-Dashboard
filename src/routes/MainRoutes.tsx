@@ -2,7 +2,7 @@ import { lazy, Fragment } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 const FormsRoute = lazy(() => import("../routes/Forms"));
-const ChapelsRoute = lazy(() => import("../routes/Forms"));
+const ChapelsRoute = lazy(() => import("../routes/Chapels"));
 const MemberRoute = lazy(() => import("../routes/Members"));
 const DepartmentRoute = lazy(() => import("../routes/Departments"));
 const DashboardRoute = lazy(() => import("../routes/Dashboard"));
