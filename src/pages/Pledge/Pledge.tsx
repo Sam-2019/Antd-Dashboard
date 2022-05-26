@@ -10,7 +10,7 @@ import Error from "../../components/Error/Error";
 import { Button, PageHeader } from "antd";
 import PledgeEdit from "../Forms/Pledge/Edit";
 import { Edit } from "../../components/Modal/Modal";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 
 function Pledge() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -90,9 +90,13 @@ function Pledge() {
           <Button key="1" type="default" onClick={showModal}>
             Edit
           </Button>,
-          <Button key="1" type="primary" onClick={updateStatus}>
-            Paid
-          </Button>,
+          <Fragment>
+            {data.pledge.status === "PENDING" && (
+              <Button key="1" type="primary" onClick={updateStatus}>
+                Paid
+              </Button>
+            )}
+          </Fragment>,
         ]}
       />
 
