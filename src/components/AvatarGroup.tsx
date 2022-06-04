@@ -1,31 +1,42 @@
 import { Avatar, Tooltip } from "antd";
-import { UserOutlined, AntDesignOutlined } from "@ant-design/icons";
+import { useQuery } from "@apollo/client";
+import { GET_DEPARTMENT_MEMBERS_IMAGES } from "../utils/graphqlFunctions/queries";
+import { Fragment } from "react";
 
-function AvatarGroup({ data }: any) {
-  console.log(data);
+function AvatarGroup({ departmentName }: any) {
+  const { loading, error, data } = useQuery(GET_DEPARTMENT_MEMBERS_IMAGES, {
+    variables: { department: departmentName },
+  });
+
+  if (loading) return null;
+  if (error) return null;
+
   return (
-    <Avatar.Group
-      maxCount={2}
-      size="large"
-      maxStyle={{
-        color: "#f56a00",
-        backgroundColor: "#fde3cf",
-        cursor: "pointer",
-      }}
-    >
-      <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-      <Avatar style={{ backgroundColor: "#f56a00" }}>K</Avatar>
-      <Tooltip title="Ant User" placement="top">
-        <Avatar
-          style={{ backgroundColor: "#87d068" }}
-          icon={<UserOutlined />}
-        />
-      </Tooltip>
-      <Avatar
-        style={{ backgroundColor: "#1890ff" }}
-        icon={<AntDesignOutlined />}
-      />
-    </Avatar.Group>
+    <Fragment>
+      <Avatar.Group
+        maxCount={4}
+        size="default"
+        maxStyle={{
+          color: "#f56a00",
+          backgroundColor: "#fde3cf",
+          cursor: "pointer",
+        }}
+      >
+        {data.department.map((info: any) => (
+          <div key={info.id}>
+            <Tooltip title={`${info.firstName}`} placement="top">
+              {info.imageURL && <Avatar src={info.imageURL} />}
+
+              {!info.imageURL && (
+                <Avatar style={{ backgroundColor: "#f56a00" }}>
+                  {info.firstName.charAt(0)}
+                </Avatar>
+              )}
+            </Tooltip>
+          </div>
+        ))}
+      </Avatar.Group>
+    </Fragment>
   );
 }
 
