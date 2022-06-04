@@ -54,11 +54,15 @@ export default function PledgeItem({ dataSource }: any) {
 
                 <Descriptions>
                   <Descriptions.Item label="Contact">
-                    {dataSource.contact}
+                    {!dataSource.contact ? "N/A" : <> {dataSource.contact} </>}
                   </Descriptions.Item>
 
                   <Descriptions.Item label="Email">
-                    {dataSource.emailAddress}
+                    {!dataSource.emailAddress ? (
+                      "N/A"
+                    ) : (
+                      <> {dataSource.emailAddress} </>
+                    )}
                   </Descriptions.Item>
                 </Descriptions>
 
@@ -66,7 +70,11 @@ export default function PledgeItem({ dataSource }: any) {
                   <Title level={5}>Programme</Title>
                   <Descriptions>
                     <Descriptions.Item label="Programme">
-                      {dataSource.programme}
+                      {!dataSource.programme ? (
+                        "N/A"
+                      ) : (
+                        <> {dataSource.programme} </>
+                      )}
                     </Descriptions.Item>
                   </Descriptions>
                 </div>
@@ -75,7 +83,11 @@ export default function PledgeItem({ dataSource }: any) {
                   <Title level={5}>Amount</Title>
                   <Descriptions>
                     <Descriptions.Item>
-                      <>GHc {dataSource.amount} </>
+                      {!dataSource.amount ? (
+                        "N/A"
+                      ) : (
+                        <>GHc {dataSource.amount} </>
+                      )}
                     </Descriptions.Item>
                   </Descriptions>
                 </div>
