@@ -121,6 +121,17 @@ export const GET_DEPARTMENT = gql`
   }
 `;
 
+export const GET_DEPARTMENT_MEMBERS_IMAGES = gql`
+  query Query($department: String) {
+    department(department: $department) {
+      id
+      imageURL
+      firstName
+      lastName
+    }
+  }
+`;
+
 export const GET_VISITORS = gql`
   query Query {
     visitors {
@@ -213,4 +224,3 @@ export const USER_DETAILS = gql`
     }
   }
 `;
-
