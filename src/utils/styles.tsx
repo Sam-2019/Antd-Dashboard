@@ -23,3 +23,10 @@ export const spaceStyles = {
 export const inputStyles = {
   width: 200,
 };
+
+
+export const cardStyles = {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+}
