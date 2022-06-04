@@ -1,3 +1,4 @@
+import React from "react";
 import { Layout, Form, Input, Button, Space } from "antd";
 import { Link, useHistory } from "react-router-dom";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
@@ -15,13 +16,15 @@ import { USER_LOGIN } from "../../utils/graphqlFunctions/queries";
 const { Header, Content } = Layout;
 
 export default function Login() {
+  const [message, setMessage] = React.useState("");
+
   const [login, { loading }] = useLazyQuery(USER_LOGIN, {
     onCompleted: (data) => {
       localStorage.setItem("userID", data.login.id);
       history.push("/");
     },
-    onError: (error) => {
-      console.log(error);
+    onError: (errors) => {
+      setMessage(errors.message);
     },
   });
 
@@ -72,13 +75,14 @@ export default function Login() {
           >
             <Form.Item
               name="email"
-              label="Email / Username"
-              rules={[{ required: true, message: "Required!" }]}
+              label="Email"
+              rules={[{ required: true, message: "Required" }]}
             >
               <Input
                 prefix={<UserOutlined className="site-form-item-icon" />}
               />
             </Form.Item>
+
             <Form.Item
               name="password"
               label="Password"
@@ -88,6 +92,8 @@ export default function Login() {
                 prefix={<LockOutlined className="site-form-item-icon" />}
               />
             </Form.Item>
+
+            <span style={{ marginTop: "-5px", color: "red" }}>{message}</span>
 
             <div style={forgotPasswordStyles}>
               <Link to="/verify-email">Forgot password?</Link>
