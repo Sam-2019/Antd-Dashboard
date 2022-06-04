@@ -2,6 +2,7 @@ import { Avatar, Tooltip } from "antd";
 import { UserOutlined, AntDesignOutlined } from "@ant-design/icons";
 
 function AvatarGroup({ data }: any) {
+  console.log(data);
   return (
     <Avatar.Group
       maxCount={2}
