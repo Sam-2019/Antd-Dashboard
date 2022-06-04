@@ -2,9 +2,8 @@ import { Layout, Menu, Avatar, Dropdown, Badge } from "antd";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { useHistory } from "react-router-dom";
-
-import { UserOutlined } from "@ant-design/icons";
 import { userMenuItems } from "../../utils/data";
+import { UserOutlined } from "@ant-design/icons";
 
 const { Header } = Layout;
 
@@ -13,9 +12,16 @@ interface PropType {
   collapsed: any;
   showDrawer: any;
   visible: any;
+  userImage: any;
 }
 
-const Navbar = ({ toggle, collapsed, showDrawer, visible }: PropType) => {
+const Navbar = ({
+  toggle,
+  collapsed,
+  showDrawer,
+  visible,
+  userImage,
+}: PropType) => {
   const responsive = useBreakpoint();
   const history = useHistory();
 
@@ -54,7 +60,11 @@ const Navbar = ({ toggle, collapsed, showDrawer, visible }: PropType) => {
         <div>
           <Dropdown overlay={menu}>
             <Badge count={1}>
-              <Avatar size={35} icon={<UserOutlined />} />
+              <Avatar
+                size={35}
+                icon={!userImage && <UserOutlined />}
+                src={userImage && userImage}
+              />
             </Badge>
           </Dropdown>
         </div>
