@@ -1,6 +1,7 @@
 import { Card } from "antd";
 import { useHistory, useLocation } from "react-router-dom";
 import AvatarGroup from "../AvatarGroup";
+import { cardStyles } from "../../utils/styles";
 
 const { Meta } = Card;
 
@@ -33,9 +34,10 @@ function CardView({ data, avatar }: any) {
               />
             }
           >
-            <Meta description={data.name} />
-
-            {avatar && <AvatarGroup />}
+            <div style={cardStyles}>
+              <Meta description={data.name} />
+              <div> {avatar && <AvatarGroup departmentName={data.name} />}</div>
+            </div>
           </Card>
         </div>
       ))}
