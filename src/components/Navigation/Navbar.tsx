@@ -13,6 +13,7 @@ interface PropType {
   showDrawer: any;
   visible: any;
   userImage: any;
+  userName: any;
 }
 
 const Navbar = ({
@@ -21,9 +22,12 @@ const Navbar = ({
   showDrawer,
   visible,
   userImage,
+  userName,
 }: PropType) => {
   const responsive = useBreakpoint();
   const history = useHistory();
+
+  // <p>Hello, {JSON.stringify(userName)},</p>
 
   const menu = (
     <Menu>
@@ -56,7 +60,7 @@ const Navbar = ({
             </div>
           )}
         </div>
-
+  
         <div>
           <Dropdown overlay={menu}>
             <Badge count={1}>
@@ -69,6 +73,8 @@ const Navbar = ({
           </Dropdown>
         </div>
       </div>
+
+
 
       {/*  */}
     </Header>
