@@ -46,6 +46,14 @@ const AppLayout = ({ children }: PropType) => {
     return data.user.imageURL;
   };
 
+
+  const userName = (data: any) => {
+    if (!data) return;
+    if (data.user.firstName === null) return;
+    return data.user.firstName;
+  };
+
+
   return (
     <Layout>
       <SiderDemo collapsed={collapsed} />
@@ -57,6 +65,7 @@ const AppLayout = ({ children }: PropType) => {
           showDrawer={showDrawer}
           visible={visible}
           userImage={userImage(data)}
+          userName={userName(data)}
         />
         <Content
           className="site-layout-background"
