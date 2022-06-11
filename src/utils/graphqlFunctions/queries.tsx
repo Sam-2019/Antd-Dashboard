@@ -78,6 +78,17 @@ export const GET_CHAPEL_MEMBERS = gql`
   }
 `;
 
+export const GET_GROUP_MEMBERS_IMAGES = gql`
+  query Query($group: String, $type: String) {
+    groupImage(group: $group, type: $type) {
+      id
+      firstName
+      lastName
+      imageURL
+    }
+  }
+`;
+
 export const GET_PLEDGES = gql`
   query Query {
     pledges {
@@ -117,17 +128,6 @@ export const GET_DEPARTMENT = gql`
       lastName
       chapel
       contact
-    }
-  }
-`;
-
-export const GET_DEPARTMENT_MEMBERS_IMAGES = gql`
-  query Query($department: String) {
-    department(department: $department) {
-      id
-      imageURL
-      firstName
-      lastName
     }
   }
 `;
