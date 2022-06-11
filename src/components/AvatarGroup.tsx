@@ -1,11 +1,11 @@
 import { Avatar, Tooltip } from "antd";
 import { useQuery } from "@apollo/client";
-import { GET_DEPARTMENT_MEMBERS_IMAGES } from "../utils/graphqlFunctions/queries";
+import { GET_GROUP_MEMBERS_IMAGES } from "../utils/graphqlFunctions/queries";
 import { Fragment } from "react";
 
-function AvatarGroup({ departmentName }: any) {
-  const { loading, error, data } = useQuery(GET_DEPARTMENT_MEMBERS_IMAGES, {
-    variables: { department: departmentName },
+function AvatarGroup({ type, group }: any) {
+  const { loading, error, data } = useQuery(GET_GROUP_MEMBERS_IMAGES, {
+    variables: { type: type, group: group },
   });
 
   if (loading) return null;
@@ -14,7 +14,7 @@ function AvatarGroup({ departmentName }: any) {
   return (
     <Fragment>
       <Avatar.Group
-        maxCount={4}
+        maxCount={2}
         size="default"
         maxStyle={{
           color: "#f56a00",
@@ -22,7 +22,7 @@ function AvatarGroup({ departmentName }: any) {
           cursor: "pointer",
         }}
       >
-        {data.department.map((info: any) => (
+        {data.groupImage.map((info: any) => (
           <div key={info.id}>
             <Tooltip title={`${info.firstName}`} placement="top">
               {info.imageURL && <Avatar src={info.imageURL} />}
