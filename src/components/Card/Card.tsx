@@ -5,7 +5,7 @@ import { cardStyles } from "../../utils/styles";
 
 const { Meta } = Card;
 
-function CardView({ data, avatar }: any) {
+function CardView({ type, data, avatar }: any) {
   const history = useHistory();
   let location = useLocation();
 
@@ -36,7 +36,9 @@ function CardView({ data, avatar }: any) {
           >
             <div style={cardStyles}>
               <Meta description={data.name} />
-              <div> {avatar && <AvatarGroup departmentName={data.name} />}</div>
+              <div>
+                {avatar && <AvatarGroup type={type} group={data.name} />}
+              </div>
             </div>
           </Card>
         </div>
