@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Card } from "antd";
 import {
   ServiceColumnList,
@@ -14,7 +14,7 @@ const GroupChart = () => {
   };
 
   return (
-    <>
+    <Fragment>
       <div className="site-card-wrapper" style={{ marginBottom: 16 }}>
         <Card
           title="Congregation"
@@ -24,7 +24,6 @@ const GroupChart = () => {
           onTabChange={(key) => {
             onTabChange(key, "state");
           }}
-          //   headStyle={{ display: "flex", justifyContent: "center" }}
         >
           {ServiceColumnList[state]}
         </Card>
@@ -42,7 +41,7 @@ const GroupChart = () => {
           {Vehicle[state]}
         </Card>
       </div>
-    </>
+    </Fragment>
   );
 };
 

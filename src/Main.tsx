@@ -1,67 +1,49 @@
-import React, { Suspense, lazy } from "react";
+import { Suspense } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  LoginRoute,
+  SignupRoute,
+  VerifyEmail,
+  ResetPassword,
+} from "./routes/User";
+import { NoPageRoute } from "./routes/404";
+import { MainRoutes } from "./routes/MainRoutes";
+
 import Layout from "./components/Layout/Layout";
-
-import ScrollToTop from "./components/ScrollToTop";
 import Spinner from "./components/Spinner/Spinner";
-
-const FormsRoute = lazy(() => import("./routes/Forms"));
-const ChapelsRoute = lazy(() => import("./routes/Forms"));
-const MemberRoute = lazy(() => import("./routes/Members"));
-const DepartmentRoute = lazy(() => import("./routes/Departments"));
-const DashboardRoute = lazy(() => import("./routes/Dashboard"));
-const NoPageRoute = lazy(() => import("./routes/404"));
-const PledgeRoute = lazy(() => import("./routes/Pledges"));
-const VisitorRoute = lazy(() => import("./routes/Visitors"));
-const PaymentRoute = lazy(() => import("./routes/Payments"));
+import ScrollToTop from "./components/ScrollToTop";
 
 export default function Main() {
   return (
     <Router>
       <ScrollToTop />
-      <div>
+      <Switch>
+        <Route path="/login">
+          <LoginRoute />
+        </Route>
+
+        <Route path="/signup">
+          <SignupRoute />
+        </Route>
+
+        <Route path="/verify-email">
+          <VerifyEmail />
+        </Route>
+
+        <Route path="/reset-password">
+          <ResetPassword />
+        </Route>
+
         <Layout>
           <Suspense fallback={<Spinner />}>
-            <Switch>
-              <Route exact path="/">
-                <DashboardRoute />
-              </Route>
-
-              <Route path="/forms">
-                <FormsRoute />
-              </Route>
-
-              <Route path="/pledges">
-                <PledgeRoute />
-              </Route>
-
-              <Route path="/chapels">
-                <ChapelsRoute />
-              </Route>
-
-              <Route path="/payments">
-                <PaymentRoute />
-              </Route>
-
-              <Route path="/visitors">
-                <VisitorRoute />
-              </Route>
-
-              <Route path="/members">
-                <MemberRoute />
-              </Route>
-
-              <Route path="/departments">
-                <DepartmentRoute />
-              </Route>
-
-              <Route>
-                <NoPageRoute />
-              </Route>
-            </Switch>
+            <MainRoutes />
           </Suspense>
         </Layout>
-      </div>
+
+        <Route>
+          <NoPageRoute />
+        </Route>
+      </Switch>
     </Router>
   );
 }

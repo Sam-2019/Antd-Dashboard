@@ -2,8 +2,9 @@ import { Input, DatePicker, Form, Button, Radio } from "antd";
 import { useMutation } from "@apollo/client";
 import GoBack from "../../../components/GoBack";
 import { ADD_VISITOR } from "../../../utils/graphqlFunctions/mutations";
-import { success } from "../../../components/Modal/Modal";
+import { Success, Error } from "../../../components/Modal/Modal";
 import { GET_VISITORS } from "../../../utils/graphqlFunctions/queries";
+import { inputStyles } from "../../../utils/styles";
 
 function Visitor() {
   const [form] = Form.useForm();
@@ -11,7 +12,7 @@ function Visitor() {
     refetchQueries: [{ query: GET_VISITORS }],
   });
 
-  const onFinish = (fieldsValue: any) => {
+  const onFinish = async (fieldsValue: any) => {
     // Should format date value before submit.
 
     const values = {
@@ -20,7 +21,7 @@ function Visitor() {
       monthOfBirth: fieldsValue["monthOfBirth"].format("YYYY-MM"),
     };
 
-    addVisitor({
+    const data = await addVisitor({
       variables: {
         addVisitorInput: {
           ...values,
@@ -28,9 +29,13 @@ function Visitor() {
       },
     });
 
+    if (!data) {
+      return Error("Update failed");
+    }
+
     form.resetFields();
 
-    success("Visitor added");
+    Success("Visitor added");
   };
 
   return (
@@ -48,7 +53,7 @@ function Visitor() {
           label="First Name"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item
@@ -56,7 +61,7 @@ function Visitor() {
           label="Last Name"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item
@@ -64,7 +69,7 @@ function Visitor() {
           label="Contact"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item
@@ -72,7 +77,7 @@ function Visitor() {
           label="Location"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item
@@ -80,7 +85,7 @@ function Visitor() {
           label="Date"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <DatePicker style={{ width: 200 }} />
+          <DatePicker style={inputStyles} />
         </Form.Item>
 
         <Form.Item
@@ -137,7 +142,7 @@ function Visitor() {
           }}
           name="awarenessChannelOther"
         >
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item> */}
 
         <Form.Item
@@ -145,7 +150,7 @@ function Visitor() {
           label="Invited by"
           rules={[{ required: true, message: "Required!" }]}
         >
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item

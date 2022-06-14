@@ -6,6 +6,9 @@ import {
   FormOutlined,
   RedEnvelopeOutlined,
   UsergroupAddOutlined,
+  SettingOutlined,
+  LogoutOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
 
 export const userData = [
@@ -146,6 +149,27 @@ export const menuItems = [
   },
 ];
 
+export const userMenuItems = [
+  {
+    key: 0,
+    name: "Profile",
+    path: "/profile",
+    icon: <UserOutlined />,
+  },
+  {
+    key: 1,
+    name: "Settings",
+    path: "/settings",
+    icon: <SettingOutlined />,
+  },
+  {
+    key: 2,
+    name: "Logout",
+    path: '/login',
+    icon: <LogoutOutlined />,
+  },
+];
+
 export const departments = [
   { key: "0", name: "Administration", path: "/administration" },
   { key: "1", name: "Chapel Shepherd", path: "/chapel shepherd" },
@@ -264,6 +288,7 @@ export const breadcrumbNameMap = {
   "/members": "Members",
   "/tithe": "Tithe",
   "/chapels": "Chapels",
+  "/pledges": "Pledges",
 };
 
 export const steps = [

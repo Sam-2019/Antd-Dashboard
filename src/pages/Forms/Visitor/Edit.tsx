@@ -1,9 +1,10 @@
 import { Input, Form, Button, Radio, Space } from "antd";
 import { useMutation } from "@apollo/client";
 import { UPDATE_VISITOR } from "../../../utils/graphqlFunctions/mutations";
-import { success } from "../../../components/Modal/Modal";
+import { Success, Error } from "../../../components/Modal/Modal";
 import { useParams } from "react-router-dom";
 import { GET_VISITOR } from "../../../utils/graphqlFunctions/queries";
+import { inputStyles } from "../../../utils/styles";
 
 function Visitor({ handleCancel, data }: any) {
   const [form] = Form.useForm();
@@ -13,8 +14,8 @@ function Visitor({ handleCancel, data }: any) {
     refetchQueries: [{ query: GET_VISITOR, variables: { visitorId: slug } }],
   });
 
-  const onFinish = (fieldsValue: any) => {
-    updateVisitor({
+  const onFinish = async (fieldsValue: any) => {
+    const data = await updateVisitor({
       variables: {
         updateVisitorId: slug,
         updateVisitorInput: {
@@ -23,9 +24,13 @@ function Visitor({ handleCancel, data }: any) {
       },
     });
 
+    if (!data) {
+      return Error("Update failed");
+    }
+
     form.resetFields();
 
-    success("Visitor updated");
+    Success("Visitor updated");
 
     handleCancel();
   };
@@ -53,19 +58,19 @@ function Visitor({ handleCancel, data }: any) {
         }}
       >
         <Form.Item name="firstName" label="First Name">
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item name="lastName" label="Last Name">
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item name="contact" label="Contact">
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item name="location" label="Location">
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item name="ageGroup" label="Age Group">
@@ -106,11 +111,11 @@ function Visitor({ handleCancel, data }: any) {
           }}
           name="awarenessChannelOther"
         >
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item> */}
 
         <Form.Item name="invitedBy" label="Invited by">
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item

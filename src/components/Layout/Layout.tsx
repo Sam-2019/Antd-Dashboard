@@ -1,9 +1,10 @@
 import React from "react";
-import { Layout } from "antd";
-
 import DrawerC from "../Slider/Drawer";
 import SiderDemo from "../Slider/Sider";
 import Navbar from "../Navigation/Navbar";
+import { Layout } from "antd";
+import { useQuery } from "@apollo/client";
+import { USER_DETAILS } from "../../utils/graphqlFunctions/queries";
 
 //import BreadCrumb from "./Breadcrumb";
 
@@ -17,6 +18,11 @@ const AppLayout = ({ children }: PropType) => {
   //const [active, setActive] = React.useState("dashboard");
   const [visible, setVisible] = React.useState(false);
   const [collapsed, setCollapsed] = React.useState(false);
+  let userID = localStorage.getItem("userID");
+
+  const { loading, error, data } = useQuery(USER_DETAILS, {
+    variables: { userId: userID },
+  });
 
   const showDrawer = () => {
     setVisible(true);
@@ -34,6 +40,20 @@ const AppLayout = ({ children }: PropType) => {
     setCollapsed(!collapsed);
   };
 
+  const userImage = (data: any) => {
+    if (!data) return;
+    if (data.user.imageURL === null) return;
+    return data.user.imageURL;
+  };
+
+
+  const userName = (data: any) => {
+    if (!data) return;
+    if (data.user.firstName === null) return;
+    return data.user.firstName;
+  };
+
+
   return (
     <Layout>
       <SiderDemo collapsed={collapsed} />
@@ -44,6 +64,8 @@ const AppLayout = ({ children }: PropType) => {
           collapsed={collapsed}
           showDrawer={showDrawer}
           visible={visible}
+          userImage={userImage(data)}
+          userName={userName(data)}
         />
         <Content
           className="site-layout-background"

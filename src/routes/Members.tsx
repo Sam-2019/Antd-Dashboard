@@ -4,6 +4,7 @@ import Members from "../pages/Members";
 
 export function MemberRoute() {
   let { path } = useRouteMatch();
+  
   return (
     <Switch>
       <Route path={`${path}/:slug`}>

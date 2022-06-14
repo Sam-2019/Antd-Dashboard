@@ -7,7 +7,7 @@ function Chapels() {
   return (
     <>
       <PageHeader header="Chapels" />
-      <Card data={month} />
+      <Card type="chapel" data={month} avatar={true} />
     </>
   );
 }

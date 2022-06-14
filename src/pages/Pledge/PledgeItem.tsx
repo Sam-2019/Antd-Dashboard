@@ -1,23 +1,11 @@
-import { Card, Col, Descriptions, Image, Row, Tag, Typography } from "antd";
+import { Card, Col, Descriptions, Row, Tag } from "antd";
 import Title from "antd/lib/typography/Title";
-import { Link } from "react-router-dom";
-import ImageUpload from "../../components/ImageUpload";
-import { GET_MEMBER } from "../../utils/graphqlFunctions/queries";
-import { colorSwitch } from "../../utils/functions";
-import {
-  imageWidth,
-  marginBottom,
-  fallback,
-  dummyImage,
-} from "../../utils/constants";
 
-const { Text } = Typography;
-
-function MemberItem({ dataSource }: any) {
+export default function PledgeItem({ dataSource }: any) {
   return (
     <div className="site-card-wrapper">
       <Row gutter={16}>
-        <Col span={6}>
+        {/* <Col span={6}>
           <Card
             type="inner"
             hoverable
@@ -54,9 +42,9 @@ function MemberItem({ dataSource }: any) {
             }
             style={{ padding: 15 }}
           ></Card>
-        </Col>
+        </Col> */}
 
-        <Col span={18}>
+        <Col span={24}>
           <Row gutter={[16, 16]}>
             <Col span={24}>
               <Card bordered={false}>
@@ -66,69 +54,55 @@ function MemberItem({ dataSource }: any) {
 
                 <Descriptions>
                   <Descriptions.Item label="Contact">
-                    {dataSource.contact}
+                    {!dataSource.contact ? "N/A" : <> {dataSource.contact} </>}
                   </Descriptions.Item>
-                  <Descriptions.Item label="Location">
-                    {!dataSource.location ? (
+
+                  <Descriptions.Item label="Email">
+                    {!dataSource.emailAddress ? (
                       "N/A"
                     ) : (
-                      <> {dataSource.location} </>
+                      <> {dataSource.emailAddress} </>
                     )}
-                  </Descriptions.Item>
-
-                  <Descriptions.Item label="Chapel">
-                    {dataSource.chapel}
-                  </Descriptions.Item>
-
-                  <Descriptions.Item label="Residential Address">
-                    {dataSource.residentialAddress}
                   </Descriptions.Item>
                 </Descriptions>
 
                 <div>
-                  <Title level={5}>Family</Title>
-
+                  <Title level={5}>Programme</Title>
                   <Descriptions>
-                    <Descriptions.Item label="Spouse">
-                      {!dataSource.spouseName ? (
+                    <Descriptions.Item label="Programme">
+                      {!dataSource.programme ? (
                         "N/A"
                       ) : (
-                        <> {dataSource.spouseName} </>
-                      )}
-                    </Descriptions.Item>
-
-                    <Descriptions.Item label="Children">
-                      {dataSource.nameOfChildren.length === 0 ? (
-                        "N/A"
-                      ) : (
-                        <>
-                          {dataSource.nameOfChildren.map(
-                            (tag: string, index: any) => {
-                              return <Text key={index}>{tag}</Text>;
-                            }
-                          )}
-                        </>
+                        <> {dataSource.programme} </>
                       )}
                     </Descriptions.Item>
                   </Descriptions>
                 </div>
 
                 <div>
-                  <Title level={5}>Departments</Title>
-
+                  <Title level={5}>Amount</Title>
                   <Descriptions>
                     <Descriptions.Item>
-                      {dataSource.department.map((tag: string, index: any) => {
-                        let color = colorSwitch(tag);
-                        let params = tag.toLocaleLowerCase();
-                        return (
-                          <Link key={index} to={`/departments/${params}`}>
-                            <Tag color={color} key={index}>
-                              {tag}
-                            </Tag>
-                          </Link>
-                        );
-                      })}
+                      {!dataSource.amount ? (
+                        "N/A"
+                      ) : (
+                        <>GHc {dataSource.amount} </>
+                      )}
+                    </Descriptions.Item>
+                  </Descriptions>
+                </div>
+
+                <div>
+                  <Title level={5}>Status</Title>
+                  <Descriptions>
+                    <Descriptions.Item>
+                      <Tag
+                        color={
+                          dataSource.status === "PENDING" ? "red" : "green"
+                        }
+                      >
+                        {dataSource.status}
+                      </Tag>
                     </Descriptions.Item>
                   </Descriptions>
                 </div>
@@ -140,5 +114,3 @@ function MemberItem({ dataSource }: any) {
     </div>
   );
 }
-
-export default MemberItem;

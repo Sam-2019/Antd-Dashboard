@@ -1,15 +1,15 @@
-import { Card, Col, Descriptions, Row } from "antd";
+import { Card, Col, Row, Descriptions, Image } from "antd";
 import Title from "antd/lib/typography/Title";
-import ImageUpload from "../../components/ImageUpload";
-
+import ImageUpload from "../../../components/ImageUpload";
 import {
+  fallback,
   imageWidth,
   marginBottom,
-  fallback,
   dummyImage,
-} from "../../utils/constants";
+} from "../../../utils/constants";
+import { USER_DETAILS } from "../../../utils/graphqlFunctions/queries";
 
-function VisitorItem({ dataSource }: any) {
+export default function ProfileItem({ dataSource }: any) {
   return (
     <div className="site-card-wrapper">
       <Row gutter={16}>
@@ -21,15 +21,15 @@ function VisitorItem({ dataSource }: any) {
             cover={
               <>
                 {dataSource.imageURL ? (
-                  <>
-                    {/* <Image
+                  <div>
+                    <Image
                       alt="example"
                       src={dataSource.imageURL}
                       width={imageWidth}
                       style={{ marginBottom }}
                       fallback={fallback}
-                    /> */}
-                  </>
+                    />
+                  </div>
                 ) : (
                   <div>
                     <img
@@ -38,12 +38,11 @@ function VisitorItem({ dataSource }: any) {
                       width={imageWidth}
                       style={{ marginBottom }}
                     />
-
-                    {/* <ImageUpload
+                    <ImageUpload
                       id={dataSource.id}
-                      type="member"
-                      query={null}
-                    /> */}
+                      type="user"
+                      query={USER_DETAILS}
+                    />
                   </div>
                 )}
               </>
@@ -51,37 +50,43 @@ function VisitorItem({ dataSource }: any) {
             style={{ padding: 15 }}
           ></Card>
         </Col>
+
         <Col span={18}>
           <Row gutter={[16, 16]}>
             <Col span={24}>
               <Card bordered={false}>
-                {/* <Title level={4}>Member Info</Title> */}
-
                 <Title level={2}>
-                  {dataSource.firstName} {dataSource.lastName}
+                  {!dataSource.firstName ? (
+                    "N/A"
+                  ) : (
+                    <>
+                      {dataSource.firstName} {dataSource.lastName}
+                    </>
+                  )}
                 </Title>
 
-                <Descriptions>
+                <Descriptions size="default">
+                  <Descriptions.Item label="Gender">
+                    {!dataSource.gender ? "N/A" : <> {dataSource.gender} </>}
+                  </Descriptions.Item>
                   <Descriptions.Item label="Contact">
-                    {dataSource.contact}
+                    {!dataSource.contact ? "N/A" : <> {dataSource.contact} </>}
                   </Descriptions.Item>
-                  <Descriptions.Item label="Location">
-                    {dataSource.location}
-                  </Descriptions.Item>
-
-                  <Descriptions.Item label="Chapel">
-                    {!dataSource.chapel ? "N/A" : <> {dataSource.chapel} </>}
-                  </Descriptions.Item>
-
-                  <Descriptions.Item label="Date Visited">
-                    {!dataSource.date ? "N/A" : <> {dataSource.date} </>}
-                  </Descriptions.Item>
-
-                  <Descriptions.Item label="Invited By">
-                    {!dataSource.invitedBy ? (
+                  <Descriptions.Item label="Email">
+                    {!dataSource.emailAddress ? (
                       "N/A"
                     ) : (
-                      <> {dataSource.invitedBy} </>
+                      <> {dataSource.emailAddress} </>
+                    )}
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Birthday">
+                    {!dataSource.bod ? "N/A" : <> {dataSource.dob} </>}
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Address">
+                    {!dataSource.homeAddress ? (
+                      "N/A"
+                    ) : (
+                      <> {dataSource.homeAddress} </>
                     )}
                   </Descriptions.Item>
                 </Descriptions>
@@ -93,5 +98,3 @@ function VisitorItem({ dataSource }: any) {
     </div>
   );
 }
-
-export default VisitorItem;

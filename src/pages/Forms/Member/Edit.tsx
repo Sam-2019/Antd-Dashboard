@@ -15,14 +15,14 @@ import {
 import { useMutation } from "@apollo/client";
 import { departments } from "../../../utils/data";
 import { UPDATE_MEMBER } from "../../../utils/graphqlFunctions/mutations";
-import { success } from "../../../components/Modal/Modal";
+import { Success, Error } from "../../../components/Modal/Modal";
 import { useParams } from "react-router-dom";
 import { GET_MEMBER } from "../../../utils/graphqlFunctions/queries";
+import { inputStyles } from "../../../utils/styles";
 
 const { Option } = Select;
 
 function Member({ handleCancel, data }: any): JSX.Element {
-  console.log(data);
   const [form] = Form.useForm();
   let { slug }: any = useParams();
 
@@ -37,8 +37,8 @@ function Member({ handleCancel, data }: any): JSX.Element {
     ],
   });
 
-  const onFinish = (fieldsValue: any) => {
-    addMember({
+  const onFinish = async (fieldsValue: any) => {
+    const data = await addMember({
       variables: {
         updateMemberId: slug,
         updateMemberInput: {
@@ -47,10 +47,12 @@ function Member({ handleCancel, data }: any): JSX.Element {
       },
     });
 
+    if (!data) {
+      return Error("Update failed");
+    }
+
     form.resetFields();
-
-    success("Member updated");
-
+    Success("Member updated");
     handleCancel();
   };
 
@@ -75,19 +77,19 @@ function Member({ handleCancel, data }: any): JSX.Element {
         }}
       >
         <Form.Item name="firstName" label="First Name">
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item name="lastName" label="Last Name">
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item name="otherName" label="Other Name">
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item name="age" label="Age">
-          <InputNumber style={{ width: 200 }} />
+          <InputNumber style={inputStyles} />
         </Form.Item>
 
         <Form.Item name="gender" label="Gender">
@@ -98,19 +100,19 @@ function Member({ handleCancel, data }: any): JSX.Element {
         </Form.Item>
 
         <Form.Item name="location" label="Location">
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item name="residentialAddress" label="Residential Address">
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item name="hometown" label="Home Town">
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item name="region" label="Region">
-          <Select placeholder="Select region" allowClear style={{ width: 200 }}>
+          <Select placeholder="Select region" allowClear style={inputStyles}>
             <Option value="Ahafo">Ahafo</Option>
             <Option value="Ashanti">Ashanti</Option>
             <Option value="Bono East">Bono East</Option>
@@ -132,23 +134,23 @@ function Member({ handleCancel, data }: any): JSX.Element {
         </Form.Item>
 
         <Form.Item name="country" label="Country">
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item name="contact" label="Contact">
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item name="emergencyContact" label="Emergency Contact">
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item name="emailAddress" label="Email Address">
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item name="postalAddress" label="Postal Address">
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item name="maritalStatus" label="Marital Status">
@@ -160,11 +162,11 @@ function Member({ handleCancel, data }: any): JSX.Element {
         </Form.Item>
 
         <Form.Item name="spouseName" label="Name of Spouse">
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item name="numberOfChlidren" label="Number of children">
-          <InputNumber keyboard={true} style={{ width: 200 }} />
+          <InputNumber keyboard={true} style={inputStyles} />
         </Form.Item>
 
         <Form.Item label="Name of children" style={{ marginBottom: 0 }} />
@@ -244,7 +246,7 @@ function Member({ handleCancel, data }: any): JSX.Element {
         </Form.Item>
 
         <Form.Item name="previousChurch" label="Previous Church">
-          <Input style={{ width: 200 }} />
+          <Input style={inputStyles} />
         </Form.Item>
 
         <Form.Item

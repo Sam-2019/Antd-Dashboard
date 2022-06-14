@@ -154,15 +154,19 @@ export const ADD_PLEDGE = gql`
   mutation AddPledge($addPledge: AddPledge) {
     addPledge(input: $addPledge) {
       id
-      pledgeeID
-      pledgeDate
-      amount
+      firstName
+      lastName
+      otherName
+      contact
+      emailAddress
       programme
+      amount
+      pledgeDate
       redeemedDate
-      status
     }
   }
 `;
+
 export const UPDATE_PLEDGE = gql`
   mutation UpdatePledgeMutation(
     $updatePledgeId: ID
@@ -170,20 +174,58 @@ export const UPDATE_PLEDGE = gql`
   ) {
     updatePledge(id: $updatePledgeId, input: $updatePledgeInput) {
       id
-      pledgeeID
-      pledgeDate
-      amount
+      firstName
+      lastName
+      otherName
+      contact
+      emailAddress
       programme
+      amount
+      pledgeDate
       redeemedDate
+    }
+  }
+`;
+
+export const UPDATE_PLEDGE_STATUS = gql`
+  mutation UpdatePledgeStatusMutation($pledgeId: ID, $pledgeInput: AddPledge) {
+    updatePledgeStatus(id: $pledgeId, input: $pledgeInput) {
       status
     }
   }
 `;
+
 export const UPLOAD_IMAGE = gql`
-  mutation Mutation($uploadImageInput: AddImage) {
-    uploadImage(input: $uploadImageInput) {
+  mutation Mutation($uploadImageId: ID, $uploadImageInput: AddImage) {
+    uploadImage(id: $uploadImageId, input: $uploadImageInput) {
       id
       imageURL
+    }
+  }
+`;
+
+export const USER_SIGNUP = gql`
+  mutation Signup($signup: AddUser) {
+    signup(input: $signup) {
+      id
+      firstName
+      lastName
+      emailAddress
+    }
+  }
+`;
+
+export const UPDATE_USER_DETAILS = gql`
+  mutation UpdateUserMutation($updateUserId: ID, $updateUserInput: AddUser) {
+    updateUser(id: $updateUserId, input: $updateUserInput) {
+      id
+      firstName
+      lastName
+      gender
+      contact
+      emailAddress
+      homeAddress
+      dob
     }
   }
 `;

@@ -78,11 +78,21 @@ export const GET_CHAPEL_MEMBERS = gql`
   }
 `;
 
-export const GET_PLEDGE = gql`
-  query Query {
-    pledge {
+export const GET_GROUP_MEMBERS_IMAGES = gql`
+  query Query($group: String, $type: String) {
+    groupImage(group: $group, type: $type) {
       id
-      pledgeeID
+      firstName
+      lastName
+      imageURL
+    }
+  }
+`;
+
+export const GET_PLEDGES = gql`
+  query Query {
+    pledges {
+      id
       firstName
       lastName
       amount
@@ -90,6 +100,22 @@ export const GET_PLEDGE = gql`
       status
       pledgeDate
       redeemedDate
+    }
+  }
+`;
+
+export const GET_PLEDGEE = gql`
+  query Query($pledgeId: ID) {
+    pledge(id: $pledgeId) {
+      firstName
+      lastName
+      amount
+      programme
+      status
+      pledgeDate
+      redeemedDate
+      contact
+      emailAddress
     }
   }
 `;
@@ -139,12 +165,12 @@ export const GET_VISITOR = gql`
 `;
 
 export const GET_GENDER_COUNT = gql`
-query Query($countGenderGroup: String) {
-  countGender(group: $countGenderGroup) {
-    type
-    value
+  query Query($countGenderGroup: String) {
+    countGender(group: $countGenderGroup) {
+      type
+      value
+    }
   }
-}
 `;
 
 export const GET_GROUP_STATS = gql`
@@ -169,3 +195,32 @@ export const GET_SUNDAY_STATS = gql`
   }
 `;
 
+export const USER_LOGIN = gql`
+  query Query($emailAddress: String, $password: String) {
+    login(emailAddress: $emailAddress, password: $password) {
+      id
+      firstName
+      lastName
+      userName
+      emailAddress
+      verified
+      imageURL
+    }
+  }
+`;
+
+export const USER_DETAILS = gql`
+  query Query($userId: ID) {
+    user(id: $userId) {
+      id
+      firstName
+      lastName
+      gender
+      contact
+      emailAddress
+      homeAddress
+      dob
+      imageURL
+    }
+  }
+`;

@@ -13,14 +13,14 @@ export function showPromiseConfirm() {
   });
 }
 
-export function success(content: any) {
+export function Success(content: any) {
   Modal.success({
     title: "Success",
     content,
   });
 }
 
-export function error(content: any) {
+export function Error(content: any) {
   Modal.error({
     title: "Error",
     content,
