@@ -16,7 +16,7 @@ function Pledge({ handleCancel, data, slug }: any) {
           pledgeId: slug,
         },
       },
-    ],
+    ] 
   });
 
   const onFinish = async (fieldsValue: any) => {
