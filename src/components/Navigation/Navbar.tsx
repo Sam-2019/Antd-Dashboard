@@ -30,8 +30,12 @@ const Navbar = ({
   // <p>Hello, {JSON.stringify(userName)},</p>
 
   const action = (data: any) => {
-    localStorage.removeItem("userID");
-    history.push(data);
+    if (data === "/login") {
+      localStorage.removeItem("userID");
+      history.push(data);
+    }
+
+    return history.push(data);
   };
 
   const menu = (
