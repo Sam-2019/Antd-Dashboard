@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/client";
 import { Button, PageHeader } from "antd";
 import ProfileItem from "./ProfileItem";
 import { Edit } from "../../../components/Modal/Modal";
+import EmptyState from "../../../components/Empty/Empty";
 import ProfileEdit from "../../Forms/User/Profile/Edit";
 import { USER_DETAILS } from "../../../utils/graphqlFunctions/queries";
 import Spinner from "../../../components/Spinner/Spinner";
@@ -32,6 +33,7 @@ export default function Profile() {
 
   if (loading) return <Spinner />;
   if (error) return <Error />;
+  if (data.user === null) return <EmptyState />;
 
   return (
     <>
