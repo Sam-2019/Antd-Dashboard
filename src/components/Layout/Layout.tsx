@@ -20,6 +20,8 @@ const AppLayout = ({ children }: PropType) => {
   const [collapsed, setCollapsed] = React.useState(false);
   let userID = localStorage.getItem("userID");
 
+  console.log(userID);
+
   const { loading, error, data } = useQuery(USER_DETAILS, {
     variables: { userId: userID },
   });
@@ -41,18 +43,22 @@ const AppLayout = ({ children }: PropType) => {
   };
 
   const userImage = (data: any) => {
+    // console.log(loading);
+    // console.log({ userImage: data });
     if (!data) return;
+    if (data.user === null) return;
     if (data.user.imageURL === null) return;
     return data.user.imageURL;
   };
 
-
   const userName = (data: any) => {
+    // console.log(loading);
+    // console.log({ userName: data });
     if (!data) return;
+    if (data.user === null) return;
     if (data.user.firstName === null) return;
     return data.user.firstName;
   };
-
 
   return (
     <Layout>
