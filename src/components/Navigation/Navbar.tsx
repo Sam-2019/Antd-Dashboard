@@ -29,13 +29,18 @@ const Navbar = ({
 
   // <p>Hello, {JSON.stringify(userName)},</p>
 
+  const action = (data: any) => {
+    localStorage.removeItem("userID");
+    history.push(data);
+  };
+
   const menu = (
     <Menu>
       {userMenuItems.map((data: any) => (
         <Menu.Item
           key={data.key}
           icon={data.icon}
-          onClick={() => history.push(data.path)}
+          onClick={() => action(data.path)}
           style={{ width: "auto" }}
         >
           {data.name}
@@ -60,7 +65,7 @@ const Navbar = ({
             </div>
           )}
         </div>
-  
+
         <div>
           <Dropdown overlay={menu}>
             <Badge count={1}>
@@ -73,8 +78,6 @@ const Navbar = ({
           </Dropdown>
         </div>
       </div>
-
-
 
       {/*  */}
     </Header>
