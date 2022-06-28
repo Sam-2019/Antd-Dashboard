@@ -198,13 +198,7 @@ export const GET_SUNDAY_STATS = gql`
 export const USER_LOGIN = gql`
   query Query($emailAddress: String, $password: String) {
     login(emailAddress: $emailAddress, password: $password) {
-      id
-      firstName
-      lastName
-      userName
-      emailAddress
-      verified
-      imageURL
+      token
     }
   }
 `;
@@ -221,6 +215,48 @@ export const USER_DETAILS = gql`
       homeAddress
       dob
       imageURL
+    }
+  }
+`;
+
+export const GET_JOBS = gql`
+  query Jobs {
+    jobs {
+      id
+      title
+      description
+      domain
+      imgURL
+      favicon
+      url
+    }
+  }
+`;
+
+export const GET_JOB = gql`
+  query Job($jobId: ID) {
+    job(id: $jobId) {
+      id
+      title
+      description
+      domain
+      imgURL
+      favicon
+      url
+    }
+  }
+`;
+
+export const GET_JOB_BY_TITLE = gql`
+  query Query($title: String) {
+    jobbyTitle(title: $title) {
+      id
+      title
+      description
+      domain
+      imgURL
+      favicon
+      url
     }
   }
 `;
