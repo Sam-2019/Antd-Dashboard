@@ -20,8 +20,6 @@ const AppLayout = ({ children }: PropType) => {
   const [collapsed, setCollapsed] = React.useState(false);
   let userID = localStorage.getItem("userID");
 
-  console.log(userID);
-
   const { loading, error, data } = useQuery(USER_DETAILS, {
     variables: { userId: userID },
   });
