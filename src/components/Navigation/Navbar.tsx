@@ -4,6 +4,7 @@ import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { useHistory } from "react-router-dom";
 import { userMenuItems } from "../../utils/data";
 import { UserOutlined } from "@ant-design/icons";
+import { useApolloClient } from "@apollo/client";
 
 const { Header } = Layout;
 
@@ -26,12 +27,15 @@ const Navbar = ({
 }: PropType) => {
   const responsive = useBreakpoint();
   const history = useHistory();
+  const client = useApolloClient();
 
   // <p>Hello, {JSON.stringify(userName)},</p>
 
   const action = (data: any) => {
     if (data === "/login") {
       localStorage.removeItem("userID");
+      localStorage.removeItem("token");
+      client.clearStore();
       history.push(data);
     }
 
