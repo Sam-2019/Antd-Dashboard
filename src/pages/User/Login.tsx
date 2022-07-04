@@ -10,20 +10,30 @@ import {
   spaceStyles,
 } from "../../utils/styles";
 import { LOGIN } from "../../utils/constants";
-import { useLazyQuery } from "@apollo/client";
+import { useLazyQuery, useApolloClient } from "@apollo/client";
 import { USER_LOGIN } from "../../utils/graphqlFunctions/queries";
 
 const { Header, Content } = Layout;
 
 export default function Login() {
+  const client = useApolloClient();
   const [message, setMessage] = React.useState("");
 
   const [login, { loading }] = useLazyQuery(USER_LOGIN, {
     onCompleted: (data) => {
-      localStorage.setItem("userID", data.login.id);
+      // localStorage.setItem("userID", data.login.id);
+      localStorage.setItem("token", data.login.token);
       history.push("/");
+      console.log(data);
     },
     onError: (errors) => {
+      // if (
+      //   errors.message === "Response not successful: Received status code 500"
+      // ) {
+      //   localStorage.removeItem("token");
+      //   client.clearStore();
+      // }
+
       setMessage(errors.message);
     },
   });
