@@ -19,6 +19,9 @@ export default function Profile() {
     variables: { userId: userID },
   });
 
+  console.log({ data: data });
+  console.log({ error: error?.networkError?.message });
+
   const showModal = () => {
     setIsModalVisible(true);
   };
@@ -32,7 +35,7 @@ export default function Profile() {
   };
 
   if (loading) return <Spinner />;
-  if (error) return <Error />;
+  if (error) return <Error  />;
   if (data.user === null) return <EmptyState />;
 
   return (
