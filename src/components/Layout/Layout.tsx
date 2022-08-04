@@ -5,6 +5,7 @@ import Navbar from "../Navigation/Navbar";
 import { Layout } from "antd";
 import { useQuery } from "@apollo/client";
 import { USER_DETAILS } from "../../utils/graphqlFunctions/queries";
+import { useSelector } from "react-redux";
 
 //import BreadCrumb from "./Breadcrumb";
 
@@ -18,11 +19,10 @@ const AppLayout = ({ children }: PropType) => {
   //const [active, setActive] = React.useState("dashboard");
   const [visible, setVisible] = React.useState(false);
   const [collapsed, setCollapsed] = React.useState(false);
-  let userID = localStorage.getItem("userID");
+  const { user } = useSelector((state: any) => state.user);
 
-  const { loading, error, data } = useQuery(USER_DETAILS, {
-    variables: { userId: userID },
-  });
+  const { loading, error, data } = useQuery(USER_DETAILS);
+
 
   const showDrawer = () => {
     setVisible(true);
