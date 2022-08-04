@@ -1,6 +1,7 @@
 import React from "react";
 import { Layout, Form, Input, Button, Space } from "antd";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import {
@@ -9,28 +10,28 @@ import {
   formStyles,
   spaceStyles,
 } from "../../utils/styles";
-import { LOGIN } from "../../utils/constants";
+import { LOGIN, tokenExpired } from "../../utils/constants";
 import { useLazyQuery, useApolloClient } from "@apollo/client";
 import { USER_LOGIN } from "../../utils/graphqlFunctions/queries";
+import { isLoggedIn } from "../../utils/toolkit/features/user/userSlice";
+import { setRefreshToken, setAccessToken } from "../../utils/cookies";
 
 const { Header, Content } = Layout;
 
 export default function Login() {
-  const client = useApolloClient();
+  const location = useLocation();
+  // const client = useApolloClient();
+  const dispatch = useDispatch();
   const [message, setMessage] = React.useState("");
 
   const [login, { loading }] = useLazyQuery(USER_LOGIN, {
     onCompleted: (data) => {
-      // localStorage.setItem("userID", data.login.id);
-      localStorage.setItem("token", data.login.token);
-      history.push("/");
-      console.log(data);
+      setAccessToken(data.login);
+      setRefreshToken(data.login);
+      dispatch(isLoggedIn(true));
     },
     onError: (errors) => {
-      // if (
-      //   errors.message === "Response not successful: Received status code 500"
-      // ) {
-      //   localStorage.removeItem("token");
+      // if (errors.message.includes(tokenExpired)) {
       //   client.clearStore();
       // }
 
@@ -49,6 +50,7 @@ export default function Login() {
   }
 
   const onFinish = async (fieldsValue: any) => {
+    setMessage("");
     try {
       login({
         variables: {
