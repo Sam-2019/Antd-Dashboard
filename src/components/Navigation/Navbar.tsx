@@ -4,7 +4,11 @@ import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { useHistory } from "react-router-dom";
 import { userMenuItems } from "../../utils/data";
 import { UserOutlined } from "@ant-design/icons";
-import { useApolloClient } from "@apollo/client";
+import { useLazyQuery } from "@apollo/client";
+import { LOGOUT } from "../../utils/graphqlFunctions/queries";
+import { useDispatch } from "react-redux";
+import { isLoggedIn } from "../../utils/toolkit/features/user/userSlice";
+import { setRefreshToken, setAccessToken } from "../../utils/cookies";
 
 const { Header } = Layout;
 
@@ -27,16 +31,26 @@ const Navbar = ({
 }: PropType) => {
   const responsive = useBreakpoint();
   const history = useHistory();
-  const client = useApolloClient();
+  const dispatch = useDispatch();
+
+  const [logout] = useLazyQuery(LOGOUT, {
+    onCompleted: (data) => {
+      setAccessToken(data.logout);
+      setRefreshToken(data.logout);
+      dispatch(isLoggedIn(false));
+    },
+    onError: (errors) => {},
+  });
 
   // <p>Hello, {JSON.stringify(userName)},</p>
 
-  const action = (data: any) => {
+  const action = async (data: any) => {
     if (data === "/login") {
-      localStorage.removeItem("userID");
-      localStorage.removeItem("token");
-      client.clearStore();
-      history.push(data);
+      try {
+        return logout();
+      } catch (err) {
+        console.log(err);
+      }
     }
 
     return history.push(data);
@@ -86,8 +100,6 @@ const Navbar = ({
           </Dropdown>
         </div>
       </div>
-
-      {/*  */}
     </Header>
   );
 };
