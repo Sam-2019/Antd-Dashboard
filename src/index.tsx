@@ -1,12 +1,52 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
+import "antd/dist/antd.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink
+} from "@apollo/client";
+
+import { ConfigProvider } from "antd";
+import { onlinehost, localhost, env } from "./utils/config";
+import { store } from "./utils/toolkit/store";
+import { Provider } from "react-redux";
+
+import { setContext } from "@apollo/client/link/context";
+import Cookies from "js-cookie";
+
+const httpLink = createHttpLink({
+  uri: env === "production" ? onlinehost : localhost,
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = Cookies.get("accessToken");
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <ApolloProvider client={client}>
+        <ConfigProvider>
+          <App />
+        </ConfigProvider>
+      </ApolloProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );
