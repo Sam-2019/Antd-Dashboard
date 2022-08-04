@@ -10,7 +10,7 @@ function Profile({ handleCancel, data }: any) {
   const [form] = Form.useForm();
 
   const [updateUser, { loading }] = useMutation(UPDATE_USER_DETAILS, {
-    refetchQueries: [{ query: USER_DETAILS, variables: { userId: data.id } }],
+    refetchQueries: [{ query: USER_DETAILS }],
   });
 
   const onFinish = async (fieldsValue: any) => {
