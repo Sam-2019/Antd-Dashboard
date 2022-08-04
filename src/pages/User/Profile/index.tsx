@@ -13,14 +13,14 @@ import Error from "../../../components/Error/Error";
 export default function Profile() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const history = useHistory();
-  let userID = localStorage.getItem("userID");
+  let userID = localStorage.getItem("accessToken");
 
-  const { loading, error, data } = useQuery(USER_DETAILS, {
-    variables: { userId: userID },
-  });
+  const { loading, error, data } = useQuery(USER_DETAILS);
 
-  console.log({ data: data });
-  console.log({ error: error?.networkError?.message });
+  // console.log({ data: data });
+  // console.log({ error: error });
+  // console.log({ error: error?.networkError?.message });
+  // console.log({ errorNetwork: error?.networkError?.message });
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -35,8 +35,9 @@ export default function Profile() {
   };
 
   if (loading) return <Spinner />;
-  if (error) return <Error  />;
+  if (error) return <Error />;
   if (data.user === null) return <EmptyState />;
+  // if (data === undefined) return <EmptyState />;
 
   return (
     <>
