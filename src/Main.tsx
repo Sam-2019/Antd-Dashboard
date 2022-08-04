@@ -1,5 +1,11 @@
-import { Suspense } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Suspense, useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import {
   LoginRoute,
   SignupRoute,
@@ -8,20 +14,32 @@ import {
 } from "./routes/User";
 import { NoPageRoute } from "./routes/404";
 import { MainRoutes } from "./routes/MainRoutes";
-
 import Layout from "./components/Layout/Layout";
 import Spinner from "./components/Spinner/Spinner";
 import ScrollToTop from "./components/ScrollToTop";
+import { isLoggedIn } from "./utils/toolkit/features/user/userSlice";
+import Cookies from "js-cookie";
 
 export default function Main() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    function updateState() {
+      const token = Cookies.get("accessToken");
+      if (token === "undefined") {
+        return dispatch(isLoggedIn(false));
+      }
+
+      return dispatch(isLoggedIn(true));
+    }
+
+    updateState();
+  }, [dispatch]);
+
   return (
     <Router>
       <ScrollToTop />
       <Switch>
-        <Route path="/login">
-          <LoginRoute />
-        </Route>
-
         <Route path="/signup">
           <SignupRoute />
         </Route>
@@ -34,16 +52,49 @@ export default function Main() {
           <ResetPassword />
         </Route>
 
-        <Layout>
-          <Suspense fallback={<Spinner />}>
-            <MainRoutes />
-          </Suspense>
-        </Layout>
+        <Route path="/login">
+          <LoginRoute />
+        </Route>
+
+        <PrivateRoute>
+          <MainApp />
+        </PrivateRoute>
 
         <Route>
           <NoPageRoute />
         </Route>
       </Switch>
     </Router>
+  );
+}
+
+const MainApp = () => {
+  return (
+    <Layout>
+      <Suspense fallback={<Spinner />}>
+        <MainRoutes />
+      </Suspense>
+    </Layout>
+  );
+};
+
+function PrivateRoute({ children, ...rest }: any) {
+  const userState = useSelector((state: any) => state.user.loggedIn);
+  return (
+    <Route
+      {...rest}
+      render={({ location }) =>
+        userState ? (
+          children
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: location },
+            }}
+          />
+        )
+      }
+    />
   );
 }
