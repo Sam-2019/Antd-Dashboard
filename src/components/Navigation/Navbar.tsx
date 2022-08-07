@@ -35,9 +35,10 @@ const Navbar = ({
 
   const [logout] = useLazyQuery(LOGOUT, {
     onCompleted: (data) => {
-      setAccessToken(data.logout);
-      setRefreshToken(data.logout);
+      setAccessToken(data.logout.accessToken);
+      setRefreshToken(data.logout.refreshToken);
       dispatch(isLoggedIn(false));
+      history.push("/login");
     },
     onError: (errors) => {},
   });
