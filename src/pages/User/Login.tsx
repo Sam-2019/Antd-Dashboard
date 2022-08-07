@@ -22,6 +22,7 @@ export default function Login() {
   const location = useLocation();
   // const client = useApolloClient();
   const dispatch = useDispatch();
+  const history = useHistory();
   const [message, setMessage] = React.useState("");
 
   const [login, { loading }] = useLazyQuery(USER_LOGIN, {
@@ -29,6 +30,7 @@ export default function Login() {
       setAccessToken(data.login);
       setRefreshToken(data.login);
       dispatch(isLoggedIn(true));
+      history.push("/");
     },
     onError: (errors) => {
       // if (errors.message.includes(tokenExpired)) {
@@ -42,8 +44,6 @@ export default function Login() {
   const { mobile, nonMobile } = formStyles;
   const responsive = useBreakpoint();
   const [form] = Form.useForm();
-
-  let history = useHistory();
 
   function signup_route() {
     history.push("/signup");
