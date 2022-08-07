@@ -21,6 +21,8 @@ import { isLoggedIn } from "./utils/toolkit/features/user/userSlice";
 import Cookies from "js-cookie";
 
 export default function Main() {
+  const userState = useSelector((state: any) => state.user.loggedIn);
+  console.log({ userState: userState });
   const dispatch = useDispatch();
 
   useEffect(() => {
