@@ -4,11 +4,12 @@ import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { useHistory } from "react-router-dom";
 import { userMenuItems } from "../../utils/data";
 import { UserOutlined } from "@ant-design/icons";
-import { useLazyQuery } from "@apollo/client";
+import { useLazyQuery, useApolloClient } from "@apollo/client";
 import { LOGOUT } from "../../utils/graphqlFunctions/queries";
 import { useDispatch } from "react-redux";
 import { isLoggedIn } from "../../utils/toolkit/features/user/userSlice";
 import { setRefreshToken, setAccessToken } from "../../utils/cookies";
+import Cookies from "js-cookie";
 
 const { Header } = Layout;
 
@@ -32,9 +33,12 @@ const Navbar = ({
   const responsive = useBreakpoint();
   const history = useHistory();
   const dispatch = useDispatch();
+  const client = useApolloClient();
 
   const [logout] = useLazyQuery(LOGOUT, {
     onCompleted: (data) => {
+      client.clearStore();
+      Cookies.remove("refresh_token");
       setAccessToken(data.logout.accessToken);
       setRefreshToken(data.logout.refreshToken);
       dispatch(isLoggedIn(false));
