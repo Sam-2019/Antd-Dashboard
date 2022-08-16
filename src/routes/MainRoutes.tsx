@@ -1,9 +1,5 @@
 import { lazy, Fragment } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  useRouteMatch,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 const FormsRoute = lazy(() => import("../routes/Forms"));
 const ChapelsRoute = lazy(() => import("../routes/Chapels"));
@@ -17,46 +13,45 @@ const ProfileRoute = lazy(() => import("../routes/Profile"));
 const SettingsRoute = lazy(() => import("../routes/Settings"));
 
 export const MainRoutes = () => {
-  let { path } = useRouteMatch();
   return (
     <Fragment>
-      <Route exact path={`${path}`}>
+      <Route exact path="/">
         <DashboardRoute />
       </Route>
 
-      <Route path={`${path}/forms`}>
+      <Route path="/forms">
         <FormsRoute />
       </Route>
 
-      <Route path={`${path}/pledges`}>
+      <Route path="/pledges">
         <PledgeRoute />
       </Route>
 
-      <Route path={`${path}/chapels`}>
+      <Route path="/chapels">
         <ChapelsRoute />
       </Route>
 
-      <Route path={`${path}/payments`}>
+      <Route path="/payments">
         <PaymentRoute />
       </Route>
 
-      <Route path={`${path}/visitors`}>
+      <Route path="/visitors">
         <VisitorRoute />
       </Route>
 
-      <Route path={`${path}/members`}>
+      <Route path="/members">
         <MemberRoute />
       </Route>
 
-      <Route path={`${path}/departments`}>
+      <Route path="/departments">
         <DepartmentRoute />
       </Route>
 
-      <Route path={`${path}/profile`}>
+      <Route path="/profile">
         <ProfileRoute />
       </Route>
 
-      <Route path={`${path}/settings`}>
+      <Route path="/settings">
         <SettingsRoute />
       </Route>
     </Fragment>
