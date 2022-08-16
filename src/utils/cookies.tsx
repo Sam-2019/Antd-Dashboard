@@ -16,20 +16,6 @@ export const setRefreshToken = (data: any) => {
   });
 };
 
-export const clearCookie = (data: any) => {
-  console.log(data);
-};
-
-export const clearCookies = (data: any) => {
-  console.log(data);
-};
-
-export const showCookie = (data: any) => {
-  console.log(data);
-  var value = document.cookie;
-  console.log({ value: value });
-};
-
-export const showCookies = (data: any) => {
-  console.log(data);
+export const clearCookie = () => {
+  Cookies.remove("refreshToken");
 };
