@@ -1,6 +1,6 @@
 import React from "react";
 import { Layout, Form, Input, Button, Space } from "antd";
-import { Link, useHistory, useLocation } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
@@ -10,8 +10,8 @@ import {
   formStyles,
   spaceStyles,
 } from "../../utils/styles";
-import { LOGIN, tokenExpired } from "../../utils/constants";
-import { useLazyQuery, useApolloClient } from "@apollo/client";
+import { LOGIN } from "../../utils/constants";
+import { useLazyQuery } from "@apollo/client";
 import { USER_LOGIN } from "../../utils/graphqlFunctions/queries";
 import { isLoggedIn } from "../../utils/toolkit/features/user/userSlice";
 import { setRefreshToken, setAccessToken } from "../../utils/cookies";
@@ -19,8 +19,6 @@ import { setRefreshToken, setAccessToken } from "../../utils/cookies";
 const { Header, Content } = Layout;
 
 export default function Login() {
-  const location = useLocation();
-  // const client = useApolloClient();
   const dispatch = useDispatch();
   const history = useHistory();
   const [message, setMessage] = React.useState("");
