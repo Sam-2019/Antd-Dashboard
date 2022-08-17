@@ -13,7 +13,6 @@ import Error from "../../../components/Error/Error";
 export default function Profile() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const history = useHistory();
-  let userID = localStorage.getItem("accessToken");
 
   const { loading, error, data } = useQuery(USER_DETAILS);
 
