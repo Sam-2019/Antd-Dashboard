@@ -5,7 +5,9 @@ import Navbar from "../Navigation/Navbar";
 import { Layout } from "antd";
 import { useQuery } from "@apollo/client";
 import { USER_DETAILS } from "../../utils/graphqlFunctions/queries";
-import { useSelector } from "react-redux";
+import { setUser } from "../../utils/toolkit/features/user/userSlice";
+
+import { useDispatch } from "react-redux";
 
 //import BreadCrumb from "./Breadcrumb";
 
@@ -19,10 +21,14 @@ const AppLayout = ({ children }: PropType) => {
   //const [active, setActive] = React.useState("dashboard");
   const [visible, setVisible] = React.useState(false);
   const [collapsed, setCollapsed] = React.useState(false);
-  const { user } = useSelector((state: any) => state.user);
+  const dispatch = useDispatch();
 
-  const { loading, error, data } = useQuery(USER_DETAILS);
-
+  const { loading, error, data } = useQuery(USER_DETAILS, {
+    onCompleted: (data) => {
+      dispatch(setUser(data.user));
+    },
+    onError: (errors) => {},
+  });
 
   const showDrawer = () => {
     setVisible(true);
@@ -40,24 +46,6 @@ const AppLayout = ({ children }: PropType) => {
     setCollapsed(!collapsed);
   };
 
-  const userImage = (data: any) => {
-    // console.log(loading);
-    // console.log({ userImage: data });
-    if (!data) return;
-    if (data.user === null) return;
-    if (data.user.imageURL === null) return;
-    return data.user.imageURL;
-  };
-
-  const userName = (data: any) => {
-    // console.log(loading);
-    // console.log({ userName: data });
-    if (!data) return;
-    if (data.user === null) return;
-    if (data.user.firstName === null) return;
-    return data.user.firstName;
-  };
-
   return (
     <Layout>
       <SiderDemo collapsed={collapsed} />
@@ -68,8 +56,6 @@ const AppLayout = ({ children }: PropType) => {
           collapsed={collapsed}
           showDrawer={showDrawer}
           visible={visible}
-          userImage={userImage(data)}
-          userName={userName(data)}
         />
         <Content
           className="site-layout-background"
