@@ -41,8 +41,6 @@ const Navbar = ({ toggle, collapsed, showDrawer, visible }: PropType) => {
     onError: (errors) => {},
   });
 
-  // <p>Hello, {JSON.stringify(userName)},</p>
-
   const action = async (data: any) => {
     if (data === "/login") {
       try {
