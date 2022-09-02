@@ -1,6 +1,7 @@
 import React from "react";
 import { Layout, Form, Input, Button, Space } from "antd";
 import { Link, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import {
@@ -12,18 +13,28 @@ import {
 import { LOGIN } from "../../utils/constants";
 import { useLazyQuery } from "@apollo/client";
 import { USER_LOGIN } from "../../utils/graphqlFunctions/queries";
+import { isLoggedIn } from "../../utils/toolkit/features/user/userSlice";
+import { setRefreshToken, setAccessToken } from "../../utils/cookies";
 
 const { Header, Content } = Layout;
 
 export default function Login() {
+  const dispatch = useDispatch();
+  const history = useHistory();
   const [message, setMessage] = React.useState("");
 
   const [login, { loading }] = useLazyQuery(USER_LOGIN, {
     onCompleted: (data) => {
-      localStorage.setItem("userID", data.login.id);
+      setAccessToken(data.login);
+      setRefreshToken(data.login);
+      dispatch(isLoggedIn(true));
       history.push("/");
     },
     onError: (errors) => {
+      // if (errors.message.includes(tokenExpired)) {
+      //   client.clearStore();
+      // }
+
       setMessage(errors.message);
     },
   });
@@ -32,13 +43,12 @@ export default function Login() {
   const responsive = useBreakpoint();
   const [form] = Form.useForm();
 
-  let history = useHistory();
-
   function signup_route() {
     history.push("/signup");
   }
 
   const onFinish = async (fieldsValue: any) => {
+    setMessage("");
     try {
       login({
         variables: {

@@ -3,6 +3,7 @@ export const contentStyles = {
   height: "92vh",
   display: "flex",
   justifyContent: "center",
+  // border: '1px solid red'
 };
 
 export const formStyles = {

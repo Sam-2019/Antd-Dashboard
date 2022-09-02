@@ -198,27 +198,34 @@ export const GET_SUNDAY_STATS = gql`
 export const USER_LOGIN = gql`
   query Query($emailAddress: String, $password: String) {
     login(emailAddress: $emailAddress, password: $password) {
-      id
-      firstName
-      lastName
-      userName
-      emailAddress
-      verified
-      imageURL
+      accessToken
+      refreshToken
+    }
+  }
+`;
+
+export const LOGOUT = gql`
+  query Query {
+    logout {
+      accessToken
+      refreshToken
     }
   }
 `;
 
 export const USER_DETAILS = gql`
-  query Query($userId: ID) {
-    user(id: $userId) {
+  query User {
+    user {
       id
       firstName
       lastName
+      userName
       gender
       contact
       emailAddress
       homeAddress
+      password
+      verified
       dob
       imageURL
     }

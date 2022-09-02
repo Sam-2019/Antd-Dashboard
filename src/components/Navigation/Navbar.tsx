@@ -1,38 +1,53 @@
-import { Layout, Menu, Avatar, Dropdown, Badge } from "antd";
+import { Layout, Menu, Avatar, Dropdown, Badge, Typography } from "antd";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { useHistory } from "react-router-dom";
 import { userMenuItems } from "../../utils/data";
 import { UserOutlined } from "@ant-design/icons";
+import { useLazyQuery, useApolloClient } from "@apollo/client";
+import { LOGOUT } from "../../utils/graphqlFunctions/queries";
+import { useSelector, useDispatch } from "react-redux";
+import { isLoggedIn } from "../../utils/toolkit/features/user/userSlice";
+import { setRefreshToken, setAccessToken } from "../../utils/cookies";
+import Cookies from "js-cookie";
+import React from "react";
 
 const { Header } = Layout;
+const { Text } = Typography;
 
 interface PropType {
   toggle: any;
   collapsed: any;
   showDrawer: any;
   visible: any;
-  userImage: any;
-  userName: any;
 }
 
-const Navbar = ({
-  toggle,
-  collapsed,
-  showDrawer,
-  visible,
-  userImage,
-  userName,
-}: PropType) => {
+const Navbar = ({ toggle, collapsed, showDrawer, visible }: PropType) => {
   const responsive = useBreakpoint();
   const history = useHistory();
+  const dispatch = useDispatch();
+  const client = useApolloClient();
+  const user = useSelector((state: any) => state.user.user);
 
-  // <p>Hello, {JSON.stringify(userName)},</p>
+  const [logout] = useLazyQuery(LOGOUT, {
+    onCompleted: (data) => {
+      client.clearStore();
+      Cookies.remove("refresh_token");
+      setAccessToken(data.logout.accessToken);
+      setRefreshToken(data.logout.refreshToken);
+      dispatch(isLoggedIn(false));
+      history.push("/login");
+    },
+    onError: (errors) => {},
+  });
 
-  const action = (data: any) => {
+  const action = async (data: any) => {
     if (data === "/login") {
-      localStorage.removeItem("userID");
-      history.push(data);
+      try {
+        return logout();
+      } catch (err) {
+        console.log(err);
+      }
     }
 
     return history.push(data);
@@ -71,19 +86,20 @@ const Navbar = ({
         </div>
 
         <div>
+          <Text type="danger" style={{ margin: 0, paddingRight: "10px" }}>
+            Welcome, {user.firstName}
+          </Text>
           <Dropdown overlay={menu}>
-            <Badge count={1}>
+            <Badge>
               <Avatar
                 size={35}
-                icon={!userImage && <UserOutlined />}
-                src={userImage && userImage}
+                icon={!user.imageURL && <UserOutlined />}
+                src={user.imageURL}
               />
             </Badge>
           </Dropdown>
         </div>
       </div>
-
-      {/*  */}
     </Header>
   );
 };
