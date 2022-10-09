@@ -50,7 +50,7 @@ function Member() {
           </>
         }
         extra={[
-          <Button key="1" type="primary" onClick={showModal}>
+          <Button key="1" type="default" onClick={showModal}>
             Edit
           </Button>,
         ]}

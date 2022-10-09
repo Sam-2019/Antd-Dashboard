@@ -92,7 +92,7 @@ function Pledge() {
           </Button>,
           <Fragment>
             {data.pledge.status === "PENDING" && (
-              <Button key="1" type="primary" onClick={updateStatus}>
+              <Button key="1" type="default" onClick={updateStatus}>
                 Paid
               </Button>
             )}
