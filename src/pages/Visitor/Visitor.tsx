@@ -9,6 +9,7 @@ import { Button, PageHeader } from "antd";
 import { Edit } from "../../components/Modal/Modal";
 import VisitorEdit from "../Forms/Visitor/Edit";
 import { useState } from "react";
+import {EDIT} from '../../utils/constants'
 
 function Visitor() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -51,7 +52,7 @@ function Visitor() {
         }
         extra={[
           <Button key="1" type="default" onClick={showModal}>
-            Edit
+            {EDIT}
           </Button>,
         ]}
       />

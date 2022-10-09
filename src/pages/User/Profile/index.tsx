@@ -9,6 +9,7 @@ import ProfileEdit from "../../Forms/User/Profile/Edit";
 import { USER_DETAILS } from "../../../utils/graphqlFunctions/queries";
 import Spinner from "../../../components/Spinner/Spinner";
 import Error from "../../../components/Error/Error";
+import { EDIT } from "../../../utils/constants";
 
 export default function Profile() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -50,7 +51,7 @@ export default function Profile() {
         }
         extra={[
           <Button key="1" type="default" onClick={showModal}>
-            Edit
+            {EDIT}
           </Button>,
         ]}
       />

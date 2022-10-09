@@ -1,6 +1,7 @@
 export const SUBMIT = "Submit";
 export const LOGIN = "Login";
 export const SIGNUP = "Signup";
+export const EDIT = "Edit"
 export const BACKHOME = "Back Home";
 export const imageWidth = "100%";
 export const marginBottom = "10px";

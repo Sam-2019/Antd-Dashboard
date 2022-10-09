@@ -1,5 +1,6 @@
 import { Modal } from "antd";
 import { CheckCircleOutlined } from "@ant-design/icons";
+import { EDIT } from "../../utils/constants";
 
 const { confirm } = Modal;
 
@@ -36,7 +37,7 @@ export function Edit({
   return (
     <Modal
       width={1000}
-      title="Edit"
+      title={EDIT}
       centered
       visible={isModalVisible}
       onOk={handleOk}
