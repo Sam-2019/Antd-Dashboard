@@ -10,7 +10,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { isLoggedIn } from "../../utils/toolkit/features/user/userSlice";
 import { setRefreshToken, setAccessToken } from "../../utils/cookies";
 import Cookies from "js-cookie";
-import React from "react";
 
 const { Header } = Layout;
 const { Text } = Typography;
@@ -33,8 +32,8 @@ const Navbar = ({ toggle, collapsed, showDrawer, visible }: PropType) => {
     onCompleted: (data) => {
       client.clearStore();
       Cookies.remove("refresh_token");
-      setAccessToken(data.logout.accessToken);
-      setRefreshToken(data.logout.refreshToken);
+      setAccessToken("");
+      setRefreshToken("");
       dispatch(isLoggedIn(false));
       history.push("/login");
     },
