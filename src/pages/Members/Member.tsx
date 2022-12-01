@@ -9,6 +9,7 @@ import { Button, PageHeader } from "antd";
 import MemberEdit from "../Forms/Member/Edit";
 import { Edit } from "../../components/Modal/Modal";
 import { useState } from "react";
+import { EDIT } from '../../utils/constants';
 
 function Member() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -50,8 +51,8 @@ function Member() {
           </>
         }
         extra={[
-          <Button key="1" type="primary" onClick={showModal}>
-            Edit
+          <Button key="1" type="default" onClick={showModal}>
+            {EDIT}
           </Button>,
         ]}
       />

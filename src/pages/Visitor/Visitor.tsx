@@ -9,6 +9,7 @@ import { Button, PageHeader } from "antd";
 import { Edit } from "../../components/Modal/Modal";
 import VisitorEdit from "../Forms/Visitor/Edit";
 import { useState } from "react";
+import { EDIT, VISITOR } from "../../utils/constants";
 
 function Visitor() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -46,12 +47,12 @@ function Visitor() {
         onBack={() => history.goBack()}
         title={
           <>
-            <span className="breadcrumb">Visitor</span>
+            <span className="breadcrumb">{VISITOR}</span>
           </>
         }
         extra={[
-          <Button key="1" type="primary" onClick={showModal}>
-            Edit
+          <Button key="1" type="default" onClick={showModal}>
+            {EDIT}
           </Button>,
         ]}
       />
@@ -62,7 +63,9 @@ function Visitor() {
         isModalVisible={isModalVisible}
         handleOk={handleOk}
         handleCancel={handleCancel}
-        children={<VisitorEdit handleCancel={handleCancel} data={data.visitor} />}
+        children={
+          <VisitorEdit handleCancel={handleCancel} data={data.visitor} />
+        }
       />
     </>
   );

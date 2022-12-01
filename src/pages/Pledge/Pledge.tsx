@@ -11,6 +11,7 @@ import { Button, PageHeader } from "antd";
 import PledgeEdit from "../Forms/Pledge/Edit";
 import { Edit } from "../../components/Modal/Modal";
 import { Fragment, useState } from "react";
+import {EDIT} from '../../utils/constants'
 
 function Pledge() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -88,11 +89,11 @@ function Pledge() {
         }
         extra={[
           <Button key="1" type="default" onClick={showModal}>
-            Edit
+            {EDIT}
           </Button>,
           <Fragment>
             {data.pledge.status === "PENDING" && (
-              <Button key="1" type="primary" onClick={updateStatus}>
+              <Button key="1" type="default" onClick={updateStatus}>
                 Paid
               </Button>
             )}
