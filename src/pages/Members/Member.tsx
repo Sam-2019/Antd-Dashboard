@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { GET_MEMBER } from "../../utils/graphqlFunctions/queries";
 
 import MemberItem from "./MemberItem";
@@ -9,12 +9,12 @@ import { Button, PageHeader } from "antd";
 import MemberEdit from "../Forms/Member/Edit";
 import { Edit } from "../../components/Modal/Modal";
 import { useState } from "react";
-import { EDIT } from '../../utils/constants';
+import { EDIT } from "../../utils/constants";
 
 function Member() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   let { slug }: any = useParams();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const { loading, error, data } = useQuery(GET_MEMBER, {
     variables: { memberId: slug },
@@ -44,7 +44,7 @@ function Member() {
     <>
       <PageHeader
         className="site-page-header goBack"
-        onBack={() => history.goBack()}
+        onBack={() => navigate.goBack()}
         title={
           <>
             <span className="breadcrumb">Member</span>

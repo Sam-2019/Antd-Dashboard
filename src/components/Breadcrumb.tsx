@@ -1,6 +1,6 @@
 import React from "react";
 import { Breadcrumb } from "antd";
-import { useHistory, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export const breadcrumbNameMap = {
   "/departments": "Department",
@@ -10,9 +10,9 @@ export const breadcrumbNameMap = {
 };
 
 function BreadCrumb() {
-  const history = useHistory();
+  const navigate = useNavigate();
 
-  let location = useLocation();
+  const location = useLocation();
 
   const pathSnippets = location.pathname.split("/").filter((i) => i);
 
@@ -20,7 +20,7 @@ function BreadCrumb() {
     <div style={{ marginBottom: "10px" }}>
       <Breadcrumb>
         {pathSnippets[0] === undefined ? null : (
-          <Breadcrumb.Item onClick={() => history.push("/")}>
+          <Breadcrumb.Item onClick={() => navigate("/")}>
             <span className="breadcrumb">Home</span>
           </Breadcrumb.Item>
         )}

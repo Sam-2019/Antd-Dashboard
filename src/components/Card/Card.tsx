@@ -1,22 +1,22 @@
 import { Card } from "antd";
-import { useHistory, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import AvatarGroup from "../AvatarGroup";
 import { cardStyles } from "../../utils/styles";
 
 const { Meta } = Card;
 
 function CardView({ type, data, avatar }: any) {
-  const history = useHistory();
+  const navigate = useNavigate();
   let location = useLocation();
 
   function routeAction(data: any) {
     let pathSnippets = data.path.split("/");
 
     if (pathSnippets.length > 2) {
-      return history.push(`${location.pathname}/${pathSnippets[2]}`);
+      return navigate(`${location.pathname}/${pathSnippets[2]}`);
     }
 
-    return history.push(`${location.pathname}${data.path}`);
+    return navigate(`${location.pathname}${data.path}`);
   }
 
   return (

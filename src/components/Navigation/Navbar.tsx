@@ -1,7 +1,7 @@
 import { Layout, Menu, Avatar, Dropdown, Badge, Typography } from "antd";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { userMenuItems } from "../../utils/data";
 import { UserOutlined } from "@ant-design/icons";
 import { useLazyQuery, useApolloClient } from "@apollo/client";
@@ -23,7 +23,7 @@ interface PropType {
 
 const Navbar = ({ toggle, collapsed, showDrawer, visible }: PropType) => {
   const responsive = useBreakpoint();
-  const history = useHistory();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const client = useApolloClient();
   const user = useSelector((state: any) => state.user.user);
@@ -35,7 +35,7 @@ const Navbar = ({ toggle, collapsed, showDrawer, visible }: PropType) => {
       setAccessToken("");
       setRefreshToken("");
       dispatch(isLoggedIn(false));
-      history.push("/login");
+      navigate("/login");
     },
     onError: (errors) => {},
   });
@@ -49,7 +49,7 @@ const Navbar = ({ toggle, collapsed, showDrawer, visible }: PropType) => {
       }
     }
 
-    return history.push(data);
+    return navigate(data);
   };
 
   const menu = (

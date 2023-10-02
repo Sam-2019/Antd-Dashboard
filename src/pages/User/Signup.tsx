@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Layout, Form, Input, Button, Space } from "antd";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { contentStyles, formStyles, spaceStyles } from "../../utils/styles";
 import { SUBMIT } from "../../utils/constants";
@@ -16,10 +16,10 @@ export default function Signup() {
   const responsive = useBreakpoint();
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
-  let history = useHistory();
+  let navigate = useNavigate();
 
   function login_route() {
-    history.push("/login");
+    navigate("/login");
   }
 
   const onFinish = async (fieldsValue: any) => {
@@ -47,7 +47,7 @@ export default function Signup() {
 
       setTimeout(() => {
         setLoading(false);
-        history.push("/login");
+        navigate("/login");
       }, 2000);
     } catch (err) {
       console.log(err);

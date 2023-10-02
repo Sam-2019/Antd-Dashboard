@@ -1,6 +1,6 @@
 import React from "react";
 import { Layout, Form, Input, Button, Space } from "antd";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
@@ -20,7 +20,7 @@ const { Header, Content } = Layout;
 
 export default function Login() {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const [message, setMessage] = React.useState("");
 
   const [login, { loading }] = useLazyQuery(USER_LOGIN, {
@@ -28,7 +28,7 @@ export default function Login() {
       setAccessToken(data.login);
       setRefreshToken(data.login);
       dispatch(isLoggedIn(true));
-      history.push("/");
+      navigate("/");
     },
     onError: (errors) => {
       // if (errors.message.includes(tokenExpired)) {
@@ -44,7 +44,7 @@ export default function Login() {
   const [form] = Form.useForm();
 
   function signup_route() {
-    history.push("/signup");
+    navigate("/signup");
   }
 
   const onFinish = async (fieldsValue: any) => {

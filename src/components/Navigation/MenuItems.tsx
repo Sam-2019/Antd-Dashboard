@@ -1,10 +1,10 @@
 import { Menu } from "antd";
 
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { menuItems } from "../../utils/data";
 
 const MenuItems = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   return (
     <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
@@ -12,7 +12,7 @@ const MenuItems = () => {
         <Menu.Item
           key={data.key}
           icon={data.icon}
-          onClick={() => history.push(data.path)}
+          onClick={() => navigate(data.path)}
         >
           {data.name}
         </Menu.Item>

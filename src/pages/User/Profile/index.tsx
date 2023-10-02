@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { Button, PageHeader } from "antd";
 import ProfileItem from "./ProfileItem";
@@ -13,7 +13,7 @@ import { EDIT } from "../../../utils/constants";
 
 export default function Profile() {
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const { loading, error, data } = useQuery(USER_DETAILS);
 
@@ -43,7 +43,7 @@ export default function Profile() {
     <>
       <PageHeader
         className="site-page-header goBack"
-        onBack={() => history.goBack()}
+        onBack={() => navigate.goBack()}
         title={
           <>
             <span className="breadcrumb">Profile</span>

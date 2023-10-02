@@ -36,7 +36,7 @@ function Type({ dataSource }: any) {
     let refinedMembers = [];
 
     for (let data of dataSource) {
-      refinedMembers.push({
+      refinedMembers({
         key: data.id,
         firstName: data.firstName,
         lastName: data.lastName,

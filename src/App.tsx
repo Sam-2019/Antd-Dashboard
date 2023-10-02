@@ -2,7 +2,7 @@ import { useState, useEffect, Fragment } from "react";
 
 import { isLoggedIn } from "./utils/toolkit/features/user/userSlice";
 import Spinner from "./components/Spinner/Spinner";
-import Main from "./Main";
+import Main from "./main";
 import { useDispatch } from "react-redux";
 
 export default function App() {

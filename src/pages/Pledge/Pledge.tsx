@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { GET_PLEDGEE, GET_PLEDGES } from "../../utils/graphqlFunctions/queries";
 import { UPDATE_PLEDGE_STATUS } from "../../utils/graphqlFunctions/mutations";
@@ -11,12 +11,12 @@ import { Button, PageHeader } from "antd";
 import PledgeEdit from "../Forms/Pledge/Edit";
 import { Edit } from "../../components/Modal/Modal";
 import { Fragment, useState } from "react";
-import {EDIT} from '../../utils/constants'
+import { EDIT } from "../../utils/constants";
 
 function Pledge() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   let { slug }: any = useParams();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const { loading, error, data } = useQuery(GET_PLEDGEE, {
     variables: { pledgeId: slug },
@@ -81,7 +81,7 @@ function Pledge() {
     <>
       <PageHeader
         className="site-page-header goBack"
-        onBack={() => history.goBack()}
+        onBack={() => navigate.goBack()}
         title={
           <>
             <span className="breadcrumb">Pledgee</span>

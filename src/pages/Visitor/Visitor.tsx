@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { GET_VISITOR } from "../../utils/graphqlFunctions/queries";
 
 import VisitorItem from "./VisitorItem";
@@ -14,7 +14,7 @@ import { EDIT, VISITOR } from "../../utils/constants";
 function Visitor() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   let { slug }: any = useParams();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const { loading, error, data } = useQuery(GET_VISITOR, {
     variables: { visitorId: slug },
@@ -44,7 +44,7 @@ function Visitor() {
     <>
       <PageHeader
         className="site-page-header goBack"
-        onBack={() => history.goBack()}
+        onBack={() => navigate.goBack()}
         title={
           <>
             <span className="breadcrumb">{VISITOR}</span>

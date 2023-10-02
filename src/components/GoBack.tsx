@@ -1,9 +1,9 @@
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { PageHeader } from "antd";
 import { checkSlug } from "../utils/functions";
 
 const GoBack = ({ header }: any) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   let { slug }: any = useParams();
 
   const result = checkSlug(slug);
@@ -11,7 +11,7 @@ const GoBack = ({ header }: any) => {
   return (
     <PageHeader
       className="site-page-header goBack"
-      onBack={() => history.goBack()}
+      onBack={() => navigate.goBack()}
       title={
         <>
           <span className="breadcrumb">

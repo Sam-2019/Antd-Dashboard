@@ -1,13 +1,13 @@
 import React from "react";
 import { Result, Button } from "antd";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { BACKHOME } from "../../utils/constants";
 
 function NoPage() {
-  let history = useHistory();
+  let navigate = useNavigate();
 
   function goHome() {
-    history.push("/");
+    navigate("/");
   }
   return (
     <Result

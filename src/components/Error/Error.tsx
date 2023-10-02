@@ -1,8 +1,8 @@
 import { Result, Button } from "antd";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Error({ hideButton }: any) {
-  let history = useHistory();
+  let navigate = useNavigate();
   return (
     <Result
       status="500"
@@ -10,7 +10,7 @@ function Error({ hideButton }: any) {
       subTitle="Sorry, something went wrong."
       extra={
         hideButton ? null : (
-          <Button type="primary" onClick={() => history.goBack()}>
+          <Button type="primary" onClick={() => navigate.goBack()}>
             Go Back
           </Button>
         )
