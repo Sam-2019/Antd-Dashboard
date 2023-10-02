@@ -1,102 +1,91 @@
-import { Suspense, useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  LoginRoute,
-  SignupRoute,
-  VerifyEmail,
-  ResetPassword,
-} from "./routes/User";
-import { NoPageRoute } from "./routes/404";
-import { MainRoutes } from "./routes/MainRoutes";
-import Layout from "./components/Layout/Layout";
-import Spinner from "./components/Spinner/Spinner";
-import ScrollToTop from "./components/ScrollToTop";
-import { isLoggedIn } from "./utils/toolkit/features/user/userSlice";
-import Cookies from "js-cookie";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+import NoPage from "./pages/404";
+import { Login, ResetPassword, Signup, VerifyEmail } from "./routes/User";
+import AppLayout from "./components/Layout/Layout";
+import DashboardRoute from "./routes/Dashboard";
+import DepartmentRoute from "./routes/Departments";
+import MemberRoute from "./routes/Members";
+import VisitorRoute from "./routes/Visitors";
+import PaymentRoute from "./routes/Payments";
+import ChapelsRoute from "./routes/Chapels";
+import PledgeRoute from "./routes/Pledges";
+import FormsRoute from "./routes/Forms";
+import Departments from "./pages/Departments";
+import Department from "./pages/Departments/DepartmentList";
+import Chapels from "./pages/Chapels";
+import Chapel from "./pages/Chapels/ChapelList";
+import Forms from "./pages/Forms";
+
+import Member from "./pages/Forms/Member/index";
+import Visitor from "./pages/Forms/Visitor/index";
+import Pledge from "./pages/Forms/Pledge/index";
+import Sunday from "./pages/Forms/Sunday/index";
+import TypeOfService from "./pages/Forms/Sunday/Type";
+import Payment from "./pages/Forms/Payments/index";
+import PaymentType from "./pages/Forms/Payments/Type";
 
 export default function Main() {
-  const userState = useSelector((state: any) => state.user.loggedIn);
-  console.log({ userState: userState });
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    function updateState() {
-      const token = Cookies.get("accessToken");
-      if (token === "undefined") {
-        return dispatch(isLoggedIn(false));
-      }
-
-      return dispatch(isLoggedIn(true));
-    }
-
-    updateState();
-  }, [dispatch]);
-
-  return (
-    <Router>
-      <ScrollToTop />
-      <Switch>
-        <Route path="/signup">
-          <SignupRoute />
-        </Route>
-
-        <Route path="/verify-email">
-          <VerifyEmail />
-        </Route>
-
-        <Route path="/reset-password">
-          <ResetPassword />
-        </Route>
-
-        <Route path="/login">
-          <LoginRoute />
-        </Route>
-
-        <PrivateRoute>
-          <MainApp />
-        </PrivateRoute>
-
-        <Route>
-          <NoPageRoute />
-        </Route>
-      </Switch>
-    </Router>
-  );
+  return <RouterProvider router={router} />;
 }
 
-const MainApp = () => {
-  return (
-    <Layout>
-      <Suspense fallback={<Spinner />}>
-        <MainRoutes />
-      </Suspense>
-    </Layout>
-  );
-};
-
-function PrivateRoute({ children, ...rest }: any) {
-  const userState = useSelector((state: any) => state.user.loggedIn);
-  return (
-    <Route
-      {...rest}
-      render={({ location }) =>
-        userState ? (
-          children
-        ) : (
-          <Redirect
-            to={{
-              pathname: "/login",
-              state: { from: location },
-            }}
-          />
-        )
-      }
-    />
-  );
-}
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLayout />,
+    errorElement: <NoPage />,
+    children: [
+      { index: true, element: <DashboardRoute /> },
+      {
+        path: "/departments",
+        element: <DepartmentRoute />,
+        children: [
+          { index: true, element: <Departments /> },
+          { path: "/departments/:id", element: <Department /> },
+        ],
+      },
+      { path: "/members", element: <MemberRoute /> },
+      { path: "/visitors", element: <VisitorRoute /> },
+      { path: "/payments", element: <PaymentRoute /> },
+      {
+        path: "/chapels",
+        element: <ChapelsRoute />,
+        children: [
+          { index: true, element: <Chapels /> },
+          { path: "/chapels/:id", element: <Chapel /> },
+        ],
+      },
+      { path: "/pledges", element: <PledgeRoute /> },
+      {
+        path: "/forms",
+        element: <FormsRoute />,
+        children: [
+          { index: true, element: <Forms /> },
+          { path: "/forms/member", element: <Member /> },
+          { path: "/forms/visitor", element: <Visitor /> },
+          { path: "/forms/pledge", element: <Pledge /> },
+          { path: "/forms/sunday", element: <Sunday /> },
+          { path: "/forms/payments", element: <Payment /> },
+          { path: "/forms/sunday/:id", element: <TypeOfService /> },
+          { path: "/forms/payments/:id", element: <PaymentType /> },
+        ],
+      },
+    ],
+  },
+  {
+    path: "login",
+    element: <Login />,
+  },
+  {
+    path: "signup",
+    element: <Signup />,
+  },
+  {
+    path: "verify-password",
+    element: <VerifyEmail />,
+  },
+  {
+    path: "reset-password",
+    element: <ResetPassword />,
+  },
+]);
