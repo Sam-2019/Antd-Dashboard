@@ -36,7 +36,7 @@ export const userSlice = createSlice({
     },
     getAccessToken: ({ accessToken }) => {
       // eslint-disable-next-line no-self-assign
-      accessToken = accessToken;
+      // accessToken = accessToken;
     },
     setAccessToken: (state, action) => {
       state.accessToken = action.payload;
