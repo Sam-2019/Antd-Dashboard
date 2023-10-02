@@ -88,7 +88,7 @@ const Navbar = ({ toggle, collapsed, showDrawer, visible }: PropType) => {
           <Text type="danger" style={{ margin: 0, paddingRight: "10px" }}>
             Welcome, {user.firstName}
           </Text>
-          <Dropdown overlay={menu}>
+          <Dropdown menu={menu}>
             <Badge>
               <Avatar
                 size={35}

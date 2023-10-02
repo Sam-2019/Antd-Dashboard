@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { PageHeader } from "antd";
+import { PageHeader } from "@ant-design/pro-layout";
 import { checkSlug } from "../utils/functions";
 
 const GoBack = ({ header }: any) => {
@@ -11,7 +11,7 @@ const GoBack = ({ header }: any) => {
   return (
     <PageHeader
       className="site-page-header goBack"
-      onBack={() => navigate.goBack()}
+      onBack={() => navigate(-1)}
       title={
         <>
           <span className="breadcrumb">

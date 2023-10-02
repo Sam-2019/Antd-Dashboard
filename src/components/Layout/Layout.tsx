@@ -8,16 +8,13 @@ import { USER_DETAILS } from "../../utils/graphqlFunctions/queries";
 import { setUser } from "../../utils/toolkit/features/user/userSlice";
 
 import { useDispatch } from "react-redux";
+import { Outlet } from "react-router-dom";
 
 //import BreadCrumb from "./Breadcrumb";
 
 const { Content } = Layout;
 
-interface PropType {
-  children: any;
-}
-
-const AppLayout = ({ children }: PropType) => {
+const AppLayout = () => {
   //const [active, setActive] = React.useState("dashboard");
   const [visible, setVisible] = React.useState(false);
   const [collapsed, setCollapsed] = React.useState(false);
@@ -25,7 +22,7 @@ const AppLayout = ({ children }: PropType) => {
 
   const { loading, error, data } = useQuery(USER_DETAILS, {
     onCompleted: (data) => {
-      dispatch(setUser(data.user));
+      // dispatch(setUser(data.user));
     },
     onError: (errors) => {},
   });
@@ -66,7 +63,7 @@ const AppLayout = ({ children }: PropType) => {
           }}
         >
           {/* <BreadCrumb /> */}
-          {children}
+          <Outlet />
         </Content>
       </Layout>
     </Layout>

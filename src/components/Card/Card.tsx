@@ -9,20 +9,20 @@ function CardView({ type, data, avatar }: any) {
   const navigate = useNavigate();
   let location = useLocation();
 
-  function routeAction(data: any) {
-    let pathSnippets = data.path.split("/");
+  function routeAction(datum: any) {
+    let pathSnippets = datum.path.split("/");
 
     if (pathSnippets.length > 2) {
       return navigate(`${location.pathname}/${pathSnippets[2]}`);
     }
 
-    return navigate(`${location.pathname}${data.path}`);
+    return navigate(`${location.pathname}${datum.path}`);
   }
 
   return (
     <div className="gridStyle">
-      {data.map((data: any) => (
-        <div key={data.key} onClick={() => routeAction(data)}>
+      {data.map((datum: any) => (
+        <div key={datum.key} onClick={() => routeAction(datum)}>
           <Card
             hoverable
             cover={
@@ -35,9 +35,9 @@ function CardView({ type, data, avatar }: any) {
             }
           >
             <div style={cardStyles}>
-              <Meta description={data.name} />
+              <Meta description={datum.name} />
               <div>
-                {avatar && <AvatarGroup type={type} group={data.name} />}
+                {/* {avatar && <AvatarGroup type={type} group={datum.name} />} */}
               </div>
             </div>
           </Card>

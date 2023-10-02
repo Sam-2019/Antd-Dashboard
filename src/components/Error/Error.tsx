@@ -2,7 +2,7 @@ import { Result, Button } from "antd";
 import { useNavigate } from "react-router-dom";
 
 function Error({ hideButton }: any) {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   return (
     <Result
       status="500"

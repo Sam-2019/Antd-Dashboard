@@ -13,7 +13,7 @@ const DrawerC = ({ onClose, visible }: PropType) => {
       placement="left"
       closable={false}
       onClose={onClose}
-      visible={visible}
+      open={visible}
     >
       <MenuItems />
     </Drawer>
