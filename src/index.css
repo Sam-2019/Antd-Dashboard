@@ -55,10 +55,6 @@ a {
 
 }
 
-.hello {
-  display: inline;
-}
-
 @media (max-width: 781px) {
   .gridStyle {
     grid-template-columns: repeat(3, 0.5fr);
