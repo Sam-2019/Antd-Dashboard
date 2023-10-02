@@ -19,7 +19,7 @@ export function ResetPasswordRoute() {
   return <ResetPassword />;
 }
 
-export { LoginRoute as default } from "./User";
+export { LoginRoute as Login } from "./User";
 export { SignupRoute as Signup } from "./User";
 export { VerifyEmailRoute as VerifyEmail } from "./User";
 export { ResetPasswordRoute as ResetPassword } from "./User";

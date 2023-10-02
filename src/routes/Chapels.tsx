@@ -1,21 +1,7 @@
-import { Switch, Route, useRouteMatch } from "react-router-dom";
-import Chapels from "../pages/Chapel";
-import Chapel from "../pages/Chapel/ChapelList";
+import { Outlet } from "react-router-dom";
 
 export function ChapelsRoute() {
-  let { path } = useRouteMatch();
-  
-  return (
-    <Switch>
-      <Route path={`${path}/:slug`}>
-        <Chapel />
-      </Route>
-
-      <Route path={`${path}`}>
-        <Chapels />
-      </Route>
-    </Switch>
-  );
+  return <Outlet />;
 }
 
 export { ChapelsRoute as default } from "./Chapels";
