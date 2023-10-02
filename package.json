@@ -12,6 +12,7 @@
   "dependencies": {
     "@ant-design/charts": "^1.4.2",
     "@ant-design/icons": "^5.2.6",
+    "@ant-design/pro-layout": "^7.17.6",
     "@apollo/client": "^3.8.4",
     "@reduxjs/toolkit": "^1.9.6",
     "@types/js-cookie": "^3.0.4",
