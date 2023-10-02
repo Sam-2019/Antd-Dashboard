@@ -1,10 +1,9 @@
-import React from "react";
 import { Result, Button } from "antd";
 import { useNavigate } from "react-router-dom";
 import { BACKHOME } from "../../utils/constants";
 
 function NoPage() {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   function goHome() {
     navigate("/");

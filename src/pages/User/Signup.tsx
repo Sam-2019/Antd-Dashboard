@@ -16,7 +16,7 @@ export default function Signup() {
   const responsive = useBreakpoint();
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   function login_route() {
     navigate("/login");
