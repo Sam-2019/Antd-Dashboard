@@ -1,7 +1,7 @@
-import Pledges from "../pages/Pledge";
+import { Outlet } from "react-router-dom";
 
 export function PledgeRoute() {
-  return <Pledges />;
+  return <Outlet />;
 }
 
 export { PledgeRoute as default } from "./Pledges";

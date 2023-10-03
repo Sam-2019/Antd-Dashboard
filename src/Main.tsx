@@ -25,6 +25,11 @@ import TypeOfService from "./pages/Forms/Sunday/Type";
 import Payment from "./pages/Forms/Payments/index";
 import PaymentType from "./pages/Forms/Payments/Type";
 
+import Members from "./pages/Members/Members";
+import Visitors from "./pages/Visitor/Visitors";
+import Payments from "./pages/Payments";
+import Pledges from "./pages/Pledge/Pledges";
+
 export default function Main() {
   return <RouterProvider router={router} />;
 }
@@ -44,9 +49,37 @@ const router = createBrowserRouter([
           { path: "/departments/:id", element: <Department /> },
         ],
       },
-      { path: "/members", element: <MemberRoute /> },
-      { path: "/visitors", element: <VisitorRoute /> },
-      { path: "/payments", element: <PaymentRoute /> },
+      // { path: "/members", element: <MemberRoute /> },
+
+      {
+        path: "/members",
+        element: <MemberRoute />,
+        children: [
+          { index: true, element: <Members /> },
+          { path: ":id", element: <Member /> },
+        ],
+      },
+
+      // { path: "/visitors", element: <VisitorRoute /> },
+      {
+        path: "/visitors",
+        element: <VisitorRoute />,
+        children: [
+          { index: true, element: <Visitors /> },
+          { path: ":id", element: <Member /> },
+        ],
+      },
+
+      // { path: "/payments", element: <PaymentRoute /> },
+
+      {
+        path: "/payments",
+        element: <PaymentRoute />,
+        children: [
+          { index: true, element: <Payments /> },
+          { path: ":id", element: <Member /> },
+        ],
+      },
       {
         path: "/chapels",
         element: <ChapelsRoute />,
@@ -55,7 +88,16 @@ const router = createBrowserRouter([
           { path: "/chapels/:id", element: <Chapel /> },
         ],
       },
-      { path: "/pledges", element: <PledgeRoute /> },
+
+      // { path: "/pledges", element: <PledgeRoute /> },
+      {
+        path: "/pledges",
+        element: <PledgeRoute />,
+        children: [
+          { index: true, element: <Pledges /> },
+          { path: ":id", element: <Member /> },
+        ],
+      },
       {
         path: "/forms",
         element: <FormsRoute />,

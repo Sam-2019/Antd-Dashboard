@@ -1,7 +1,7 @@
-import Visitors from "../pages/Visitor";
+import { Outlet } from "react-router-dom";
 
 export function VisitorRoute() {
-  return <Visitors />;
+  return <Outlet />;
 }
 
 export { VisitorRoute as default } from "./Visitors";

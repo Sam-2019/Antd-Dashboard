@@ -1,7 +1,7 @@
-import Members from "../pages/Members";
+import { Outlet } from "react-router-dom";
 
 export function MemberRoute() {
-  return <Members />;
+  return <Outlet />;
 }
 
 export { MemberRoute as default } from "./Members";

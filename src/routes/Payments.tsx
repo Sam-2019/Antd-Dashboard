@@ -1,7 +1,7 @@
-import PaymentType from "../pages/Payments/Type";
+import { Outlet } from "react-router-dom";
 
 export function PaymentRoute() {
-  return <PaymentType />;
+  return <Outlet />;
 }
 
 export { PaymentRoute as default } from "./Payments";
