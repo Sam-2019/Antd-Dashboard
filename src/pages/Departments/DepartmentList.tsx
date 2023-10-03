@@ -11,6 +11,7 @@ import GoBack from "../../components/GoBack";
 
 function Department() {
   let { slug }: any = useParams();
+
   const { loading, error, data } = useQuery(GET_DEPARTMENT, {
     variables: { department: slug },
   });
