@@ -44,7 +44,7 @@ function Member() {
     <>
       <PageHeader
         className="site-page-header goBack"
-        onBack={() => navigate.goBack()}
+        onBack={() => navigate(-1)}
         title={
           <>
             <span className="breadcrumb">Member</span>

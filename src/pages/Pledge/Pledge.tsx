@@ -81,7 +81,7 @@ function Pledge() {
     <>
       <PageHeader
         className="site-page-header goBack"
-        onBack={() => navigate.goBack()}
+        onBack={() => navigate(-1)}
         title={
           <>
             <span className="breadcrumb">Pledgee</span>
