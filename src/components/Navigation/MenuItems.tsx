@@ -8,6 +8,7 @@ type MenuItem = Required<MenuProps>["items"][number];
 
 import { useNavigate } from "react-router-dom";
 import { menuItems } from "../../utils/data";
+import { pathSnippetsWithFilterAndKey } from "../../utils/functions";
 
 const items: MenuItem[] = menuItems;
 
@@ -15,21 +16,13 @@ const MenuItems = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  // console.log({ location });
   const activePath = items.filter(
     (item: any) => item.path === location.pathname
   );
 
-  // const [state] = React.useState([activePath[0].key] || ["1"]);
-  // console.log({ state });
-
-  // React.useEffect(() => {
-  //   console.log("log");
-  //   console.log(location.pathname);
-  //   const selectedPath = items.filter(
-  //     (item: any) => item.path === location.pathname
-  //   );
-  //   console.log(selectedPath[0].key);
-  // }, []);
+  const wafer = pathSnippetsWithFilterAndKey(location, menuItems);
+  const [state] = React.useState([wafer[0].key] || ["1"]);
 
   const handleClick = (e: any) => {
     const selectedPath = items.filter((item: any) => item.key === e.key);
@@ -41,7 +34,7 @@ const MenuItems = () => {
       onClick={(e) => handleClick(e)}
       theme="dark"
       mode="inline"
-      defaultSelectedKeys={['1']}
+      defaultSelectedKeys={state}
       items={items}
     />
   );

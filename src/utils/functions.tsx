@@ -4,7 +4,7 @@ export const colorSwitch = (tag: any) => {
     case "Administration":
       color = "volcano";
       break;
-      
+
     case "Chapel Shepherd":
       color = "pink";
       break;
@@ -70,6 +70,12 @@ export const pathSnippetsWithFilter = (info: any) => {
   return info.pathname.split("/").filter((i: any) => i);
 };
 
+export const pathSnippetsWithFilterAndKey = (info: any, list: any) => {
+  const key = info.pathname.split("/");
+  const cutaway = list.filter((i: any) => i.sub_text === key[1]);
+  return cutaway;
+};
+
 export function checkSlug(data: any) {
   if (data === "mmv") {
     return data.toUpperCase();
@@ -85,7 +91,6 @@ export function checkSlug(data: any) {
 export const getMonth = (monthStr: string) => {
   return new Date(monthStr + "-1-01").getMonth() + 1;
 };
-
 
 export const paymentMonth = (type: any) => {
   let month;
@@ -143,6 +148,5 @@ export const paymentMonth = (type: any) => {
       month = null;
   }
 
-  return  month;
+  return month;
 };
-

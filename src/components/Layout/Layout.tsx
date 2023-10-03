@@ -9,10 +9,11 @@ import { setUser } from "../../utils/toolkit/features/user/userSlice";
 
 import { useDispatch } from "react-redux";
 import { Outlet } from "react-router-dom";
+import BreadCrumb from "../Breadcrumb";
 
 //import BreadCrumb from "./Breadcrumb";
 
-const { Content } = Layout;
+const { Content, Footer } = Layout;
 
 const AppLayout = () => {
   //const [active, setActive] = React.useState("dashboard");
@@ -58,13 +59,14 @@ const AppLayout = () => {
           className="site-layout-background"
           style={{
             padding: "10px",
-            minHeight: 750,
-            //  border: "1px solid red",
+            minHeight: 800,
+            // border: "1px solid red",
           }}
         >
           {/* <BreadCrumb /> */}
           <Outlet />
         </Content>
+        <Footer style={{ textAlign: "center" }} />
       </Layout>
     </Layout>
   );
