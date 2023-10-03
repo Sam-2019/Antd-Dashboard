@@ -6,7 +6,7 @@ const GroupColumn = ({ data }: any) => {
     return <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />;
   }
 
-  var config = {
+  const config = {
     data,
     isGroup: true,
     xField: "date",

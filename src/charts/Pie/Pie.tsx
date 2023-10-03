@@ -2,7 +2,7 @@ import { Pie } from "@ant-design/charts";
 
 const PieChart = ({ data }: any) => {
 
-  var config = {
+  const config = {
     appendPadding: 10,
     theme: "default",
     data,

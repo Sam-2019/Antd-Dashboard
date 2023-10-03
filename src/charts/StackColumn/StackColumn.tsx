@@ -1,7 +1,7 @@
 import { Column } from "@ant-design/charts";
 
 const StackColumn = ({ data }: any) => {
-  var config = {
+  const config = {
     data,
     isStack: true,
     xField: "date",
