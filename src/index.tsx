@@ -4,12 +4,14 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import App from "./App.tsx";
 import { store } from "./utils/toolkit/store.tsx";
 import { Provider } from "react-redux";
+import { localhost } from "./utils/config.tsx";
 
 import "./index.css";
 
 const client = new ApolloClient({
-  uri: "http://localhost:8080/graphql",
+  uri: localhost,
   cache: new InMemoryCache(),
+  credentials: "include",
 });
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
