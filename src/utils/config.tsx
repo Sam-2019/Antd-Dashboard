@@ -12,4 +12,4 @@ export const firebaseConfig = {
   measurementId: import.meta.env.VITE_MEASUREMENT_ID,
 };
 
-export const storageURL = import.meta.env.VITE_STORAGE_URL;
+export const imageFolder = import.meta.env.VITE_IMAGE_FOLDER

@@ -39,7 +39,7 @@ export function Edit({
       width={1000}
       title={EDIT}
       centered
-      visible={isModalVisible}
+      open={isModalVisible}
       onOk={handleOk}
       onCancel={handleCancel}
       footer={null}

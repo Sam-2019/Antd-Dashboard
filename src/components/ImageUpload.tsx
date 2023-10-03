@@ -12,7 +12,7 @@ import {
 import { v4 as uuidv4 } from "uuid";
 import { UPLOAD_IMAGE } from "../utils/graphqlFunctions/mutations";
 import { useMutation } from "@apollo/client";
-import { firebaseConfig, storageURL } from "../utils/config";
+import { firebaseConfig, imageFolder } from "../utils/config";
 
 const ImageUpload = ({ id, type, query }: any) => {
   const [loading, setLoading] = useState(false);
@@ -21,7 +21,7 @@ const ImageUpload = ({ id, type, query }: any) => {
     refetchQueries: [{ query: query }],
   });
   // Get a reference to the storage service, which is used to create references in your storage bucket
-  const storage = getStorage(firebaseApp, storageURL);
+  const storage = getStorage(firebaseApp);
 
   const [status, setStatus] = useState("");
   const [error, setError] = useState("");
@@ -39,12 +39,13 @@ const ImageUpload = ({ id, type, query }: any) => {
   // }
 
   async function handleChange(info: any) {
+    if (info === null) return;
     setLoading(true);
     setError("");
     setStatus("");
 
     const image = info.file.originFileObj;
-    let imageName = uuidv4();
+    const imageName = uuidv4();
 
     const isJpgOrPng =
       image.type === "image/jpeg" || image.type === "image/png";
@@ -61,22 +62,23 @@ const ImageUpload = ({ id, type, query }: any) => {
       firebaseStorageDownloadTokens: uuidv4(),
     };
 
-    const imagesRef = ref(storage, "images");
+    const imagesRef = ref(storage, imageFolder);
 
     const membersImagesRef = ref(imagesRef, `${imageName}-${image.name}`);
+
+    // console.log({ imagesRef });
+    console.log({ membersImagesRef });
 
     try {
       await uploadBytes(membersImagesRef, image, metadata).then(
         (snapshot) => {}
       );
-
       //  Upload the file and metadata
       const uploadTask = uploadBytesResumable(membersImagesRef, image);
       await getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
         if (!downloadURL) {
-          return setStatus("Uplaod failed");
+          return setStatus("Upload failed");
         }
-
         uploadImage({
           variables: {
             uploadImageId: id,
