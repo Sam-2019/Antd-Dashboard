@@ -10,10 +10,15 @@ function CardView({ type, data, avatar }: any) {
   let location = useLocation();
 
   function routeAction(datum: any) {
+
     let pathSnippets = datum.path.split("/");
 
     if (pathSnippets.length > 2) {
       return navigate(`${location.pathname}/${pathSnippets[2]}`);
+    }
+
+    if (pathSnippets.length === 2) {
+      return navigate(`${location.pathname}/${pathSnippets[1]}`);
     }
 
     return navigate(`${location.pathname}${datum.path}`);
