@@ -17,18 +17,22 @@ import Chapels from "./pages/Chapels";
 import Chapel from "./pages/Chapels/ChapelList";
 import Forms from "./pages/Forms";
 
-import Member from "./pages/Forms/Member/index";
-import Visitor from "./pages/Forms/Visitor/index";
-import Pledge from "./pages/Forms/Pledge/index";
-import Sunday from "./pages/Forms/Sunday/index";
-import TypeOfService from "./pages/Forms/Sunday/Type";
-import Payment from "./pages/Forms/Payments/index";
-import PaymentType from "./pages/Forms/Payments/Type";
+import MemberForm from "./pages/Forms/Member/index";
+import VisitorForm from "./pages/Forms/Visitor/index";
+import PledgeForm from "./pages/Forms/Pledge/index";
+import SundayForm from "./pages/Forms/Sunday/index";
+import SundaysForm from "./pages/Forms/Sunday/Type";
+import PaymentForm from "./pages/Forms/Payments/index";
+import PaymentsForm from "./pages/Forms/Payments/Type";
 
 import Members from "./pages/Members/Members";
 import Visitors from "./pages/Visitor/Visitors";
 import Payments from "./pages/Payments";
 import Pledges from "./pages/Pledge/Pledges";
+
+import Member from "./pages/Members/Member";
+import Visitor from "./pages/Visitor/Visitor";
+import Pledge from "./pages/Pledge/Pledge";
 
 export default function Main() {
   return <RouterProvider router={router} />;
@@ -50,7 +54,6 @@ const router = createBrowserRouter([
         ],
       },
       // { path: "/members", element: <MemberRoute /> },
-
       {
         path: "/members",
         element: <MemberRoute />,
@@ -59,25 +62,22 @@ const router = createBrowserRouter([
           { path: ":slug", element: <Member /> },
         ],
       },
-
       // { path: "/visitors", element: <VisitorRoute /> },
       {
         path: "/visitors",
         element: <VisitorRoute />,
         children: [
           { index: true, element: <Visitors /> },
-          { path: ":slug", element: <Member /> },
+          { path: ":slug", element: <Visitor /> },
         ],
       },
-
       // { path: "/payments", element: <PaymentRoute /> },
-
       {
         path: "/payments",
         element: <PaymentRoute />,
         children: [
           { index: true, element: <Payments /> },
-          { path: ":slug", element: <Member /> },
+          { path: ":slug", element: <Pledge /> },
         ],
       },
       {
@@ -95,7 +95,7 @@ const router = createBrowserRouter([
         element: <PledgeRoute />,
         children: [
           { index: true, element: <Pledges /> },
-          { path: ":slug", element: <Member /> },
+          { path: ":slug", element: <Pledge /> },
         ],
       },
       {
@@ -103,13 +103,13 @@ const router = createBrowserRouter([
         element: <FormsRoute />,
         children: [
           { index: true, element: <Forms /> },
-          { path: "member", element: <Member /> },
-          { path: "visitor", element: <Visitor /> },
-          { path: "pledge", element: <Pledge /> },
-          { path: "sunday", element: <Sunday /> },
-          { path: "payments", element: <Payment /> },
-          { path: "sunday/:slug", element: <TypeOfService /> },
-          { path: "payments/:slug", element: <PaymentType /> },
+          { path: "member", element: <MemberForm /> },
+          { path: "visitor", element: <VisitorForm /> },
+          { path: "pledge", element: <PledgeForm /> },
+          { path: "sunday", element: <SundayForm /> },
+          { path: "payments", element: <PaymentForm /> },
+          { path: "sunday/:slug", element: <SundaysForm /> },
+          { path: "payments/:slug", element: <PaymentsForm /> },
         ],
       },
     ],
