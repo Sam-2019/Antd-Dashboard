@@ -10,7 +10,7 @@ function Error({ hideButton }: any) {
       subTitle="Sorry, something went wrong."
       extra={
         hideButton ? null : (
-          <Button type="primary" onClick={() => navigate.goBack()}>
+          <Button type="primary" onClick={() => navigate(-1)}>
             Go Back
           </Button>
         )
