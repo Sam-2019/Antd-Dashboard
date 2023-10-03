@@ -9,7 +9,7 @@ import { DatePicker } from "antd";
 import TypeItem from "./TypeItem";
 import GoBack from "../../components/GoBack";
 
-function Type() {
+function PaymentsForm() {
   let location = useLocation();
   let { slug }: any = useParams();
   const [year, setYear] = useState("");
@@ -65,4 +65,4 @@ function Type() {
   );
 }
 
-export default Type;
+export default PaymentsForm;

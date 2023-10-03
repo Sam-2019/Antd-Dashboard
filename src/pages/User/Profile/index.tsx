@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import { Button, PageHeader } from "antd";
+import { Button, } from "antd";
+import { PageHeader } from "@ant-design/pro-layout";
 import ProfileItem from "./ProfileItem";
 import { Edit } from "../../../components/Modal/Modal";
 import EmptyState from "../../../components/Empty/Empty";

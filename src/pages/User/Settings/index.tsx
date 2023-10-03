@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
-import { PageHeader } from "antd";
+import { PageHeader } from "@ant-design/pro-layout";
 import SettingsItem from "./Settings";
 
 export default function Settings() {

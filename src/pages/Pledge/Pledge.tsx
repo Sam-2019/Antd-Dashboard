@@ -7,13 +7,14 @@ import { Success, Error as ErrorMessage } from "../../components/Modal/Modal";
 import PledgeItem from "./PledgeItem";
 import Spinner from "../../components/Spinner/Spinner";
 import Error from "../../components/Error/Error";
-import { Button, PageHeader } from "antd";
+import { Button } from "antd";
+import { PageHeader } from "@ant-design/pro-layout";
 import PledgeEdit from "../Forms/Pledge/Edit";
 import { Edit } from "../../components/Modal/Modal";
 import { Fragment, useState } from "react";
 import { EDIT } from "../../utils/constants";
 
-function Pledge() {
+function PledgeForm() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   let { slug }: any = useParams();
   const navigate = useNavigate();
@@ -119,4 +120,4 @@ function Pledge() {
   );
 }
 
-export default Pledge;
+export default PledgeForm;

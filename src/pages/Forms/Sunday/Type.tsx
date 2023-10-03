@@ -7,7 +7,7 @@ import { Success, Error } from "../../../components/Modal/Modal";
 import { GET_SUNDAY_STATS } from "../../../utils/graphqlFunctions/queries";
 import { inputStyles } from "../../../utils/styles";
 
-function SundayType() {
+function SundaysForm() {
   let { slug }: any = useParams();
   const [form] = Form.useForm();
   const [addSundayServiceInput] = useMutation(ADD_SUNDAY_SERVICE, {
@@ -245,4 +245,4 @@ function SundayType() {
   );
 }
 
-export default SundayType;
+export default SundaysForm;

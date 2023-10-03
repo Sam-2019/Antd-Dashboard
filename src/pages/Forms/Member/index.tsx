@@ -25,7 +25,7 @@ import { inputStyles } from "../../../utils/styles";
 const { Step } = Steps;
 const { Option } = Select;
 
-function Member() {
+function MemberForm() {
   const [current, setCurrent] = useState(0);
   const [form] = Form.useForm();
   const [addMember] = useMutation(ADD_MEMBER, {
@@ -85,10 +85,10 @@ function Member() {
         return Error("Registration failed");
       }
 
-      form.resetFields();
+      // form.resetFields();
       Success("Member added");
       setCurrent(0);
-      localStorage.clear();
+      // localStorage.clear();
     }
   };
 
@@ -332,4 +332,4 @@ function Member() {
   );
 }
 
-export default Member;
+export default MemberForm;

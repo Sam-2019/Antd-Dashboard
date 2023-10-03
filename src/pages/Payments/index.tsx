@@ -2,7 +2,7 @@ import Card from "../../components/Card/Card";
 import PageHeader from "../../components/PageHeader";
 import { paymentRoute } from "../../utils/data";
 
-const Payments = () => {
+const PaymentForm = () => {
   return (
     <>
       <PageHeader header="Payments" />
@@ -11,4 +11,4 @@ const Payments = () => {
   );
 };
 
-export default Payments;
+export default PaymentForm;
