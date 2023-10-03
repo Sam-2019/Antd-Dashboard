@@ -46,7 +46,7 @@ const router = createBrowserRouter([
         element: <DepartmentRoute />,
         children: [
           { index: true, element: <Departments /> },
-          { path: "/departments/:id", element: <Department /> },
+          { path: ":slug", element: <Department /> },
         ],
       },
       // { path: "/members", element: <MemberRoute /> },
@@ -56,7 +56,7 @@ const router = createBrowserRouter([
         element: <MemberRoute />,
         children: [
           { index: true, element: <Members /> },
-          { path: ":id", element: <Member /> },
+          { path: ":slug", element: <Member /> },
         ],
       },
 
@@ -66,7 +66,7 @@ const router = createBrowserRouter([
         element: <VisitorRoute />,
         children: [
           { index: true, element: <Visitors /> },
-          { path: ":id", element: <Member /> },
+          { path: ":slug", element: <Member /> },
         ],
       },
 
@@ -77,7 +77,7 @@ const router = createBrowserRouter([
         element: <PaymentRoute />,
         children: [
           { index: true, element: <Payments /> },
-          { path: ":id", element: <Member /> },
+          { path: ":slug", element: <Member /> },
         ],
       },
       {
@@ -85,7 +85,7 @@ const router = createBrowserRouter([
         element: <ChapelsRoute />,
         children: [
           { index: true, element: <Chapels /> },
-          { path: "/chapels/:id", element: <Chapel /> },
+          { path: ":slug", element: <Chapel /> },
         ],
       },
 
@@ -95,7 +95,7 @@ const router = createBrowserRouter([
         element: <PledgeRoute />,
         children: [
           { index: true, element: <Pledges /> },
-          { path: ":id", element: <Member /> },
+          { path: ":slug", element: <Member /> },
         ],
       },
       {
@@ -108,8 +108,8 @@ const router = createBrowserRouter([
           { path: "pledge", element: <Pledge /> },
           { path: "sunday", element: <Sunday /> },
           { path: "payments", element: <Payment /> },
-          { path: "sunday/:id", element: <TypeOfService /> },
-          { path: "payments/:id", element: <PaymentType /> },
+          { path: "sunday/:slug", element: <TypeOfService /> },
+          { path: "payments/:slug", element: <PaymentType /> },
         ],
       },
     ],
