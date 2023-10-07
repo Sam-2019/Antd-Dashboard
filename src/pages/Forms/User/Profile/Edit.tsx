@@ -43,10 +43,12 @@ function Profile({ handleCancel, data }: any) {
         initialValues={{
           firstName: data.firstName,
           lastName: data.lastName,
+          userName: data.userName,
           gender: data.gender,
           contact: data.contact,
-          email: data.email,
+          emailAddress: data.emailAddress,
           homeAddress: data.homeAddress,
+          password: data.password,
           dob: data.dob,
         }}
       >
@@ -69,7 +71,7 @@ function Profile({ handleCancel, data }: any) {
           <Input style={inputStyles} />
         </Form.Item>
 
-        <Form.Item name="email" label="Email">
+        <Form.Item name="emailAddress" label="Email">
           <Input style={inputStyles} />
         </Form.Item>
 

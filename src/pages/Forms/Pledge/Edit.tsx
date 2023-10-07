@@ -54,7 +54,9 @@ function Pledge({ handleCancel, data, slug }: any) {
           otherName: data.otherName,
           contact: data.contact,
           emailAddress: data.emailAddress,
+          pledgeDate: data.pledgeDate,
           programme: data.programme,
+          redeemedDate: data.redeemedDate,
           amount: data.amount,
         }}
       >

@@ -67,12 +67,26 @@ function Member({ handleCancel, data }: any): JSX.Element {
         initialValues={{
           firstName: data.firstName,
           lastName: data.lastName,
-          contact: data.contact,
-          emailAddress: data.emailAddress,
-          residentialAddress: data.residentialAddress,
-          department: data.department,
-          spouseName: data.spouseName,
+          otherName: data.otherName,
+          dateOfBirth: data.dateOfBirth,
+          chapel: data.chapel,
+          age: data.age,
           gender: data.gender,
+          hometown: data.hometown,
+          region: data.region,
+          country: data.country,
+          residentialAddress: data.residentialAddress,
+          contact: data.contact,
+          emergencyContact: data.emergencyContact,
+          emailAddress: data.emailAddress,
+          postalAddres: data.postalAddress,
+          maritalStatus: data.maritalStatus,
+          spouseName: data.spouseName,
+          numberOfChlidren: data.numberOfChlidren,
+          nameOfChildren: data.nameOfChildren,
+          dateJoinedChurch: data.dateJoinedChurch,
+          department: data.department,
+          previousChurch: data.previousChurch,
           group: data.group,
         }}
       >
@@ -174,7 +188,7 @@ function Member({ handleCancel, data }: any): JSX.Element {
         <Form.List name="nameOfChildren">
           {(fields, { add, remove }) => (
             <>
-              {fields.map(({ key, name, fieldKey, ...restField }) => (
+              {fields.map(({ key, name, ...restField }) => (
                 <Form.Item
                   key={key}
                   wrapperCol={{
@@ -192,7 +206,6 @@ function Member({ handleCancel, data }: any): JSX.Element {
                       {...restField}
                       style={{ marginBottom: 0 }}
                       name={[name]}
-                      fieldKey={[fieldKey, "name"]}
                     >
                       <Input placeholder="Full Name" />
                     </Form.Item>
